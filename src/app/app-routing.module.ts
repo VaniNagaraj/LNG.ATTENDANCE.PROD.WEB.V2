@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LoginComponent } from './login/login.component';
+import { ChangePasswordComponent } from './login/changepassword/changepassword.component';
+import { ForgotPasswordComponent } from './login/forgotpassword/forgotpassword.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  { path: 'login', component: LoginComponent },
+  { path: 'changepassword', component: ChangePasswordComponent },
+  { path: 'forgotpassword', component: ForgotPasswordComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {
+}

@@ -1,0 +1,84 @@
+<!--Login Page Starts-->
+<section id="login">
+    <div class="container-fluid">
+        <div class="row full-height-vh m-0">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body login-img">
+                            <div class="row m-0">
+                                <div class="col-lg-6 d-lg-block d-none py-2 px-3 text-center align-middle">
+                                    <img src="./assets/img/gallery/login.png" alt="" class="img-fluid mt-5"
+                                        width="400" height="230" />
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
+                                    <h4 class="card-title mb-2">Login</h4>
+                                    <p class="card-text mb-3">
+                                        Welcome, please login to your account.
+                                    </p>
+
+                                    <form [formGroup]="myLogin" (ngSubmit)="onSubmit()">
+                                        <div class="form-group">
+                                            <label for="username"></label>
+                                            <div class="position-relative has-icon-left">
+                                                <input type="text" class="form-control mb-3" formControlName="username"
+                                                    placeholder="Username" autocomplete="off" maxlength="20"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.username.errors.required">Username is required</div>
+                                                </div>
+
+                                                <div class="form-control-position">
+                                                    <i class="ft-user"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password"></label>
+                                            <div class="position-relative has-icon-left">
+                                                <input type="password" class="form-control mb-1"
+                                                    formControlName="password" placeholder="Password"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+                                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                                </div>
+                                                <div class="form-control-position">
+                                                    <i class=" ft-lock"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <div class="change-password-option mb-3">
+                                                <a [routerLink]="['/changepassword']"
+                                                    class="text-decoration-none text-primary">Change
+                                                    Password ?
+                                                </a>
+                                            </div>
+                                            <div class="forgot-password-option">
+                                                <a [routerLink]="['/forgotpassword']"
+                                                    class="text-decoration-none text-primary">Forgot Password ?</a>
+                                            </div>
+                                        </div>
+                                        <div class="fg-actions d-flex justify-content-between">
+                                            <div class="recover-pass">
+                                                <button [disabled]="loading" type="submit" class="btn btn-primary">
+                                                    <a class="text-decoration-none text-white">Login</a>
+                                                </button>
+                                                <div *ngIf="invalidLogin" class="error">
+                                                    <div>Invalid Credentials</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->
