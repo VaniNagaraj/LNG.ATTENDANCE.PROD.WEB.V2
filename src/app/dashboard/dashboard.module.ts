@@ -1,3 +1,4 @@
+import { SearchPipe } from './../shared/pipes/search.pipe';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgModule } from '@angular/core';
 
@@ -23,7 +24,6 @@ import { AuthService } from 'app/shared/auth/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { FullLayoutComponent } from 'app/layouts/full/full-layout.component';
 import { ContentLayoutComponent } from 'app/layouts/content/content-layout.component';
-import { SAdminComponent } from './superadmin/sadmin.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -39,7 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
     DashboardComponent,
     FullLayoutComponent,
     ContentLayoutComponent,
-    SAdminComponent
+    SearchPipe
   ],
   imports: [
     StoreModule.forRoot({}),

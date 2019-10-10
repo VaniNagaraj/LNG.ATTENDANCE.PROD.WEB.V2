@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { LayoutService } from './shared/services/layout.service';
 import { ConfigService } from './shared/services/config.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     public config: any = {};
 
     // tslint:disable-next-line: max-line-length
-    constructor(public translate: TranslateService, private layoutService: LayoutService, private configService: ConfigService) {
+    constructor(public translate: TranslateService, private layoutService: LayoutService, private configService: ConfigService, private router: Router) {
       const browserLang: string = translate.getBrowserLang();
       translate.use(browserLang.match(/en|es|pt|de/) ? browserLang : 'en');
 
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit() {
       this.config = this.configService.templateConf;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
 
     ngAfterViewInit() {

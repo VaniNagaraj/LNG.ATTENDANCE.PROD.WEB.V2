@@ -60,8 +60,8 @@ export class LoginComponent implements OnInit {
                         });
                     }
                     console.log('navigating to dashbaord...');
-                    // this.router.navigate(['/dashboard']);
-                    window.location.href = '/dashboard';
+                     this.router.navigate(['/dashboard']);
+                    // window.location.href = '/dashboard';
                 },
                 error => {
                     this.loading = true;

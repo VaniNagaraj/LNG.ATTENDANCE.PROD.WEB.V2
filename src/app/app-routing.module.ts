@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './login/changepassword/changepassword.component';
 import { ForgotPasswordComponent } from './login/forgotpassword/forgotpassword.component';
+
+const config: ExtraOptions = {
+  onSameUrlNavigation: 'reload'
+};
 
 const appRoutes: Routes = [
   {
@@ -17,7 +21,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, config)],
   exports: [RouterModule]
 })
 
