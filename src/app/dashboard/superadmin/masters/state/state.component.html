@@ -1,0 +1,133 @@
+<!--Confirm Action Starts-->
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            State Master
+            <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
+              <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()">
+                <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New 
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Country</th>
+                  <th>State</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="showNew" [formGroup]="newState">
+                  <td>
+                    <input type="text" id="projectinput1" class="form-control" formControlName="stateId" placeholder="Serial Number" name="slno" autocomplete="off" maxlength="50"
+                      [ngClass]="{ 'is-invalid': submitted && f.slno.stateId }" readonly>
+                    <div *ngIf="submitted && f.stateId.errors" class="invalid-feedback">
+                      <div *ngIf="f.stateId.errors.required">Please Enter Serial number</div>
+                    </div>
+                  </td>
+                  <td>
+                    <select id="projectinput6" formControlName="refCountryId" name="country" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refCountryId.errors }">
+                      <option value="none" selected disabled value="null">Select Country</option>
+                      <option *ngFor="let ct of globalCountry" [value]="ct.counytryId">{{ct.counytryName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refCountryId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refCountryId.errors.required">Please Select Country</div>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="text" id="projectinput1" class="form-control" formControlName="stateName"
+                      placeholder="State" name="state" required autocomplete="off" maxlength="25"
+                      [ngClass]="{ 'is-invalid': submitted && f.stateName.errors }">
+                    <div *ngIf="submitted && f.stateName.errors" class="invalid-feedback">
+                      <div *ngIf="f.stateName.errors.required">Please Enter State</div>
+                    </div>
+                  </td>
+                  <td>
+                    <a class="success p-0" data-original-title="" (click)="save()" title="">
+                      <i class="ft-check font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="cancel()" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngFor="let data of states ; let i = index;" [formGroup]="updateState">
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{i+1}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="projectinput1" class="form-control" [(ngModel)]="states.stateId" formControlName="stateId"
+                        placeholder="Serial Number" name="slno" required autocomplete="off" maxlength="50"
+                        [ngClass]="{ 'is-invalid': submitted1 && f1.stateId.errors }" readonly>
+                      <div *ngIf="submitted1 && f1.stateId.errors" class="invalid-feedback">
+                        <div *ngIf="f1.stateId.errors.required">Please Enter Serial number</div>
+                      </div>
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.countryName}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <select id="projectinput6" formControlName="refCountryId" [(ngModel)]="states.refCountryId" name="country" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted1 && f1.refCountryId.errors }" >
+                        <option value="none" selected disabled value="null">Select Country</option>
+                        <option *ngFor="let ct of globalCountry" [value]="ct.counytryId">{{ct.counytryName}}</option>
+                      </select>
+                      <div *ngIf="submitted1 && f1.refCountryId.errors" class="invalid-feedback">
+                        <div *ngIf="f1.refCountryId.errors.required">Please Select Country</div>
+                      </div>
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.stateName}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="projectinput1" class="form-control" [(ngModel)]="states.stateName" formControlName="stateName"
+                        placeholder="State" name="state" required autocomplete="off" maxlength="50"
+                        [ngClass]="{ 'is-invalid': submitted1 && f1.stateName.errors }">
+                      <div *ngIf="submitted1 && f1.stateName.errors" class="invalid-feedback">
+                        <div *ngIf="f1.stateName.errors.required">Please Enter State</div>
+                      </div>
+                    </span>
+                  </td>
+                  <td width="160">
+                    <span [hidden]="data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="editCustomer(data)" title="">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" data-original-title="" (click)="deleteCustomer(data)" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="saveUpdate(data)" title="">
+                        <i class="ft-check font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" data-original-title="" (click)="cancelUpdate(data)" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

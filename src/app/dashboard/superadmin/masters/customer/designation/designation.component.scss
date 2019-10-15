@@ -1,0 +1,13 @@
+input {
+    width: 300px;
+}
+select {
+    width: 300px;
+}
+.ng2-smart-pagination{
+    &.pagination{
+        .page-link{
+            line-height: 1rem;
+        }
+    }
+}

@@ -1,9 +1,16 @@
+<ng4-loading-spinner [threshold]="1000" [template]="template" [loadingText]="'Please wait...'" [zIndex]="999" ></ng4-loading-spinner>
+
 <!--Login Page Starts-->
 <section id="login">
     <div class="container-fluid">
         <div class="row full-height-vh m-0">
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="card">
+                    <div class="card-header">
+                        <div class="card-title text-center">
+                            <h4 class="card-title mb-2 text-primary">Welcome to Attendance System</h4>
+                        </div>
+                    </div>
                     <div class="card-content">
                         <div class="card-body login-img">
                             <div class="row m-0">
@@ -49,28 +56,35 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-between mt-2">
-                                            <div class="change-password-option mb-3">
-                                                <a [routerLink]="['/changepassword']"
-                                                    class="text-decoration-none text-primary">Change
-                                                    Password ?
-                                                </a>
-                                            </div>
-                                            <div class="forgot-password-option">
-                                                <a [routerLink]="['/forgotpassword']"
-                                                    class="text-decoration-none text-primary">Forgot Password ?</a>
-                                            </div>
-                                        </div>
-                                        <div class="fg-actions d-flex justify-content-between">
-                                            <div class="recover-pass">
-                                                <button [disabled]="loading" type="submit" class="btn btn-primary">
-                                                    <a class="text-decoration-none text-white">Login</a>
-                                                </button>
-                                                <div *ngIf="invalidLogin" class="error">
-                                                    <div>Invalid Credentials</div>
+                                        <div class="form-group">
+                                                <div class="recover-pass mt-6 text-right">
+                                                    <button [disabled]="loading" type="submit" class="btn btn-primary">
+                                                        <a class="text-decoration-none text-white">Login</a>
+                                                    </button>
+                                                    <!-- <div>
+                                                        <h2>Hello {{name}}</h2>
+                                                        <button type="button" (click)="startLoadingSpinner()">Start Loading</button>
+                                                    </div> -->
+                                                    <div *ngIf="invalidLogin" class="error">
+                                                        <div>Invalid Credentials</div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="fg-actions d-flex justify-content-between mt-6" style="margin-top:-8% !important;">
+                                                <div class="d-flex justify-content-between mt-6">
+                                                    <div class="change-password-option mb-3">
+                                                        <a [routerLink]="['/changepassword']"
+                                                            class="text-decoration-none text-primary">Change
+                                                            Password?
+                                                        </a>
+                                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <div class="forgot-password-option mb-3">
+                                                        <a [routerLink]="['/forgotpassword']"
+                                                            class="text-decoration-none text-primary">Forgot Password?</a>
+                                                    </div>
+                                                </div>
                                         </div>
+                                        
                                     </form>
                                 </div>
                             </div>

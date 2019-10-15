@@ -20,6 +20,8 @@
     ]
   },
   "angularCompilerOptions": {
+    "experimentalDecorators": true,
+    "allowJs": true,
     "preserveWhitespaces": false
   }
 }

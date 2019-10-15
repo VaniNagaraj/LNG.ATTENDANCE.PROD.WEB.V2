@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   layoutSub: Subscription;
   @Output()
   toggleHideSidebar = new EventEmitter<Object>();
+  loginName:String;
 
   public config: any = {};
 
@@ -38,6 +39,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    const currUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loginName = currUser.loginName;
     this.config = this.configService.templateConf;
   }
 

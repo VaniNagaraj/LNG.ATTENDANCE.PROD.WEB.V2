@@ -539,7 +539,7 @@
 // Spinner classes
 .spinner {
     display: inline-block;
-    animation: spin 1s linear infinite;
+    animation: none 1s linear infinite;
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }

@@ -1,0 +1,106 @@
+<!--Confirm Action Starts-->
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Department Master
+            <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
+              <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()">
+                <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New 
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Department Name</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="showNew" [formGroup]="newDepartment">
+                  <td>
+                    <input type="text" id="projectinput1" class="form-control" formControlName="deptId" placeholder="" name="deptId" autocomplete="off" maxlength="50"
+                      readonly>
+                    <div *ngIf="submitted && f.deptId.errors" class="invalid-feedback">
+                      <div *ngIf="f.deptId.errors.required">Please Enter Id</div>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="text" id="projectinput1" class="form-control" formControlName="deptName"
+                      placeholder="Department name" name="deptName" required autocomplete="off" maxlength="20"
+                      [ngClass]="{ 'is-invalid': submitted && f.deptName.errors }">
+                    <div *ngIf="submitted && f.deptName.errors" class="invalid-feedback">
+                      <div *ngIf="f.deptName.errors.required">Please enter department name</div>
+                    </div>
+                  </td>
+                  <td>
+                    <a class="success p-0" data-original-title="" (click)="save()" title="">
+                      <i class="ft-check font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="cancel()" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngFor="let data of departments; let i = index;" [formGroup]="updateDepartment">
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{i+1}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="projectinput1" class="form-control" [(ngModel)]="departments.deptId" formControlName="deptId"
+                         name="deptId" autocomplete="off" readonly>
+                      <div *ngIf="submitted1 && f1.deptId.errors" class="invalid-feedback">
+                        <div *ngIf="f1.deptId.errors.required">Please Enter Serial number</div>
+                      </div>
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.deptName}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="projectinput1" class="form-control" [(ngModel)]="departments.deptName" formControlName="deptName"
+                         name="deptName" required autocomplete="off" maxlength="20"
+                        [ngClass]="{ 'is-invalid': submitted1 && f1.deptName.errors }">
+                      <div *ngIf="submitted1 && f1.deptName.errors" class="invalid-feedback">
+                        <div *ngIf="f1.deptName.errors.required">Please Enter Department</div>
+                      </div>
+                    </span>
+                  </td>
+                  <td width="160">
+                    <span [hidden]="data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="editCustomer(data)" title="">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" data-original-title="" (click)="deleteCustomer(data)" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="saveUpdate(data)" title="">
+                        <i class="ft-check font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" data-original-title="" (click)="cancelUpdate(data)" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

@@ -1,0 +1,167 @@
+<!--Confirm Action Starts-->
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Shift Master
+            <!-- <input type="button" (click)="openForm()"  class="text-decoration-none"> -->
+            <button type="button" (click)="openForm()" style='width: 6%;padding: 8px;float: right;'
+             class="btn btn-raised btn-info mr-1">Add<i class="ft-plus"></i></button>
+          </div>
+
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md">
+              <thead>
+                <tr>
+                  <!-- <th>Sl No</th> -->
+                  <th>Branch Name</th>
+                  <th>Shift Name</th>
+                  <th>Shift Start</th>
+                  <th>Shift End</th>
+                  <th style='padding: 8px;' colspan="6" >Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngIf="showNew"  [formGroup]="newShift" >
+                  <td>
+                    <select id="projectinput1" formControlName="refBrId" name="refBrId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refBrId.errors }"
+                      (change)="selectchange($event)" [value]='0'>
+                      <option [value]="0" selected="selected">Select Branch</option>
+                      <option *ngFor="let br of branches" [value]="br.brId">{{br.brName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refBrId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refBrId.errors.required">Please Select Branch</div>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="text" id="projectinput2" class="form-control" formControlName="shiftName"
+                      placeholder="Shift Name" name="shiftName" required autocomplete="off" minlength="2" maxlength="20" required
+                      [ngClass]="{ 'is-invalid': submitted && f.shiftName.errors }">
+                    <div *ngIf="submitted && f.shiftName.errors" class="invalid-feedback">
+                      <div *ngIf="f.shiftName.errors.required">Please Enter Shift Name</div>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="time" id="projectinput3" data-format="HH:mm"  class="form-control" formControlName="shiftStart"
+                      placeholder="Shift Start" name="shiftStart" required autocomplete="off" maxlength="50"
+                      [ngClass]="{ 'is-invalid': submitted && f.shiftStart.errors }">
+                      
+                    <div *ngIf="submitted && f.shiftStart.errors" class="invalid-feedback">
+                      <div *ngIf="f.shiftStart.errors.required">Please Enter Shift Start</div>
+                      <!-- <div *ngIf="f.shiftStart.errors.pattern">Pattern Shift Start</div> -->
+                    </div>
+                  </td>
+                  <td>
+                      <input type="time" id="projectinput4" class="form-control" formControlName="shiftEnd"
+                        placeholder="Shift End" name="shiftEnd" required autocomplete="off" maxlength="50"
+                        [ngClass]="{ 'is-invalid': submitted && f.shiftEnd.errors }">
+                      <div *ngIf="submitted && f.shiftEnd.errors" class="invalid-feedback">
+                        <div *ngIf="f.shiftEnd.errors.required">Please Enter Shift End</div>
+                        <!-- <div *ngIf="f.shiftEnd.errors.pattern">Pattern Shift Start</div> -->
+                      </div>
+                    </td>
+                  <td>
+                    <a class="success p-0" data-original-title="" (click)="save()" title="">
+                      <i class="ft-check font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="cancel()" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+
+
+              <!--- Update Shift -->
+               
+              <tr *ngFor="let data of shifts"  [formGroup]="updateShift" >
+                <!-- <td></td> -->
+                <td>
+                  <span [hidden]="data.showUpdate">
+                    {{data.brName}}
+                  </span>
+                  <span [hidden]="!data.showUpdate">
+                      <select id="projectinput6" formControlName="refBrId" name="refBrId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f1.refBrId.errors }" [value]='0'>
+                      <option selected disabled [value]="0" >Select Branch Name</option>
+                      <option *ngFor="let branches of branches" [value]="branches.brId">{{branches.brName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f1.refBrId.errors" class="invalid-feedback">
+                        <div *ngIf="f1.refBrId.errors.required">Please Select Branch Name</div>
+                      </div>
+                  </span>
+                </td>
+                <td>
+                    <span [hidden]="data.showUpdate">
+                        {{data.shiftName}}
+                      </span>
+                      <span [hidden]="!data.showUpdate">
+                  <input type="text" id="projectinput11" class="form-control" formControlName="shiftName"
+                    placeholder="Shift Name" name="shiftName" required autocomplete="off" minlength="2" maxlength="20" required
+                    [ngClass]="{ 'is-invalid': submitted && f1.shiftName.errors }">
+                  <div *ngIf="submitted && f1.shiftName.errors" class="invalid-feedback">
+                    <div *ngIf="f1.shiftName.errors.required">Please Enter Shift Name</div>
+                  </div>
+                      </span>
+                </td>
+                <td>
+                    <span [hidden]="data.showUpdate">
+                        {{data.shiftStart}}
+                      </span>
+                      <span [hidden]="!data.showUpdate">
+                  <input type="time" id="projectinput11" class="form-control" formControlName="shiftStart"
+                    placeholder="Shift Start" name="shiftStart" required autocomplete="off" maxlength="50"
+                    min="09:00" max="18:00" required
+                    [ngClass]="{ 'is-invalid': submitted && f1.shiftStart.errors }">
+                  <div *ngIf="submitted && f1.shiftStart.errors" class="invalid-feedback">
+                    <div *ngIf="f1.shiftStart.errors.required">Please Enter Shift Start</div>
+                  </div>
+                      </span>
+                </td>
+                <td>
+                    <span [hidden]="data.showUpdate">
+                        {{data.shiftEnd}}
+                      </span>
+                      <span [hidden]="!data.showUpdate">
+                  <input type="time" id="projectinput11" class="form-control" formControlName="shiftEnd"
+                    placeholder="Shift End" name="shiftEnd" required autocomplete="off" maxlength="50"
+                    min="09:00" max="18:00" required
+                    [ngClass]="{ 'is-invalid': submitted && f1.shiftEnd.errors }">
+                  <div *ngIf="submitted && f1.shiftEnd.errors" class="invalid-feedback">
+                    <div *ngIf="f1.shiftEnd.errors.required">Please Enter Shift End</div>
+                  </div>
+                      </span>
+                </td>
+                <td width="160">
+                    <span [hidden]="data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="editShift(data)" title="">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" data-original-title=""(click)="deleteShift(data)" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                        <a class="success p-0" data-original-title="" (click)="saveUpdate(data)" title="">
+                          <i class="ft-check font-medium-3 mr-2"></i>
+                        </a>
+                        <a class="danger p-0" data-original-title="" (click)="cancelUpdate(data)" title="">
+                          <i class="ft-x font-medium-3 mr-2"></i>
+                        </a>
+                      </span>
+                    </td>
+                
+              </tr> 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

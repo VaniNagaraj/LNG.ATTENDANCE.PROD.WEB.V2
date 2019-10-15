@@ -1,0 +1,459 @@
+<!--Advanced filter Starts-->
+<section id="advanced" *ngIf="showList">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Customer List</h4>
+          <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;margin-top: -30px;">
+            <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()">
+              <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+            </button>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <div class="table-responsive">
+              <input #search class="search mb-2" type="text" placeholder="Search..." (keyup)="onSearch(search.value)">
+              <ng2-smart-table [settings]="settings" [source]="source" (edit)="editCustomer($event)" (delete)="openConfirmationDialog($event)" (custom)="viewCustomer($event, content)"></ng2-smart-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Advanced filter Ends-->
+
+<!-- List Section starts-->
+<!-- <section id="extended" *ngIf="showList">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+              <div class="col-sm-6">
+                  <h4 style="width: 41%;float: left;margin-top: 10px;" class="card-title"> Customer List </h4>
+                </div>
+          </div>
+          
+          <!-- Filter Datatable Options Starts -->
+          <!-- <div class="col-sm-9" style="float: left; margin-left: -15px;">
+            <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' [(ngModel)]="searchText" />
+          </div> -->
+        <!-- Filter Datatable Options Ends -->
+          <!-- <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
+            <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()">
+              <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+            </button>
+          </div>
+        </div> -->
+        <!-- <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md text-center data-table">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Customer</th>
+                  <th>Code</th>
+                  <th>City</th>
+                  <th>Country</th>
+                  <th>Email</th>
+                  <th>Industry</th>
+                  <th>Branches(#)</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let customer of pageOfItems | filter: searchText; let i = index;">
+                  <td align="left">{{i + 1}}</td>
+                  <td align="left">{{customer.custName}}</td>
+                  <td align="left">{{customer.custCode}}</td>
+                  <td align="left">{{customer.custCity}}</td>
+                  <td align="left">{{customer.countryName}}</td>
+                  <td align="left">{{customer.custEmail}}</td>
+                  <td align="left">{{customer.industryName}}</td>
+                  <td align="left">{{customer.custNoOfBranch}}</td>
+                  <td width="160" align="left">
+                      <a class="success p-0" data-original-title="" (click)="viewCustomer(customer.custId, content)" title="">
+                          <i class="ft-eye font-medium-3 mr-2"></i>
+                        </a>
+                    <a class="warning p-0" data-original-title="" (click)="editCustomer(customer.custId)" title="">
+                      <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="openConfirmationDialog(customer.custId)" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-footer pb-0 pt-3">
+              <jw-pagination [items]='customers' (changePage)="onChangePage($event)"></jw-pagination>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- </section> -->
+<!-- List section Ends -->
+
+<!-- Basic form layout section start -->
+<section id="basic-form-layouts" *ngIf="showForm">
+  <div class="row text-left">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+              <div class="form-body">
+                <h4 class="form-section"><i class="ft-user"></i>{{formInfo}} Customer Information</h4>
+                <input type="hidden" name="custId" formControlName="custId" [(ngModel)]="customers.custId">
+                <div class="form-group row ">
+
+                  <label class="col-md-2 label-control required" for="projectinput1">Name</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput1" class="form-control" [(ngModel)]="customers.custName" formControlName="custName"
+                      placeholder="Name" name="name" required autocomplete="off" maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.custName.errors }">
+                    <div *ngIf="submitted && f.custName.errors" class="invalid-feedback">
+                      <div *ngIf="f.custName.errors.required">Please provide Customer Name</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="projectinput2">Customer Code</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput200" formControlName="custCode" [(ngModel)]="customers.custCode" class="form-control"
+                      placeholder="Customer Code" [readOnly]="custCodeDisabled" name="custCode" maxlength="6" required autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.custCode.errors }">
+                    <div *ngIf="submitted && f.custCode.errors" class="invalid-feedback">
+                      <div *ngIf="f.custCode.errors.required">Please provide Customer Code</div>
+                      <div *ngIf="f.custCode.errors.pattern">Customer Code should in AAA123 Format
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="projectinput3">Address</label>
+                  <div class="col-md-3">
+                    <textarea type="text" rows="1" id="projectinput3" required [(ngModel)]="customers.custAddress" formControlName="custAddress" class="form-control"
+                      placeholder="Address" name="custAddress" autocomplete="off" minlength="1" maxlength="100" [ngClass]="{ 'is-invalid': submitted && f.custAddress.errors }">
+                    </textarea>
+                    <div *ngIf="submitted && f.custAddress.errors" class="invalid-feedback">
+                        <div *ngIf="f.custAddress.errors.required">Please provide customer address</div>
+                        <div *ngIf="f.custAddress.errors.pattern">Address length should not greater then 100 characters</div>
+                      </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="projectinput4">City</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput4" formControlName="custCity" [(ngModel)]="customers.custCity" class="form-control"
+                      placeholder="Customer City" name="custCity"  required autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.custCity.errors }">
+                    <div *ngIf="submitted && f.custCity.errors" class="invalid-feedback">
+                      <div *ngIf="f.custCity.errors.required">Please provide City</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="projectinput7">Country</label>
+                  <div class="col-md-3">
+                    <select id="refCountryId" name="refCountryId" [(ngModel)]="customers.refCountryId" (change)="showState($event)" formControlName="refCountryId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refCountryId.errors }" [value]='0'>
+                      <option selected disabled [value]="0">Select Country</option>
+                      <option *ngFor="let ct of countries" [value]="ct.countryId">{{ct.countryName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refCountryId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refCountryId.errors.required">Please Select Country</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="projectinput6">State</label>
+                  <div class="col-md-3">
+                    <select id="projectinput6" formControlName="refStateId" [(ngModel)]="customers.refStateId" name="refStateId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refStateId.errors }" [value]='0'>
+                      <option selected disabled [value]="0">Select State</option>
+                      <!-- <option value="1">Karanataka</option> -->
+                      <option *ngFor="let st of states" [value]="st.stateId">{{st.stateName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refStateId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refStateId.errors.required">Please Select State</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="projectinput8">Pincode</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput18" maxlength="6" [(ngModel)]="customers.custPincode" formControlName="custPincode"
+                      class="form-control" placeholder="Pincode" name="custPincode" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.custPincode.errors }"
+                      onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false">
+                    <div *ngIf="submitted && f.custPincode.errors" class="invalid-feedback">
+                      <div *ngIf="f.custPincode.errors.required">Please Provide Pincode</div>
+                      <div *ngIf="f.custPincode.errors.pattern">Pincode Maximum 6 Characters</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="projectinput9">GSTIN</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput9" maxlength="20" [(ngModel)]="customers.custGSTIN" formControlName="custGSTIN" class="form-control"
+                      placeholder="GSTIN" name="custGSTIN" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.custGSTIN.errors }" required>
+                    <div *ngIf="submitted && f.custGSTIN.errors" class="invalid-feedback">
+                      <div *ngIf="f.custGSTIN.errors.required">Please provide GSTIN</div>
+                      <div *ngIf="f.custGSTIN.errors.pattern">GSTIN should contain 20 characters</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="projectinput10">Mobile</label>
+                  <div class="col-md-3">
+                    <input type="tel" formControlName="custMobile" [(ngModel)]="customers.custMobile" maxlength="10" id="projectinput10"
+                      class="form-control" placeholder="Mobile Number" name="number" autocomplete="off"
+                      onkeydown="javascript:return(event.keyCode>=8 && event.keyCode<=57) || (event.keyCode>=96 && event.keyCode<=105)"
+                      [ngClass]="{ 'is-invalid': submitted && f.custMobile.errors }">
+                    <div *ngIf="submitted && f.custMobile.errors" class="invalid-feedback">
+                      <div *ngIf="f.custMobile.errors.required">Please provide Mobile Number</div>
+                      <div *ngIf="f.custMobile.errors.pattern">Mobile Number should be 10 numbres</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control" for="projectinput11">Landline</label>
+                  <div class="col-md-3">
+                    <input type="text" maxlength="10" id="projectinput11" [(ngModel)]="customers.custLandline" formControlName="custLandline"
+                      class="form-control" placeholder="Landline Number" name="custLandline" autocomplete="off"
+                      onkeydown="javascript:return(event.keyCode>=8 && event.keyCode<=57) || (event.keyCode>=96 && event.keyCode<=105)"
+                      [ngClass]="{ 'is-invalid': submitted && f.custLandline.errors }">
+                    <div *ngIf="submitted && f.custLandline.errors" class="invalid-feedback">
+                      <div *ngIf="f.custLandline.errors.required">Please provide Landline Number</div>
+                      <div *ngIf="f.custLandline.errors.pattern">Landline Number should be 10 numbers</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="projectinput12">Email</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput12" class="form-control" [(ngModel)]="customers.custEmail" formControlName="custEmail"
+                      placeholder="Email" name="email" maxlength="50" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.custEmail.errors }">
+                    <div *ngIf="submitted && f.custEmail.errors" class="invalid-feedback">
+                      <div *ngIf="f.custEmail.errors.required">Please provide Email</div>
+                      <div *ngIf="f.custEmail.errors.email">Email should be valid</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="projectinput13">Industry Type</label>
+                  <div class="col-md-3">
+                    <select id="projectinput13" formControlName="refIndustryTypeId" [(ngModel)]="customers.refIndustryTypeId" name="refIndustryTypeId"
+                      class="form-control" [ngClass]="{ 'is-invalid': submitted && f.refIndustryTypeId.errors }" [value]='0'>
+                      <option value="0" selected disabled>Select Industry Type</option>
+                      <!-- <option value="1">IT-Service</option> -->
+                      <option *ngFor="let it of industries" [value]="it.industryId">{{it.industryName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refIndustryTypeId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refIndustryTypeId.errors.required">Please Select Industry Type</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="projectinput14">Validity Start</label>
+                  <div class="col-md-3">
+                    <input type="date" id="projectinput14" class="form-control" [(ngModel)]="customers.custValidityStart" name="dateopened"
+                      formControlName="custValidityStart" data-toggle="tooltip" data-trigger="hover"
+                      data-placement="top" data-title="Date Opened"
+                      [ngClass]="{ 'is-invalid': submitted && f.custValidityStart.errors }">
+                    <div *ngIf="submitted && f.custValidityStart.errors" class="invalid-feedback">
+                      <div *ngIf="f.custValidityStart.errors.required">Select Validity Start</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="projectinput15">Validity End</label>
+                  <div class="col-md-3">
+                    <input type="date" id="projectinput15" class="form-control" [(ngModel)]="customers.custValidityEnd" name="dateopened"
+                      formControlName="custValidityEnd" data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                      data-title="Date Fixed" [ngClass]="{ 'is-invalid': submitted && f.custValidityEnd.errors && f.custValidityEnd.incorrect }">
+                      <span style="color: red; font-size: 12px;">Note: Validity End should be greater then validity start date.</span>
+                    <div *ngIf="submitted && f.custValidityEnd.errors" class="invalid-feedback">
+                      <div *ngIf="f.custValidityEnd.errors.required">Select Validity End</div>
+                      <div *ngIf="f.custValidityEnd.errors.incorrect">Validity End should be greater then validity start date</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="projectinput16">No of Branches</label>
+                  <div class="col-md-3">
+                    <input type="text" id="projectinput16" class="form-control" formControlName="custNoOfBranch"
+                      placeholder="Number of Branches" name="custNoOfBranch" [(ngModel)]="customers.custNoOfBranch" maxlength="2" autocomplete="off"
+                      onkeydown="javascript:return(event.keyCode>=8 && event.keyCode<=57) || (event.keyCode>=96 && event.keyCode<=105)"
+                      [ngClass]="{ 'is-invalid': submitted && f.custNoOfBranch.errors }">
+                    <div *ngIf="submitted && f.custNoOfBranch.errors" class="invalid-feedback">
+                      <div *ngIf="f.custNoOfBranch.errors.required">Please provide No of Branches</div>
+                      <div *ngIf="f.custNoOfBranch.errors.pattern">Please provide Branches in XX format</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control">Customer Logo</label>
+                  <div class="col-md-3">
+                    <label id="projectinput8" class="file mx-auto">
+                      <input type="file" id="file" accept="image/x-png,image/jpeg" formControlName="custLogoFile" name="logo" (change)="onSelectFile($event)" />
+                      
+                      <span class="file-custom"></span>
+                    </label>
+                    <span style="color: red; font-size: 12px;">Note: Image Should be in PNG & JPEG format only.</span>
+                    <div *ngIf="customers.custLogoFile" >
+                        <label>uploaded Logo </label>&nbsp;
+                        <img [src]="'data:image/jpg;base64,' + customers.custLogoFile" style = "height: 30px;width: 30px;"/>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="reset" (click)="reset()" class="btn btn-raised btn-warning mr-1"><i class="ft-x"></i>
+                  &nbsp;Close</button>
+                <button type="submit" class="btn btn-raised btn-info mr-1" *ngIf="submitBtn" (click)="submitType = 'save'"><i class="ft-check"></i>&nbsp;Save</button>
+                <button type="submit" class="btn btn-raised btn-info mr-1" *ngIf="!submitBtn" (click)="submitType = 'update'"><i class="ft-check"></i>&nbsp;Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Basic form layout section end -->
+
+
+<section id="modals">
+    <div class="row text-left" matchHeight="card">
+        <!--Modal with Default options starts-->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-content">
+                        <ng-template #content let-c="close" let-d="dismiss">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Customer Details</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <ul class="no-list-style">
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="icon-user font-small-3"></i> Name:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custName}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-smartphone font-small-3"></i> Phone Number:</a></span>
+                                                <span class="d-block overflow-hidden">+91 {{custView.custMobile}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i> Address:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custAddress}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <ul class="no-list-style">
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="fa fa-qrcode font-small-3"></i> Code:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custCode}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="icon-call-end font-small-3"></i> Landline Number:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custLandline}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i> City:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custCity}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <ul class="no-list-style">
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-mail font-small-3"></i> Email:</a></span>
+                                                <a class="d-block overflow-hidden">{{custView.custEmail}}</a>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-user font-small-3"></i> No of Branches:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custNoOfBranch}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-map-pin font-small-3"></i> Pincode:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custPincode}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <ul class="no-list-style">
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i> State:</a></span>
+                                                <a class="d-block overflow-hidden">{{custView.stateName}}</a>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-briefcase font-small-3"></i> Validity Start:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custValidityStart.slice(0, 10)}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-book font-small-3"></i> LOGO:</a></span>
+                                                <span class="d-block overflow-hidden"><img src="data:image/jpg;base64,{{custView.custLogoFile}}" style = "height: 30px;width: 30px;"/></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <ul class="no-list-style">
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-map-pin font-small-3"></i> Country:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.countryName}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-user font-small-3"></i> Validity End:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custValidityEnd.slice(0, 10)}}</span>
+                                            </li>
+                                            <!-- <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-map-pin font-small-3"></i> Pincode:</a></span>
+                                                <span class="d-block overflow-hidden">560001</span>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <ul class="no-list-style">
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-map-pin font-small-3"></i> GSTIN:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custGSTIN}}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-user font-small-3"></i> Created Date:</a></span>
+                                                <span class="d-block overflow-hidden">{{custView.custCreatedDate.slice(0, 10)}}</span>
+                                            </li>
+                                            <!-- <li class="mb-2">
+                                                <span class="text-bold-500 primary"><a><i class="ft-map-pin font-small-3"></i> Pincode:</a></span>
+                                                <span class="d-block overflow-hidden">560001</span>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>  
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')">Close</button>
+                            </div>
+                        </ng-template>
+                </div>
+            </div>
+        </div>
+        <!--Modal with Default options ends-->
+    </div>
+</section>

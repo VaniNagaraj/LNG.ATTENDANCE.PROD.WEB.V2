@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://40.112.180.100:8080/attnd-api-gateway-service'
+  baseUrl: 'http://52.183.143.13:8080/attnd-api-gateway-service'
 };

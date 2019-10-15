@@ -18,6 +18,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './customizer.component.html',
   styleUrls: ['./customizer.component.scss']
 })
+
 export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('customizer', {static: false}) customizer: ElementRef;
 
@@ -59,11 +60,12 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+  // tslint:disable-next-line: member-ordering
   @Output() directionEvent = new EventEmitter<Object>();
 
   ngOnInit() {
     this.config = this.configService.templateConf;
-    this.isOpen = !this.config.layout.customizer.hidden;
+    this.isOpen = this.config.layout.customizer.hidden;
 
     if (this.config.layout.sidebar.size) {
       this.options.sidebarSize = this.config.layout.sidebar.size;
@@ -149,6 +151,7 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }, 0);
   }
+
   ngOnDestroy() {
     if (this.layoutSub) {
       this.layoutSub.unsubscribe();
@@ -197,7 +200,7 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
       this.options.bgImageDisplay = true;
     }
 
-    //emit event to FUll Layout
+    // emit event to FUll Layout
     this.layoutService.emitCustomizerChange(this.options);
   }
 
@@ -208,7 +211,7 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.isBgImageDisplay) {
       this.options.bgImageDisplay = true;
     }
-    //emit event to FUll Layout
+    // emit event to FUll Layout
     this.layoutService.emitCustomizerChange(this.options);
   }
 

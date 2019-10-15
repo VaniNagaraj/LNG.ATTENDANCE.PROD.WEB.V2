@@ -32,67 +32,67 @@ export var settings = {
 export var data = [
   {
     id: 1,
-    name: 'Leanne Graham',
+    custName: 'Leanne Graham',
     username: 'Bret',
     email: 'Sincere@april.biz',
   },
   {
     id: 2,
-    name: 'Ervin Howell',
+    custName: 'Ervin Howell',
     username: 'Antonette',
     email: 'Shanna@melissa.tv',
   },
   {
     id: 3,
-    name: 'Clementine Bauch',
+    custName: 'Clementine Bauch',
     username: 'Samantha',
     email: 'Nathan@yesenia.net',
   },
   {
     id: 4,
-    name: 'Patricia Lebsack',
+    custName: 'Patricia Lebsack',
     username: 'Karianne',
     email: 'Julianne.OConner@kory.org',
   },
   {
     id: 5,
-    name: 'Chelsey Dietrich',
+    custName: 'Chelsey Dietrich',
     username: 'Kamren',
     email: 'Lucio_Hettinger@annie.ca',
   },
   {
     id: 6,
-    name: 'Mrs. Dennis Schulist',
+    custName: 'Mrs. Dennis Schulist',
     username: 'Leopoldo_Corkery',
     email: 'Karley_Dach@jasper.info',
   },
   {
     id: 7,
-    name: 'Kurtis Weissnat',
+    custName: 'Kurtis Weissnat',
     username: 'Elwyn.Skiles',
     email: 'Telly.Hoeger@billy.biz',
   },
   {
     id: 8,
-    name: 'Nicholas Runolfsdottir V',
+    custName: 'Nicholas Runolfsdottir V',
     username: 'Maxime_Nienow',
     email: 'Sherwood@rosamond.me',
   },
   {
     id: 9,
-    name: 'Glenna Reichert',
+    custName: 'Glenna Reichert',
     username: 'Delphine',
     email: 'Chaim_McDermott@dana.io',
   },
   {
     id: 10,
-    name: 'Clementina DuBuque',
+    custName: 'Clementina DuBuque',
     username: 'Moriah.Stanton',
     email: 'Rey.Padberg@karina.biz',
   },
   {
     id: 11,
-    name: 'Nicholas DuBuque',
+    custName: 'Nicholas DuBuque',
     username: 'Nicholas.Stanton',
     email: 'Rey.Padberg@rosamond.biz',
   },
@@ -103,7 +103,7 @@ export var filtersettings = {
     id: {
       title: 'ID',
     },
-    name: {
+    custName: {
       title: 'Full Name',
       filter: {
         type: 'list',
@@ -146,7 +146,7 @@ export var filtersettings = {
 export var filerdata = [
   {
     id: 4,
-    name: 'Patricia Lebsack',
+    custName: 'Patricia Lebsack',
     email: 'Julianne.OConner@kory.org',
     passed: 'Yes',
   },
@@ -158,37 +158,37 @@ export var filerdata = [
   },
   {
     id: 6,
-    name: 'Mrs. Dennis Schulist',
+    custName: 'Mrs. Dennis Schulist',
     email: 'Karley_Dach@jasper.info',
     passed: 'Yes',
   },
   {
     id: 7,
-    name: 'Kurtis Weissnat',
+    custName: 'Kurtis Weissnat',
     email: 'Telly.Hoeger@billy.biz',
     passed: 'No',
   },
   {
     id: 8,
-    name: 'Nicholas Runolfsdottir V',
+    custName: 'Nicholas Runolfsdottir V',
     email: 'Sherwood@rosamond.me',
     passed: 'Yes',
   },
   {
     id: 9,
-    name: 'Glenna Reichert',
+    custName: 'Glenna Reichert',
     email: 'Chaim_McDermott@dana.io',
     passed: 'No',
   },
   {
     id: 10,
-    name: 'Clementina DuBuque',
+    custName: 'Clementina DuBuque',
     email: 'Rey.Padberg@karina.biz',
     passed: 'No',
   },
   {
     id: 11,
-    name: 'Nicholas DuBuque',
+    custName: 'Nicholas DuBuque',
     email: 'Rey.Padberg@rosamond.biz',
     passed: 'Yes',
   },
@@ -210,7 +210,7 @@ export var alertsettings = {
     id: {
       title: 'ID',
     },
-    name: {
+    custName: {
       title: 'Full Name',
     },
     username: {
@@ -228,7 +228,7 @@ export var alertsettings = {
 export var alertdata = [
   {
     id: 1,
-    name: 'Leanne Graham',
+    custName: 'Leanne Graham',
     username: 'Bret',
     email: 'Sincere@april.biz',
     notShownField: true,

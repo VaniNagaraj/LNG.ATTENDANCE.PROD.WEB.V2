@@ -1,0 +1,39 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.label-control.required:after {
+  color: #d00;
+  content: "*";
+  // position: absolute;
+  // margin-left: 10px;
+  // top:7px;
+}
+
+.searchCust {
+  padding: 4px;
+  width: 43%;
+  margin-right: 26%;
+  float: right;
+  border-radius: 21px;
+  border-bottom-color: gray;
+  border-right-color: gray;
+  border-width: 1px;
+}
+
+th {
+  text-align: left;
+}
+
+
+.cmodal {
+  width: 700px !important;
+  max-width: 1000px;
+}
+
+
+
+
