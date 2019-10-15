@@ -6,7 +6,6 @@ import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
 
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -24,7 +23,7 @@ export class LoginComponent implements OnInit {
     // tslint:disable-next-line: max-line-length
     constructor(private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute, private authenticationService: AuthenticationService) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
+        if (JSON.parse(localStorage.getItem('currentUser'))) {
             this.router.navigate(['/dashboard']);
         }
     }
@@ -53,15 +52,17 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     if (data.status.error) {
-                        this.loading = true;
+                        this.submitted = false;
+                        this.loading = false;
                         Swal.fire({
                             type: 'error',
                             title: data.status.message,
                         });
+                    } else {
+                        console.log('navigating to dashbaord...');
+                        this.router.navigate(['/dashboard']);
+                       // window.location.href = './dashboard';
                     }
-                    console.log('navigating to dashbaord...');
-                     this.router.navigate(['/dashboard']);
-                    // window.location.href = '/dashboard';
                 },
                 error => {
                     this.loading = true;

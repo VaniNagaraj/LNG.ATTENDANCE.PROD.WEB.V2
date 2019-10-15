@@ -1,3 +1,6 @@
+import { CommonDataService } from 'app/shared/services/common.services';
+import { AuthGuard } from 'app/shared/auth/auth-guard.service';
+import { SearchPipe } from 'app/shared/pipes/search.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './login/services/authentication.service ';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +23,7 @@ import { ChangePasswordComponent } from './login/changepassword/changepassword.c
     LoginComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
+    SearchPipe
   ],
   imports: [
     BrowserAnimationsModule,
@@ -30,7 +34,7 @@ import { ChangePasswordComponent } from './login/changepassword/changepassword.c
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, AuthGuard, CommonDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

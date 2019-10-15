@@ -7,6 +7,7 @@ import { ContentLayoutComponent } from 'app/layouts/content/content-layout.compo
 import { Full_ROUTES } from 'app/shared/routes/full-layout.routes';
 import { CONTENT_ROUTES } from 'app/shared/routes/content-layout.routes';
 import { AuthGuard } from 'app/shared/auth/auth-guard.service';
+import { SAdminComponent } from './superadmin/sadmin.component';
 
 const routes: Routes = [
   {

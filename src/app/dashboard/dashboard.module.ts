@@ -1,11 +1,12 @@
-import { SearchPipe } from './../shared/pipes/search.pipe';
+import { CommonDataService } from 'app/shared/services/common.services';
+import { AuthenticationService } from 'app/login/services/authentication.service ';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgModule } from '@angular/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
@@ -24,6 +25,8 @@ import { AuthService } from 'app/shared/auth/auth.service';
 import { SharedModule } from 'app/shared/shared.module';
 import { FullLayoutComponent } from 'app/layouts/full/full-layout.component';
 import { ContentLayoutComponent } from 'app/layouts/content/content-layout.component';
+import { SAdminComponent } from './superadmin/sadmin.component';
+import { JwtInterceptor } from 'app/shared/auth/jwt.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -39,7 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
     DashboardComponent,
     FullLayoutComponent,
     ContentLayoutComponent,
-    SearchPipe
+    SAdminComponent
   ],
   imports: [
     StoreModule.forRoot({}),
@@ -63,12 +66,15 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     AuthService,
     AuthGuard,
+    AuthenticationService,
+    CommonDataService,
     DragulaService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
-    { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }
+    { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [DashboardComponent]
 })
