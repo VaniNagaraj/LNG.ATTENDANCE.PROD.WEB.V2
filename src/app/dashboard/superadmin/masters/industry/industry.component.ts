@@ -1,16 +1,18 @@
 import { Industry } from './model/industry.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { IndustryService } from './services/industry.service';
+import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-industry',
   templateUrl: './industry.component.html',
-  styleUrls: ['./industry.component.scss']
+  styleUrls: ['./industry.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class IndustryComponent implements OnInit {
 
@@ -25,17 +27,24 @@ export class IndustryComponent implements OnInit {
   updateIndustry: FormGroup;
   updateIndustryFormData: FormGroup;
 
+  
+  @Output() changePage = new EventEmitter<any>(true);
+  @Input() initialPage = 1;
+  @Input() pageSize = 5;
+  @Input() maxPages = 10;
+  pageOfItems: Array<any>;
+  
   constructor(private fb: FormBuilder, private industryService: IndustryService) { }
 
   ngOnInit() {
     this.newIndustry = this.fb.group({
-      industryId: [''],
-      industryName: ['', [Validators.required, Validators.maxLength(20)]]
+      industryId: [],
+      industryName: ['', Validators.required]
     });
 
     this.updateIndustry = this.fb.group({
-      industryId: [''],
-      industryName: ['', [Validators.required, Validators.maxLength(20)]]
+      industryId: [],
+      industryName: ['', Validators.required]
     });
 
     this.getAllIndustry();
@@ -69,6 +78,11 @@ export class IndustryComponent implements OnInit {
 
   // New Form open
   openForm() {
+    for(let dataItem of this.pageOfItems){
+      if(dataItem.showUpdate != undefined){
+        dataItem.showUpdate = false;
+      }
+    }
     this.showNew = true;
   }
 
@@ -76,6 +90,7 @@ export class IndustryComponent implements OnInit {
   cancel() {
     this.showNew = false;
     this.submitted = false;
+    this.newIndustry.reset();
   }
 
   // Save new Form
@@ -100,9 +115,10 @@ export class IndustryComponent implements OnInit {
           type: 'success',
           showConfirmButton: true,
           title: res.message,
+          
         });
         this.getAllIndustry();
-        // this.reset();
+        this.cancel();
       }
     }, error => {
       Swal.fire({
@@ -114,84 +130,110 @@ export class IndustryComponent implements OnInit {
   }
 
   // Update Form open
-  editCustomer(data) {
+  editIndustry(data) {
     data.showUpdate = true;
+    this.cancel();
     this.updateIndustry.patchValue(data);
   }
 
   // Update Data
   saveUpdate(data) {
-    this.updateIndustryFormData = this.fb.group({
-      industryId: [this.industries.industryId],
-      industryName: [this.industries.industryName]
-    });
     this.submitted1 = true;
-    if (this.updateIndustryFormData.invalid) {
+    if (this.updateIndustry.invalid) {
       return;
     }
-    data.showUpdate = false;
-    this.industryService.update(this.updateIndustryFormData.value)
-    .pipe(first())
-    .subscribe(res => {
-      if (res.error) {
-        this.submitted = false;
-        Swal.fire({
-          type: 'error',
-          title: res.message,
-        });
-      } else {
-        Swal.fire({
-          type: 'success',
-          showConfirmButton: true,
-          title: res.message,
-        });
-        this.getAllIndustry();
-        // this.reset();
-      }
-    }, error => {
+    else{
       Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      });
-    });
+        title: 'Are you sure?',
+        // text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Update!'
+      }).then((result) => {
+        if (result.value) {
+          this.industryService.update(this.updateIndustry.value)
+          .pipe(first())
+          .subscribe(res => {
+            if (res.error) {
+              this.submitted = false;
+              Swal.fire({
+                type: 'error',
+                title: res.message,
+              });
+            } else {
+              Swal.fire({
+                type: 'success',
+                showConfirmButton: true,
+                title: res.message,
+              });
+              this.getAllIndustry();
+              this.cancelUpdate(data);
+            }
+          }, error => {
+            Swal.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            });
+          });
+        }
+      })
+    }
   }
 
   // Cancel Data
   cancelUpdate(data) {
     this.submitted1 = false;
     data.showUpdate = false;
+    this.updateIndustry.reset();
   }
 
   // Delete Data
-  deleteCustomer(data) {
+  deleteIndustry(data) {
     console.log('delete...', data);
-    this.industryService.delete(data)
-    .pipe(first())
-    .subscribe(res => {
-      console.log('delete response', res);
-      if (res.error) {
-        this.submitted = false;
-        Swal.fire({
-          type: 'error',
-          title: res.message,
-        });
-      } else {
-        Swal.fire({
-          type: 'success',
-          showConfirmButton: true,
-          title: res.message,
-        });
-        // this.reset();
-        this.getAllIndustry();
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.industryService.delete(data.industryId)
+          .pipe(first())
+          .subscribe((res) => {
+            if (res.error) {
+              Swal.fire({
+                type: 'error',
+                title: res.message,
+              });
+            } else {
+              Swal.fire({
+                type: 'success',
+                title: res.message
+              })
+              this.getAllIndustry();
+            }
+          }, error => {
+            Swal.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            });
+          })
       }
-    }, error => {
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      });
-    });
+    })
   }
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+  }
+
 
 }

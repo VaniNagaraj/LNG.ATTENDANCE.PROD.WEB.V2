@@ -37,8 +37,9 @@ export class IndustryService {
         }));
     }
 
-    delete(data: any) {
-        return this.http.post<any>(environment.baseUrl + '/api/company/industry/type/delete', data, httpOptions)
+    delete(data: number) {
+        const param = { "industryId": data}
+        return this.http.post<any>(environment.baseUrl + '/api/company/industry/type/delete', param, httpOptions)
         .pipe(map(res => {
             return res;
         }));

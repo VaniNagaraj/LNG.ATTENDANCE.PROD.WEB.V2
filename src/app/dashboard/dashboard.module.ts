@@ -50,6 +50,12 @@ import { CustomerService } from './superadmin/masters/customer/services/customer
 import { ContractorComponent } from './superadmin/masters/customer/contractor/contractor.component';
 import { ConfirmationDialogService } from 'app/shared/confirmation-dialog/confirmation-dialog.service';
 import { BeaconComponent } from './superadmin/masters/beacon/beacon.component';
+import { BranchComponent } from './superadmin/masters/branch/branch.component';
+import { BlockBeaconMapComponent } from './superadmin/masters/block-beacon-map/block-beacon-map.component';
+import { BranchService } from './superadmin/masters/branch/service/branch.service';
+import { BeaconmapService } from './superadmin/masters/block-beacon-map/services/beaconmap.service';
+import { BlockComponent } from './superadmin/masters/block/block.component';
+import { BlockService } from './superadmin/masters/block/services/block.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -77,7 +83,10 @@ export function createTranslateLoader(http: HttpClient) {
     DesignationComponent,
     ConfirmationDialogComponent,
     BeaconComponent,
-    ShiftComponent
+    ShiftComponent,
+    BranchComponent,
+    BlockBeaconMapComponent,
+    BlockComponent
   ],
   imports: [
     StoreModule.forRoot({}),
@@ -112,6 +121,9 @@ export function createTranslateLoader(http: HttpClient) {
     IndustryService,
     CountryService,
     DragulaService,
+    BranchService,
+    BeaconmapService,
+    BlockService,
     ConfirmationDialogService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

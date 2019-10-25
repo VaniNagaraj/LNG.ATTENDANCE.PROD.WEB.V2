@@ -1,102 +1,107 @@
 <!--Confirm Action Starts-->
 <section id="action">
-    <div class="row text-left">
-      <div class="col-sm-12">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">
-              Beacon Master
-              <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
-                <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()">
-                  <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New 
-                </button>
-              </div>
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            Beacon Master
+            <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
+              <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()"
+                placement="bottom" ngbTooltip="New Beacon" tooltipClass="my-custom-class">
+                <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+              </button>
             </div>
-  
           </div>
-          <div class="card-content">
-            <div class="card-body">
-              <table class="table table-responsive-md">
-                <thead>
-                  <tr>
-                    <th>Sl No</th>
-                    <th>Beacon code</th>
-                    <th colspan="2">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngIf="showNew" [formGroup]="newBeacon">
-                    <td>
-                      <input type="text" id="projectinput1" class="form-control" formControlName="beaconId" name="beaconId" autocomplete="off" readonly />
-                      <div *ngIf="submitted && f.beaconId.errors" class="invalid-feedback">
-                        <div *ngIf="f.beaconId.errors.required">Please Enter Serial number</div>
+
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Beacon code</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="showNew" [formGroup]="newBeacon">
+                  <td>
+                    <input type="text" id="projectinput1" class="form-control" formControlName="beaconId"
+                      name="beaconId" autocomplete="off" readonly />
+                    <div *ngIf="submitted && f.beaconId.errors" class="invalid-feedback">
+                      <div *ngIf="f.beaconId.errors.required">Please Enter Serial number</div>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="text" id="projectinput6" formControlName="beaconCode" placeholder="beacon code"
+                      name="beaconCode" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.beaconCode.errors }" />
+                    <div *ngIf="submitted && f.beaconCode.errors" class="invalid-feedback">
+                      <div *ngIf="f.beaconCode.errors.required">Please enter beacon code</div>
+                    </div>
+                  </td>
+                  <td>
+                    <a class="success p-0" data-original-title="" (click)="save()" title="">
+                      <i class="ft-check font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="cancel()" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngFor="let data of beacons ; let i = index;" [formGroup]="updateBeacon">
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{i+1}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="projectinput1" class="form-control" [(ngModel)]="beacons.beaconId"
+                        formControlName="beaconId" name="beaconId" autocomplete="off" readonly />
+                      <div *ngIf="submitted1 && f1.beaconId.errors" class="invalid-feedback" readonly>
+                        <div *ngIf="f1.beaconId.errors.required">Please Enter Serial number</div>
                       </div>
-                    </td>
-                    <td>
-                      <input type="text" id="projectinput6" formControlName="beaconCode" placeholder="beacon code" name="beaconCode" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.beaconCode.errors }" />
-                      <div *ngIf="submitted && f.beaconCode.errors" class="invalid-feedback">
-                        <div *ngIf="f.beaconCode.errors.required">Please enter beacon code</div>
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.beaconCode}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="projectinput6" formControlName="beaconCode"
+                        [(ngModel)]="beacons.beaconCode" placeholder="beacon code" name="beaconCode"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.beaconCode.errors }" />
+                      <div *ngIf="submitted1 && f1.beaconCode.errors" class="invalid-feedback">
+                        <div *ngIf="f1.beaconCode.errors.required">Please enter beacon code</div>
                       </div>
-                    </td>
-                    <td>
-                      <a class="success p-0" data-original-title="" (click)="save()" title="">
-                        <i class="ft-check font-medium-3 mr-2"></i>
+                    </span>
+                  </td>
+                  <td width="160">
+                    <span [hidden]="data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="editCustomer(data)" title="">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
                       </a>
-                      <a class="danger p-0" data-original-title="" (click)="cancel()" title="">
-                        <i class="ft-x font-medium-3 mr-2"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr *ngFor="let data of beacons ; let i = index;" [formGroup]="updateBeacon">
-                    <td>
-                      <span [hidden]="data.showUpdate">
-                        {{i+1}}
-                      </span>
-                      <span [hidden]="!data.showUpdate">
-                        <input type="text" id="projectinput1" class="form-control" [(ngModel)]="beacons.beaconId" formControlName="beaconId" name="beaconId" autocomplete="off" readonly />
-                        <div *ngIf="submitted1 && f1.beaconId.errors" class="invalid-feedback" readonly>
-                          <div *ngIf="f1.beaconId.errors.required">Please Enter Serial number</div>
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span [hidden]="data.showUpdate">
-                        {{data.beaconCode}}
-                      </span>
-                      <span [hidden]="!data.showUpdate">
-                        <input type="text" id="projectinput6" formControlName="beaconCode" [(ngModel)]="beacons.beaconCode" placeholder="beacon code" name="beaconCode" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.beaconCode.errors }" />
-                        <div *ngIf="submitted1 && f1.beaconCode.errors" class="invalid-feedback">
-                          <div *ngIf="f1.beaconCode.errors.required">Please enter beacon code</div>
-                        </div>
-                      </span>
-                    </td>
-                    <td width="160">
-                      <span [hidden]="data.showUpdate">
-                        <a class="success p-0" data-original-title="" (click)="editCustomer(data)" title="">
-                          <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                        </a>
-                        <!-- <a class="danger p-0" data-original-title="" (click)="openConfirmationDialog(data)" title="">
+                      <!-- <a class="danger p-0" data-original-title="" (click)="openConfirmationDialog(data)" title="">
                           <i class="ft-x font-medium-3 mr-2"></i>
                         </a> -->
-                      </span>
-                      <span [hidden]="!data.showUpdate">
-                        <a class="success p-0" data-original-title="" (click)="saveUpdate(data)" title="">
-                          <i class="ft-check font-medium-3 mr-2"></i>
-                        </a>
-                        <a class="danger p-0" data-original-title="" (click)="cancelUpdate(data)" title="">
-                          <i class="ft-x font-medium-3 mr-2"></i>
-                        </a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <a class="success p-0" data-original-title="" (click)="saveUpdate(data)" title="">
+                        <i class="ft-check font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" data-original-title="" (click)="cancelUpdate(data)" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!--Confirm Action Ends-->
+  </div>
+</section>
+<!--Confirm Action Ends-->

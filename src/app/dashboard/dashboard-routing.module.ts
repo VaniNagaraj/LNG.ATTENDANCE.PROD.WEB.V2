@@ -17,6 +17,9 @@ import { CustomerComponent } from './superadmin/masters/customer/customer.compon
 import { DepartmentComponent } from './superadmin/masters/customer/department/department.component';
 import { DesignationComponent } from './superadmin/masters/customer/designation/designation.component';
 import { BeaconComponent } from './superadmin/masters/beacon/beacon.component';
+import { BranchComponent } from './superadmin/masters/branch/branch.component';
+import { BlockBeaconMapComponent } from './superadmin/masters/block-beacon-map/block-beacon-map.component';
+import { BlockComponent } from './superadmin/masters/block/block.component';
 
 const routes: Routes = [
   {
@@ -42,7 +45,10 @@ const routes: Routes = [
       { path: 'contractor', component: ContractorComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'department', component: DepartmentComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'designation', component: DesignationComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'shift', component: ShiftComponent, children: Full_ROUTES, canActivate: [AuthGuard] }
+      { path: 'shift', component: ShiftComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'branch', component: BranchComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'beaconmap', component: BlockBeaconMapComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'block', component: BlockComponent, children: Full_ROUTES, canActivate: [AuthGuard] }
     ]
   },
   { path: '', component: FullLayoutComponent, data: { title: 'full Views' }, children: Full_ROUTES, canActivate: [AuthGuard] },

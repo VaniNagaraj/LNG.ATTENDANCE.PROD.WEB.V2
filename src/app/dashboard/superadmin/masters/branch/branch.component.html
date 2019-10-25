@@ -1,0 +1,416 @@
+<!-- List Section starts-->
+<section id="extended" *ngIf="showList">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Branch</h4>
+          <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;margin-top: -30px;">
+            <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()"
+            placement="bottom" ngbTooltip="New Branch" tooltipClass="my-custom-class">
+              <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+            </button>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md text-center">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Branch Name</th>
+                  <th>Branch Code</th>
+                  <th>City</th>
+                  <th>Mobile Number</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let branch of pageOfItems; let i = index;">
+                  <td>{{i + 1}}</td>
+                  <td>{{branch.brName}}</td>
+                  <td>{{branch.brCode}}</td>
+                  <td>{{branch.brCity}}</td>
+                  <td>{{branch.brMobile}}</td>
+                  <td width="160">
+                    <a class="warning p-0" data-original-title="" (click)="viewBranch(branch.brId, content)"
+                      placement="bottom" ngbTooltip="View" tooltipClass="my-custom-class">
+                      <i class="ft-eye font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="success p-0" data-original-title="" (click)="editBranch(branch.brId)" placement="bottom"
+                      ngbTooltip="Edit" tooltipClass="my-custom-class">
+                      <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="deleteBranch(branch.brId)" placement="bottom"
+                      ngbTooltip="Delete" tooltipClass="my-custom-class">
+                      <i class="ft-trash-2 font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-footer pb-0 pt-3">
+              <jw-pagination [items]='globalBranch' (changePage)="onChangePage($event)"></jw-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- List section Ends -->
+
+<!-- Basic form layout section start -->
+<section id="basic-form-layouts" *ngIf="showForm">
+  <div class="row text-left">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header pb-2">
+          <h4 class="card-title" id="bordered-layout-basic-form"></h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <form [formGroup]="branchForm" (ngSubmit)="onSubmit()">
+              <div class="form-body">
+                <h4 class="form-section"><i class="ft-user"></i>{{formInfo}} Branch Information</h4>
+                <input type="text" name="brId" formControlName="brId" hidden>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="brName">Branch Name</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brName" formControlName="brName" class="form-control"
+                      placeholder="Please Enter Branch Name" name="brName" maxlength="50" required autocomplete="off"
+                      onkeydown="javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true"
+                      [ngClass]="{ 'is-invalid': submitted && f.brName.errors }" required>
+                    <div *ngIf="submitted && f.brName.errors" class="invalid-feedback">
+                      <div *ngIf="f.brName.errors.required">Please Provide Branch Name</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="brAddress">Branch Address</label>
+                  <div class="col-md-4">
+                    <textarea name="brAddress" id="brAddress" rows="1" formControlName="brAddress" class="form-control"
+                      maxlength="100" placeholder="Please Enter Address" required
+                      [ngClass]="{ 'is-invalid': submitted && f.brAddress.errors }"></textarea>
+                    <div *ngIf="submitted && f.brAddress.errors" class="invalid-feedback">
+                      <div *ngIf="f.brAddress.errors.required">Please Provide Branch Address</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="brCode">Branch Code</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brCode" maxlength="8" formControlName="brCode" class="form-control"
+                      placeholder="Please Enter Branch Code" name="brCode" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.brCode.errors }">
+                    <div *ngIf="submitted && f.brCode.errors" class="invalid-feedback">
+                      <div *ngIf="f.brCode.errors.required">Please provide Branch Code</div>
+                      <div *ngIf="f.brCode.errors.pattern">Branch Code Must Be ABC12345 Format</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="refCustomerId">Customer</label>
+                  <div class="col-md-4">
+                    <select id="refCustomerId" name="refCustomerId" formControlName="refCustomerId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refCustomerId.errors }" required>
+                      <option selected disabled value="null">Please Select Customer</option>
+                      <option *ngFor="let ct of globalCustomer" [value]="ct.custId">{{ct.custName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refCustomerId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refCustomerId.errors.required">Please Select Customer</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="refCountryId">Country</label>
+                  <div class="col-md-4">
+                    <select id="refCountryId" name="refCountryId" formControlName="refCountryId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refCountryId.errors }"
+                      (change)="changeCountry($event.target.value)">
+                      <option selected disabled value="null">Please Select Country</option>
+                      <option *ngFor="let ct of globalCountry" [value]="ct.countryId">{{ct.countryName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refCountryId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refCountryId.errors.required">Please Select Country</div>
+                    </div>
+                  </div>
+                  <label class="col-md-2 label-control required" for="refStateId">State</label>
+                  <div class="col-md-4">
+                    <select id="refStateId" name="refStateId" formControlName="refStateId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refStateId.errors }" required>
+                      <option selected disabled value="null">Please Select State</option>
+                      <option *ngFor="let ct of globalState" [value]="ct.stateId">{{ct.stateName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refStateId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refStateId.errors.required">Please Select State</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="brCity">City</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brCity" formControlName="brCity" class="form-control"
+                      placeholder="Please Enter Customer City" name="brCity" maxlength="50" required autocomplete="off"
+                      onkeydown="javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true"
+                      [ngClass]="{ 'is-invalid': submitted && f.brCity.errors }" required>
+                    <div *ngIf="submitted && f.brCity.errors" class="invalid-feedback">
+                      <div *ngIf="f.brCity.errors.required">Please provide City</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="brPincode">Pincode</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brPincode" maxlength="6" formControlName="brPincode" class="form-control"
+                      placeholder="Please Enter Pincode" name="brPincode" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.brPincode.errors }"
+                      onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false">
+                    <div *ngIf="submitted && f.brPincode.errors" class="invalid-feedback">
+                      <div *ngIf="f.brPincode.errors.required">Please Provide Pincode</div>
+                      <div *ngIf="f.brPincode.errors.pattern">Pincode Must Contain 6 Characters</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="brMobile">Branch Mobile</label>
+                  <div class="col-md-4">
+                    <input type="tel" formControlName="brMobile" maxlength="10" id="brMobile" class="form-control"
+                      placeholder="Please Enter Mobile Number" name="brMobile" autocomplete="off"
+                      onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false"
+                      [ngClass]="{ 'is-invalid': submitted && f.brMobile.errors }">
+                    <div *ngIf="submitted && f.brMobile.errors" class="invalid-feedback">
+                      <div *ngIf="f.brMobile.errors.required">Please provide Branch Mobile Number</div>
+                      <div *ngIf="f.brMobile.errors.pattern">Branch Mobile Number Must Contain 10 numbers</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control" for="brLandline">Landline</label>
+                  <div class="col-md-4">
+                    <input type="text" maxlength="10" id="brLandline" formControlName="brLandline" class="form-control"
+                      placeholder="Please Enter Landline Number" name="brLandline" autocomplete="off"
+                      onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false"
+                      [ngClass]="{ 'is-invalid': submitted && f.brLandline.errors }">
+                    <div *ngIf="submitted && f.brLandline.errors" class="invalid-feedback">
+                      <div *ngIf="f.brLandline.errors.pattern">Landline Number Should Contain 10 numbers</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row ">
+                  <label class="col-md-2 label-control required" for="brEmail">Branch Email</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brEmail" class="form-control" formControlName="brEmail"
+                      placeholder="Please Enter Email" name="brEmail" maxlength="50" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.brEmail.errors }">
+                    <div *ngIf="submitted && f.brEmail.errors" class="invalid-feedback">
+                      <div *ngIf="f.brEmail.errors.required">Please provide Email</div>
+                      <div *ngIf="f.brEmail.errors.email">Email should be valid</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="brLatLong">Branch Latitude and Longitude</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brLatLong" class="form-control" formControlName="brLatLong"
+                      placeholder="Please Enter Latitude and Longitude" name="brLatLong" autocomplete="off">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="brValidityStart">Validity Start</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brValidityStart" class="form-control" name="brValidityStart"
+                      formControlName="brValidityStart" #d1="ngbDatepicker" (focus)="d1.toggle()" ngbDatepicker
+                      placeholder="Please Select Validity Start Date" [(ngModel)]="firstDate"
+                      (ngModelChange)="disableDate(firstDate)" data-title="Date Opened"
+                      [ngClass]="{ 'is-invalid': submitted && f.brValidityStart.errors }">
+                    <div *ngIf="submitted && f.brValidityStart.errors" class="invalid-feedback">
+                      <div *ngIf="f.brValidityStart.errors.required">Select Validity Start</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="brValidityEnd">Validity End</label>
+                  <div class="col-md-4">
+                    <input type="text" id="brValidityEnd" class="form-control" name="dateopened"
+                      formControlName="brValidityEnd" #d2="ngbDatepicker" (focus)="d2.toggle()" ngbDatepicker
+                      placeholder="Please Select Validity End Date" [minDate]="endDate" data-title="Date Fixed"
+                      [ngClass]="{ 'is-invalid': submitted && f.brValidityEnd.errors }">
+                    <div *ngIf="submitted && f.brValidityEnd.errors" class="invalid-feedback">
+                      <div *ngIf="f.brValidityEnd.errors.required">Select Validity End</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control" for="brIsBillable">Is Billable?</label>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <div class="custom-control custom-checkbox d-inline-block">
+                        <input type="checkbox" id="brIsBillable" formControlName="brIsBillable"
+                          class="custom-control-input">
+                        <label class="custom-control-label" for="brIsBillable">Billable</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control" for="brIsActive">Is Active?</label>
+                  <div class="col-md-4">
+                    <div class="input-group">
+                      <div class="custom-control custom-checkbox d-inline-block">
+                        <input type="checkbox" id="brIsActive" checked formControlName="brIsActive"
+                          class="custom-control-input">
+                        <label class="custom-control-label" for="brIsActive">Active</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-actions">
+                <button type="reset" (click)="reset()" class="btn btn-raised btn-warning mr-1"><i class="ft-x"></i>
+                  Close</button>
+                <button type="submit" class="btn btn-raised btn-info mr-1"><i
+                    class="ft-check"></i>&nbsp;{{btnName}}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Basic form layout section end -->
+
+<!-- Modal Alert Starts-->
+<section id="modals">
+  <div class="row text-left" matchHeight="card">
+    <!--Modal with Default options starts-->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-content">
+          <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title">Branch Details</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="no-list-style">
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-share font-small-3"></i> Name:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brName}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i>
+                            State:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.stateName}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-direction font-small-3"></i> Branch
+                            Address:</a></span>
+                        <span class="d-block overflow-hidden">+91 {{branchView.brAddress}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="no-list-style">
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-screen-desktop font-small-3"></i> Branch
+                            Code:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brCode}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i> Country
+                            :</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.countryName}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-call-end font-small-3"></i> Mobile
+                            Number:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brMobile}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="no-list-style">
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="ft-globe font-small-3"></i> City:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brCity}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-pointer font-small-3"></i>
+                            Pincode:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brPincode}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-call-end font-small-3"></i>
+                            Landline Number:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brLandline}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="no-list-style">
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-envelope font-small-3"></i>
+                            Email:</a></span>
+                        <a class="d-block overflow-hidden">{{branchView.brEmail}}</a>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-calendar font-small-3"></i> Validity
+                            End:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brValidityEnd | date: 'dd-MM-yyyy'}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="no-list-style">
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="ft-user font-small-3"></i> Customer
+                            Name:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.custName}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="ft-check font-small-3"></i> Is Billable?
+                            :</a></span>
+                        <span *ngIf="branchView.brIsBillable == true" class="d-block overflow-hidden">Yes</span>
+                        <span *ngIf="branchView.brIsBillable == false" class="d-block overflow-hidden">No</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="no-list-style">
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-calendar font-small-3"></i> Validity
+                            Start:</a></span>
+                        <span class="d-block overflow-hidden">{{branchView.brValidityStart | date: 'dd-MM-yyyy'}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="ft-check font-small-3"></i>
+                            Is Active?:</a></span>
+                        <span *ngIf="branchView.brIsActive == true" class="d-block overflow-hidden">Yes</span>
+                        <span *ngIf="branchView.brIsActive == false" class="d-block overflow-hidden">No</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')">Close</button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <!--Modal with Default options ends-->
+  </div>
+</section>
+<!-- Model Alert Ends-->

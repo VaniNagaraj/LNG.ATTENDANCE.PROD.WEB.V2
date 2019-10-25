@@ -45,8 +45,17 @@ export class StateService {
         }));
     }
 
+    getStateById(stateId: any) {
+        const param = { 'stateId': stateId };
+        return this.http.post<any>(environment.baseUrl + '/api/company/master/state/getStateDetailsByStateId', param, httpOptions)
+        .pipe(map(res => {
+            return res;
+        }));
+    }
+
     deleteState(data: any) {
-        return this.http.post<any>(environment.baseUrl + '/api/company/master/state/deleteByStateId', data, httpOptions)
+        const param = { 'stateId': data };
+        return this.http.post<any>(environment.baseUrl + '/api/company/master/state/deleteByStateId', param, httpOptions)
         .pipe(map(res => {
             return res;
         }));
