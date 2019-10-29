@@ -43,7 +43,8 @@ export class BlockService {
     }
 
     delete(data: any) {
-        return this.http.post<any>(environment.baseUrl + '/api/company/master/block/beacon/map/deleteByBlockId', data, httpOptions)
+        const param = {"blkId": data}
+        return this.http.post<any>(environment.baseUrl + '/api/company/master/block/deleteByBlockId', param, httpOptions)
         .pipe(map(res => {
             return res;
         }));

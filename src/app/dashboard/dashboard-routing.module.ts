@@ -45,7 +45,7 @@ const routes: Routes = [
       { path: 'contractor', component: ContractorComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'department', component: DepartmentComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'designation', component: DesignationComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'shift', component: ShiftComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'customer/shift', component: ShiftComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'branch', component: BranchComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'beaconmap', component: BlockBeaconMapComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'block', component: BlockComponent, children: Full_ROUTES, canActivate: [AuthGuard] }

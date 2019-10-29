@@ -70,7 +70,7 @@ export class BlockComponent implements OnInit {
             title: res.status.message,
           });
         } else {
-          console.log('Beacon Maps...', res.data1)
+          console.log('Block...', res.data1)
           this.globalBlock = res.data1;
         }
       }, error => {
@@ -92,7 +92,7 @@ export class BlockComponent implements OnInit {
             title: res.status.message,
           });
         } else {
-          console.log('Beacon Maps...', res.data1)
+          console.log('Block...', res.data1)
           this.globalBranch = res.data1;
         }
       }, error => {
@@ -161,7 +161,6 @@ export class BlockComponent implements OnInit {
   saveUpdate(data) {
     this.submitted1 = true;
     if (this.updateBlockForm.invalid) {
-      console.log("I am Here")
       return;
     }
     Swal.fire({
@@ -238,6 +237,7 @@ export class BlockComponent implements OnInit {
               this.getAllBlock();
             }
           }, error => {
+            console.log(error)
             Swal.fire({
               type: 'error',
               title: 'Oops...',
