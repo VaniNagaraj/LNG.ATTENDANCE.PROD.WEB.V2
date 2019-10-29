@@ -37,10 +37,14 @@ export class ShiftComponent implements OnInit {
   public formatString = 'HH:mm';
   public interval = 60;
   pageOfItems: any[];
+  custId: number;
+
 
   constructor(private fb: FormBuilder, private shiftService: ShiftService) { }
 
   ngOnInit() {
+    const currUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.custId = currUser.refCustId;
     this.newShift = this.fb.group({
       refBrId: [null, Validators.required],
       shiftName: ['', [Validators.required]],
@@ -55,8 +59,14 @@ export class ShiftComponent implements OnInit {
       shiftStart: ['', [Validators.required]],
       shiftEnd: ['', [Validators.required]]
     });
-    this.getAllShift();
-    this.getAllBranch();
+
+    if (this.custId === 0) {
+      this.getAllBranch();
+      this.getAllShift();
+    } else {
+      this.getAllBranchByCustId();
+      this.getAllShiftByCustId();
+    }
   }
 
   get f() { return this.newShift.controls }
@@ -90,8 +100,54 @@ export class ShiftComponent implements OnInit {
       });
   }
 
+  getAllShiftByCustId() {
+    this.shiftService.getByCustId(this.custId)
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          this.submitted = false;
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('All Shift...', res)
+          this.shifts = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
+  }
+
   getAllBranch() {
     this.shiftService.getAllBranch()
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          this.submitted = false;
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('Branches...', res)
+          this.branches = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
+  }
+
+  getAllBranchByCustId() {
+    this.shiftService.getAllBranchByCustId(this.custId)
       .pipe(first())
       .subscribe(res => {
         if (res.status.error) {

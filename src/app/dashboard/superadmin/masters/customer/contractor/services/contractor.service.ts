@@ -23,6 +23,14 @@ export class ContractorService {
         }));
     }
 
+    getByCustId(custId: any) {
+        const param = {'refCustId': custId};
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/contractor/getAllByCustId', param, httpOptions)
+        .pipe(map(res => {
+            return res;
+        }));
+    }
+
     create(data: any) {
         return this.http.post<any>(environment.baseUrl + '/api/customer/master/contractor/create', data, httpOptions)
         .pipe(map(res => {

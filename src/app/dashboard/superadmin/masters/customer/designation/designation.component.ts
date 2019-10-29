@@ -43,7 +43,11 @@ export class DesignationComponent implements OnInit {
       designationName: ['', [Validators.required, Validators.maxLength(20)]]
     });
 
-    this.getAllDesignation();
+    if (this.custId === 0) {
+      this.getAllDesignation();
+    } else {
+      this.getAllDesignationByCustId();
+    }
   }
 
   get f() { return this.newDesignation.controls }
@@ -51,6 +55,29 @@ export class DesignationComponent implements OnInit {
 
   getAllDesignation() {
     this.designationService.get()
+    .pipe(first())
+    .subscribe(res => {
+      if (res.status.error) {
+        this.submitted = false;
+        Swal.fire({
+          type: 'error',
+          title: res.status.message,
+        });
+      } else {
+        console.log('Designation...', res)
+        this.designations = res.data1;
+      }
+    }, error => {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+    });
+  }
+
+  getAllDesignationByCustId() {
+    this.designationService.getByCustId(this.custId)
     .pipe(first())
     .subscribe(res => {
       if (res.status.error) {

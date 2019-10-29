@@ -23,8 +23,24 @@ export class ShiftService {
             }));
     }
 
+    getAllBranchByCustId(custId: any) {
+        const param = {'refCustomerId': custId};
+        return this.http.post<any>(environment.baseUrl + '/api/company/master/branch/getAllByCustId', param, httpOptions)
+        .pipe(map(res => {
+            return res;
+        }));
+    }
+
     get() {
         return this.http.get<any>(environment.baseUrl + '/api/customer/master/shift/getAll', httpOptions)
+            .pipe(map(res => {
+                return res;
+            }));
+    }
+
+    getByCustId(custId: any) {
+        const param = {'refCustId': custId};
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/getAllByCustId', param, httpOptions)
             .pipe(map(res => {
                 return res;
             }));

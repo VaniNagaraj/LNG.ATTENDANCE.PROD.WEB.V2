@@ -30,8 +30,8 @@ export class BranchComponent implements OnInit {
   showForm = false;
   showList = true;
   globalCustomer: any;
-  submitted: boolean = false;
-  showView: boolean = false;
+  submitted = false;
+  showView = false;
 
   globalBranch: any;
   pageOfItems: Array<any>;
@@ -41,6 +41,8 @@ export class BranchComponent implements OnInit {
   closeResult: string;
   branchView: any;
   endDate: { year: any; month: any; day: any; };
+  custId: number;
+
 
   constructor(private fb: FormBuilder,
     private branchService: BranchService,
@@ -50,6 +52,8 @@ export class BranchComponent implements OnInit {
     private modalService: NgbModal, ) { }
 
   ngOnInit() {
+    const currUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.custId = currUser.refCustId;
     this.branchForm = this.fb.group({
       brId: [],
       refCustomerId: [null, Validators.required],
@@ -70,13 +74,39 @@ export class BranchComponent implements OnInit {
       brIsActive: [true]
     })
 
-    this.getAllBranch();
-    this.getAllCountry();
     this.getCustomerAll();
+    this.getAllCountry();
+    if (this.custId === 0) {
+      this.getAllBranch();
+    } else {
+      this.getAllBranchByCustId();
+    }
   }
 
   getAllBranch() {
     this.branchService.getAll()
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('Branches...', res.data1)
+          this.globalBranch = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
+  }
+
+  getAllBranchByCustId() {
+    this.branchService.getByCustId(this.custId)
       .pipe(first())
       .subscribe(res => {
         if (res.status.error) {

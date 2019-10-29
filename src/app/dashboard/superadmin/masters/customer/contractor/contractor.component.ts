@@ -44,7 +44,11 @@ export class ContractorComponent implements OnInit {
       contractorName: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z\\. ]+[a-zA-Z ]$')]]
     });
 
-    this.getAllContractor();
+    if (this.custId === 0) {
+      this.getAllContractor();
+    } else {
+      this.getAllCustContractor();
+    }
   }
 
   checkName() {
@@ -61,6 +65,29 @@ export class ContractorComponent implements OnInit {
 
   getAllContractor() {
     this.contractorService.get()
+    .pipe(first())
+    .subscribe(res => {
+      if (res.status.error) {
+        this.submitted = false;
+        Swal.fire({
+          type: 'error',
+          title: res.status.message,
+        });
+      } else {
+        console.log('contractor...', res)
+        this.contractors = res.data1;
+      }
+    }, error => {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+    });
+  }
+
+  getAllCustContractor() {
+    this.contractorService.getByCustId(this.custId)
     .pipe(first())
     .subscribe(res => {
       if (res.status.error) {

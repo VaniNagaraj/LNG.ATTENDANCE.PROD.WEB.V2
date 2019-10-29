@@ -23,6 +23,14 @@ export class DesignationService {
         }));
     }
 
+    getByCustId(custId: any) {
+        const param = {'refCustId': custId};
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/designation/getAllByCustId', param, httpOptions)
+        .pipe(map(res => {
+            return res;
+        }));
+    }
+
     create(data: any) {
         return this.http.post<any>(environment.baseUrl + '/api/customer/master/designation/create', data, httpOptions)
         .pipe(map(res => {

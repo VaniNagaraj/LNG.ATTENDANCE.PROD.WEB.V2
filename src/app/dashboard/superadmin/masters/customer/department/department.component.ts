@@ -43,7 +43,11 @@ export class DepartmentComponent implements OnInit {
       deptName: ['', [Validators.required, Validators.maxLength(20)]]
     });
 
-    this.getAllDepartment();
+    if (this.custId === 0) {
+      this.getAllDepartment();
+    } else {
+      this.getAllDepartmentByCustId();
+    }
   }
 
   get f() { return this.newDepartment.controls }
@@ -51,6 +55,29 @@ export class DepartmentComponent implements OnInit {
 
   getAllDepartment() {
     this.departmentService.get()
+    .pipe(first())
+    .subscribe(res => {
+      if (res.status.error) {
+        this.submitted = false;
+        Swal.fire({
+          type: 'error',
+          title: res.status.message,
+        });
+      } else {
+        console.log('Department...', res)
+        this.departments = res.data1;
+      }
+    }, error => {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+    });
+  }
+
+  getAllDepartmentByCustId() {
+    this.departmentService.getByCustId(this.custId)
     .pipe(first())
     .subscribe(res => {
       if (res.status.error) {

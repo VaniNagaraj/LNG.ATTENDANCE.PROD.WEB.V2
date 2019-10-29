@@ -22,7 +22,7 @@ export class ConfigService {
         },
         sidebar: {
           collapsed: false, //options: true, false
-          size: "sidebar-md", // Options: 'sidebar-lg', 'sidebar-md', 'sidebar-sm'
+          size: "sidebar-lg", // Options: 'sidebar-lg', 'sidebar-md', 'sidebar-sm'
           backgroundColor: "man-of-steel", // Options: 'black', 'pomegranate', 'king-yna', 'ibiza-sunset', 'flickr', 'purple-bliss', 'man-of-steel', 'purple-love'
 
           /* If you want transparent layout add any of the following mentioned classes to backgroundColor of sidebar option :

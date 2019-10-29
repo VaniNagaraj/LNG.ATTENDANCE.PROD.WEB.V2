@@ -23,6 +23,14 @@ export class DepartmentService {
         }));
     }
 
+    getByCustId(custId: any) {
+        const param = {'refCustId': custId};
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/department/getAllbyCustId', param, httpOptions)
+        .pipe(map(res => {
+            return res;
+        }));
+    }
+
     create(data: any) {
         return this.http.post<any>(environment.baseUrl + '/api/customer/master/department/create', data, httpOptions)
         .pipe(map(res => {

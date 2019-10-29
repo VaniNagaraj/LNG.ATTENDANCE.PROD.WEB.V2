@@ -29,10 +29,10 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     bgImage: 'assets/img/sidebar-bg/01.jpg',
     bgImageDisplay: true,
     compactMenu: false,
-    sidebarSize: 'sidebar-md',
+    sidebarSize: 'sidebar-lg',
     layout: 'Light'
   };
-  size = 'sidebar-md';
+  size = 'sidebar-lg';
   isOpen = false;
   public config: any = {};
   layoutSub: Subscription;
@@ -251,7 +251,7 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.isBgImageDisplay) {
       this.options.bgImageDisplay = true;
     }
-    //emit event to FUll Layout
+    // emit event to FUll Layout
     this.layoutService.emitCustomizerChange(this.options);
   }
 
@@ -259,12 +259,12 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedBgImage = url;
     this.selectedTLBgImage = '';
 
-    //emit event to FUll Layout
+    // emit event to FUll Layout
     this.options.bgImage = url;
     if (this.isBgImageDisplay) {
       this.options.bgImageDisplay = true;
     }
-    //emit event to FUll Layout
+    // emit event to FUll Layout
     this.layoutService.emitCustomizerChange(this.options);
   }
 
@@ -275,7 +275,7 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.options.transparentColor = color;
     this.options.bgImageDisplay = false;
 
-    //emit event to FUll Layout
+    // emit event to FUll Layout
 
     this.layoutService.emitCustomizerChange(this.options);
   }
@@ -286,7 +286,7 @@ export class CustomizerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.options.transparentColor = color;
     this.options.bgImageDisplay = false;
 
-    //emit event to FUll Layout
+    // emit event to FUll Layout
 
     this.layoutService.emitCustomizerChange(this.options);
   }

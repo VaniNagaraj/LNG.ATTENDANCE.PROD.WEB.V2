@@ -13,7 +13,7 @@ export class LayoutService {
     }
 
 
-    //Customizer
+    // Customizer
 
     private emitCustomizerSource = new Subject<any>();
     customizerChangeEmitted$ = this.emitCustomizerSource.asObservable();
@@ -21,7 +21,7 @@ export class LayoutService {
         this.emitCustomizerSource.next(change);
     }
 
-    //customizer - compact menu
+    // customizer - compact menu
 
     private emitCustomizerCMSource = new Subject<any>();
     customizerCMChangeEmitted$ = this.emitCustomizerCMSource.asObservable();
@@ -29,7 +29,7 @@ export class LayoutService {
         this.emitCustomizerCMSource.next(change);
     }
 
-       //customizer - compact menu
+       // customizer - compact menu
 
        private emitNotiSidebarSource = new Subject<any>();
        notiSidebarChangeEmitted$ = this.emitNotiSidebarSource.asObservable();

@@ -1,3 +1,13 @@
+table.table.table-responsive tr td:first-child {
+  display: none !important;
+}
+
+:host /deep/ .table tr td:first-child { display: none;}
+
+:host /deep/ th.ng2-smart-th.custId.ng-star-inserted {
+  display: none;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -5,6 +15,7 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
+
 .label-control.required:after {
   color: #d00;
   content: "*";
@@ -28,12 +39,7 @@ th {
   text-align: left;
 }
 
-
 .cmodal {
   width: 700px !important;
   max-width: 1000px;
 }
-
-
-
-
