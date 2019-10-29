@@ -18,6 +18,8 @@ import { AuthenticationService } from 'app/login/services/authentication.service
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgModule } from '@angular/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { UiSwitchModule } from 'ngx-ui-switch';
+
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -31,6 +33,18 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ArchwizardModule } from 'angular-archwizard';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
+
+
 
 
 import {
@@ -113,7 +127,7 @@ export function createTranslateLoader(http: HttpClient) {
     CustManualAttendanceComponent,
     HolidayCalendarComponent,
     NotificationComponent,
-    CustLeaveTypeComponent
+    CustLeaveTypeComponent,
   ],
   imports: [
     StoreModule.forRoot({}),
@@ -121,8 +135,18 @@ export function createTranslateLoader(http: HttpClient) {
     SharedModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    MatDialogModule,
     FormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatSortModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatSlideToggleModule,
     Ng2SmartTableModule,
+    UiSwitchModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgbModule.forRoot(),

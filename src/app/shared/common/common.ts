@@ -16,3 +16,11 @@ export function validatePersonName(name: string) {
     return true;
 }
 
+export function isSuperAdmin() {
+    if (localStorage.getItem('custAdminName')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+

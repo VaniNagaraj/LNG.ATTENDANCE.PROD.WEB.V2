@@ -1,3 +1,33 @@
+<!--Advanced filter Starts-->
+<!-- <section id="advanced" *ngIf="showList">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Country List</h4>
+          <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;margin-top: -30px;">
+            <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()"
+              placement="bottom" ngbTooltip="New Customer" tooltipClass="my-custom-class">
+              <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+            </button>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <div class="table-responsive">
+              <input #search class="search mb-2" type="text" placeholder="Search..." (keyup)="onSearch(search.value)">
+              <ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!--Advanced filter Ends-->
+
+
+
 <!--Confirm Action Starts-->
 <section id="action">
   <div class="row text-left">
@@ -54,7 +84,7 @@
                       (click)="save()" title=""> <i class="ft-check font-medium-3 mr-2"></i>
                     </a>
                     <a class="danger p-0" placement="bottom" tooltipClass="my-custom-class" ngbTooltip="Cancel"
-                      (click)="cancel()" title=""><i class="ft-x font-medium-3 mr-2"></i>
+                      (click)="cancel()" title=""><i class="ft-trash-2 font-medium-3 mr-2"></i>
                     </a>
                   </td>
                 </tr>
@@ -113,7 +143,7 @@
                       </a>
                       <a class="danger p-0" placement="bottom" tooltipClass="my-custom-class" ngbTooltip="Cancel"
                         (click)="cancelUpdate(data)" title="">
-                        <i class="ft-x font-medium-3 mr-2"></i>
+                        <i class="ft-trash-2 font-medium-3 mr-2"></i>
                       </a>
                     </span>
                   </td>

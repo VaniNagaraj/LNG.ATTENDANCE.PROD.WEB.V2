@@ -1,3 +1,19 @@
 .navbar {
     // background-color: white;
 }
+
+:host ::ng-deep .switch.switch-medium { 
+    height: 35px !important;
+}
+
+:host ::ng-deep .switch.checked .switch-pane {
+    top: 3px !important;
+}
+
+:host ::ng-deep .switch.switch-medium small {
+    height: 35px !important;
+}
+
+:host ::ng-deep .switch.switch-medium > .switch-pane > span {
+    margin-top: 2px !important;
+}

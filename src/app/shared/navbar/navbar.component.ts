@@ -14,7 +14,7 @@ import { CustomerService } from 'app/dashboard/superadmin/masters/customer/servi
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   currentLang = 'en';
@@ -66,6 +66,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.getCustomerAll();
     if (localStorage.getItem('custAdminName')) {
       this.custAdminName = 'You have switched as ' + localStorage.getItem('custAdminName') + ' admin';
+      this.enable = false;
     }
   }
 
@@ -92,6 +93,26 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         });
   }
 
+  switchToAdmin() {
+    console.log('enable...', this.enable);
+    if (!this.enable) {
+      this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to switch back to super admin ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          const currUser = JSON.parse(localStorage.getItem('currentUser'));
+          currUser.refCustId = 0;
+          this.custId = 0;
+          localStorage.setItem('currentUser', JSON.stringify(currUser));
+          localStorage.removeItem('custAdminName');
+          window.location.reload();
+        } else {
+          this.enable = false;
+        }
+      })
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    }
+  }
+
   changeCustAdminMode(event) {
     // console.log('change cust admin to', event.target.options[event.target.options.selectedIndex].text);
     if (event.target.value !== '0') {
@@ -107,19 +128,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
           const currUser = JSON.parse(localStorage.getItem('currentUser'));
           this.custId = currUser.refCustId;
-        }
-      })
-      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-    } else {
-      this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to switch back to super admin ... ?')
-      .then((confirmed) => {
-        if (confirmed) {
-          const currUser = JSON.parse(localStorage.getItem('currentUser'));
-          currUser.refCustId = event.target.value;
-          this.custId = event.target.value;
-          localStorage.setItem('currentUser', JSON.stringify(currUser));
-          localStorage.removeItem('custAdminName');
-          window.location.reload();
+          this.enable = true;
         }
       })
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));

@@ -51,7 +51,7 @@ module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <div class=\"card-title\">\r\n            Beacon Master\r\n            <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\r\n              <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n                placement=\"bottom\" ngbTooltip=\"New Beacon\" tooltipClass=\"my-custom-class\">\r\n                <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n              </button>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Beacon code</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newBeacon\">\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"beaconId\"\r\n                      name=\"beaconId\" autocomplete=\"off\" readonly />\r\n                    <div *ngIf=\"submitted && f.beaconId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconId.errors.required\">Please Enter Serial number</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput6\" formControlName=\"beaconCode\" placeholder=\"beacon code\"\r\n                      name=\"beaconCode\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.beaconCode.errors }\" />\r\n                    <div *ngIf=\"submitted && f.beaconCode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconCode.errors.required\">Please enter beacon code</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\r\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\r\n                      <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of beacons ; let i = index;\" [formGroup]=\"updateBeacon\">\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{i+1}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"beacons.beaconId\"\r\n                        formControlName=\"beaconId\" name=\"beaconId\" autocomplete=\"off\" readonly />\r\n                      <div *ngIf=\"submitted1 && f1.beaconId.errors\" class=\"invalid-feedback\" readonly>\r\n                        <div *ngIf=\"f1.beaconId.errors.required\">Please Enter Serial number</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.beaconCode}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput6\" formControlName=\"beaconCode\"\r\n                        [(ngModel)]=\"beacons.beaconCode\" placeholder=\"beacon code\" name=\"beaconCode\"\r\n                        class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.beaconCode.errors }\" />\r\n                      <div *ngIf=\"submitted1 && f1.beaconCode.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.beaconCode.errors.required\">Please enter beacon code</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <!-- <a class=\"danger p-0\" data-original-title=\"\" (click)=\"openConfirmationDialog(data)\" title=\"\">\r\n                          <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                        </a> -->\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <div class=\"card-title\">\r\n            Beacon Master\r\n            <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\r\n              <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n                placement=\"bottom\" ngbTooltip=\"New Beacon\" tooltipClass=\"my-custom-class\">\r\n                <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n              </button>\r\n            </div>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Beacon code</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newBeacon\">\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"beaconId\"\r\n                      name=\"beaconId\" autocomplete=\"off\" readonly />\r\n                    <div *ngIf=\"submitted && f.beaconId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconId.errors.required\">Please Enter Serial number</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput6\" formControlName=\"beaconCode\" placeholder=\"beacon code\"\r\n                      name=\"beaconCode\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.beaconCode.errors }\" />\r\n                    <div *ngIf=\"submitted && f.beaconCode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconCode.errors.required\">Please enter beacon code</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\r\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\r\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of beacons ; let i = index;\" [formGroup]=\"updateBeacon\">\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{i+1}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"beacons.beaconId\"\r\n                        formControlName=\"beaconId\" name=\"beaconId\" autocomplete=\"off\" readonly />\r\n                      <div *ngIf=\"submitted1 && f1.beaconId.errors\" class=\"invalid-feedback\" readonly>\r\n                        <div *ngIf=\"f1.beaconId.errors.required\">Please Enter Serial number</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.beaconCode}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput6\" formControlName=\"beaconCode\"\r\n                        [(ngModel)]=\"beacons.beaconCode\" placeholder=\"beacon code\" name=\"beaconCode\"\r\n                        class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.beaconCode.errors }\" />\r\n                      <div *ngIf=\"submitted1 && f1.beaconCode.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.beaconCode.errors.required\">Please enter beacon code</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <!-- <a class=\"danger p-0\" data-original-title=\"\" (click)=\"openConfirmationDialog(data)\" title=\"\">\r\n                          <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                        </a> -->\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -62,7 +62,7 @@ module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Block Beacon Map</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Block Beacon Map\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Block Name</th>\r\n                  <th>Beacon Code</th>\r\n                  <th>Beacon Type</th>\r\n                  <th style='padding: 8px;' colspan=\"6\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newBlockBeaconMap\">\r\n                  <td></td>\r\n                  <td>\r\n                    <select id=\"projectinput1\" formControlName=\"refBlkId\" name=\"refBlkId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refBlkId.errors }\">\r\n                      <option value=\"none\" selected disabled value=\"null\">Please Select Block</option>\r\n                      <option *ngFor=\"let block of globalBlock\" [value]=\"block.blkId\">{{block.blkLogicalName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refBlkId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refBlkId.errors.required\">Please Select Block</div>\r\n                    </div>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <input type=\"text\" id=\"beaconCode\" formControlName=\"beaconCode\" name=\"beaconCode\"\r\n                      class=\"form-control\" placeholder=\"Please Enter Beacon Code\" maxlength=\"25\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.beaconCode.errors }\">\r\n                    <div *ngIf=\"submitted && f.beaconCode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconCode.errors.required\">Please Provide Beacon Code</div>\r\n                      <div *ngIf=\"f.beaconCode.errors.pattern\">Beacon Code Should contain only Alphabets and Numbers\r\n                      </div>\r\n                    </div>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <select id=\"projectinput1\" formControlName=\"beaconType\" name=\"beaconType\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.beaconType.errors }\">\r\n                      <option selected disabled value=\"null\">Please Select Beacon Type</option>\r\n                      <option [value]=\"1\">Entry and Photo</option>\r\n                      <option [value]=\"2\">Mark Attendence</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.beaconType.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconType.errors.required\">Please Select Beacon Type</div>\r\n                    </div>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <a class=\"success p-0\" (click)=\"save()\" placement=\"bottom\" ngbTooltip=\"Save\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" (click)=\"cancel()\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n\r\n                <!-- Update Desgination -->\r\n                <tr *ngFor=\"let data of pageOfItems; let i = index;\" [formGroup]=\"updateBlockBeaconMap\">\r\n                  <td>\r\n                    {{ i + 1}}\r\n                    <input type=\"text\" formControlName=\"blkBeaconMapId\" id=\"blkBeaconMapId\" hidden>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.blkLogicalName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput4\" formControlName=\"refBlkId\" name=\"refBlkId\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.refBlkId.errors }\">\r\n                        <option value=\"none\" selected disabled value=\"null\">Please Select Block</option>\r\n                        <option *ngFor=\"let block of globalBlock\" [value]=\"block.blkId\">{{block.blkLogicalName}}\r\n                        </option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.refBlkId.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.refBlkId.errors.required\">Please Select Block</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.beaconCode}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"beaconCode\" formControlName=\"beaconCode\" name=\"beaconCode\"\r\n                        class=\"form-control\" placeholder=\"Please Enter Beacon Code\" maxlength=\"25\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.beaconCode.errors }\">\r\n                      <div *ngIf=\"submitted1 && f1.beaconCode.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.beaconCode.errors.required\">Please Provide Beacon Code</div>\r\n                        <div *ngIf=\"f1.beaconCode.errors.pattern\">Beacon Code Should contain only Alphabets and Numbers\r\n                        </div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.beaconType}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput1\" formControlName=\"beaconType\" name=\"beaconType\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.beaconType.errors }\">\r\n                        <option selected disabled value=\"null\">Please Select Beacon Type</option>\r\n                        <option value=\"1\">Entry and Photo</option>\r\n                        <option value=\"2\">Mark Attendence</option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.beaconType.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.beaconType.errors.required\">Please Select Beacon Type</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"editBlockBeaconMap(data)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <!-- <a class=\"danger p-0\" (click)=\"deleteBlockBeaconMap(data)\" placement=\"bottom\" ngbTooltip=\"Delete\" tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a> -->\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"saveUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Update\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"cancelUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='blockbeaconMap' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Block Beacon Map</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Block Beacon Map\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Block Name</th>\r\n                  <th>Beacon Code</th>\r\n                  <th>Beacon Type</th>\r\n                  <th style='padding: 8px;' colspan=\"6\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newBlockBeaconMap\">\r\n                  <td></td>\r\n                  <td>\r\n                    <select id=\"projectinput1\" formControlName=\"refBlkId\" name=\"refBlkId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refBlkId.errors }\">\r\n                      <option value=\"none\" selected disabled value=\"null\">Please Select Block</option>\r\n                      <option *ngFor=\"let block of globalBlock\" [value]=\"block.blkId\">{{block.blkLogicalName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refBlkId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refBlkId.errors.required\">Please Select Block</div>\r\n                    </div>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <input type=\"text\" id=\"beaconCode\" formControlName=\"beaconCode\" name=\"beaconCode\"\r\n                      class=\"form-control\" placeholder=\"Please Enter Beacon Code\" maxlength=\"25\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.beaconCode.errors }\">\r\n                    <div *ngIf=\"submitted && f.beaconCode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconCode.errors.required\">Please Provide Beacon Code</div>\r\n                      <div *ngIf=\"f.beaconCode.errors.pattern\">Beacon Code Should contain only Alphabets and Numbers\r\n                      </div>\r\n                    </div>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <select id=\"projectinput1\" formControlName=\"beaconType\" name=\"beaconType\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.beaconType.errors }\">\r\n                      <option selected disabled value=\"null\">Please Select Beacon Type</option>\r\n                      <option [value]=\"1\">Entry and Photo</option>\r\n                      <option [value]=\"2\">Mark Attendence</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.beaconType.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.beaconType.errors.required\">Please Select Beacon Type</div>\r\n                    </div>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <a class=\"success p-0\" (click)=\"save()\" placement=\"bottom\" ngbTooltip=\"Save\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" (click)=\"cancel()\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n\r\n                <!-- Update Desgination -->\r\n                <tr *ngFor=\"let data of pageOfItems; let i = index;\" [formGroup]=\"updateBlockBeaconMap\">\r\n                  <td>\r\n                    {{ blockbeaconMap.indexOf(data) + 1}}\r\n                    <input type=\"text\" formControlName=\"blkBeaconMapId\" id=\"blkBeaconMapId\" hidden>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.blkLogicalName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput4\" formControlName=\"refBlkId\" name=\"refBlkId\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.refBlkId.errors }\">\r\n                        <option value=\"none\" selected disabled value=\"null\">Please Select Block</option>\r\n                        <option *ngFor=\"let block of globalBlock\" [value]=\"block.blkId\">{{block.blkLogicalName}}\r\n                        </option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.refBlkId.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.refBlkId.errors.required\">Please Select Block</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.beaconCode}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"beaconCode\" formControlName=\"beaconCode\" name=\"beaconCode\"\r\n                        class=\"form-control\" placeholder=\"Please Enter Beacon Code\" maxlength=\"25\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.beaconCode.errors }\">\r\n                      <div *ngIf=\"submitted1 && f1.beaconCode.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.beaconCode.errors.required\">Please Provide Beacon Code</div>\r\n                        <div *ngIf=\"f1.beaconCode.errors.pattern\">Beacon Code Should contain only Alphabets and Numbers\r\n                        </div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.beaconType}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput1\" formControlName=\"beaconType\" name=\"beaconType\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.beaconType.errors }\">\r\n                        <option selected disabled value=\"null\">Please Select Beacon Type</option>\r\n                        <option value=\"1\">Entry and Photo</option>\r\n                        <option value=\"2\">Mark Attendence</option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.beaconType.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.beaconType.errors.required\">Please Select Beacon Type</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"editBlockBeaconMap(data)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <!-- <a class=\"danger p-0\" (click)=\"deleteBlockBeaconMap(data)\" placement=\"bottom\" ngbTooltip=\"Delete\" tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a> -->\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"saveUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Update\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"cancelUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='blockbeaconMap' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Block</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Block\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Branch</th>\r\n                  <th>Block Name</th>\r\n                  <th>Block GPS Radius</th>\r\n                  <th>Block Latitude and Longitude</th>\r\n                  <th style='padding: 8px;' colspan=\"6\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"blockForm\">\r\n                  <td>\r\n\r\n                  </td>\r\n                  <td>\r\n                    <select id=\"projectinput6\" formControlName=\"refBranchId\" name=\"refBranchId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refBranchId.errors }\">\r\n                      <option value=\"none\" selected disabled value=\"null\">Select Branch</option>\r\n                      <option *ngFor=\"let st of globalBranch\" [value]=\"st.brId\">{{st.brName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refBranchId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refBranchId.errors.required\">Please Select Branch</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"blkLogicalName\" formControlName=\"blkLogicalName\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.blkLogicalName.errors }\"\r\n                      placeholder=\"Please Enter Block Name\" maxlength=\"20\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\">\r\n                    <div *ngIf=\"submitted && f.blkLogicalName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.blkLogicalName.errors.required\">Please Provide Block Name</div>\r\n                    </div>\r\n                  </td>\r\n                  \r\n                  <td>\r\n                    <input type=\"text\" id=\"blkGPSRadius\" formControlName=\"blkGPSRadius\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.blkGPSRadius.errors }\" maxlength=\"5\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                      placeholder=\"Please Enter GPS Radius in Meters\">\r\n                    <div *ngIf=\"submitted && f.blkGPSRadius.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.blkGPSRadius.errors.required\">Please Provide GPS Radius</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"blkLatLong\" formControlName=\"blkLatLong\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.blkLatLong.errors }\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 65 && event.keyCode <= 90)? false : true\"\r\n                      placeholder=\"Please Enter Latitude and Longitude\">\r\n                    <div *ngIf=\"submitted && f.blkLatLong.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.blkLatLong.errors.required\">Please Provide Latitude and Longitude</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" (click)=\"save()\" placement=\"bottom\" ngbTooltip=\"Save\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" (click)=\"cancel()\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of pageOfItems; let i = index\" [formGroup]=\"updateBlockForm\">\r\n                  <td>\r\n                    {{i+1}}\r\n                    <input type=\"text\" formControlName=\"blkId\" id=\"blkId\" hidden>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.brName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput6\" formControlName=\"refBranchId\" name=\"refBranchId\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.refBranchId.errors }\">\r\n                        <option value=\"none\" selected disabled value=\"null\">Select Branch</option>\r\n                        <option *ngFor=\"let st of globalBranch\" [value]=\"st.brId\">{{st.brName}}</option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.refBranchId.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.refBranchId.errors.required\">Please Select Branch</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.blkLogicalName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"blkLogicalName\" formControlName=\"blkLogicalName\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.blkLogicalName.errors }\"\r\n                        placeholder=\"Please Enter Block Name\" maxlength=\"20\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\">\r\n                      <div *ngIf=\"submitted1 && f1.blkLogicalName.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.blkLogicalName.errors.required\">Please Provide BLock Name</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  \r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.blkGPSRadius}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"blkGPSRadius\" formControlName=\"blkGPSRadius\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.blkGPSRadius.errors }\" maxlength=\"5\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                        placeholder=\"Please Enter GPS Radius in Meters\">\r\n                      <div *ngIf=\"submitted1 && f1.blkGPSRadius.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.blkGPSRadius.errors.required\">Please Provide GPS Radius</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.blkLatLong}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"blkLatLong\" formControlName=\"blkLatLong\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.blkLatLong.errors }\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 65 && event.keyCode <= 90)? false : true\"\r\n                        placeholder=\"Please Enter Latitude and Longitude\">\r\n                      <div *ngIf=\"submitted1 && f1.blkLatLong.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.blkLatLong.errors.required\">Please Provide Latitude and Longitude</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"editCustomer(data)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"deleteCustomer(data)\" placement=\"bottom\" ngbTooltip=\"Delete\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"saveUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Update\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"cancelUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='globalBlock' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Block</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Block\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Branch</th>\r\n                  <th>Block Name</th>\r\n                  <th>Block GPS Radius</th>\r\n                  <th>Block Latitude and Longitude</th>\r\n                  <th style='padding: 8px;' colspan=\"6\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"blockForm\">\r\n                  <td>\r\n\r\n                  </td>\r\n                  <td>\r\n                    <select id=\"projectinput6\" formControlName=\"refBranchId\" name=\"refBranchId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refBranchId.errors }\">\r\n                      <option value=\"none\" selected disabled value=\"null\">Select Branch</option>\r\n                      <option *ngFor=\"let st of globalBranch\" [value]=\"st.brId\">{{st.brName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refBranchId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refBranchId.errors.required\">Please Select Branch</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"blkLogicalName\" formControlName=\"blkLogicalName\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.blkLogicalName.errors }\"\r\n                      placeholder=\"Please Enter Block Name\" maxlength=\"20\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\">\r\n                    <div *ngIf=\"submitted && f.blkLogicalName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.blkLogicalName.errors.required\">Please Provide Block Name</div>\r\n                    </div>\r\n                  </td>\r\n                  \r\n                  <td>\r\n                    <input type=\"text\" id=\"blkGPSRadius\" formControlName=\"blkGPSRadius\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.blkGPSRadius.errors }\" maxlength=\"5\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                      placeholder=\"Please Enter GPS Radius in Meters\">\r\n                    <div *ngIf=\"submitted && f.blkGPSRadius.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.blkGPSRadius.errors.required\">Please Provide GPS Radius</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"blkLatLong\" formControlName=\"blkLatLong\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.blkLatLong.errors }\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 65 && event.keyCode <= 90)? false : true\"\r\n                      placeholder=\"Please Enter Latitude and Longitude\">\r\n                    <div *ngIf=\"submitted && f.blkLatLong.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.blkLatLong.errors.required\">Please Provide Latitude and Longitude</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" (click)=\"save()\" placement=\"bottom\" ngbTooltip=\"Save\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" (click)=\"cancel()\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of pageOfItems\" [formGroup]=\"updateBlockForm\">\r\n                  <td>\r\n                    {{globalBlock.indexOf(data)+1}}\r\n                    <input type=\"text\" formControlName=\"blkId\" id=\"blkId\" hidden>\r\n                  </td>\r\n                  <td>\r\n                    <ng-container *ngIf=\"rowIndex != i\">\r\n                      {{data.brName}}\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"rowIndex == i\">\r\n                      <select id=\"projectinput6\" formControlName=\"refBranchId\" name=\"refBranchId\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.refBranchId.errors }\" disabled>\r\n                        <option value=\"none\" selected disabled value=\"null\">Select Branch</option>\r\n                        <option *ngFor=\"let st of globalBranch\" [value]=\"st.brId\">{{st.brName}}</option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.refBranchId.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.refBranchId.errors.required\">Please Select Branch</div>\r\n                      </div>\r\n                    </ng-container>\r\n                  </td>\r\n                  <td>\r\n                    <ng-container *ngIf=\"rowIndex != i\">\r\n                      {{data.blkLogicalName}}\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"rowIndex == i\">\r\n                      <input type=\"text\" id=\"blkLogicalName\" formControlName=\"blkLogicalName\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.blkLogicalName.errors }\"\r\n                        placeholder=\"Please Enter Block Name\" maxlength=\"20\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\">\r\n                      <div *ngIf=\"submitted1 && f1.blkLogicalName.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.blkLogicalName.errors.required\">Please Provide BLock Name</div>\r\n                      </div>\r\n                    </ng-container>\r\n                  </td>\r\n                  \r\n                  <td>\r\n                    <ng-container *ngIf=\"rowIndex != i\">\r\n                      {{data.blkGPSRadius}}\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"rowIndex == i\">\r\n                      <input type=\"text\" id=\"blkGPSRadius\" formControlName=\"blkGPSRadius\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.blkGPSRadius.errors }\" maxlength=\"5\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                        placeholder=\"Please Enter GPS Radius in Meters\">\r\n                      <div *ngIf=\"submitted1 && f1.blkGPSRadius.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.blkGPSRadius.errors.required\">Please Provide GPS Radius</div>\r\n                      </div>\r\n                    </ng-container>\r\n                  </td>\r\n                  <td>\r\n                    <ng-container *ngIf=\"rowIndex != i\">\r\n                      {{data.blkLatLong}}\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"rowIndex == i\">\r\n                      <input type=\"text\" id=\"blkLatLong\" formControlName=\"blkLatLong\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.blkLatLong.errors }\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 65 && event.keyCode <= 90)? false : true\"\r\n                        placeholder=\"Please Enter Latitude and Longitude\">\r\n                      <div *ngIf=\"submitted1 && f1.blkLatLong.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.blkLatLong.errors.required\">Please Provide Latitude and Longitude</div>\r\n                      </div>\r\n                    </ng-container>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <ng-container *ngIf=\"rowIndex != i\">\r\n                      <a class=\"success p-0\" (click)=\"editCustomer(data, i)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"deleteCustomer(data)\" placement=\"bottom\" ngbTooltip=\"Delete\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </ng-container>\r\n                    <ng-container *ngIf=\"rowIndex == i\">\r\n                      <a class=\"success p-0\" (click)=\"saveUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Update\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"cancelUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                        tooltipClass=\"my-custom-class\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </ng-container>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='globalBlock' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -84,7 +84,7 @@ module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- List Section starts-->\r\n<section id=\"extended\" *ngIf=\"showList\">\r\n  <div class=\"rowtext-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Branch</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n            placement=\"bottom\" ngbTooltip=\"New Branch\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md text-center\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Branch Name</th>\r\n                  <th>Branch Code</th>\r\n                  <th>City</th>\r\n                  <th>Mobile Number</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngFor=\"let branch of pageOfItems; let i = index;\">\r\n                  <td>{{i + 1}}</td>\r\n                  <td>{{branch.brName}}</td>\r\n                  <td>{{branch.brCode}}</td>\r\n                  <td>{{branch.brCity}}</td>\r\n                  <td>{{branch.brMobile}}</td>\r\n                  <td width=\"160\">\r\n                    <a class=\"warning p-0\" data-original-title=\"\" (click)=\"viewBranch(branch.brId, content)\"\r\n                      placement=\"bottom\" ngbTooltip=\"View\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-eye font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"editBranch(branch.brId)\" placement=\"bottom\"\r\n                      ngbTooltip=\"Edit\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteBranch(branch.brId)\" placement=\"bottom\"\r\n                      ngbTooltip=\"Delete\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='globalBranch' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- List section Ends -->\r\n\r\n<!-- Basic form layout section start -->\r\n<section id=\"basic-form-layouts\" *ngIf=\"showForm\">\r\n  <div class=\"rowtext-left\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header pb-2\">\r\n          <h4 class=\"card-title\" id=\"bordered-layout-basic-form\"></h4>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <form [formGroup]=\"branchForm\" (ngSubmit)=\"onSubmit()\">\r\n              <div class=\"form-body\">\r\n                <h4 class=\"form-section\"><i class=\"ft-user\"></i>{{formInfo}} Branch Information</h4>\r\n                <input type=\"text\" name=\"brId\" formControlName=\"brId\" hidden>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brName\">Branch Name</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brName\" formControlName=\"brName\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Branch Name\" name=\"brName\" maxlength=\"50\" required autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brName.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.brName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brName.errors.required\">Please Provide Branch Name</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brAddress\">Branch Address</label>\r\n                  <div class=\"col-md-4\">\r\n                    <textarea name=\"brAddress\" id=\"brAddress\" rows=\"1\" formControlName=\"brAddress\" class=\"form-control\"\r\n                      maxlength=\"100\" placeholder=\"Please Enter Address\" required\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brAddress.errors }\"></textarea>\r\n                    <div *ngIf=\"submitted && f.brAddress.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brAddress.errors.required\">Please Provide Branch Address</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control\" for=\"brCode\">Branch Code</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brCode\" maxlength=\"8\" formControlName=\"brCode\" class=\"form-control\"\r\n                      placeholder=\"Branch Code\" name=\"brCode\" autocomplete=\"off\" readonly>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"refCustomerId\">Customer</label>\r\n                  <div class=\"col-md-4\">\r\n                    <select id=\"refCustomerId\" name=\"refCustomerId\" formControlName=\"refCustomerId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refCustomerId.errors }\" required>\r\n                      <option selected disabled value=\"null\">Please Select Customer</option>\r\n                      <option *ngFor=\"let ct of globalCustomer\" [value]=\"ct.custId\">{{ct.custName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refCustomerId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refCustomerId.errors.required\">Please Select Customer</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"refCountryId\">Country</label>\r\n                  <div class=\"col-md-4\">\r\n                    <select id=\"refCountryId\" name=\"refCountryId\" formControlName=\"refCountryId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refCountryId.errors }\"\r\n                      (change)=\"changeCountry($event.target.value)\">\r\n                      <option selected disabled value=\"null\">Please Select Country</option>\r\n                      <option *ngFor=\"let ct of globalCountry\" [value]=\"ct.countryId\">{{ct.countryName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refCountryId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refCountryId.errors.required\">Please Select Country</div>\r\n                    </div>\r\n                  </div>\r\n                  <label class=\"col-md-2 label-control required\" for=\"refStateId\">State</label>\r\n                  <div class=\"col-md-4\">\r\n                    <select id=\"refStateId\" name=\"refStateId\" formControlName=\"refStateId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refStateId.errors }\" required>\r\n                      <option selected disabled value=\"null\">Please Select State</option>\r\n                      <option *ngFor=\"let ct of globalState\" [value]=\"ct.stateId\">{{ct.stateName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refStateId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refStateId.errors.required\">Please Select State</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brCity\">City</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brCity\" formControlName=\"brCity\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Customer City\" name=\"brCity\" maxlength=\"50\" required autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brCity.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.brCity.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brCity.errors.required\">Please provide City</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brPincode\">Pincode</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brPincode\" maxlength=\"6\" formControlName=\"brPincode\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Pincode\" name=\"brPincode\" autocomplete=\"off\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brPincode.errors }\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\">\r\n                    <div *ngIf=\"submitted && f.brPincode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brPincode.errors.required\">Please Provide Pincode</div>\r\n                      <div *ngIf=\"f.brPincode.errors.pattern\">Pincode Must Contain 6 Characters</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brMobile\">Branch Mobile</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"tel\" formControlName=\"brMobile\" maxlength=\"10\" id=\"brMobile\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Mobile Number\" name=\"brMobile\" autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brMobile.errors }\">\r\n                    <div *ngIf=\"submitted && f.brMobile.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brMobile.errors.required\">Please provide Branch Mobile Number</div>\r\n                      <div *ngIf=\"f.brMobile.errors.pattern\">Branch Mobile Number Must Contain 10 numbers</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control\" for=\"brLandline\">Landline</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" maxlength=\"10\" id=\"brLandline\" formControlName=\"brLandline\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Landline Number\" name=\"brLandline\" autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brLandline.errors }\">\r\n                    <div *ngIf=\"submitted && f.brLandline.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brLandline.errors.pattern\">Landline Number Should Contain 10 numbers</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brEmail\">Branch Email</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brEmail\" class=\"form-control\" formControlName=\"brEmail\"\r\n                      placeholder=\"Please Enter Email\" name=\"brEmail\" maxlength=\"50\" autocomplete=\"off\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brEmail.errors }\">\r\n                    <div *ngIf=\"submitted && f.brEmail.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brEmail.errors.required\">Please provide Email</div>\r\n                      <div *ngIf=\"f.brEmail.errors.email\">Email should be valid</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brLatLong\">Branch Latitude and Longitude</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brLatLong\" class=\"form-control\" formControlName=\"brLatLong\"\r\n                      placeholder=\"Please Enter Latitude and Longitude\" name=\"brLatLong\" autocomplete=\"off\">\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brValidityStart\">Validity Start</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brValidityStart\" class=\"form-control\" name=\"brValidityStart\"\r\n                      formControlName=\"brValidityStart\" #d1=\"ngbDatepicker\" (focus)=\"d1.toggle()\" ngbDatepicker\r\n                      placeholder=\"Please Select Validity Start Date\" [(ngModel)]=\"firstDate\"\r\n                      (ngModelChange)=\"disableDate(firstDate)\" data-title=\"Date Opened\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brValidityStart.errors }\">\r\n                    <div *ngIf=\"submitted && f.brValidityStart.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brValidityStart.errors.required\">Select Validity Start</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brValidityEnd\">Validity End</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brValidityEnd\" class=\"form-control\" name=\"dateopened\"\r\n                      formControlName=\"brValidityEnd\" #d2=\"ngbDatepicker\" (focus)=\"d2.toggle()\" ngbDatepicker\r\n                      placeholder=\"Please Select Validity End Date\" [minDate]=\"endDate\" data-title=\"Date Fixed\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brValidityEnd.errors }\">\r\n                    <div *ngIf=\"submitted && f.brValidityEnd.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brValidityEnd.errors.required\">Select Validity End</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control\" for=\"brIsBillable\">Is Billable?</label>\r\n                  <div class=\"col-md-4\">\r\n                    <div class=\"input-group\">\r\n                      <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                        <input type=\"checkbox\" id=\"brIsBillable\" formControlName=\"brIsBillable\"\r\n                          class=\"custom-control-input\">\r\n                        <label class=\"custom-control-label\" for=\"brIsBillable\">Billable</label>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control\" for=\"brIsActive\">Is Active?</label>\r\n                  <div class=\"col-md-4\">\r\n                    <div class=\"input-group\">\r\n                      <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                        <input type=\"checkbox\" id=\"brIsActive\" checked formControlName=\"brIsActive\"\r\n                          class=\"custom-control-input\" (click)=\"false\">\r\n                        <label class=\"custom-control-label\" for=\"brIsActive\">Active</label>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-actions\">\r\n                <button type=\"reset\" (click)=\"reset()\" class=\"btn btn-raised btn-warning mr-1\"><i class=\"ft-x\"></i>\r\n                  Close</button>\r\n                <button type=\"submit\" class=\"btn btn-raised btn-info mr-1\"><i\r\n                    class=\"ft-check\"></i>&nbsp;{{btnName}}</button>\r\n              </div>\r\n            </form>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- // Basic form layout section end -->\r\n\r\n<!-- Modal Alert Starts-->\r\n<section id=\"modals\">\r\n  <div class=\"rowtext-left\" matchHeight=\"card\">\r\n    <!--Modal with Default options starts-->\r\n    <div class=\"col-sm-12 col-md-6 col-lg-4\">\r\n      <div class=\"card\">\r\n        <div class=\"card-content\">\r\n          <ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n            <div class=\"modal-header\">\r\n              <h4 class=\"modal-title\">Branch Details</h4>\r\n              <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n              </button>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n              <div class=\"card-body\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-share font-small-3\"></i> Name:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-globe font-small-3\"></i>\r\n                            State:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.stateName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-direction font-small-3\"></i> Branch\r\n                            Address:</a></span>\r\n                        <span class=\"d-block overflow-hidden\" style=\"word-wrap:break-word;\">{{branchView.brAddress}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-screen-desktop font-small-3\"></i> Branch\r\n                            Code:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brCode}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-globe font-small-3\"></i> Country\r\n                            :</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.countryName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-call-end font-small-3\"></i> Mobile\r\n                            Number:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brMobile}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-globe font-small-3\"></i> City:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brCity}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-pointer font-small-3\"></i>\r\n                            Pincode:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brPincode}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-call-end font-small-3\"></i>\r\n                            Landline Number:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brLandline}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <!-- <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-envelope font-small-3\"></i>\r\n                            Email:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brEmail}}</span>\r\n                      </li> -->\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-envelope font-small-3\"></i> Branch\r\n                            Email:</a></span>\r\n                        <span class=\"d-block overflow-hidden\" style=\"word-wrap:break-word;\">{{branchView.brEmail}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-calendar font-small-3\"></i> Validity\r\n                            End:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brValidityEnd | date: 'dd-MM-yyyy'}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-user font-small-3\"></i> Customer\r\n                            Name:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.custName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-check font-small-3\"></i> Is Billable?\r\n                            :</a></span>\r\n                        <span *ngIf=\"branchView.brIsBillable == true\" class=\"d-block overflow-hidden\">Yes</span>\r\n                        <span *ngIf=\"branchView.brIsBillable == false\" class=\"d-block overflow-hidden\">No</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-calendar font-small-3\"></i> Validity\r\n                            Start:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brValidityStart | date: 'dd-MM-yyyy'}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-check font-small-3\"></i>\r\n                            Is Active?:</a></span>\r\n                        <span *ngIf=\"branchView.brIsActive == true\" class=\"d-block overflow-hidden\">Yes</span>\r\n                        <span *ngIf=\"branchView.brIsActive == false\" class=\"d-block overflow-hidden\">No</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                </div>\r\n                <hr>\r\n              </div>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n              <button type=\"button\" class=\"btn btn-secondary btn-raised\" (click)=\"c('Close click')\">Close</button>\r\n            </div>\r\n          </ng-template>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <!--Modal with Default options ends-->\r\n  </div>\r\n</section>\r\n<!-- Model Alert Ends-->"
+module.exports = "<!-- List Section starts-->\r\n<section id=\"extended\" *ngIf=\"showList\">\r\n  <div class=\"rowtext-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Branch</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n            placement=\"bottom\" ngbTooltip=\"New Branch\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md text-center\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Branch Name</th>\r\n                  <th>Branch Code</th>\r\n                  <th>City</th>\r\n                  <th>Mobile Number</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngFor=\"let branch of pageOfItems; let i = index;\">\r\n                  <td>{{globalBranch.indexOf(branch) + 1}}</td>\r\n                  <td>{{branch.brName}}</td>\r\n                  <td>{{branch.brCode}}</td>\r\n                  <td>{{branch.brCity}}</td>\r\n                  <td>{{branch.brMobile}}</td>\r\n                  <td width=\"160\">\r\n                    <a class=\"warning p-0\" data-original-title=\"\" (click)=\"viewBranch(branch.brId, content)\"\r\n                      placement=\"bottom\" ngbTooltip=\"View\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-eye font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"editBranch(branch.brId)\" placement=\"bottom\"\r\n                      ngbTooltip=\"Edit\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteBranch(branch.brId)\" placement=\"bottom\"\r\n                      ngbTooltip=\"Delete\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='globalBranch' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- List section Ends -->\r\n\r\n<!-- Basic form layout section start -->\r\n<section id=\"basic-form-layouts\" *ngIf=\"showForm\">\r\n  <div class=\"rowtext-left\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header pb-2\">\r\n          <h4 class=\"card-title\" id=\"bordered-layout-basic-form\"></h4>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <form [formGroup]=\"branchForm\" (ngSubmit)=\"onSubmit()\">\r\n              <div class=\"form-body\">\r\n                <h4 class=\"form-section\"><i class=\"ft-user\"></i>{{formInfo}} Branch Information</h4>\r\n                <input type=\"text\" name=\"brId\" formControlName=\"brId\" hidden>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brName\">Branch Name</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brName\" formControlName=\"brName\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Branch Name\" name=\"brName\" maxlength=\"50\" required autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brName.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.brName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brName.errors.required\">Please Provide Branch Name</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brAddress\">Branch Address</label>\r\n                  <div class=\"col-md-4\">\r\n                    <textarea name=\"brAddress\" id=\"brAddress\" rows=\"1\" formControlName=\"brAddress\" class=\"form-control\"\r\n                      maxlength=\"100\" placeholder=\"Please Enter Address\" required\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brAddress.errors }\"></textarea>\r\n                    <div *ngIf=\"submitted && f.brAddress.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brAddress.errors.required\">Please Provide Branch Address</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control\" for=\"brCode\">Branch Code</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brCode\" maxlength=\"8\" formControlName=\"brCode\" class=\"form-control\"\r\n                      placeholder=\"Branch Code\" name=\"brCode\" autocomplete=\"off\" readonly>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"refCustomerId\">Customer</label>\r\n                  <div class=\"col-md-4\">\r\n                    <select id=\"refCustomerId\" name=\"refCustomerId\" formControlName=\"refCustomerId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refCustomerId.errors }\" required>\r\n                      <option selected disabled value=\"null\">Please Select Customer</option>\r\n                      <option *ngFor=\"let ct of globalCustomer\" [value]=\"ct.custId\">{{ct.custName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refCustomerId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refCustomerId.errors.required\">Please Select Customer</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"refCountryId\">Country</label>\r\n                  <div class=\"col-md-4\">\r\n                    <select id=\"refCountryId\" name=\"refCountryId\" formControlName=\"refCountryId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refCountryId.errors }\"\r\n                      (change)=\"changeCountry($event.target.value)\">\r\n                      <option selected disabled value=\"null\">Please Select Country</option>\r\n                      <option *ngFor=\"let ct of globalCountry\" [value]=\"ct.countryId\">{{ct.countryName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refCountryId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refCountryId.errors.required\">Please Select Country</div>\r\n                    </div>\r\n                  </div>\r\n                  <label class=\"col-md-2 label-control required\" for=\"refStateId\">State</label>\r\n                  <div class=\"col-md-4\">\r\n                    <select id=\"refStateId\" name=\"refStateId\" formControlName=\"refStateId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refStateId.errors }\" required>\r\n                      <option selected disabled value=\"null\">Please Select State</option>\r\n                      <option *ngFor=\"let ct of globalState\" [value]=\"ct.stateId\">{{ct.stateName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refStateId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refStateId.errors.required\">Please Select State</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brCity\">City</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brCity\" formControlName=\"brCity\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Customer City\" name=\"brCity\" maxlength=\"50\" required autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brCity.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.brCity.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brCity.errors.required\">Please provide City</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brPincode\">Pincode</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brPincode\" maxlength=\"6\" formControlName=\"brPincode\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Pincode\" name=\"brPincode\" autocomplete=\"off\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brPincode.errors }\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\">\r\n                    <div *ngIf=\"submitted && f.brPincode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brPincode.errors.required\">Please Provide Pincode</div>\r\n                      <div *ngIf=\"f.brPincode.errors.pattern\">Pincode Must Contain 6 Characters</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brMobile\">Branch Mobile</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"tel\" formControlName=\"brMobile\" maxlength=\"10\" id=\"brMobile\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Mobile Number\" name=\"brMobile\" autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brMobile.errors }\">\r\n                    <div *ngIf=\"submitted && f.brMobile.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brMobile.errors.required\">Please provide Branch Mobile Number</div>\r\n                      <div *ngIf=\"f.brMobile.errors.pattern\">Branch Mobile Number Must Contain 10 numbers</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control\" for=\"brLandline\">Landline</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" maxlength=\"10\" id=\"brLandline\" formControlName=\"brLandline\" class=\"form-control\"\r\n                      placeholder=\"Please Enter Landline Number\" name=\"brLandline\" autocomplete=\"off\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brLandline.errors }\">\r\n                    <div *ngIf=\"submitted && f.brLandline.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brLandline.errors.pattern\">Landline Number Should Contain 10 numbers</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brEmail\">Branch Email</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brEmail\" class=\"form-control\" formControlName=\"brEmail\"\r\n                      placeholder=\"Please Enter Email\" name=\"brEmail\" maxlength=\"50\" autocomplete=\"off\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brEmail.errors }\">\r\n                    <div *ngIf=\"submitted && f.brEmail.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brEmail.errors.required\">Please provide Email</div>\r\n                      <div *ngIf=\"f.brEmail.errors.email\">Email should be valid</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brLatLong\">Branch Latitude and Longitude</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brLatLong\" class=\"form-control\" formControlName=\"brLatLong\"\r\n                      placeholder=\"Please Enter Latitude and Longitude\" name=\"brLatLong\" autocomplete=\"off\">\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control required\" for=\"brValidityStart\">Validity Start</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brValidityStart\" class=\"form-control\" name=\"brValidityStart\"\r\n                      formControlName=\"brValidityStart\" #d1=\"ngbDatepicker\" (focus)=\"d1.toggle()\" ngbDatepicker\r\n                      placeholder=\"Please Select Validity Start Date\" [(ngModel)]=\"firstDate\"\r\n                      (ngModelChange)=\"disableDate(firstDate)\" data-title=\"Date Opened\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brValidityStart.errors }\">\r\n                    <div *ngIf=\"submitted && f.brValidityStart.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brValidityStart.errors.required\">Select Validity Start</div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control required\" for=\"brValidityEnd\">Validity End</label>\r\n                  <div class=\"col-md-4\">\r\n                    <input type=\"text\" id=\"brValidityEnd\" class=\"form-control\" name=\"dateopened\"\r\n                      formControlName=\"brValidityEnd\" #d2=\"ngbDatepicker\" (focus)=\"d2.toggle()\" ngbDatepicker\r\n                      placeholder=\"Please Select Validity End Date\" [minDate]=\"endDate\" data-title=\"Date Fixed\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.brValidityEnd.errors }\">\r\n                    <div *ngIf=\"submitted && f.brValidityEnd.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.brValidityEnd.errors.required\">Select Validity End</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"form-group row\">\r\n                  <label class=\"col-md-2 label-control\" for=\"brIsBillable\">Is Billable?</label>\r\n                  <div class=\"col-md-4\">\r\n                    <div class=\"input-group\">\r\n                      <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                        <input type=\"checkbox\" id=\"brIsBillable\" formControlName=\"brIsBillable\"\r\n                          class=\"custom-control-input\">\r\n                        <label class=\"custom-control-label\" for=\"brIsBillable\">Billable</label>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <label class=\"col-md-2 label-control\" for=\"brIsActive\">Is Active?</label>\r\n                  <div class=\"col-md-4\">\r\n                    <div class=\"input-group\">\r\n                      <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                        <input type=\"checkbox\" id=\"brIsActive\" checked formControlName=\"brIsActive\"\r\n                          class=\"custom-control-input\" (click)=\"false\">\r\n                        <label class=\"custom-control-label\" for=\"brIsActive\">Active</label>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-actions\">\r\n                <button type=\"reset\" (click)=\"reset()\" class=\"btn btn-raised btn-warning mr-1\"><i class=\"ft-trash-2\"></i>\r\n                  Close</button>\r\n                <button type=\"submit\" class=\"btn btn-raised btn-info mr-1\"><i\r\n                    class=\"ft-check\"></i>&nbsp;{{btnName}}</button>\r\n              </div>\r\n            </form>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- // Basic form layout section end -->\r\n\r\n<!-- Modal Alert Starts-->\r\n<section id=\"modals\">\r\n  <div class=\"rowtext-left\" matchHeight=\"card\">\r\n    <!--Modal with Default options starts-->\r\n    <div class=\"col-sm-12 col-md-6 col-lg-4\">\r\n      <div class=\"card\">\r\n        <div class=\"card-content\">\r\n          <ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n            <div class=\"modal-header\">\r\n              <h4 class=\"modal-title\">Branch Details</h4>\r\n              <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n              </button>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n              <div class=\"card-body\">\r\n                <div class=\"row\">\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-share font-small-3\"></i> Name:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-globe font-small-3\"></i>\r\n                            State:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.stateName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-direction font-small-3\"></i> Branch\r\n                            Address:</a></span>\r\n                        <span class=\"d-block overflow-hidden\" style=\"word-wrap:break-word;\">{{branchView.brAddress}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-screen-desktop font-small-3\"></i> Branch\r\n                            Code:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brCode}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-globe font-small-3\"></i> Country\r\n                            :</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.countryName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-call-end font-small-3\"></i> Mobile\r\n                            Number:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brMobile}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-globe font-small-3\"></i> City:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brCity}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-pointer font-small-3\"></i>\r\n                            Pincode:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brPincode}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-call-end font-small-3\"></i>\r\n                            Landline Number:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brLandline}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <!-- <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-envelope font-small-3\"></i>\r\n                            Email:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brEmail}}</span>\r\n                      </li> -->\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-envelope font-small-3\"></i> Branch\r\n                            Email:</a></span>\r\n                        <span class=\"d-block overflow-hidden\" style=\"word-wrap:break-word;\">{{branchView.brEmail}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-calendar font-small-3\"></i> Validity\r\n                            End:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brValidityEnd | date: 'dd-MM-yyyy'}}</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-user font-small-3\"></i> Customer\r\n                            Name:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.custName}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-check font-small-3\"></i> Is Billable?\r\n                            :</a></span>\r\n                        <span *ngIf=\"branchView.brIsBillable == true\" class=\"d-block overflow-hidden\">Yes</span>\r\n                        <span *ngIf=\"branchView.brIsBillable == false\" class=\"d-block overflow-hidden\">No</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                  <div class=\"col-12 col-md-6 col-lg-4\">\r\n                    <ul class=\"no-list-style\">\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"icon-calendar font-small-3\"></i> Validity\r\n                            Start:</a></span>\r\n                        <span class=\"d-block overflow-hidden\">{{branchView.brValidityStart | date: 'dd-MM-yyyy'}}</span>\r\n                      </li>\r\n                      <li class=\"mb-2\">\r\n                        <span class=\"text-bold-500 primary\"><a><i class=\"ft-check font-small-3\"></i>\r\n                            Is Active?:</a></span>\r\n                        <span *ngIf=\"branchView.brIsActive == true\" class=\"d-block overflow-hidden\">Yes</span>\r\n                        <span *ngIf=\"branchView.brIsActive == false\" class=\"d-block overflow-hidden\">No</span>\r\n                      </li>\r\n                    </ul>\r\n                  </div>\r\n                </div>\r\n                <hr>\r\n              </div>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n              <button type=\"button\" class=\"btn btn-secondary btn-raised\" (click)=\"c('Close click')\">Close</button>\r\n            </div>\r\n          </ng-template>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <!--Modal with Default options ends-->\r\n  </div>\r\n</section>\r\n<!-- Model Alert Ends-->"
 
 /***/ }),
 
@@ -95,7 +95,7 @@ module.exports = "<!-- List Section starts-->\r\n<section id=\"extended\" *ngIf=
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Country</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Country\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Tel Code</th>\r\n                  <th>Country</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newCountry\">\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"countryId\"\r\n                      name=\"countryId\" autocomplete=\"off\" hidden />\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput6\" formControlName=\"countryTelCode\"\r\n                      placeholder=\"Please Enter Country Tel Code\" name=\"countryTelCode\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.countryTelCode.errors }\" maxlength=\"5\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57 )||(event.keyCode >= 96 && event.keyCode <= 105)||( event.keyCode==187 ) || event.keyCode == 107 ? true : false\">\r\n                    <div *ngIf=\"submitted && f.countryTelCode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.countryTelCode.errors.required\">Please enter country tel code</div>\r\n                      <div *ngIf=\"f.countryTelCode.errors.pattern\">Country tel code should start with +</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"countryName\"\r\n                      placeholder=\"Please Enter Country Name \" name=\"countryName\" required autocomplete=\"off\"\r\n                      maxlength=\"25\" [ngClass]=\"{ 'is-invalid': submitted && f.countryName.errors }\"\r\n                      onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n\r\n                    <div *ngIf=\"submitted && f.countryName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.countryName.errors.required\">Please Enter Country</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Save\"\r\n                      (click)=\"save()\" title=\"\"> <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Cancel\"\r\n                      (click)=\"cancel()\" title=\"\"><i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of pageOfItems ; let i = index;\" [formGroup]=\"updateCountry\">\r\n                  <td>\r\n                    {{i+1}}\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"countries.countryId\"\r\n                      formControlName=\"countryId\" name=\"countryId\" autocomplete=\"off\" hidden />\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.countryTelCode}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput6\" formControlName=\"countryTelCode\"\r\n                        [(ngModel)]=\"countries.countryTelCode\" placeholder=\"Please Enter Country Tel Code\"\r\n                        name=\"countryTelCode\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.countryTelCode.errors }\" maxlength=\"5\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57 )||(event.keyCode >= 96 && event.keyCode <= 105)||( event.keyCode==187 ) || event.keyCode == 107 ? true : false\">\r\n                      <div *ngIf=\"submitted1 && f1.countryTelCode.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.countryTelCode.errors.required\">Please Provide Country Tel Code</div>\r\n                        <div *ngIf=\"f1.countryTelCode.errors.pattern\">Country Tel Code should Start with +</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.countryName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"countries.countryName\"\r\n                        formControlName=\"countryName\" placeholder=\"Please Enter Country Name\" name=\"countryName\"\r\n                        required autocomplete=\"off\" maxlength=\"25\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.countryName.errors }\"\r\n                        onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n                      <div *ngIf=\"submitted1 && f1.countryName.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.countryName.errors.required\">Please Enter Country</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Edit\"\r\n                        (click)=\"editCountry(data)\" title=\"\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Delete\"\r\n                        (click)=\"deleteCountry(data)\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3\"></i>\r\n                      </a>\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Update\"\r\n                        (click)=\"saveUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Cancel\"\r\n                        (click)=\"cancelUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='countries' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
+module.exports = "<!--Advanced filter Starts-->\r\n<!-- <section id=\"advanced\" *ngIf=\"showList\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Country List</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Customer\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <div class=\"table-responsive\">\r\n              <input #search class=\"search mb-2\" type=\"text\" placeholder=\"Search...\" (keyup)=\"onSearch(search.value)\">\r\n              <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section> -->\r\n<!--Advanced filter Ends-->\r\n\r\n\r\n\r\n<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Country</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Country\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Tel Code</th>\r\n                  <th>Country</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newCountry\">\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"countryId\"\r\n                      name=\"countryId\" autocomplete=\"off\" hidden />\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput6\" formControlName=\"countryTelCode\"\r\n                      placeholder=\"Please Enter Country Tel Code\" name=\"countryTelCode\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.countryTelCode.errors }\" maxlength=\"5\"\r\n                      onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57 )||(event.keyCode >= 96 && event.keyCode <= 105)||( event.keyCode==187 ) || event.keyCode == 107 ? true : false\">\r\n                    <div *ngIf=\"submitted && f.countryTelCode.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.countryTelCode.errors.required\">Please enter country tel code</div>\r\n                      <div *ngIf=\"f.countryTelCode.errors.pattern\">Country tel code should start with +</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"countryName\"\r\n                      placeholder=\"Please Enter Country Name \" name=\"countryName\" required autocomplete=\"off\"\r\n                      maxlength=\"25\" [ngClass]=\"{ 'is-invalid': submitted && f.countryName.errors }\"\r\n                      onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n\r\n                    <div *ngIf=\"submitted && f.countryName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.countryName.errors.required\">Please Enter Country</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Save\"\r\n                      (click)=\"save()\" title=\"\"> <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Cancel\"\r\n                      (click)=\"cancel()\" title=\"\"><i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of pageOfItems ; let i = index;\" [formGroup]=\"updateCountry\">\r\n                  <td>\r\n                    {{i+1}}\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"countries.countryId\"\r\n                      formControlName=\"countryId\" name=\"countryId\" autocomplete=\"off\" hidden />\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.countryTelCode}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput6\" formControlName=\"countryTelCode\"\r\n                        [(ngModel)]=\"countries.countryTelCode\" placeholder=\"Please Enter Country Tel Code\"\r\n                        name=\"countryTelCode\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.countryTelCode.errors }\" maxlength=\"5\"\r\n                        onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57 )||(event.keyCode >= 96 && event.keyCode <= 105)||( event.keyCode==187 ) || event.keyCode == 107 ? true : false\">\r\n                      <div *ngIf=\"submitted1 && f1.countryTelCode.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.countryTelCode.errors.required\">Please Provide Country Tel Code</div>\r\n                        <div *ngIf=\"f1.countryTelCode.errors.pattern\">Country Tel Code should Start with +</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.countryName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"countries.countryName\"\r\n                        formControlName=\"countryName\" placeholder=\"Please Enter Country Name\" name=\"countryName\"\r\n                        required autocomplete=\"off\" maxlength=\"25\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.countryName.errors }\"\r\n                        onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n                      <div *ngIf=\"submitted1 && f1.countryName.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.countryName.errors.required\">Please Enter Country</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Edit\"\r\n                        (click)=\"editCountry(data)\" title=\"\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Delete\"\r\n                        (click)=\"deleteCountry(data)\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3\"></i>\r\n                      </a>\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Update\"\r\n                        (click)=\"saveUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" placement=\"bottom\" tooltipClass=\"my-custom-class\" ngbTooltip=\"Cancel\"\r\n                        (click)=\"cancelUpdate(data)\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='countries' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -106,7 +106,7 @@ module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n  <div class=\"row text-left\">\n    <div class=\"col-sm-12\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <div class=\"card-title\">\n            Contractor Master\n            <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\n              <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\">\n                <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New \n              </button>\n            </div>\n          </div>\n\n        </div>\n        <div class=\"card-content\">\n          <div class=\"card-body\">\n            <table class=\"table table-responsive-md\">\n              <thead>\n                <tr>\n                  <th>Sl No</th>\n                  <th>Contarctor Name</th>\n                  <th colspan=\"2\">Action</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr *ngIf=\"showNew\" [formGroup]=\"newContractor\">\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"contractorId\" placeholder=\"\" name=\"contractorId\" autocomplete=\"off\" maxlength=\"50\"\n                      readonly>\n                    <div *ngIf=\"submitted && f.contractorId.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.contractorId.errors.required\">Please Enter Id</div>\n                    </div>\n                  </td>\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"contractorName\"\n                      placeholder=\"Contractor name\" name=\"contractorName\" (blur)=\"checkName()\" required autocomplete=\"off\" maxlength=\"50\"\n                      [ngClass]=\"{ 'is-invalid': submitted && f.contractorName.errors }\">\n                    <div *ngIf=\"submitted && f.contractorName.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.contractorName.errors.required\">Please enter contactor type</div>\n                      <div *ngIf=\"f.contractorName.errors.pattern\">Special characters not allowed</div>\n                    </div>\n                  </td>\n                  <td>\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\n                    </a>\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\n                      <i class=\"ft-x font-medium-3 mr-2\"></i>\n                    </a>\n                  </td>\n                </tr>\n                <tr *ngFor=\"let data of contractors; let i = index;\" [formGroup]=\"updateContractor\">\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{i+1}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"contractors.contractorId\" formControlName=\"contractorId\"\n                         name=\"contractorId\" autocomplete=\"off\" readonly>\n                      <div *ngIf=\"submitted1 && f1.contractorId.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.contractorId.errors.required\">Please Enter Serial number</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{data.contractorName}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"contractors.contractorName\" formControlName=\"contractorName\"\n                         name=\"contractorName\" required autocomplete=\"off\" (blur)=\"checkName()\" maxlength=\"50\"\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.contractorName.errors }\">\n                      <div *ngIf=\"submitted1 && f1.contractorName.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.contractorName.errors.required\">Please enter contractor type</div>\n                        <div *ngIf=\"f1.contractorName.errors.pattern\">Special characters not allowed</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td width=\"160\">\n                    <span [hidden]=\"data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteCustomer(data)\" title=\"\">\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n  <div class=\"row text-left\">\n    <div class=\"col-sm-12\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <div class=\"card-title\">\n            Contractor Master\n            <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\n              <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\">\n                <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New \n              </button>\n            </div>\n          </div>\n\n        </div>\n        <div class=\"card-content\">\n          <div class=\"card-body\">\n            <table class=\"table table-responsive-md\">\n              <thead>\n                <tr>\n                  <th>Sl No</th>\n                  <th>Contarctor Name</th>\n                  <th colspan=\"2\">Action</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr *ngIf=\"showNew\" [formGroup]=\"newContractor\">\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"contractorId\" placeholder=\"\" name=\"contractorId\" autocomplete=\"off\" maxlength=\"50\"\n                      readonly>\n                    <div *ngIf=\"submitted && f.contractorId.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.contractorId.errors.required\">Please Enter Id</div>\n                    </div>\n                  </td>\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"contractorName\"\n                      placeholder=\"Contractor name\" name=\"contractorName\" (blur)=\"checkName()\" required autocomplete=\"off\" maxlength=\"50\"\n                      [ngClass]=\"{ 'is-invalid': submitted && f.contractorName.errors }\">\n                    <div *ngIf=\"submitted && f.contractorName.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.contractorName.errors.required\">Please enter contactor type</div>\n                      <div *ngIf=\"f.contractorName.errors.pattern\">Special characters not allowed</div>\n                    </div>\n                  </td>\n                  <td>\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\n                    </a>\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                    </a>\n                  </td>\n                </tr>\n                <tr *ngFor=\"let data of contractors; let i = index;\" [formGroup]=\"updateContractor\">\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{i+1}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"contractors.contractorId\" formControlName=\"contractorId\"\n                         name=\"contractorId\" autocomplete=\"off\" readonly>\n                      <div *ngIf=\"submitted1 && f1.contractorId.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.contractorId.errors.required\">Please Enter Serial number</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{data.contractorName}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"contractors.contractorName\" formControlName=\"contractorName\"\n                         name=\"contractorName\" required autocomplete=\"off\" (blur)=\"checkName()\" maxlength=\"50\"\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.contractorName.errors }\">\n                      <div *ngIf=\"submitted1 && f1.contractorName.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.contractorName.errors.required\">Please enter contractor type</div>\n                        <div *ngIf=\"f1.contractorName.errors.pattern\">Special characters not allowed</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td width=\"160\">\n                    <span [hidden]=\"data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteCustomer(data)\" title=\"\">\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -128,7 +128,7 @@ module.exports = "<!--Advanced filter Starts-->\r\n<section id=\"advanced\" *ngI
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n  <div class=\"row text-left\">\n    <div class=\"col-sm-12\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <div class=\"card-title\">\n            Department Master\n            <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\n              <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\">\n                <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New \n              </button>\n            </div>\n          </div>\n\n        </div>\n        <div class=\"card-content\">\n          <div class=\"card-body\">\n            <table class=\"table table-responsive-md\">\n              <thead>\n                <tr>\n                  <th>Sl No</th>\n                  <th>Department Name</th>\n                  <th colspan=\"2\">Action</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr *ngIf=\"showNew\" [formGroup]=\"newDepartment\">\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"deptId\" placeholder=\"\" name=\"deptId\" autocomplete=\"off\" maxlength=\"50\"\n                      readonly>\n                    <div *ngIf=\"submitted && f.deptId.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.deptId.errors.required\">Please Enter Id</div>\n                    </div>\n                  </td>\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"deptName\"\n                      placeholder=\"Department name\" name=\"deptName\" required autocomplete=\"off\" maxlength=\"20\"\n                      [ngClass]=\"{ 'is-invalid': submitted && f.deptName.errors }\">\n                    <div *ngIf=\"submitted && f.deptName.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.deptName.errors.required\">Please enter department name</div>\n                    </div>\n                  </td>\n                  <td>\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\n                    </a>\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\n                      <i class=\"ft-x font-medium-3 mr-2\"></i>\n                    </a>\n                  </td>\n                </tr>\n                <tr *ngFor=\"let data of departments; let i = index;\" [formGroup]=\"updateDepartment\">\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{i+1}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"departments.deptId\" formControlName=\"deptId\"\n                         name=\"deptId\" autocomplete=\"off\" readonly>\n                      <div *ngIf=\"submitted1 && f1.deptId.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.deptId.errors.required\">Please Enter Serial number</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{data.deptName}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"departments.deptName\" formControlName=\"deptName\"\n                         name=\"deptName\" required autocomplete=\"off\" maxlength=\"20\"\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.deptName.errors }\">\n                      <div *ngIf=\"submitted1 && f1.deptName.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.deptName.errors.required\">Please Enter Department</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td width=\"160\">\n                    <span [hidden]=\"data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteCustomer(data)\" title=\"\">\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n  <div class=\"row text-left\">\n    <div class=\"col-sm-12\">\n      <div class=\"card\">\n        <div class=\"card-header\">\n          <div class=\"card-title\">\n            Department Master\n            <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\n              <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\">\n                <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New \n              </button>\n            </div>\n          </div>\n\n        </div>\n        <div class=\"card-content\">\n          <div class=\"card-body\">\n            <table class=\"table table-responsive-md\">\n              <thead>\n                <tr>\n                  <th>Sl No</th>\n                  <th>Department Name</th>\n                  <th colspan=\"2\">Action</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr *ngIf=\"showNew\" [formGroup]=\"newDepartment\">\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"deptId\" placeholder=\"\" name=\"deptId\" autocomplete=\"off\" maxlength=\"50\"\n                      readonly>\n                    <div *ngIf=\"submitted && f.deptId.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.deptId.errors.required\">Please Enter Id</div>\n                    </div>\n                  </td>\n                  <td>\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"deptName\"\n                      placeholder=\"Department name\" name=\"deptName\" required autocomplete=\"off\" maxlength=\"20\"\n                      [ngClass]=\"{ 'is-invalid': submitted && f.deptName.errors }\">\n                    <div *ngIf=\"submitted && f.deptName.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"f.deptName.errors.required\">Please enter department name</div>\n                    </div>\n                  </td>\n                  <td>\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\n                      <i class=\"ft-check font-medium-3 mr-2\"></i>\n                    </a>\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                    </a>\n                  </td>\n                </tr>\n                <tr *ngFor=\"let data of departments; let i = index;\" [formGroup]=\"updateDepartment\">\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{i+1}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"departments.deptId\" formControlName=\"deptId\"\n                         name=\"deptId\" autocomplete=\"off\" readonly>\n                      <div *ngIf=\"submitted1 && f1.deptId.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.deptId.errors.required\">Please Enter Serial number</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td>\n                    <span [hidden]=\"data.showUpdate\">\n                      {{data.deptName}}\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"departments.deptName\" formControlName=\"deptName\"\n                         name=\"deptName\" required autocomplete=\"off\" maxlength=\"20\"\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.deptName.errors }\">\n                      <div *ngIf=\"submitted1 && f1.deptName.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f1.deptName.errors.required\">Please Enter Department</div>\n                      </div>\n                    </span>\n                  </td>\n                  <td width=\"160\">\n                    <span [hidden]=\"data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteCustomer(data)\" title=\"\">\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                    <span [hidden]=\"!data.showUpdate\">\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                      </a>\n                    </span>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -139,7 +139,7 @@ module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n  <div 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n    <div class=\"row text-left\">\n      <div class=\"col-sm-12\">\n        <div class=\"card\">\n          <div class=\"card-header\">\n            <div class=\"card-title\">\n              Designation Master\n              <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\n                <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\">\n                  <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New \n                </button>\n              </div>\n            </div>\n  \n          </div>\n          <div class=\"card-content\">\n            <div class=\"card-body\">\n              <table class=\"table table-responsive-md\">\n                <thead>\n                  <tr>\n                    <th>Sl No</th>\n                    <th>Designation Name</th>\n                    <th colspan=\"2\">Action</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngIf=\"showNew\" [formGroup]=\"newDesignation\">\n                    <td>\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"designationId\" placeholder=\"\" name=\"designationId\" autocomplete=\"off\" maxlength=\"50\"\n                        readonly>\n                      <div *ngIf=\"submitted && f.designationId.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f.designationId.errors.required\">Please Enter Id</div>\n                      </div>\n                    </td>\n                    <td>\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"designationName\"\n                        placeholder=\"Designation name\" name=\"designationName\" required autocomplete=\"off\" maxlength=\"20\"\n                        [ngClass]=\"{ 'is-invalid': submitted && f.designationName.errors }\">\n                      <div *ngIf=\"submitted && f.designationName.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f.designationName.errors.required\">Please enter Designation name</div>\n                      </div>\n                    </td>\n                    <td>\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\n                      </a>\n                    </td>\n                  </tr>\n                  <tr *ngFor=\"let data of designations; let i = index;\" [formGroup]=\"updateDesignation\">\n                    <td>\n                      <span [hidden]=\"data.showUpdate\">\n                        {{i+1}}\n                      </span>\n                      <span [hidden]=\"!data.showUpdate\">\n                        <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"designations.designationId\" formControlName=\"designationId\"\n                           name=\"designationId\" autocomplete=\"off\" readonly>\n                        <div *ngIf=\"submitted1 && f1.designationId.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"f1.designationId.errors.required\">Please Enter Serial number</div>\n                        </div>\n                      </span>\n                    </td>\n                    <td>\n                      <span [hidden]=\"data.showUpdate\">\n                        {{data.designationName}}\n                      </span>\n                      <span [hidden]=\"!data.showUpdate\">\n                        <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"designations.designationName\" formControlName=\"designationName\"\n                           name=\"designationName\" required autocomplete=\"off\" maxlength=\"20\"\n                          [ngClass]=\"{ 'is-invalid': submitted1 && f1.designationName.errors }\">\n                        <div *ngIf=\"submitted1 && f1.designationName.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"f1.designationName.errors.required\">Please Enter Designation</div>\n                        </div>\n                      </span>\n                    </td>\n                    <td width=\"160\">\n                      <span [hidden]=\"data.showUpdate\">\n                        <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\n                          <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\n                        </a>\n                        <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteCustomer(data)\" title=\"\">\n                          <i class=\"ft-x font-medium-3 mr-2\"></i>\n                        </a>\n                      </span>\n                      <span [hidden]=\"!data.showUpdate\">\n                        <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\n                          <i class=\"ft-check font-medium-3 mr-2\"></i>\n                        </a>\n                        <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\n                          <i class=\"ft-x font-medium-3 mr-2\"></i>\n                        </a>\n                      </span>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n  <!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\n<section id=\"action\">\n    <div class=\"row text-left\">\n      <div class=\"col-sm-12\">\n        <div class=\"card\">\n          <div class=\"card-header\">\n            <div class=\"card-title\">\n              Designation Master\n              <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;\">\n                <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\">\n                  <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New \n                </button>\n              </div>\n            </div>\n  \n          </div>\n          <div class=\"card-content\">\n            <div class=\"card-body\">\n              <table class=\"table table-responsive-md\">\n                <thead>\n                  <tr>\n                    <th>Sl No</th>\n                    <th>Designation Name</th>\n                    <th colspan=\"2\">Action</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngIf=\"showNew\" [formGroup]=\"newDesignation\">\n                    <td>\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"designationId\" placeholder=\"\" name=\"designationId\" autocomplete=\"off\" maxlength=\"50\"\n                        readonly>\n                      <div *ngIf=\"submitted && f.designationId.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f.designationId.errors.required\">Please Enter Id</div>\n                      </div>\n                    </td>\n                    <td>\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"designationName\"\n                        placeholder=\"Designation name\" name=\"designationName\" required autocomplete=\"off\" maxlength=\"20\"\n                        [ngClass]=\"{ 'is-invalid': submitted && f.designationName.errors }\">\n                      <div *ngIf=\"submitted && f.designationName.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"f.designationName.errors.required\">Please enter Designation name</div>\n                      </div>\n                    </td>\n                    <td>\n                      <a class=\"success p-0\" data-original-title=\"\" (click)=\"save()\" title=\"\">\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\n                      </a>\n                      <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancel()\" title=\"\">\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                      </a>\n                    </td>\n                  </tr>\n                  <tr *ngFor=\"let data of designations; let i = index;\" [formGroup]=\"updateDesignation\">\n                    <td>\n                      <span [hidden]=\"data.showUpdate\">\n                        {{i+1}}\n                      </span>\n                      <span [hidden]=\"!data.showUpdate\">\n                        <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"designations.designationId\" formControlName=\"designationId\"\n                           name=\"designationId\" autocomplete=\"off\" readonly>\n                        <div *ngIf=\"submitted1 && f1.designationId.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"f1.designationId.errors.required\">Please Enter Serial number</div>\n                        </div>\n                      </span>\n                    </td>\n                    <td>\n                      <span [hidden]=\"data.showUpdate\">\n                        {{data.designationName}}\n                      </span>\n                      <span [hidden]=\"!data.showUpdate\">\n                        <input type=\"text\" id=\"projectinput1\" class=\"form-control\" [(ngModel)]=\"designations.designationName\" formControlName=\"designationName\"\n                           name=\"designationName\" required autocomplete=\"off\" maxlength=\"20\"\n                          [ngClass]=\"{ 'is-invalid': submitted1 && f1.designationName.errors }\">\n                        <div *ngIf=\"submitted1 && f1.designationName.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"f1.designationName.errors.required\">Please Enter Designation</div>\n                        </div>\n                      </span>\n                    </td>\n                    <td width=\"160\">\n                      <span [hidden]=\"data.showUpdate\">\n                        <a class=\"success p-0\" data-original-title=\"\" (click)=\"editCustomer(data)\" title=\"\">\n                          <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\n                        </a>\n                        <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteCustomer(data)\" title=\"\">\n                          <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                        </a>\n                      </span>\n                      <span [hidden]=\"!data.showUpdate\">\n                        <a class=\"success p-0\" data-original-title=\"\" (click)=\"saveUpdate(data)\" title=\"\">\n                          <i class=\"ft-check font-medium-3 mr-2\"></i>\n                        </a>\n                        <a class=\"danger p-0\" data-original-title=\"\" (click)=\"cancelUpdate(data)\" title=\"\">\n                          <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\n                        </a>\n                      </span>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n  <!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -194,7 +194,7 @@ module.exports = "<section id=\"modals\">\r\n        <div class=\"row text-left\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"branchForm\" (ngSubmit)=\"submitBranch()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"refBrId\">Branch</label>\r\n        <select id=\"refBrId\" name=\"refBrId\" formControlName=\"refBrId\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted1 && f1.refBrId.errors }\">\r\n          <option selected disabled value=\"null\">Select Branch</option>\r\n          <option *ngFor=\"let ct of globalBranch\" [value]=\"ct.id\">{{ct.name}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted1 && f1.refBrId.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f1.refBrId.errors.required\">Please Select Branch</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"brFrom\">From Date</label>\r\n        <input type=\"text\" id=\"brFrom\" class=\"form-control\" formControlName=\"brFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d2=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted1 && f1.brFrom.errors }\" (click)=\"d2.toggle()\">\r\n        <div *ngIf=\"submitted1 && f1.brFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f1.brFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\">\r\n      Update\r\n      <span style=\"margin-left: 2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
+module.exports = "<form [formGroup]=\"branchForm\" (ngSubmit)=\"submitBranch()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"brId\">Branch</label>\r\n        <select id=\"brId\" name=\"brId\" formControlName=\"brId\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted1 && f1.brId.errors }\">\r\n          <option selected disabled value=\"null\">Select Branch</option>\r\n          <option *ngFor=\"let ct of globalBranch\" [value]=\"ct.brId\">{{ct.brName}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted1 && f1.brId.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f1.brId.errors.required\">Please Select Branch</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"brFrom\">From Date</label>\r\n        <input type=\"text\" id=\"brFrom\" class=\"form-control\" formControlName=\"brFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d2=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted1 && f1.brFrom.errors }\" (click)=\"d2.toggle()\">\r\n        <div *ngIf=\"submitted1 && f1.brFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f1.brFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\">\r\n      Update\r\n      <span style=\"margin-left: 2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -205,7 +205,7 @@ module.exports = "<form [formGroup]=\"branchForm\" (ngSubmit)=\"submitBranch()\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"deptForm\" (ngSubmit)=\"submitDept()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"empDept\">Department</label>\r\n        <select id=\"empDept\" name=\"empDept\" formControlName=\"empDept\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted2 && f2.empDept.errors }\">\r\n          <option selected disabled value=\"null\">Select Department</option>\r\n          <option *ngFor=\"let ct of globalDepartment\" [value]=\"ct.id\">{{ct.name}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted2 && f2.empDept.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f2.empDept.errors.required\">Please Select Department</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"empReport\">Reporting To</label>\r\n        <select id=\"empReport\" name=\"empReport\" formControlName=\"empReport\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted2 && f2.empReport.errors }\">\r\n          <option selected disabled value=\"null\">Select Reporting To</option>\r\n          <option *ngFor=\"let ct of globalReportTo\" [value]=\"ct.name\">{{ct.name}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted2 && f2.empReport.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f2.empReport.errors.required\">Please Select Reporting To</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"deptFrom\">From Date</label>\r\n        <input type=\"text\" id=\"deptFrom\" class=\"form-control\" formControlName=\"deptFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d3=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted2 && f2.deptFrom.errors }\" (click)=\"d3.toggle()\">\r\n        <div *ngIf=\"submitted2 && f2.deptFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f2.deptFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
+module.exports = "<form [formGroup]=\"deptForm\" (ngSubmit)=\"submitDept()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"departmentId\">Department</label>\r\n        <select id=\"departmentId\" name=\"departmentId\" formControlName=\"departmentId\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted2 && f2.departmentId.errors }\">\r\n          <option selected disabled value=\"null\">Select Department</option>\r\n          <option *ngFor=\"let ct of globalDepartment\" [value]=\"ct.deptId\">{{ct.deptName}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted2 && f2.departmentId.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f2.departmentId.errors.required\">Please Select Department</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"empReportingToId\">Reporting To</label>\r\n        <select id=\"empReportingToId\" name=\"empReportingToId\" formControlName=\"empReportingToId\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted2 && f2.empReportingToId.errors }\">\r\n          <option selected disabled value=\"null\">Select Reporting To</option>\r\n          <option *ngFor=\"let ct of globalReportTo\" [value]=\"ct.id\">{{ct.name}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted2 && f2.empReportingToId.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f2.empReportingToId.errors.required\">Please Select Reporting To</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"deptFrom\">From Date</label>\r\n        <input type=\"text\" id=\"deptFrom\" class=\"form-control\" formControlName=\"deptFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d3=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted2 && f2.deptFrom.errors }\" (click)=\"d3.toggle()\">\r\n        <div *ngIf=\"submitted2 && f2.deptFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f2.deptFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -216,7 +216,7 @@ module.exports = "<form [formGroup]=\"deptForm\" (ngSubmit)=\"submitDept()\">\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"desgForm\" (ngSubmit)=\"submitDesg()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"empDesg\">Designation</label>\r\n        <select id=\"empDesg\" name=\"empDesg\" formControlName=\"empDesg\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted3 && f3.empDesg.errors }\">\r\n          <option selected disabled value=\"null\">Select Designation</option>\r\n          <option *ngFor=\"let ct of globalDesignation\" [value]=\"ct.id\">{{ct.name}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted3 && f3.empDesg.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f3.empDesg.errors.required\">Please Select Designation</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"desgFrom\">From Date</label>\r\n        <input type=\"text\" id=\"desgFrom\" class=\"form-control\" formControlName=\"desgFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d4=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted3 && f3.desgFrom.errors }\" (click)=\"d4.toggle()\">\r\n        <div *ngIf=\"submitted3 && f3.desgFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f3.desgFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
+module.exports = "<form [formGroup]=\"desgForm\" (ngSubmit)=\"submitDesg()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"designationId\">Designation</label>\r\n        <select id=\"designationId\" name=\"designationId\" formControlName=\"designationId\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted3 && f3.designationId.errors }\">\r\n          <option selected disabled value=\"null\">Select Designation</option>\r\n          <option *ngFor=\"let ct of globalDesignation\" [value]=\"ct.designationId\">{{ct.designationName}}\r\n        </select>\r\n        <div *ngIf=\"submitted3 && f3.designationId.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f3.designationId.errors.required\">Please Select Designation</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"desgFrom\">From Date</label>\r\n        <input type=\"text\" id=\"desgFrom\" class=\"form-control\" formControlName=\"desgFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d4=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted3 && f3.desgFrom.errors }\" (click)=\"d4.toggle()\">\r\n        <div *ngIf=\"submitted3 && f3.desgFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f3.desgFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -227,7 +227,7 @@ module.exports = "<form [formGroup]=\"desgForm\" (ngSubmit)=\"submitDesg()\">\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- List Section starts-->\r\n<section id=\"extended\" *ngIf=\"isList\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <div>\r\n            <h4 style=\"width: 41%;float: left;margin-top: 10px;\" class=\"card-title\"> Employee List </h4>\r\n\r\n          </div>\r\n          <div style=\"width: 40%;float: right;\">\r\n            <button (click)=\"openForm()\" class=\"btn btn-raised btn-info\">\r\n              Add <i class=\"ft-plus\"></i>\r\n            </button>\r\n            <input type='text' class=\"searchCust\" placeholder='Type to Search Customer'\r\n              (keyup)='updateFilter($event)' />\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md text-center\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Employee Name</th>\r\n                  <th>Designation</th>\r\n                  <th>Employee Type</th>\r\n                  <th>Date of Joining</th>\r\n                  <th>Branch</th>\r\n                  <th>Department</th>\r\n                  <!-- <th>Manager</th> -->\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngFor=\"let emp of globalEmployees; let i =index;\">\r\n                  <td>{{i + 1}}</td>\r\n                  <td>{{emp.empName}}</td>\r\n                  <td>{{emp.designationName}}</td>\r\n                  <td>{{emp.empType}}</td>\r\n                  <td>{{emp.empJoiningDate | date: 'dd-MM-yyyy'}}</td>\r\n                  <td>{{emp.brName}}</td>\r\n                  <td>{{emp.deptName}}</td>\r\n                  <!-- <td>{{emp.empMgr}}</td> -->\r\n                  <td width=\"160\">\r\n                    <a class=\"warning p-0\" data-original-title=\"\" (click)=\"viewEmployee(emp.empId)\" title=\"\">\r\n                      <i class=\"ft-eye font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"success p-0\" data-original-title=\"\" (click)=\"editEmployee(emp.empId)\" title=\"\">\r\n                      <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" data-original-title=\"\" (click)=\"deleteEmployee(emp.empId, emp.Name)\" title=\"\">\r\n                      <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- List section Ends -->\r\n\r\n<!-- Basic form layout section start -->\r\n<section id=\"ngx\" *ngIf=\"showForm\">\r\n  <div class=\"card\">\r\n    <div class=\"card-content\">\r\n      <div class=\"card-body\">\r\n        <aw-wizard #wizard navBarLayout=\"large-empty-symbols\">\r\n          <aw-wizard-step [stepTitle]=\"'Employee Details'\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"empForm\" (ngSubmit)=\"onSubmit()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class='row'>\r\n                <input type=\"checkbox\" formControlName=\"mgrService\" id=\"mgrService\" hidden>\r\n                <div class='col-12'>\r\n                  <div class=\"row\">\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empName\">Employee Name</label>\r\n                        <input type=\"text\" id=\"empName\" class=\"form-control\" formControlName=\"empName\"\r\n                          placeholder=\"Enter Employee Name\" name=\"empName\" required autocomplete=\"off\" maxlength=\"50\"\r\n                          [ngClass]=\"{ 'is-invalid': submitted && f.empName.errors }\">\r\n                        <div *ngIf=\"submitted && f.empName.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empName.errors.required\">Please provide Employee Name</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empMobile\">Mobile Number</label>\r\n                        <input type=\"tel\" formControlName=\"empMobile\" maxlength=\"10\" id=\"empMobile\" class=\"form-control\"\r\n                          placeholder=\"Enter Mobile Number\" name=\"number\" autocomplete=\"off\"\r\n                          onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 107 || event.keyCode == 187? true : false\"\r\n                          [ngClass]=\"{ 'is-invalid': submitted && f.empMobile.errors }\">\r\n                        <div *ngIf=\"submitted && f.empMobile.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empMobile.errors.required\">Please provide Mobile Number</div>\r\n                          <div *ngIf=\"f.empMobile.errors.pattern\">Mobile Number should be 10 numbers</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empType\">Employee Type</label>\r\n                        <select id=\"empType\" name=\"empType\" formControlName=\"empType\"\r\n                          (change)=\"selectedEmpType($event.target.value)\" class=\"form-control\"\r\n                          [ngClass]=\"{ 'is-invalid': submitted && f.empType.errors }\">\r\n                          <option selected disabled value=\"null\">Select Employee Type</option>\r\n                          <option *ngFor=\"let ct of globalEmpType\" [value]=\"ct.name\">{{ct.name}}</option>\r\n                        </select>\r\n                        <div *ngIf=\"submitted && f.empType.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empType.errors.required\">Please Select Employee Type</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4' *ngIf=\"showContractor\">\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label\" for=\"empCont\">Contractor Name</label>\r\n                        <input type=\"tel\" formControlName=\"empCont\" maxlength=\"50\" id=\"empCont\" class=\"form-control\"\r\n                          placeholder=\"Enter Contractor Name\" name=\"empCont\" autocomplete=\"off\">\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empDOJ\">Date of Joining</label>\r\n                        <input type=\"text\" id=\"empDOJ\" class=\"form-control\" formControlName=\"empDOJ\"\r\n                          placeholder=\"YYYY-MM-DD\" name=\"empDOJ\" required autocomplete=\"off\" ngbDatepicker\r\n                          #d1=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted && f.empDOJ.errors }\"\r\n                          (click)=\"d1.toggle()\">\r\n                        <div *ngIf=\"submitted && f.empDOJ.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empDOJ.errors.required\">Please Select Date of Joining</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"d-block required\">Gender</label>\r\n                        <div class=\"input-group\">\r\n                          <div class=\"custom-control custom-radio d-inline-block float-left\">\r\n                            <input type=\"radio\" id=\"empGender1\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                              [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\" value=\"Male\">\r\n                            <label class=\"custom-control-label mr-4\" for=\"empGender1\">Male</label>\r\n                            <div *ngIf=\"submitted && f.empGender.errors\" class=\"invalid-feedback\">\r\n                              <div *ngIf=\"f.empGender.errors.required\">Please Select Gender</div>\r\n                            </div>\r\n                          </div>\r\n                          <div class=\"custom-control custom-radio d-inline-block ml-2\">\r\n                            <input type=\"radio\" id=\"empGender2\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                              value=\"Female\" [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\">\r\n                            <label class=\"custom-control-label\" for=\"empGender2\">Female</label>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"d-block\">Is Manager/Supervisor?</label>\r\n                        <div class=\"input-group\">\r\n                          <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                            <input type=\"checkbox\" id=\"empMgr\" formControlName=\"empMgr\" class=\"custom-control-input\">\r\n                            <label class=\"custom-control-label\" for=\"empMgr\">Manager/Supervisor</label>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                  <div class=\"form-group text-center\">\r\n                    <button type=\"reset\" (click)=\"closeWizard()\" class=\"btn btn-danger btn-raised mr-1\">\r\n                      Close\r\n                      <span style=\"margin-left:10px;\">\r\n                        <i class=\"ft-x\"></i>\r\n                      </span>\r\n                    </button>\r\n                    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\" awNextStep>\r\n                      Next\r\n                      <span style=\"margin-left:10px;\">\r\n                        <i class=\"ft-chevron-right\"></i>\r\n                      </span>\r\n                    </button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Branch Details'\" [canEnter]=\"empForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf126;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"branchForm\" (ngSubmit)=\"submitBranch()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"refBrId\">Branch</label>\r\n                    <select id=\"refBrId\" name=\"refBrId\" formControlName=\"refBrId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted1 && f1.refBrId.errors }\">\r\n                      <option selected disabled value=\"null\">Select Branch</option>\r\n                      <option *ngFor=\"let ct of globalBranch\" [value]=\"ct.id\">{{ct.name}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted1 && f1.refBrId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f1.refBrId.errors.required\">Please Select Branch</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"brFrom\">From Date</label>\r\n                    <input type=\"text\" id=\"brFrom\" class=\"form-control\" formControlName=\"brFrom\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d2=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted1 && f1.brFrom.errors }\"\r\n                      (click)=\"d2.toggle()\">\r\n                    <div *ngIf=\"submitted1 && f1.brFrom.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f1.brFrom.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Department Details'\" [canEnter]=\"branchForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf1ad;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"deptForm\" (ngSubmit)=\"submitDept()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"empDept\">Department</label>\r\n                    <select id=\"empDept\" name=\"empDept\" formControlName=\"empDept\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted2 && f2.empDept.errors }\">\r\n                      <option selected disabled value=\"null\">Select Department</option>\r\n                      <option *ngFor=\"let ct of globalDepartment\" [value]=\"ct.id\">{{ct.name}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted2 && f2.empDept.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f2.empDept.errors.required\">Please Select Department</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"empReport\">Reporting To</label>\r\n                    <select id=\"empReport\" name=\"empReport\" formControlName=\"empReport\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted2 && f2.empReport.errors }\">\r\n                      <option selected disabled value=\"null\">Select Reporting To</option>\r\n                      <option *ngFor=\"let ct of globalReportTo\" [value]=\"ct.name\">{{ct.name}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted2 && f2.empReport.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f2.empReport.errors.required\">Please Select Reporting To</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"deptFrom\">From Date</label>\r\n                    <input type=\"text\" id=\"deptFrom\" class=\"form-control\" formControlName=\"deptFrom\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d3=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted2 && f2.deptFrom.errors }\"\r\n                      (click)=\"d3.toggle()\">\r\n                    <div *ngIf=\"submitted2 && f2.deptFrom.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f2.deptFrom.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Designation Details'\" [canEnter]=\"deptForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xe9d3;', fontFamily: 'Feather' }\">\r\n            <form [formGroup]=\"desgForm\" (ngSubmit)=\"submitDesg()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"empDesg\">Designation</label>\r\n                    <select id=\"empDesg\" name=\"empDesg\" formControlName=\"empDesg\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted3 && f3.empDesg.errors }\">\r\n                      <option selected disabled value=\"null\">Select Designation</option>\r\n                      <option *ngFor=\"let ct of globalDesignation\" [value]=\"ct.id\">{{ct.name}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted3 && f3.empDesg.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f3.empDesg.errors.required\">Please Select Designation</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"desgFrom\">From Date</label>\r\n                    <input type=\"text\" id=\"desgFrom\" class=\"form-control\" formControlName=\"desgFrom\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d4=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted3 && f3.desgFrom.errors }\"\r\n                      (click)=\"d4.toggle()\">\r\n                    <div *ngIf=\"submitted3 && f3.desgFrom.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f3.desgFrom.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Shift Details'\" [canEnter]=\"desgForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xe9d3;', fontFamily: 'Feather' }\">\r\n            <form [formGroup]=\"shiftForm\" (ngSubmit)=\"submitShift()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"empShift\">Shift</label>\r\n                    <select id=\"empShift\" name=\"empShift\" formControlName=\"empShift\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted4 && f4.empShift.errors }\">\r\n                      <option selected disabled value=\"null\">Select Shift</option>\r\n                      <option *ngFor=\"let ct of globalShift\" [value]=\"ct.name\">{{ct.name}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted4 && f4.empShift.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f4.empShift.errors.required\">Please Select Shift</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"shiftFrom\">From Date</label>\r\n                    <input type=\"text\" id=\"shiftFrom\" class=\"form-control\" formControlName=\"shiftFrom\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d5=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted4 && f4.shiftFrom.errors }\"\r\n                      (click)=\"d5.toggle()\">\r\n                    <div *ngIf=\"submitted4 && f4.shiftFrom.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f4.shiftFrom.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Weekly Off'\" [canEnter]=\"shiftForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf0ac;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"weeklyoffForm\" (ngSubmit)=\"submitWeeklyOff()\">\r\n              <h4 class=\"head text-center\">Where do you live?</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"weekoff\">Weekly Off</label>\r\n                    <ng-multiselect-dropdown name=\"weekoff\" [placeholder]=\"'Select City'\" [data]=\"globalWeeks\"\r\n                      formControlName=\"weekoff\" [settings]=\"dropdownSettings\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted5 && f5.weekoff.errors }\">\r\n                    </ng-multiselect-dropdown>\r\n                    <div *ngIf=\"submitted5 && f5.weekoff.errors\" class=\"invalid\">\r\n                      <div *ngIf=\"f5.weekoff.errors?.required\">Please Select Weeks</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"offFrom\">From Date</label>\r\n                    <input type=\"text\" id=\"offFrom\" class=\"form-control\" formControlName=\"offFrom\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d6=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted5 && f5.offFrom.errors }\"\r\n                      (click)=\"d6.toggle()\">\r\n                    <div *ngIf=\"submitted5 && f5.offFrom.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f5.offFrom.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center\">\r\n                <button type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button type=\"submit\" class=\"btn btn-raised btn-success\">\r\n                  Finish\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-check\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n\r\n          </aw-wizard-step>\r\n        </aw-wizard>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- // Basic form layout section end -->\r\n\r\n\r\n<!-- Update Form Layout Starts -->\r\n<section id=\"ngx\" *ngIf=\"isUpdate\">\r\n  <div class=\"card text-left\">\r\n    <div class=\"card-content\">\r\n      <div class=\"card-body\">\r\n        <div class=\"board\">\r\n          <!-- Navigation Area (Circular Tabs) -->\r\n          <msw-navbar></msw-navbar>\r\n          <!-- End Navigation Area (Circular Tabs) -->\r\n\r\n          <!-- Content Area -->\r\n          <div class=\"tab-content\">\r\n            <!-- Nested view  -->\r\n            <router-outlet> </router-outlet>\r\n          </div>\r\n          <!-- End Content Area -->\r\n        </div>\r\n        <!-- For Debugging: show our valid formData -->\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- Update Form Layout Ends -->\r\n\r\n\r\n<!-- Sweet Alert Starts-->\r\n<div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\" *ngIf=\"showView\">\r\n  <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\"\r\n    tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n    <div class=\"swal2-header\">\r\n      <ul class=\"swal2-progress-steps\" style=\"display: none;\"></ul>\r\n      <div class=\"swal2-icon swal2-error\" style=\"display: none;\"><span class=\"swal2-x-mark\"><span\r\n            class=\"swal2-x-mark-line-left\"></span><span class=\"swal2-x-mark-line-right\"></span></span></div>\r\n      <div class=\"swal2-icon swal2-question\" style=\"display: none;\"></div>\r\n      <div class=\"swal2-icon swal2-warning\" style=\"display: none;\"></div>\r\n      <div class=\"swal2-icon swal2-info\" style=\"display: none;\"></div>\r\n      <div class=\"swal2-icon swal2-success\" style=\"display: none;\">\r\n        <div class=\"swal2-success-circular-line-left\"></div><span class=\"swal2-success-line-tip\"></span> <span\r\n          class=\"swal2-success-line-long\"></span>\r\n        <div class=\"swal2-success-ring\"></div>\r\n        <div class=\"swal2-success-fix\"></div>\r\n        <div class=\"swal2-success-circular-line-right\"></div>\r\n      </div><img class=\"swal2-image\" style=\"display: none;\">\r\n      <h2 class=\"swal2-title\" id=\"swal2-title\" style=\"display: flex;\">Branch Details</h2><button type=\"button\"\r\n        class=\"swal2-close\" aria-label=\"Close this dialog\" style=\"display: none;\">×</button>\r\n    </div>\r\n    <pre></pre>\r\n    <pre></pre>\r\n    <div class=\"swal2-content\">\r\n      <table class=\"table table-responsive-md table-borderless\" style=\"table-layout: fixed;\">\r\n        <tbody>\r\n          <tr>\r\n            <th>Employee Name</th>\r\n            <td>XYZ</td>\r\n            <th>Mobile Number</th>\r\n            <td>9874561230</td>\r\n            <th>Employee Type</th>\r\n            <td>Manager</td>\r\n          </tr>\r\n        </tbody>\r\n        <tbody>\r\n          <tr>\r\n            <th>Gender</th>\r\n            <td>Male</td>\r\n            <th>Is Manager?</th>\r\n            <td>Yes</td>\r\n            <th>Date of Joining</th>\r\n            <td>20-10-2019</td>\r\n          </tr>\r\n        </tbody>\r\n        <tbody>\r\n          <tr>\r\n            <th>Branch</th>\r\n            <td>Lng Tech</td>\r\n            <th>Department</th>\r\n            <td>Dept 1</td>\r\n            <th>Reporting To</th>\r\n            <td>ABC</td>\r\n          </tr>\r\n        </tbody>\r\n        <tbody>\r\n          <tr>\r\n            <th>Designation</th>\r\n            <td>Desg 1</td>\r\n            <th>Shift</th>\r\n            <td>Day</td>\r\n            <th>Weekly Off</th>\r\n            <td>Sunday</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n    <div class=\"swal2-actions\" style=\"display: flex;\"><button type=\"button\" class=\"swal2-confirm swal2-styled\"\r\n        aria-label=\"\" (click)=\"closeView()\"\r\n        style=\"display: inline-block; border-left-color: rgb(12, 194, 126); border-right-color: rgb(12, 194, 126);\">OK</button><button\r\n        type=\"button\" class=\"swal2-cancel swal2-styled\" aria-label=\"\" style=\"display: none;\">Cancel</button></div>\r\n    <div class=\"swal2-footer\" style=\"display: none;\"></div>\r\n  </div>\r\n</div>\r\n<!-- Sweet Alert Ends-->"
+module.exports = "<!-- List Section starts-->\r\n<section id=\"extended\" *ngIf=\"isList\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">Employee</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New Employee\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md text-center\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Employee Name</th>\r\n                  <th>Designation</th>\r\n                  <th>Employee Type</th>\r\n                  <th>Date of Joining</th>\r\n                  <th>Branch</th>\r\n                  <th>Department</th>\r\n                  <!-- <th>Manager</th> -->\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngFor=\"let emp of pageOfItems; let i =index;\">\r\n                  <td>{{i + 1}}</td>\r\n                  <td>{{emp.empName}}</td>\r\n                  <td>{{emp.designationName}}</td>\r\n                  <td>{{emp.empType}}</td>\r\n                  <td>{{emp.empJoiningDate | date: 'dd-MM-yyyy'}}</td>\r\n                  <td>{{emp.brName}}</td>\r\n                  <td>{{emp.deptName}}</td>\r\n                  <!-- <td>{{emp.empMgr}}</td> -->\r\n                  <td width=\"160\">\r\n                    <a class=\"warning p-0\" (click)=\"viewEmployee(emp.empId)\" placement=\"bottom\" ngbTooltip=\"View\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-eye font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"success p-0\" (click)=\"editEmployee(emp.empId)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                      tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" (click)=\"deleteEmployee(emp.empId)\" placement=\"bottom\"\r\n                      ngbTooltip=\"Delete\" tooltipClass=\"my-custom-class\">\r\n                      <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='globalEmployees' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- List section Ends -->\r\n\r\n<!-- Basic form layout section start -->\r\n<section id=\"ngx\" *ngIf=\"showForm\">\r\n  <div class=\"card\">\r\n    <div class=\"card-content\">\r\n      <div class=\"card-body\">\r\n        <aw-wizard #wizard navBarLayout=\"large-empty-symbols\">\r\n          <aw-wizard-step [stepTitle]=\"'Employee Details'\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"empForm\" (ngSubmit)=\"onSubmit()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class='row'>\r\n                <div class='col-12'>\r\n                  <div class=\"row\">\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empName\">Employee Name</label>\r\n                        <input type=\"text\" id=\"empName\" class=\"form-control\" formControlName=\"empName\"\r\n                          placeholder=\"Enter Employee Name\" name=\"empName\" required autocomplete=\"off\" maxlength=\"50\"\r\n                          [ngClass]=\"{ 'is-invalid': submitted && f.empName.errors }\">\r\n                        <div *ngIf=\"submitted && f.empName.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empName.errors.required\">Please provide Employee Name</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empMobile\">Mobile Number</label>\r\n                        <input type=\"tel\" formControlName=\"empMobile\" maxlength=\"10\" id=\"empMobile\" class=\"form-control\"\r\n                          placeholder=\"Enter Mobile Number\" name=\"number\" autocomplete=\"off\"\r\n                          onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 107 || event.keyCode == 187? true : false\"\r\n                          [ngClass]=\"{ 'is-invalid': submitted && f.empMobile.errors }\">\r\n                        <div *ngIf=\"submitted && f.empMobile.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empMobile.errors.required\">Please provide Mobile Number</div>\r\n                          <div *ngIf=\"f.empMobile.errors.pattern\">Mobile Number should be 10 numbers</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empTypeId\">Employee Type</label>\r\n                        <select id=\"empTypeId\" name=\"empTypeId\" formControlName=\"empTypeId\" class=\"form-control\"\r\n                          (change)=\"selectedEmpType($event.target.value)\"\r\n                          [ngClass]=\"{ 'is-invalid': submitted && f.empTypeId.errors }\">\r\n                          <option selected disabled value=\"null\">Select Employee Type</option>\r\n                          <option *ngFor=\"let ct of globalEmpType\" [value]=\"ct.empTypeId\">{{ct.empType}}</option>\r\n                        </select>\r\n                        <div *ngIf=\"submitted && f.empTypeId.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empTypeId.errors.required\">Please Select Employee Type</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4' *ngIf=\"showContractor\">\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label\" for=\"contractorId\">Contractor</label>\r\n                        <select id=\"contractorId\" name=\"contractorId\" formControlName=\"contractorId\"\r\n                          class=\"form-control\">\r\n                          <option selected disabled value=\"null\">Select Contractor</option>\r\n                          <option *ngFor=\"let ct of globalContractor\" [value]=\"ct.contractorId\">{{ct.contractorName}}\r\n                          </option>\r\n                        </select>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"form-control-label required\" for=\"empJoiningDate\">Date of Joining</label>\r\n                        <input type=\"text\" id=\"empJoiningDate\" class=\"form-control\" formControlName=\"empJoiningDate\"\r\n                          placeholder=\"YYYY-MM-DD\" name=\"empJoiningDate\" required autocomplete=\"off\" ngbDatepicker\r\n                          #d1=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted && f.empJoiningDate.errors }\"\r\n                          (click)=\"d1.toggle()\">\r\n                        <div *ngIf=\"submitted && f.empJoiningDate.errors\" class=\"invalid-feedback\">\r\n                          <div *ngIf=\"f.empJoiningDate.errors.required\">Please Select Date of Joining</div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"d-block required\">Gender</label>\r\n                        <div class=\"input-group float-left\">\r\n                          <div class=\"custom-control custom-radio d-inline-block\">\r\n                            <input type=\"radio\" id=\"empGender1\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                              [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\" value=\"m\">\r\n                            <label class=\"custom-control-label mr-4\" for=\"empGender1\">Male</label>\r\n\r\n                          </div>\r\n                          <div class=\"custom-control custom-radio d-inline-block mr-3\">\r\n                            <input type=\"radio\" id=\"empGender2\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                              value=\"f\" [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\">\r\n                            <label class=\"custom-control-label\" for=\"empGender2\">Female</label>\r\n\r\n                          </div>\r\n                          <div class=\"custom-control custom-radio d-inline-block\">\r\n                            <input type=\"radio\" id=\"empGender3\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                              value=\"o\" [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\">\r\n                            <label class=\"custom-control-label\" for=\"empGender3\">Other</label>\r\n                            <div *ngIf=\"submitted && f.empGender.errors\" class=\"invalid-feedback\">\r\n                              <div *ngIf=\"f.empGender.errors.required\">Please Select Gender</div>\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                    <div class='col-sm-4'>\r\n                      <div class=\"form-group\">\r\n                        <label class=\"d-block\"></label>\r\n                        <div class=\"input-group\">\r\n                          <div class=\"custom-control custom-checkbox d-inline-block mt-3\">\r\n                            <input type=\"checkbox\" id=\"empIsSupervisor_Manager\" formControlName=\"empIsSupervisor_Manager\" class=\"custom-control-input\">\r\n                            <label class=\"custom-control-label\" for=\"empIsSupervisor_Manager\">Manager/Supervisor</label>\r\n                          </div>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n                  </div>\r\n                  <div class=\"form-group text-center\">\r\n                    <button type=\"reset\" (click)=\"closeWizard()\" class=\"btn btn-danger btn-raised mr-1\">\r\n                      Close\r\n                      <span style=\"margin-left:10px;\">\r\n                        <i class=\"ft-x\"></i>\r\n                      </span>\r\n                    </button>\r\n                    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\" awNextStep>\r\n                      Next\r\n                      <span style=\"margin-left:10px;\">\r\n                        <i class=\"ft-chevron-right\"></i>\r\n                      </span>\r\n                    </button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Branch Details'\" [canEnter]=\"empForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf126;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"branchForm\" (ngSubmit)=\"submitBranch()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"brId\">Branch</label>\r\n                    <select id=\"brId\" name=\"brId\" formControlName=\"brId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted1 && f1.brId.errors }\">\r\n                      <option selected disabled value=\"null\">Select Branch</option>\r\n                      <option *ngFor=\"let ct of globalBranch\" [value]=\"ct.brId\">{{ct.brName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted1 && f1.brId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f1.brId.errors.required\">Please Select Branch</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"employeeBranchFromDate\">From Date</label>\r\n                    <input type=\"text\" id=\"employeeBranchFromDate\" class=\"form-control\" formControlName=\"employeeBranchFromDate\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"employeeBranchFromDate\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d2=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted1 && f1.employeeBranchFromDate.errors }\"\r\n                      (click)=\"d2.toggle()\">\r\n                    <div *ngIf=\"submitted1 && f1.employeeBranchFromDate.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f1.employeeBranchFromDate.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Department Details'\" [canEnter]=\"branchForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf1ad;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"deptForm\" (ngSubmit)=\"submitDept()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"departmentId\">Department</label>\r\n                    <select id=\"departmentId\" name=\"departmentId\" formControlName=\"departmentId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted2 && f2.departmentId.errors }\">\r\n                      <option selected disabled value=\"null\">Select Department</option>\r\n                      <option *ngFor=\"let ct of globalDepartment\" [value]=\"ct.deptId\">{{ct.deptName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted2 && f2.departmentId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f2.departmentId.errors.required\">Please Select Department</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"empReportingToId\">Reporting To</label>\r\n                    <select id=\"empReportingToId\" name=\"empReportingToId\" formControlName=\"empReportingToId\"\r\n                      class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted2 && f2.empReportingToId.errors }\">\r\n                      <option selected disabled value=\"null\">Select Reporting To</option>\r\n                      <option *ngFor=\"let ct of globalReportTo\" [value]=\"ct.id\">{{ct.name}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted2 && f2.empReportingToId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f2.empReportingToId.errors.required\">Please Select Reporting To</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"employeeDepartmentFromDate\">From Date</label>\r\n                    <input type=\"text\" id=\"employeeDepartmentFromDate\" class=\"form-control\" formControlName=\"employeeDepartmentFromDate\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d3=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted2 && f2.employeeDepartmentFromDate.errors }\"\r\n                      (click)=\"d3.toggle()\">\r\n                    <div *ngIf=\"submitted2 && f2.employeeDepartmentFromDate.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f2.employeeDepartmentFromDate.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Designation Details'\" [canEnter]=\"deptForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xe9d3;', fontFamily: 'Feather' }\">\r\n            <form [formGroup]=\"desgForm\" (ngSubmit)=\"submitDesg()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"designationId\">Designation</label>\r\n                    <select id=\"designationId\" name=\"designationId\" formControlName=\"designationId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted3 && f3.designationId.errors }\">\r\n                      <option selected disabled value=\"null\">Select Designation</option>\r\n                      <option *ngFor=\"let ct of globalDesignation\" [value]=\"ct.designationId\">{{ct.designationName}}\r\n                      </option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted3 && f3.designationId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f3.designationId.errors.required\">Please Select Designation</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"employeeDesignationFromDate\">From Date</label>\r\n                    <input type=\"text\" id=\"employeeDesignationFromDate\" class=\"form-control\" formControlName=\"employeeDesignationFromDate\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d4=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted3 && f3.employeeDesignationFromDate.errors }\"\r\n                      (click)=\"d4.toggle()\">\r\n                    <div *ngIf=\"submitted3 && f3.employeeDesignationFromDate.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f3.employeeDesignationFromDate.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Shift Details'\" [canEnter]=\"desgForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xe9d3;', fontFamily: 'Feather' }\">\r\n            <form [formGroup]=\"shiftForm\" (ngSubmit)=\"submitShift()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"shiftId\">Shift</label>\r\n                    <select id=\"shiftId\" name=\"shiftId\" formControlName=\"shiftId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted4 && f4.shiftId.errors }\">\r\n                      <option selected disabled value=\"null\">Select Shift</option>\r\n                      <option *ngFor=\"let ct of globalShift\" [value]=\"ct.shiftId\">{{ct.shiftName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted4 && f4.shiftId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f4.shiftId.errors.required\">Please Select Shift</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"employeeShiftFromDate\">From Date</label>\r\n                    <input type=\"text\" id=\"employeeShiftFromDate\" class=\"form-control\" formControlName=\"employeeShiftFromDate\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d5=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted4 && f4.employeeShiftFromDate.errors }\"\r\n                      (click)=\"d5.toggle()\">\r\n                    <div *ngIf=\"submitted4 && f4.employeeShiftFromDate.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f4.employeeShiftFromDate.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center space-20\">\r\n                <button uiSref=\"personal\" type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button uiSref=\"address\" type=\"submit\" class=\"btn btn-raised btn-info\" awNextStep>\r\n                  Next\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-chevron-right\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n          </aw-wizard-step>\r\n\r\n          <aw-wizard-step [stepTitle]=\"'Weekly Off'\" [canEnter]=\"shiftForm.valid\"\r\n            [navigationSymbol]=\"{ symbol: '&#xf0ac;', fontFamily: 'FontAwesome' }\">\r\n            <form [formGroup]=\"weeklyoffForm\" (ngSubmit)=\"submitWeeklyOff()\">\r\n              <h4 class=\"head text-center\">Please fill below details.</h4>\r\n              <br />\r\n              <div class=\"row\">\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"dayOfWeek\">Weekly Off</label>\r\n                    <ng-multiselect-dropdown name=\"dayOfWeek\" [placeholder]=\"'Select City'\" [data]=\"globalWeeks\"\r\n                      formControlName=\"dayOfWeek\" [settings]=\"dropdownSettings\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted5 && f5.dayOfWeek.errors }\">\r\n                    </ng-multiselect-dropdown>\r\n                    <div *ngIf=\"submitted5 && f5.dayOfWeek.errors\" class=\"invalid\">\r\n                      <div *ngIf=\"f5.dayOfWeek.errors?.required\">Please Select Weeks</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class='col-sm-4'>\r\n                  <div class=\"form-group\">\r\n                    <label class=\"form-control-label required\" for=\"empWeeklyOffDayFromDate\">From Date</label>\r\n                    <input type=\"text\" id=\"empWeeklyOffDayFromDate\" class=\"form-control\" formControlName=\"empWeeklyOffDayFromDate\"\r\n                      placeholder=\"YYYY-MM-DD\" name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker\r\n                      #d6=\"ngbDatepicker\" [ngClass]=\"{ 'is-invalid': submitted5 && f5.empWeeklyOffDayFromDate.errors }\"\r\n                      (click)=\"d6.toggle()\">\r\n                    <div *ngIf=\"submitted5 && f5.empWeeklyOffDayFromDate.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f5.empWeeklyOffDayFromDate.errors.required\">Please Select From Date</div>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n              </div>\r\n              <div class=\"form-group text-center\">\r\n                <button type=\"button\" class=\"btn btn-raised btn-secondary mr-1\" awPreviousStep>\r\n                  <span style=\"margin-right:10px;\">\r\n                    <i class=\"ft-chevron-left\"></i>\r\n                  </span> Previous</button>\r\n                <button type=\"submit\" class=\"btn btn-raised btn-success\">\r\n                  Finish\r\n                  <span style=\"margin-left:10px;\">\r\n                    <i class=\"ft-check\"></i>\r\n                  </span>\r\n                </button>\r\n              </div>\r\n            </form>\r\n\r\n          </aw-wizard-step>\r\n        </aw-wizard>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- // Basic form layout section end -->\r\n\r\n\r\n<!-- Update Form Layout Starts -->\r\n<section id=\"ngx\" *ngIf=\"isUpdate\">\r\n  <div class=\"card text-left\">\r\n    <div class=\"card-content\">\r\n      <div class=\"card-body\">\r\n        <div class=\"board\">\r\n          <!-- Navigation Area (Circular Tabs) -->\r\n          <msw-navbar></msw-navbar>\r\n          <!-- End Navigation Area (Circular Tabs) -->\r\n\r\n          <!-- Content Area -->\r\n          <div class=\"tab-content\">\r\n            <!-- Nested view  -->\r\n            <router-outlet> </router-outlet>\r\n          </div>\r\n          <!-- End Content Area -->\r\n        </div>\r\n        <!-- For Debugging: show our valid formData -->\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!-- Update Form Layout Ends -->\r\n\r\n\r\n<!-- Sweet Alert Starts-->\r\n<div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\" *ngIf=\"showView\">\r\n  <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\"\r\n    tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n    <div class=\"swal2-header\">\r\n      <ul class=\"swal2-progress-steps\" style=\"display: none;\"></ul>\r\n      <div class=\"swal2-icon swal2-error\" style=\"display: none;\"><span class=\"swal2-x-mark\"><span\r\n            class=\"swal2-x-mark-line-left\"></span><span class=\"swal2-x-mark-line-right\"></span></span></div>\r\n      <div class=\"swal2-icon swal2-question\" style=\"display: none;\"></div>\r\n      <div class=\"swal2-icon swal2-warning\" style=\"display: none;\"></div>\r\n      <div class=\"swal2-icon swal2-info\" style=\"display: none;\"></div>\r\n      <div class=\"swal2-icon swal2-success\" style=\"display: none;\">\r\n        <div class=\"swal2-success-circular-line-left\"></div><span class=\"swal2-success-line-tip\"></span> <span\r\n          class=\"swal2-success-line-long\"></span>\r\n        <div class=\"swal2-success-ring\"></div>\r\n        <div class=\"swal2-success-fix\"></div>\r\n        <div class=\"swal2-success-circular-line-right\"></div>\r\n      </div><img class=\"swal2-image\" style=\"display: none;\">\r\n      <h2 class=\"swal2-title\" id=\"swal2-title\" style=\"display: flex;\">Branch Details</h2><button type=\"button\"\r\n        class=\"swal2-close\" aria-label=\"Close this dialog\" style=\"display: none;\">×</button>\r\n    </div>\r\n    <pre></pre>\r\n    <pre></pre>\r\n    <div class=\"swal2-content\">\r\n      <table class=\"table table-responsive-md table-borderless\" style=\"table-layout: fixed;\">\r\n        <tbody>\r\n          <tr>\r\n            <th>Employee Name</th>\r\n            <td>XYZ</td>\r\n            <th>Mobile Number</th>\r\n            <td>9874561230</td>\r\n            <th>Employee Type</th>\r\n            <td>Manager</td>\r\n          </tr>\r\n        </tbody>\r\n        <tbody>\r\n          <tr>\r\n            <th>Gender</th>\r\n            <td>Male</td>\r\n            <th>Is Manager?</th>\r\n            <td>Yes</td>\r\n            <th>Date of Joining</th>\r\n            <td>20-10-2019</td>\r\n          </tr>\r\n        </tbody>\r\n        <tbody>\r\n          <tr>\r\n            <th>Branch</th>\r\n            <td>Lng Tech</td>\r\n            <th>Department</th>\r\n            <td>Dept 1</td>\r\n            <th>Reporting To</th>\r\n            <td>ABC</td>\r\n          </tr>\r\n        </tbody>\r\n        <tbody>\r\n          <tr>\r\n            <th>Designation</th>\r\n            <td>Desg 1</td>\r\n            <th>Shift</th>\r\n            <td>Day</td>\r\n            <th>Weekly Off</th>\r\n            <td>Sunday</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n    <div class=\"swal2-actions\" style=\"display: flex;\"><button type=\"button\" class=\"swal2-confirm swal2-styled\"\r\n        aria-label=\"\" (click)=\"closeView()\"\r\n        style=\"display: inline-block; border-left-color: rgb(12, 194, 126); border-right-color: rgb(12, 194, 126);\">OK</button><button\r\n        type=\"button\" class=\"swal2-cancel swal2-styled\" aria-label=\"\" style=\"display: none;\">Cancel</button></div>\r\n    <div class=\"swal2-footer\" style=\"display: none;\"></div>\r\n  </div>\r\n</div>\r\n<!-- Sweet Alert Ends-->"
 
 /***/ }),
 
@@ -238,7 +238,7 @@ module.exports = "<!-- List Section starts-->\r\n<section id=\"extended\" *ngIf=
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"shiftForm\" (ngSubmit)=\"submitShift()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"empShift\">Shift</label>\r\n        <select id=\"empShift\" name=\"empShift\" formControlName=\"empShift\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted4 && f4.empShift.errors }\">\r\n          <option selected disabled value=\"null\">Select Shift</option>\r\n          <option *ngFor=\"let ct of globalShift\" [value]=\"ct.name\">{{ct.name}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted4 && f4.empShift.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f4.empShift.errors.required\">Please Select Shift</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"shiftFrom\">From Date</label>\r\n        <input type=\"text\" id=\"shiftFrom\" class=\"form-control\" formControlName=\"shiftFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d5=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted4 && f4.shiftFrom.errors }\" (click)=\"d5.toggle()\">\r\n        <div *ngIf=\"submitted4 && f4.shiftFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f4.shiftFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
+module.exports = "<form [formGroup]=\"shiftForm\" (ngSubmit)=\"submitShift()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"shiftId\">Shift</label>\r\n        <select id=\"shiftId\" name=\"shiftId\" formControlName=\"shiftId\" class=\"form-control\"\r\n          [ngClass]=\"{ 'is-invalid': submitted4 && f4.shiftId.errors }\">\r\n          <option selected disabled value=\"null\">Select Shift</option>\r\n          <option *ngFor=\"let ct of globalShift\" [value]=\"ct.shiftId\">{{ct.shiftName}}</option>\r\n        </select>\r\n        <div *ngIf=\"submitted4 && f4.shiftId.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f4.shiftId.errors.required\">Please Select Shift</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"shiftFrom\">From Date</label>\r\n        <input type=\"text\" id=\"shiftFrom\" class=\"form-control\" formControlName=\"shiftFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d5=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted4 && f4.shiftFrom.errors }\" (click)=\"d5.toggle()\">\r\n        <div *ngIf=\"submitted4 && f4.shiftFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f4.shiftFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center space-20\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -260,7 +260,7 @@ module.exports = "<!-- Navbar for Wizard Starts -->\r\n<div class=\"board-inner\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"empForm\" (ngSubmit)=\"onSubmit()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class='row'>\r\n    <input type=\"checkbox\" formControlName=\"mgrService\" id=\"mgrService\" hidden>\r\n    <div class='col-12'>\r\n      <div class=\"row\">\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empName\">Employee Name</label>\r\n            <input type=\"text\" id=\"empName\" class=\"form-control\" formControlName=\"empName\"\r\n              placeholder=\"Enter Employee Name\" name=\"empName\" required autocomplete=\"off\" maxlength=\"50\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empName.errors }\">\r\n            <div *ngIf=\"submitted && f.empName.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empName.errors.required\">Please provide Employee Name</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empMobile\">Mobile Number</label>\r\n            <input type=\"tel\" formControlName=\"empMobile\" maxlength=\"10\" id=\"empMobile\" class=\"form-control\"\r\n              placeholder=\"Enter Mobile Number\" name=\"number\" autocomplete=\"off\"\r\n              onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 107 || event.keyCode == 187? true : false\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empMobile.errors }\">\r\n            <div *ngIf=\"submitted && f.empMobile.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empMobile.errors.required\">Please provide Mobile Number</div>\r\n              <div *ngIf=\"f.empMobile.errors.pattern\">Mobile Number should be 10 numbers</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empType\">Employee Type</label>\r\n            <select id=\"empType\" name=\"empType\" formControlName=\"empType\"\r\n              (change)=\"selectedEmpType($event.target.value)\" class=\"form-control\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empType.errors }\">\r\n              <option selected disabled value=\"null\">Select Employee Type</option>\r\n              <option *ngFor=\"let ct of globalEmpType\" [value]=\"ct.name\">{{ct.name}}</option>\r\n            </select>\r\n            <div *ngIf=\"submitted && f.empType.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empType.errors.required\">Please Select Employee Type</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4' *ngIf=\"showContractor\">\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label\" for=\"empCont\">Contractor Name</label>\r\n            <input type=\"tel\" formControlName=\"empCont\" maxlength=\"50\" id=\"empCont\" class=\"form-control\"\r\n              placeholder=\"Enter Contractor Name\" name=\"empCont\" autocomplete=\"off\">\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empDOJ\">Date of Joining</label>\r\n            <input type=\"text\" id=\"empDOJ\" class=\"form-control\" formControlName=\"empDOJ\" placeholder=\"YYYY-MM-DD\"\r\n              name=\"empDOJ\" required autocomplete=\"off\" ngbDatepicker #d1=\"ngbDatepicker\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empDOJ.errors }\" (click)=\"d1.toggle()\">\r\n            <div *ngIf=\"submitted && f.empDOJ.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empDOJ.errors.required\">Please Select Date of Joining</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"d-block required\">Gender</label>\r\n            <div class=\"input-group\">\r\n              <div class=\"custom-control custom-radio d-inline-block float-left\">\r\n                <input type=\"radio\" id=\"empGender1\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                  [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\" value=\"Male\">\r\n                <label class=\"custom-control-label mr-4\" for=\"empGender1\">Male</label>\r\n                <div *ngIf=\"submitted && f.empGender.errors\" class=\"invalid-feedback\">\r\n                  <div *ngIf=\"f.empGender.errors.required\">Please Select Gender</div>\r\n                </div>\r\n              </div>\r\n              <div class=\"custom-control custom-radio d-inline-block ml-2\">\r\n                <input type=\"radio\" id=\"empGender2\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                  value=\"Female\" [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\">\r\n                <label class=\"custom-control-label\" for=\"empGender2\">Female</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"d-block\">Is Manager/Supervisor?</label>\r\n            <div class=\"input-group\">\r\n              <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                <input type=\"checkbox\" id=\"empMgr\" formControlName=\"empMgr\" class=\"custom-control-input\">\r\n                <label class=\"custom-control-label\" for=\"empMgr\">Manager/Supervisor</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"form-group text-center\">\r\n        <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n          Close\r\n          <span style=\"margin-left:2px;\">\r\n            <i class=\"ft-x\"></i>\r\n          </span>\r\n        </button>\r\n        <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n          Update\r\n          <span style=\"margin-left:2px;\">\r\n            <i class=\"ft-check\"></i>\r\n          </span>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>"
+module.exports = "<form [formGroup]=\"empForm\" (ngSubmit)=\"onSubmit()\">\r\n  <!-- <h4 class=\"head text-center\">Please fill below details.</h4> -->\r\n  <br />\r\n  <div class='row'>\r\n    <input type=\"checkbox\" formControlName=\"mgrService\" id=\"mgrService\" hidden>\r\n    <div class='col-12'>\r\n      <div class=\"row\">\r\n        <input type=\"text\" formControlName=\"empId\" id=\"empId\" hidden>\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empName\">Employee Name</label>\r\n            <input type=\"text\" id=\"empName\" class=\"form-control\" formControlName=\"empName\"\r\n              placeholder=\"Enter Employee Name\" name=\"empName\" required autocomplete=\"off\" maxlength=\"50\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empName.errors }\">\r\n            <div *ngIf=\"submitted && f.empName.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empName.errors.required\">Please provide Employee Name</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empMobile\">Mobile Number</label>\r\n            <input type=\"tel\" formControlName=\"empMobile\" maxlength=\"10\" id=\"empMobile\" class=\"form-control\"\r\n              placeholder=\"Enter Mobile Number\" name=\"number\" autocomplete=\"off\"\r\n              onkeydown=\"javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 107 || event.keyCode == 187? true : false\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empMobile.errors }\">\r\n            <div *ngIf=\"submitted && f.empMobile.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empMobile.errors.required\">Please provide Mobile Number</div>\r\n              <div *ngIf=\"f.empMobile.errors.pattern\">Mobile Number should be 10 numbers</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empTypeId\">Employee Type</label>\r\n            <select id=\"empTypeId\" name=\"empTypeId\" formControlName=\"empTypeId\"\r\n              (change)=\"selectedEmpType($event.target.value)\" class=\"form-control\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empTypeId.errors }\">\r\n              <option selected disabled value=\"null\">Select Employee Type</option>\r\n              <option *ngFor=\"let ct of globalEmpType\" [value]=\"ct.id\">{{ct.name}}</option>\r\n            </select>\r\n            <div *ngIf=\"submitted && f.empTypeId.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empTypeId.errors.required\">Please Select Employee Type</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4' *ngIf=\"showContractor\">\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label\" for=\"contractorId\">Contractor Name</label>\r\n            <select id=\"contractorId\" name=\"contractorId\" formControlName=\"contractorId\" class=\"form-control\">\r\n              <option selected disabled value=\"null\">Select Contractor</option>\r\n              <option *ngFor=\"let ct of globalContractor\" [value]=\"ct.contractorId\">{{ct.contractorName}}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"form-control-label required\" for=\"empJoiningDate\">Date of Joining</label>\r\n            <input type=\"text\" id=\"empJoiningDate\" class=\"form-control\" formControlName=\"empJoiningDate\" placeholder=\"YYYY-MM-DD\"\r\n              name=\"empJoiningDate\" required autocomplete=\"off\" ngbDatepicker #d1=\"ngbDatepicker\"\r\n              [ngClass]=\"{ 'is-invalid': submitted && f.empJoiningDate.errors }\" (click)=\"d1.toggle()\">\r\n            <div *ngIf=\"submitted && f.empJoiningDate.errors\" class=\"invalid-feedback\">\r\n              <div *ngIf=\"f.empJoiningDate.errors.required\">Please Select Date of Joining</div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"d-block required\">Gender</label>\r\n            <div class=\"input-group float-left\">\r\n              <div class=\"custom-control custom-radio d-inline-block\">\r\n                <input type=\"radio\" id=\"empGender1\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                  [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\" value=\"m\">\r\n                <label class=\"custom-control-label mr-4\" for=\"empGender1\">Male</label>\r\n\r\n              </div>\r\n              <div class=\"custom-control custom-radio d-inline-block mr-3\">\r\n                <input type=\"radio\" id=\"empGender2\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                  value=\"f\" [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\">\r\n                <label class=\"custom-control-label\" for=\"empGender2\">Female</label>\r\n\r\n              </div>\r\n              <div class=\"custom-control custom-radio d-inline-block\">\r\n                <input type=\"radio\" id=\"empGender3\" formControlName=\"empGender\" class=\"custom-control-input\"\r\n                  value=\"o\" [ngClass]=\"{ 'is-invalid': submitted && f.empGender.errors }\">\r\n                <label class=\"custom-control-label\" for=\"empGender3\">Other</label>\r\n                <div *ngIf=\"submitted && f.empGender.errors\" class=\"invalid-feedback\">\r\n                  <div *ngIf=\"f.empGender.errors.required\">Please Select Gender</div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <!-- <div class='col-sm-4'>\r\n          <div class=\"form-group\">\r\n            <label class=\"d-block\">Is Manager/Supervisor?</label>\r\n            <div class=\"input-group\">\r\n              <div class=\"custom-control custom-checkbox d-inline-block\">\r\n                <input type=\"checkbox\" id=\"empMgr\" formControlName=\"empMgr\" class=\"custom-control-input\">\r\n                <label class=\"custom-control-label\" for=\"empMgr\">Manager/Supervisor</label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div> -->\r\n\r\n      </div>\r\n      <div class=\"form-group text-center\">\r\n        <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n          Close\r\n          <span style=\"margin-left:2px;\">\r\n            <i class=\"ft-x\"></i>\r\n          </span>\r\n        </button>\r\n        <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n          Update\r\n          <span style=\"margin-left:2px;\">\r\n            <i class=\"ft-check\"></i>\r\n          </span>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -271,7 +271,7 @@ module.exports = "<form [formGroup]=\"empForm\" (ngSubmit)=\"onSubmit()\">\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"weeklyoffForm\" (ngSubmit)=\"submitWeeklyOff()\">\r\n  <!-- <h4 class=\"head text-center\">Where do you live?</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"weekoff\">Weekly Off</label>\r\n        <ng-multiselect-dropdown name=\"weekoff\" [placeholder]=\"'Select City'\" [data]=\"globalWeeks\"\r\n          formControlName=\"weekoff\" [settings]=\"dropdownSettings\"\r\n          [ngClass]=\"{ 'is-invalid': submitted5 && f5.weekoff.errors }\">\r\n        </ng-multiselect-dropdown>\r\n        <div *ngIf=\"submitted5 && f5.weekoff.errors\" class=\"invalid\">\r\n          <div *ngIf=\"f5.weekoff.errors?.required\">Please Select Weeks</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"offFrom\">From Date</label>\r\n        <input type=\"text\" id=\"offFrom\" class=\"form-control\" formControlName=\"offFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d6=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted5 && f5.offFrom.errors }\" (click)=\"d6.toggle()\">\r\n        <div *ngIf=\"submitted5 && f5.offFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f5.offFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
+module.exports = "<form [formGroup]=\"weeklyoffForm\" (ngSubmit)=\"submitWeeklyOff()\">\r\n  <!-- <h4 class=\"head text-center\">Where do you live?</h4> -->\r\n  <br />\r\n  <div class=\"row\">\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"dayOfWeek\">Weekly Off</label>\r\n        <ng-multiselect-dropdown name=\"dayOfWeek\" [placeholder]=\"'Select City'\" [data]=\"globalWeeks\"\r\n          formControlName=\"dayOfWeek\" [settings]=\"dropdownSettings\"\r\n          [ngClass]=\"{ 'is-invalid': submitted5 && f5.dayOfWeek.errors }\">\r\n        </ng-multiselect-dropdown>\r\n        <div *ngIf=\"submitted5 && f5.dayOfWeek.errors\" class=\"invalid\">\r\n          <div *ngIf=\"f5.dayOfWeek.errors?.required\">Please Select Weeks</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class='col-sm-4'>\r\n      <div class=\"form-group\">\r\n        <label class=\"form-control-label required\" for=\"offFrom\">From Date</label>\r\n        <input type=\"text\" id=\"offFrom\" class=\"form-control\" formControlName=\"offFrom\" placeholder=\"YYYY-MM-DD\"\r\n          name=\"brFrom\" required autocomplete=\"off\" ngbDatepicker #d6=\"ngbDatepicker\"\r\n          [ngClass]=\"{ 'is-invalid': submitted5 && f5.offFrom.errors }\" (click)=\"d6.toggle()\">\r\n        <div *ngIf=\"submitted5 && f5.offFrom.errors\" class=\"invalid-feedback\">\r\n          <div *ngIf=\"f5.offFrom.errors.required\">Please Select From Date</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"form-group text-center\">\r\n    <button type=\"reset\" (click)=\"close()\" class=\"btn btn-danger btn-raised mr-1\">\r\n      Close\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-x\"></i>\r\n      </span>\r\n    </button>\r\n    <button type=\"submit\" uiSref=\"work\" class=\"btn btn-info btn-raised\">\r\n      Update\r\n      <span style=\"margin-left:2px;\">\r\n        <i class=\"ft-check\"></i>\r\n      </span>\r\n    </button>\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -293,7 +293,7 @@ module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">State</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New State\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Country</th>\r\n                  <th>State</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newState\">\r\n                  <td></td>\r\n                  <td>\r\n                    <select id=\"projectinput6\" formControlName=\"refCountryId\" name=\"refCountryId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refCountryId.errors }\">\r\n                      <option selected disabled value=\"null\">Please Select Country</option>\r\n                      <option *ngFor=\"let ct of countries\" [value]=\"ct.countryId\">{{ct.countryName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refCountryId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refCountryId.errors.required\">Please Select Country</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"stateName\"\r\n                      placeholder=\"Please Enter State\" name=\"state\" required autocomplete=\"off\" maxlength=\"25\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.stateName.errors }\"\r\n                      onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n                    <div *ngIf=\"submitted && f.stateName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.stateName.errors.required\">Please Provide State</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" placement=\"bottom\" ngbTooltip=\"Save\" tooltipClass=\"my-custom-class\"\r\n                      (click)=\"save()\" title=\"\"> <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" placement=\"bottom\" ngbTooltip=\"Cancel\" tooltipClass=\"my-custom-class\"\r\n                      (click)=\"cancel()\" title=\"\"><i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of pageOfItems ; let i = index;\" [formGroup]=\"updateState\">\r\n                  <td>\r\n                    {{i+1}}\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"stateId\"\r\n                      placeholder=\"Serial Number\" name=\"slno\" required autocomplete=\"off\" hidden>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.countryName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput6\" formControlName=\"refCountryId\" name=\"country\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.refCountryId.errors }\">\r\n                        <option value=\"none\" selected disabled value=\"null\">Please Select Country</option>\r\n                        <option *ngFor=\"let ct of countries\" [value]=\"ct.countryId\">{{ct.countryName}}</option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.refCountryId.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.refCountryId.errors.required\">Please Select Country</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.stateName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"stateName\"\r\n                        placeholder=\"Please Enter State\" name=\"stateName\" required autocomplete=\"off\" maxlength=\"25\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.stateName.errors }\"\r\n                        onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n                      <div *ngIf=\"submitted1 && f1.stateName.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.stateName.errors.required\">Please Enter State</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"editState(data)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"deleteState(data)\" placement=\"bottom\" ngbTooltip=\"Delete\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3\"></i>\r\n                      </a>\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"saveUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Update\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"cancelUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-x font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='states' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
+module.exports = "<!--Confirm Action Starts-->\r\n<section id=\"action\">\r\n  <div class=\"row text-left\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header\">\r\n          <h4 class=\"card-title\">State</h4>\r\n          <div _ngcontent-hci-c8=\"\" class=\"form-actions top\" style=\"float:right;margin-top: -30px;\">\r\n            <button _ngcontent-hci-c8=\"\" class=\"btn btn-raised btn-primary\" type=\"button\" (click)=\"openForm()\"\r\n              placement=\"bottom\" ngbTooltip=\"New State\" tooltipClass=\"my-custom-class\">\r\n              <i _ngcontent-hci-c8=\"\" class=\"fa fa-check-square-o\"></i> New\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"card-body\">\r\n            <table class=\"table table-responsive-md\">\r\n              <thead>\r\n                <tr>\r\n                  <th>Sl No</th>\r\n                  <th>Country</th>\r\n                  <th>State</th>\r\n                  <th colspan=\"2\">Action</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr *ngIf=\"showNew\" [formGroup]=\"newState\">\r\n                  <td></td>\r\n                  <td>\r\n                    <select id=\"projectinput6\" formControlName=\"refCountryId\" name=\"refCountryId\" class=\"form-control\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.refCountryId.errors }\">\r\n                      <option selected disabled value=\"null\">Please Select Country</option>\r\n                      <option *ngFor=\"let ct of countries\" [value]=\"ct.countryId\">{{ct.countryName}}</option>\r\n                    </select>\r\n                    <div *ngIf=\"submitted && f.refCountryId.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.refCountryId.errors.required\">Please Select Country</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"stateName\"\r\n                      placeholder=\"Please Enter State\" name=\"state\" required autocomplete=\"off\" maxlength=\"25\"\r\n                      [ngClass]=\"{ 'is-invalid': submitted && f.stateName.errors }\"\r\n                      onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n                    <div *ngIf=\"submitted && f.stateName.errors\" class=\"invalid-feedback\">\r\n                      <div *ngIf=\"f.stateName.errors.required\">Please Provide State</div>\r\n                    </div>\r\n                  </td>\r\n                  <td>\r\n                    <a class=\"success p-0\" placement=\"bottom\" ngbTooltip=\"Save\" tooltipClass=\"my-custom-class\"\r\n                      (click)=\"save()\" title=\"\"> <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                    <a class=\"danger p-0\" placement=\"bottom\" ngbTooltip=\"Cancel\" tooltipClass=\"my-custom-class\"\r\n                      (click)=\"cancel()\" title=\"\"><i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                    </a>\r\n                  </td>\r\n                </tr>\r\n                <tr *ngFor=\"let data of pageOfItems ; let i = index;\" [formGroup]=\"updateState\">\r\n                  <td>\r\n                    {{i+1}}\r\n                    <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"stateId\"\r\n                      placeholder=\"Serial Number\" name=\"slno\" required autocomplete=\"off\" hidden>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.countryName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <select id=\"projectinput6\" formControlName=\"refCountryId\" name=\"country\" class=\"form-control\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.refCountryId.errors }\">\r\n                        <option value=\"none\" selected disabled value=\"null\">Please Select Country</option>\r\n                        <option *ngFor=\"let ct of countries\" [value]=\"ct.countryId\">{{ct.countryName}}</option>\r\n                      </select>\r\n                      <div *ngIf=\"submitted1 && f1.refCountryId.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.refCountryId.errors.required\">Please Select Country</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td>\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      {{data.stateName}}\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <input type=\"text\" id=\"projectinput1\" class=\"form-control\" formControlName=\"stateName\"\r\n                        placeholder=\"Please Enter State\" name=\"stateName\" required autocomplete=\"off\" maxlength=\"25\"\r\n                        [ngClass]=\"{ 'is-invalid': submitted1 && f1.stateName.errors }\"\r\n                        onkeydown=\"javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false\">\r\n                      <div *ngIf=\"submitted1 && f1.stateName.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f1.stateName.errors.required\">Please Enter State</div>\r\n                      </div>\r\n                    </span>\r\n                  </td>\r\n                  <td width=\"160\">\r\n                    <span [hidden]=\"data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"editState(data)\" placement=\"bottom\" ngbTooltip=\"Edit\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-edit-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"deleteState(data)\" placement=\"bottom\" ngbTooltip=\"Delete\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3\"></i>\r\n                      </a>\r\n                    </span>\r\n                    <span [hidden]=\"!data.showUpdate\">\r\n                      <a class=\"success p-0\" (click)=\"saveUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Update\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-check font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                      <a class=\"danger p-0\" (click)=\"cancelUpdate(data)\" placement=\"bottom\" ngbTooltip=\"Cancel\"\r\n                        tooltipClass=\"my-custom-class\" title=\"\">\r\n                        <i class=\"ft-trash-2 font-medium-3 mr-2\"></i>\r\n                      </a>\r\n                    </span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            <div class=\"card-footer pb-0 pt-3\">\r\n              <jw-pagination [items]='states' (changePage)=\"onChangePage($event)\"></jw-pagination>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<!--Confirm Action Ends-->"
 
 /***/ }),
 
@@ -403,7 +403,7 @@ module.exports = "<!--Footer Starts-->\r\n<footer>\r\n    <div class=\"container
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Navbar (Header) Starts -->\r\n<nav class=\"header-navbar navbar navbar-expand-lg navbar-light bg-faded\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle d-lg-none float-left\" data-toggle=\"collapse\" (click)=\"toggleSidebar()\">\r\n                <span class=\"sr-only\">Toggle navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <span class=\"d-lg-none navbar-right navbar-collapse-toggle\">\r\n                <a class=\"open-navbar-container\" (click)=\"isCollapsed = !isCollapsed\" [attr.aria-expanded]=\"!isCollapsed\" aria-controls=\"navbarSupportedContent\">\r\n                    <i class=\"ft-more-vertical\"></i>\r\n                </a>\r\n            </span>\r\n            <!-- <form class=\"navbar-form navbar-right mt-1\" role=\"search\">\r\n                <div class=\"position-relative has-icon-right\">\r\n                    <input type=\"text\" class=\"form-control round\" placeholder=\"Search\">\r\n                    <div class=\"form-control-position\">\r\n                        <i class=\"ft-search\"></i>\r\n                    </div>\r\n                </div>\r\n            </form> -->\r\n            <div class=\"position-relative has-icon-right\" *ngIf=\"superAdmin === 'true'\" >\r\n                <div class=\"form-group\">\r\n                    <label class=\"col-md-12 label-control\">Switch to customer admin</label>\r\n                    <div class=\"col-md-12\">\r\n                        <select class=\"form-control\" (change)=\"changeCustAdminMode($event)\" [(ngModel)]=\"custId\">\r\n                            <option value=\"0\">Super admin</option>\r\n                            <option *ngFor=\"let item of customers\"  value=\"{{item.custId}}\">{{item.custName}}</option>\r\n                        </select>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n                <!-- <input type=\"text\" class=\"form-control round\" placeholder=\"Search\">\r\n                <div class=\"form-control-position\">\r\n                    <i class=\"ft-search\"></i>\r\n                </div>\r\n            </div> -->\r\n        </div>\r\n        <div class=\"navbar-container\">\r\n            <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\" [ngbCollapse]=\"isCollapsed\">\r\n                <ul class=\"navbar-nav\">\r\n                    <!-- <li class=\"nav-item mr-2  d-none d-lg-block\">\r\n                        <a href=\"javascript:;\" class=\"nav-link\" id=\"navbar-fullscreen\" appToggleFullscreen (click)=\"ToggleClass()\">                            \r\n                            <i class=\"{{toggleClass}} font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">fullscreen</p>\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item\" ngbDropdown [placement]=\"placement\">\r\n                        <a class=\"nav-link position-relative\" id=\"dropdownLang\" ngbDropdownToggle>\r\n                            <i class=\"ft-flag font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">Language</p>\r\n                        </a>\r\n                        <div ngbDropdownMenu aria-labelledby=\"dropdownLang\" class=\"dropdownLang text-left\">                           \r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('en')\">\r\n                                <img src=\"./assets/img/flags/us.png\" alt=\"English\" class=\"langimg\">\r\n                                <span>English</span>\r\n                            </a>\r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('es')\">\r\n                                <img src=\"./assets/img/flags/es.png\" alt=\"Spanish\" class=\"langimg\">\r\n                                <span>Spanish</span>\r\n                            </a> \r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('pt')\">\r\n                                <img src=\"./assets/img/flags/br.png\" alt=\"Portuguese\" class=\"langimg\">\r\n                                <span>Portuguese</span>\r\n                            </a> \r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('de')\">\r\n                                <img src=\"./assets/img/flags/de.png\" alt=\"German\" class=\"langimg\">\r\n                                <span>German</span>\r\n                            </a>                            \r\n                        </div>\r\n                    </li>\r\n                    <li class=\"nav-item\" ngbDropdown [placement]=\"placement\">\r\n                        <a class=\"nav-link position-relative\" id=\"dropdownBasic2\" ngbDropdownToggle>\r\n                            <i class=\"ft-bell font-medium-3 blue-grey darken-4\"></i>\r\n                            <span class=\"notification badge badge-pill badge-danger\">4</span>\r\n                            <p class=\"d-none\">Notifications</p>\r\n                        </a>\r\n                        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic2\" class=\"notification-dropdown\">\r\n                            <div class=\"noti-list\" [perfectScrollbar]>\r\n                                <a class=\"dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4\">\r\n                                    <i class=\"ft-bell info float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 info\">New Order Received</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametitaque in, et!</span>\r\n                                    </span>\r\n                                </a>\r\n                                <a class=\"dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4\">\r\n                                    <i class=\"ft-bell warning float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 warning\">New User Registered</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametitaque in </span>\r\n                                    </span>\r\n                                </a>\r\n                                <a class=\"dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4\">\r\n                                    <i class=\"ft-bell danger float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 danger\">New Order Received</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametest?</span>\r\n                                    </span>\r\n                                </a>\r\n                                <a class=\"dropdown-item noti-container py-3\">\r\n                                    <i class=\"ft-bell success float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 success\">New User Registered</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametnatus aut.</span>\r\n                                    </span>\r\n                                </a>\r\n                            </div>\r\n                            <a class=\"noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1\">Read All Notifications</a>\r\n                        </div>\r\n                    </li> -->\r\n                    <li class=\"nav-item\" ngbDropdown [placement]=\"placement\">\r\n                        <a class=\"nav-link position-relative\" id=\"dropdownBasic3\" ngbDropdownToggle>\r\n                             Welcome {{loginName}}, {{custAdminName}}\r\n                            <i class=\"ft-user font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">User Settings</p>\r\n                        </a>\r\n                        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic3\" class=\"text-left\">                           \r\n                            <!-- <a class=\"dropdown-item py-1\" routerLink=\"/pages/profile\">\r\n                                <i class=\"ft-edit mr-2\"></i>\r\n                                <span>My Profile</span>\r\n                            </a> -->\r\n                            <!-- <a class=\"dropdown-item py-1\" routerLink=\"/inbox\">\r\n                                <i class=\"ft-mail mr-2\"></i>\r\n                                <span>My Inbox</span>\r\n                            </a>\r\n                            <a class=\"dropdown-item py-1\" href=\"javascript:;\">\r\n                                <i class=\"ft-settings mr-2\"></i>\r\n                                <span>Settings</span>\r\n                            </a> -->\r\n                            <div class=\"dropdown-divider\"></div>\r\n                            <a class=\"dropdown-item\" (click)=\"logout()\" >\r\n                                <i class=\"ft-power mr-2\"></i>\r\n                                <span>Logout</span>\r\n                            </a>\r\n                        </div>\r\n                    </li>\r\n                    <!-- <li class=\"nav-item d-none d-lg-block\">\r\n                        <a class=\"nav-link position-relative notification-sidebar-toggle\" (click)=\"toggleNotificationSidebar();\">\r\n                            <i class=\"ft-align-left font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">Notifications Sidebar</p>\r\n                        </a>\r\n                    </li> -->\r\n                   \r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<!-- Navbar (Header) Ends -->"
+module.exports = "<!-- Navbar (Header) Starts -->\r\n<nav class=\"header-navbar navbar navbar-expand-lg navbar-light bg-faded\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle d-lg-none float-left\" data-toggle=\"collapse\" (click)=\"toggleSidebar()\">\r\n                <span class=\"sr-only\">Toggle navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <span class=\"d-lg-none navbar-right navbar-collapse-toggle\">\r\n                <a class=\"open-navbar-container\" (click)=\"isCollapsed = !isCollapsed\" [attr.aria-expanded]=\"!isCollapsed\" aria-controls=\"navbarSupportedContent\">\r\n                    <i class=\"ft-more-vertical\"></i>\r\n                </a>\r\n            </span>\r\n            <!-- <form class=\"navbar-form navbar-right mt-1\" role=\"search\">\r\n                <div class=\"position-relative has-icon-right\">\r\n                    <input type=\"text\" class=\"form-control round\" placeholder=\"Search\">\r\n                    <div class=\"form-control-position\">\r\n                        <i class=\"ft-search\"></i>\r\n                    </div>\r\n                </div>\r\n            </form> -->\r\n            \r\n            <div class=\"position-relative has-icon-right\" *ngIf=\"superAdmin === 'true'\" style=\"display: inline-flex;\">\r\n                <ui-switch [(ngModel)]=\"enable\" checkedLabel='Admin' uncheckedLabel='Customer' (change)=\"switchToAdmin()\"></ui-switch>\r\n                <div class=\"form-group\" *ngIf=\"!enable\" >\r\n                    <div class=\"col-md-12\">\r\n                        <select class=\"form-control col-md-12\" (change)=\"changeCustAdminMode($event)\" [(ngModel)]=\"custId\">\r\n                            <option value=\"0\">Switch to customer</option>\r\n                            <option *ngFor=\"let item of customers\"  value=\"{{item.custId}}\">{{item.custName}}</option>\r\n                        </select>\r\n                    </div>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <div style=\"width: 100%; position: absolute;\"><strong>{{custAdminName}}</strong></div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"navbar-container\">\r\n            <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\" [ngbCollapse]=\"isCollapsed\">\r\n                <ul class=\"navbar-nav\">\r\n                    <!-- <li class=\"nav-item mr-2  d-none d-lg-block\">\r\n                        <a href=\"javascript:;\" class=\"nav-link\" id=\"navbar-fullscreen\" appToggleFullscreen (click)=\"ToggleClass()\">                            \r\n                            <i class=\"{{toggleClass}} font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">fullscreen</p>\r\n                        </a>\r\n                    </li>\r\n                    <li class=\"nav-item\" ngbDropdown [placement]=\"placement\">\r\n                        <a class=\"nav-link position-relative\" id=\"dropdownLang\" ngbDropdownToggle>\r\n                            <i class=\"ft-flag font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">Language</p>\r\n                        </a>\r\n                        <div ngbDropdownMenu aria-labelledby=\"dropdownLang\" class=\"dropdownLang text-left\">                           \r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('en')\">\r\n                                <img src=\"./assets/img/flags/us.png\" alt=\"English\" class=\"langimg\">\r\n                                <span>English</span>\r\n                            </a>\r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('es')\">\r\n                                <img src=\"./assets/img/flags/es.png\" alt=\"Spanish\" class=\"langimg\">\r\n                                <span>Spanish</span>\r\n                            </a> \r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('pt')\">\r\n                                <img src=\"./assets/img/flags/br.png\" alt=\"Portuguese\" class=\"langimg\">\r\n                                <span>Portuguese</span>\r\n                            </a> \r\n                            <a class=\"dropdown-item py-1 lang\" href=\"javascript:;\" (click)=\"ChangeLanguage('de')\">\r\n                                <img src=\"./assets/img/flags/de.png\" alt=\"German\" class=\"langimg\">\r\n                                <span>German</span>\r\n                            </a>                            \r\n                        </div>\r\n                    </li>\r\n                    <li class=\"nav-item\" ngbDropdown [placement]=\"placement\">\r\n                        <a class=\"nav-link position-relative\" id=\"dropdownBasic2\" ngbDropdownToggle>\r\n                            <i class=\"ft-bell font-medium-3 blue-grey darken-4\"></i>\r\n                            <span class=\"notification badge badge-pill badge-danger\">4</span>\r\n                            <p class=\"d-none\">Notifications</p>\r\n                        </a>\r\n                        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic2\" class=\"notification-dropdown\">\r\n                            <div class=\"noti-list\" [perfectScrollbar]>\r\n                                <a class=\"dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4\">\r\n                                    <i class=\"ft-bell info float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 info\">New Order Received</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametitaque in, et!</span>\r\n                                    </span>\r\n                                </a>\r\n                                <a class=\"dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4\">\r\n                                    <i class=\"ft-bell warning float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 warning\">New User Registered</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametitaque in </span>\r\n                                    </span>\r\n                                </a>\r\n                                <a class=\"dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4\">\r\n                                    <i class=\"ft-bell danger float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 danger\">New Order Received</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametest?</span>\r\n                                    </span>\r\n                                </a>\r\n                                <a class=\"dropdown-item noti-container py-3\">\r\n                                    <i class=\"ft-bell success float-left d-block font-large-1 mt-1 mr-2\"></i>\r\n                                    <span class=\"noti-wrapper\">\r\n                                        <span class=\"noti-title line-height-1 d-block text-bold-400 success\">New User Registered</span>\r\n                                        <span class=\"noti-text\">Lorem ipsum dolor sit ametnatus aut.</span>\r\n                                    </span>\r\n                                </a>\r\n                            </div>\r\n                            <a class=\"noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1\">Read All Notifications</a>\r\n                        </div>\r\n                    </li> -->\r\n                    <li class=\"nav-item\" ngbDropdown [placement]=\"placement\">\r\n                        <a class=\"nav-link position-relative\" id=\"dropdownBasic3\" ngbDropdownToggle>\r\n                             Welcome {{loginName}}\r\n                            <i class=\"ft-user font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">User Settings</p>\r\n                        </a>\r\n                        <div ngbDropdownMenu aria-labelledby=\"dropdownBasic3\" class=\"text-left\">                           \r\n                            <!-- <a class=\"dropdown-item py-1\" routerLink=\"/pages/profile\">\r\n                                <i class=\"ft-edit mr-2\"></i>\r\n                                <span>My Profile</span>\r\n                            </a> -->\r\n                            <!-- <a class=\"dropdown-item py-1\" routerLink=\"/inbox\">\r\n                                <i class=\"ft-mail mr-2\"></i>\r\n                                <span>My Inbox</span>\r\n                            </a>\r\n                            <a class=\"dropdown-item py-1\" href=\"javascript:;\">\r\n                                <i class=\"ft-settings mr-2\"></i>\r\n                                <span>Settings</span>\r\n                            </a> -->\r\n                            <div class=\"dropdown-divider\"></div>\r\n                            <a class=\"dropdown-item\" (click)=\"logout()\" >\r\n                                <i class=\"ft-power mr-2\"></i>\r\n                                <span>Logout</span>\r\n                            </a>\r\n                        </div>\r\n                    </li>\r\n                    <!-- <li class=\"nav-item d-none d-lg-block\">\r\n                        <a class=\"nav-link position-relative notification-sidebar-toggle\" (click)=\"toggleNotificationSidebar();\">\r\n                            <i class=\"ft-align-left font-medium-3 blue-grey darken-4\"></i>\r\n                            <p class=\"d-none\">Notifications Sidebar</p>\r\n                        </a>\r\n                    </li> -->\r\n                   \r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<!-- Navbar (Header) Ends -->"
 
 /***/ }),
 
@@ -521,7 +521,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "::ng-deep .my-custom-class .tooltip-inner {\n  background-color: #2591d8 !important;\n  font-size: 75% !important; }\n\n::ng-deep .my-custom-class .arrow::before {\n  background-color: #2591d8 !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXExOR1xcUHJvamV0Y3NcXEF0dGVuZGFuY2UgU3lzdGVtXFxMTkcuQVRURU5EQU5DRVNZU1RFTVdFQi5WMS9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0Usb0NBQThDO0VBQzlDLHlCQUF5QixFQUFBOztBQUczQjtFQUNFLG9DQUE4QyxFQUFBIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gdG9vbHRpcFxyXG46Om5nLWRlZXAgLm15LWN1c3RvbS1jbGFzcyAudG9vbHRpcC1pbm5lciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDM3LCAxNDUsIDIxNikgIWltcG9ydGFudDtcclxuICBmb250LXNpemU6IDc1JSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLm15LWN1c3RvbS1jbGFzcyAuYXJyb3c6OmJlZm9yZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDM3LCAxNDUsIDIxNikgIWltcG9ydGFudDtcclxufVxyXG4iXX0= */"
+module.exports = "::ng-deep .my-custom-class .tooltip-inner {\n  background-color: #1abbec !important;\n  font-size: 75% !important; }\n\n::ng-deep .my-custom-class .arrow::before {\n  background-color: #1abbec !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXExOR1xcUHJvamV0Y3NcXEF0dGVuZGFuY2UgU3lzdGVtXFxMTkcuQVRURU5EQU5DRVNZU1RFTVdFQi5WMS9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0Usb0NBQTRDO0VBQzVDLHlCQUF5QixFQUFBOztBQUczQjtFQUNFLG9DQUE0QyxFQUFBIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gdG9vbHRpcFxyXG46Om5nLWRlZXAgLm15LWN1c3RvbS1jbGFzcyAudG9vbHRpcC1pbm5lciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI2LDE4NywyMzYpICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiA3NSUgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5teS1jdXN0b20tY2xhc3MgLmFycm93OjpiZWZvcmUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyNiwxODcsMjM2KSAhaW1wb3J0YW50O1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -840,7 +840,7 @@ var routes = [
             { path: 'holiday/calendar', component: _superadmin_masters_customer_holidayCalendar_holidayCalendar_component__WEBPACK_IMPORTED_MODULE_3__["HolidayCalendarComponent"], children: app_shared_routes_full_layout_routes__WEBPACK_IMPORTED_MODULE_14__["Full_ROUTES"], canActivate: [app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
             { path: 'notification', component: _superadmin_masters_customer_notification_notification_component__WEBPACK_IMPORTED_MODULE_2__["NotificationComponent"], children: app_shared_routes_full_layout_routes__WEBPACK_IMPORTED_MODULE_14__["Full_ROUTES"], canActivate: [app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
             { path: 'manual', component: _superadmin_Attendance_custManualAttendance_custManualAttendance_component__WEBPACK_IMPORTED_MODULE_4__["CustManualAttendanceComponent"], children: app_shared_routes_full_layout_routes__WEBPACK_IMPORTED_MODULE_14__["Full_ROUTES"], canActivate: [app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
-            { path: 'customer', component: _superadmin_Leave_custLeaveType_custLeaveType_component__WEBPACK_IMPORTED_MODULE_1__["CustLeaveTypeComponent"], children: app_shared_routes_full_layout_routes__WEBPACK_IMPORTED_MODULE_14__["Full_ROUTES"], canActivate: [app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
+            { path: 'customer/type', component: _superadmin_Leave_custLeaveType_custLeaveType_component__WEBPACK_IMPORTED_MODULE_1__["CustLeaveTypeComponent"], children: app_shared_routes_full_layout_routes__WEBPACK_IMPORTED_MODULE_14__["Full_ROUTES"], canActivate: [app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
         ]
     },
     { path: '', component: app_layouts_full_full_layout_component__WEBPACK_IMPORTED_MODULE_12__["FullLayoutComponent"], data: { title: 'full Views' }, children: app_shared_routes_full_layout_routes__WEBPACK_IMPORTED_MODULE_14__["Full_ROUTES"], canActivate: [app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
@@ -947,49 +947,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_routing_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./dashboard-routing.module */ "./src/app/dashboard/dashboard-routing.module.ts");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ng2_smart_table__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ng2-smart-table */ "./node_modules/ng2-smart-table/index.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
-/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
-/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/fesm5/ngx-translate-http-loader.js");
-/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
-/* harmony import */ var ng2_search_filter__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ng2-search-filter */ "./node_modules/ng2-search-filter/ng2-search-filter.es5.js");
-/* harmony import */ var jw_angular_pagination__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! jw-angular-pagination */ "./node_modules/jw-angular-pagination/lib/jw-pagination.component.js");
-/* harmony import */ var jw_angular_pagination__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(jw_angular_pagination__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var angular_archwizard__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! angular-archwizard */ "./node_modules/angular-archwizard/fesm5/angular-archwizard.js");
-/* harmony import */ var ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ng-multiselect-dropdown */ "./node_modules/ng-multiselect-dropdown/fesm5/ng-multiselect-dropdown.js");
-/* harmony import */ var ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ngx-perfect-scrollbar */ "./node_modules/ngx-perfect-scrollbar/dist/ngx-perfect-scrollbar.es5.js");
-/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ng2-dragula */ "./node_modules/ng2-dragula/dist/fesm5/ng2-dragula.js");
-/* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! app/shared/auth/auth-guard.service */ "./src/app/shared/auth/auth-guard.service.ts");
-/* harmony import */ var app_shared_auth_auth_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! app/shared/auth/auth.service */ "./src/app/shared/auth/auth.service.ts");
-/* harmony import */ var app_shared_shared_module__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! app/shared/shared.module */ "./src/app/shared/shared.module.ts");
-/* harmony import */ var app_layouts_full_full_layout_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! app/layouts/full/full-layout.component */ "./src/app/layouts/full/full-layout.component.ts");
-/* harmony import */ var app_layouts_content_content_layout_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! app/layouts/content/content-layout.component */ "./src/app/layouts/content/content-layout.component.ts");
-/* harmony import */ var _superadmin_sadmin_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./superadmin/sadmin.component */ "./src/app/dashboard/superadmin/sadmin.component.ts");
-/* harmony import */ var app_shared_auth_jwt_interceptor__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! app/shared/auth/jwt.interceptor */ "./src/app/shared/auth/jwt.interceptor.ts");
-/* harmony import */ var _superadmin_masters_state_state_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./superadmin/masters/state/state.component */ "./src/app/dashboard/superadmin/masters/state/state.component.ts");
-/* harmony import */ var _superadmin_masters_customer_customer_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./superadmin/masters/customer/customer.component */ "./src/app/dashboard/superadmin/masters/customer/customer.component.ts");
-/* harmony import */ var _superadmin_masters_customer_services_customer_services__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./superadmin/masters/customer/services/customer.services */ "./src/app/dashboard/superadmin/masters/customer/services/customer.services.ts");
-/* harmony import */ var _superadmin_masters_customer_contractor_contractor_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./superadmin/masters/customer/contractor/contractor.component */ "./src/app/dashboard/superadmin/masters/customer/contractor/contractor.component.ts");
-/* harmony import */ var app_shared_confirmation_dialog_confirmation_dialog_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! app/shared/confirmation-dialog/confirmation-dialog.service */ "./src/app/shared/confirmation-dialog/confirmation-dialog.service.ts");
-/* harmony import */ var _superadmin_masters_beacon_beacon_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./superadmin/masters/beacon/beacon.component */ "./src/app/dashboard/superadmin/masters/beacon/beacon.component.ts");
-/* harmony import */ var _superadmin_masters_branch_branch_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./superadmin/masters/branch/branch.component */ "./src/app/dashboard/superadmin/masters/branch/branch.component.ts");
-/* harmony import */ var _superadmin_masters_block_beacon_map_block_beacon_map_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./superadmin/masters/block-beacon-map/block-beacon-map.component */ "./src/app/dashboard/superadmin/masters/block-beacon-map/block-beacon-map.component.ts");
-/* harmony import */ var _superadmin_masters_branch_service_branch_service__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./superadmin/masters/branch/service/branch.service */ "./src/app/dashboard/superadmin/masters/branch/service/branch.service.ts");
-/* harmony import */ var _superadmin_masters_block_beacon_map_services_beaconmap_service__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./superadmin/masters/block-beacon-map/services/beaconmap.service */ "./src/app/dashboard/superadmin/masters/block-beacon-map/services/beaconmap.service.ts");
-/* harmony import */ var _superadmin_masters_block_block_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./superadmin/masters/block/block.component */ "./src/app/dashboard/superadmin/masters/block/block.component.ts");
-/* harmony import */ var _superadmin_masters_block_services_block_service__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./superadmin/masters/block/services/block.service */ "./src/app/dashboard/superadmin/masters/block/services/block.service.ts");
-/* harmony import */ var _superadmin_masters_employee_employee_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./superadmin/masters/employee/employee.component */ "./src/app/dashboard/superadmin/masters/employee/employee.component.ts");
-/* harmony import */ var _superadmin_masters_employee_personal_personal_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./superadmin/masters/employee/personal/personal.component */ "./src/app/dashboard/superadmin/masters/employee/personal/personal.component.ts");
-/* harmony import */ var _superadmin_masters_employee_empbranch_empbranch_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./superadmin/masters/employee/empbranch/empbranch.component */ "./src/app/dashboard/superadmin/masters/employee/empbranch/empbranch.component.ts");
-/* harmony import */ var _superadmin_masters_employee_navigation_bar_navigation_bar_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./superadmin/masters/employee/navigation-bar/navigation-bar.component */ "./src/app/dashboard/superadmin/masters/employee/navigation-bar/navigation-bar.component.ts");
-/* harmony import */ var _superadmin_masters_employee_weeklyoff_weeklyoff_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./superadmin/masters/employee/weeklyoff/weeklyoff.component */ "./src/app/dashboard/superadmin/masters/employee/weeklyoff/weeklyoff.component.ts");
-/* harmony import */ var _superadmin_masters_employee_empdesignation_empdesignation_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./superadmin/masters/employee/empdesignation/empdesignation.component */ "./src/app/dashboard/superadmin/masters/employee/empdesignation/empdesignation.component.ts");
-/* harmony import */ var _superadmin_masters_employee_empshift_empshift_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./superadmin/masters/employee/empshift/empshift.component */ "./src/app/dashboard/superadmin/masters/employee/empshift/empshift.component.ts");
-/* harmony import */ var _superadmin_masters_employee_data__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./superadmin/masters/employee/data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
-/* harmony import */ var _superadmin_masters_employee_empdepartment_empdepartment_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./superadmin/masters/employee/empdepartment/empdepartment.component */ "./src/app/dashboard/superadmin/masters/employee/empdepartment/empdepartment.component.ts");
+/* harmony import */ var ngx_ui_switch__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ngx-ui-switch */ "./node_modules/ngx-ui-switch/ui-switch.es5.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm5/ngx-translate-core.js");
+/* harmony import */ var _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ngx-translate/http-loader */ "./node_modules/@ngx-translate/http-loader/fesm5/ngx-translate-http-loader.js");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var ng2_search_filter__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ng2-search-filter */ "./node_modules/ng2-search-filter/ng2-search-filter.es5.js");
+/* harmony import */ var jw_angular_pagination__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! jw-angular-pagination */ "./node_modules/jw-angular-pagination/lib/jw-pagination.component.js");
+/* harmony import */ var jw_angular_pagination__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(jw_angular_pagination__WEBPACK_IMPORTED_MODULE_30__);
+/* harmony import */ var angular_archwizard__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! angular-archwizard */ "./node_modules/angular-archwizard/fesm5/angular-archwizard.js");
+/* harmony import */ var ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ng-multiselect-dropdown */ "./node_modules/ng-multiselect-dropdown/fesm5/ng-multiselect-dropdown.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm5/dialog.es5.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @angular/material/paginator */ "./node_modules/@angular/material/esm5/paginator.es5.js");
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @angular/material/sort */ "./node_modules/@angular/material/esm5/sort.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! @angular/material/toolbar */ "./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @angular/material/slide-toggle */ "./node_modules/@angular/material/esm5/slide-toggle.es5.js");
+/* harmony import */ var ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ngx-perfect-scrollbar */ "./node_modules/ngx-perfect-scrollbar/dist/ngx-perfect-scrollbar.es5.js");
+/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ng2-dragula */ "./node_modules/ng2-dragula/dist/fesm5/ng2-dragula.js");
+/* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! app/shared/auth/auth-guard.service */ "./src/app/shared/auth/auth-guard.service.ts");
+/* harmony import */ var app_shared_auth_auth_service__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! app/shared/auth/auth.service */ "./src/app/shared/auth/auth.service.ts");
+/* harmony import */ var app_shared_shared_module__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! app/shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var app_layouts_full_full_layout_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! app/layouts/full/full-layout.component */ "./src/app/layouts/full/full-layout.component.ts");
+/* harmony import */ var app_layouts_content_content_layout_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! app/layouts/content/content-layout.component */ "./src/app/layouts/content/content-layout.component.ts");
+/* harmony import */ var _superadmin_sadmin_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./superadmin/sadmin.component */ "./src/app/dashboard/superadmin/sadmin.component.ts");
+/* harmony import */ var app_shared_auth_jwt_interceptor__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! app/shared/auth/jwt.interceptor */ "./src/app/shared/auth/jwt.interceptor.ts");
+/* harmony import */ var _superadmin_masters_state_state_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./superadmin/masters/state/state.component */ "./src/app/dashboard/superadmin/masters/state/state.component.ts");
+/* harmony import */ var _superadmin_masters_customer_customer_component__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./superadmin/masters/customer/customer.component */ "./src/app/dashboard/superadmin/masters/customer/customer.component.ts");
+/* harmony import */ var _superadmin_masters_customer_services_customer_services__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./superadmin/masters/customer/services/customer.services */ "./src/app/dashboard/superadmin/masters/customer/services/customer.services.ts");
+/* harmony import */ var _superadmin_masters_customer_contractor_contractor_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./superadmin/masters/customer/contractor/contractor.component */ "./src/app/dashboard/superadmin/masters/customer/contractor/contractor.component.ts");
+/* harmony import */ var app_shared_confirmation_dialog_confirmation_dialog_service__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! app/shared/confirmation-dialog/confirmation-dialog.service */ "./src/app/shared/confirmation-dialog/confirmation-dialog.service.ts");
+/* harmony import */ var _superadmin_masters_beacon_beacon_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./superadmin/masters/beacon/beacon.component */ "./src/app/dashboard/superadmin/masters/beacon/beacon.component.ts");
+/* harmony import */ var _superadmin_masters_branch_branch_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./superadmin/masters/branch/branch.component */ "./src/app/dashboard/superadmin/masters/branch/branch.component.ts");
+/* harmony import */ var _superadmin_masters_block_beacon_map_block_beacon_map_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./superadmin/masters/block-beacon-map/block-beacon-map.component */ "./src/app/dashboard/superadmin/masters/block-beacon-map/block-beacon-map.component.ts");
+/* harmony import */ var _superadmin_masters_branch_service_branch_service__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./superadmin/masters/branch/service/branch.service */ "./src/app/dashboard/superadmin/masters/branch/service/branch.service.ts");
+/* harmony import */ var _superadmin_masters_block_beacon_map_services_beaconmap_service__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./superadmin/masters/block-beacon-map/services/beaconmap.service */ "./src/app/dashboard/superadmin/masters/block-beacon-map/services/beaconmap.service.ts");
+/* harmony import */ var _superadmin_masters_block_block_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./superadmin/masters/block/block.component */ "./src/app/dashboard/superadmin/masters/block/block.component.ts");
+/* harmony import */ var _superadmin_masters_block_services_block_service__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./superadmin/masters/block/services/block.service */ "./src/app/dashboard/superadmin/masters/block/services/block.service.ts");
+/* harmony import */ var _superadmin_masters_employee_employee_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./superadmin/masters/employee/employee.component */ "./src/app/dashboard/superadmin/masters/employee/employee.component.ts");
+/* harmony import */ var _superadmin_masters_employee_personal_personal_component__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./superadmin/masters/employee/personal/personal.component */ "./src/app/dashboard/superadmin/masters/employee/personal/personal.component.ts");
+/* harmony import */ var _superadmin_masters_employee_empbranch_empbranch_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./superadmin/masters/employee/empbranch/empbranch.component */ "./src/app/dashboard/superadmin/masters/employee/empbranch/empbranch.component.ts");
+/* harmony import */ var _superadmin_masters_employee_navigation_bar_navigation_bar_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./superadmin/masters/employee/navigation-bar/navigation-bar.component */ "./src/app/dashboard/superadmin/masters/employee/navigation-bar/navigation-bar.component.ts");
+/* harmony import */ var _superadmin_masters_employee_weeklyoff_weeklyoff_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./superadmin/masters/employee/weeklyoff/weeklyoff.component */ "./src/app/dashboard/superadmin/masters/employee/weeklyoff/weeklyoff.component.ts");
+/* harmony import */ var _superadmin_masters_employee_empdesignation_empdesignation_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./superadmin/masters/employee/empdesignation/empdesignation.component */ "./src/app/dashboard/superadmin/masters/employee/empdesignation/empdesignation.component.ts");
+/* harmony import */ var _superadmin_masters_employee_empshift_empshift_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./superadmin/masters/employee/empshift/empshift.component */ "./src/app/dashboard/superadmin/masters/employee/empshift/empshift.component.ts");
+/* harmony import */ var _superadmin_masters_employee_data__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./superadmin/masters/employee/data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var _superadmin_masters_employee_empdepartment_empdepartment_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./superadmin/masters/employee/empdepartment/empdepartment.component */ "./src/app/dashboard/superadmin/masters/employee/empdepartment/empdepartment.component.ts");
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1058,7 +1078,7 @@ var DEFAULT_PERFECT_SCROLLBAR_CONFIG = {
     wheelPropagation: false
 };
 function createTranslateLoader(http) {
-    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_26__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_27__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
 }
 var DashboardModule = /** @class */ (function () {
     function DashboardModule() {
@@ -1066,88 +1086,98 @@ var DashboardModule = /** @class */ (function () {
     DashboardModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_19__["NgModule"])({
             declarations: [
-                _dashboard_component__WEBPACK_IMPORTED_MODULE_34__["DashboardComponent"],
-                app_layouts_full_full_layout_component__WEBPACK_IMPORTED_MODULE_38__["FullLayoutComponent"],
-                app_layouts_content_content_layout_component__WEBPACK_IMPORTED_MODULE_39__["ContentLayoutComponent"],
-                _superadmin_sadmin_component__WEBPACK_IMPORTED_MODULE_40__["SAdminComponent"],
-                _superadmin_masters_state_state_component__WEBPACK_IMPORTED_MODULE_42__["StateComponent"],
-                _superadmin_masters_customer_customer_component__WEBPACK_IMPORTED_MODULE_43__["CustomerComponent"],
-                jw_angular_pagination__WEBPACK_IMPORTED_MODULE_29__["JwPaginationComponent"],
+                _dashboard_component__WEBPACK_IMPORTED_MODULE_44__["DashboardComponent"],
+                app_layouts_full_full_layout_component__WEBPACK_IMPORTED_MODULE_48__["FullLayoutComponent"],
+                app_layouts_content_content_layout_component__WEBPACK_IMPORTED_MODULE_49__["ContentLayoutComponent"],
+                _superadmin_sadmin_component__WEBPACK_IMPORTED_MODULE_50__["SAdminComponent"],
+                _superadmin_masters_state_state_component__WEBPACK_IMPORTED_MODULE_52__["StateComponent"],
+                _superadmin_masters_customer_customer_component__WEBPACK_IMPORTED_MODULE_53__["CustomerComponent"],
+                jw_angular_pagination__WEBPACK_IMPORTED_MODULE_30__["JwPaginationComponent"],
                 _superadmin_masters_customer_view_view_component__WEBPACK_IMPORTED_MODULE_14__["CustomerViewComponent"],
                 _superadmin_masters_industry_industry_component__WEBPACK_IMPORTED_MODULE_11__["IndustryComponent"],
                 _superadmin_masters_country_country_component__WEBPACK_IMPORTED_MODULE_10__["CountryComponent"],
-                _superadmin_masters_customer_contractor_contractor_component__WEBPACK_IMPORTED_MODULE_45__["ContractorComponent"],
+                _superadmin_masters_customer_contractor_contractor_component__WEBPACK_IMPORTED_MODULE_55__["ContractorComponent"],
                 _superadmin_masters_customer_department_department_component__WEBPACK_IMPORTED_MODULE_8__["DepartmentComponent"],
                 _superadmin_masters_customer_designation_designation_component__WEBPACK_IMPORTED_MODULE_7__["DesignationComponent"],
                 _shared_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_6__["ConfirmationDialogComponent"],
-                _superadmin_masters_beacon_beacon_component__WEBPACK_IMPORTED_MODULE_47__["BeaconComponent"],
+                _superadmin_masters_beacon_beacon_component__WEBPACK_IMPORTED_MODULE_57__["BeaconComponent"],
                 _superadmin_masters_customer_shift_shift_component__WEBPACK_IMPORTED_MODULE_5__["ShiftComponent"],
-                _superadmin_masters_branch_branch_component__WEBPACK_IMPORTED_MODULE_48__["BranchComponent"],
-                _superadmin_masters_block_beacon_map_block_beacon_map_component__WEBPACK_IMPORTED_MODULE_49__["BlockBeaconMapComponent"],
-                _superadmin_masters_block_block_component__WEBPACK_IMPORTED_MODULE_52__["BlockComponent"],
-                _superadmin_masters_employee_employee_component__WEBPACK_IMPORTED_MODULE_54__["EmployeeComponent"],
-                _superadmin_masters_employee_personal_personal_component__WEBPACK_IMPORTED_MODULE_55__["PersonalComponent"],
-                _superadmin_masters_employee_empbranch_empbranch_component__WEBPACK_IMPORTED_MODULE_56__["EmpbranchComponent"],
+                _superadmin_masters_branch_branch_component__WEBPACK_IMPORTED_MODULE_58__["BranchComponent"],
+                _superadmin_masters_block_beacon_map_block_beacon_map_component__WEBPACK_IMPORTED_MODULE_59__["BlockBeaconMapComponent"],
+                _superadmin_masters_block_block_component__WEBPACK_IMPORTED_MODULE_62__["BlockComponent"],
+                _superadmin_masters_employee_employee_component__WEBPACK_IMPORTED_MODULE_64__["EmployeeComponent"],
+                _superadmin_masters_employee_personal_personal_component__WEBPACK_IMPORTED_MODULE_65__["PersonalComponent"],
+                _superadmin_masters_employee_empbranch_empbranch_component__WEBPACK_IMPORTED_MODULE_66__["EmpbranchComponent"],
                 _superadmin_masters_customer_department_department_component__WEBPACK_IMPORTED_MODULE_8__["DepartmentComponent"],
-                _superadmin_masters_employee_navigation_bar_navigation_bar_component__WEBPACK_IMPORTED_MODULE_57__["NavigationBarComponent"],
-                _superadmin_masters_employee_weeklyoff_weeklyoff_component__WEBPACK_IMPORTED_MODULE_58__["WeeklyoffComponent"],
-                _superadmin_masters_employee_empdesignation_empdesignation_component__WEBPACK_IMPORTED_MODULE_59__["EmpDesignationComponent"],
-                _superadmin_masters_employee_empshift_empshift_component__WEBPACK_IMPORTED_MODULE_60__["EmpShiftComponent"],
-                _superadmin_masters_employee_empdepartment_empdepartment_component__WEBPACK_IMPORTED_MODULE_62__["EmpDepartmentComponent"],
+                _superadmin_masters_employee_navigation_bar_navigation_bar_component__WEBPACK_IMPORTED_MODULE_67__["NavigationBarComponent"],
+                _superadmin_masters_employee_weeklyoff_weeklyoff_component__WEBPACK_IMPORTED_MODULE_68__["WeeklyoffComponent"],
+                _superadmin_masters_employee_empdesignation_empdesignation_component__WEBPACK_IMPORTED_MODULE_69__["EmpDesignationComponent"],
+                _superadmin_masters_employee_empshift_empshift_component__WEBPACK_IMPORTED_MODULE_70__["EmpShiftComponent"],
+                _superadmin_masters_employee_empdepartment_empdepartment_component__WEBPACK_IMPORTED_MODULE_72__["EmpDepartmentComponent"],
                 _superadmin_Attendance_custManualAttendance_custManualAttendance_component__WEBPACK_IMPORTED_MODULE_4__["CustManualAttendanceComponent"],
                 _superadmin_masters_customer_holidayCalendar_holidayCalendar_component__WEBPACK_IMPORTED_MODULE_3__["HolidayCalendarComponent"],
                 _superadmin_masters_customer_notification_notification_component__WEBPACK_IMPORTED_MODULE_2__["NotificationComponent"],
-                _superadmin_Leave_custLeaveType_custLeaveType_component__WEBPACK_IMPORTED_MODULE_1__["CustLeaveTypeComponent"]
+                _superadmin_Leave_custLeaveType_custLeaveType_component__WEBPACK_IMPORTED_MODULE_1__["CustLeaveTypeComponent"],
             ],
             imports: [
-                _ngrx_store__WEBPACK_IMPORTED_MODULE_27__["StoreModule"].forRoot({}),
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_28__["StoreModule"].forRoot({}),
                 _dashboard_routing_module__WEBPACK_IMPORTED_MODULE_18__["DashboardRoutingModule"],
-                app_shared_shared_module__WEBPACK_IMPORTED_MODULE_37__["SharedModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_24__["HttpClientModule"],
-                ngx_toastr__WEBPACK_IMPORTED_MODULE_22__["ToastrModule"].forRoot(),
+                app_shared_shared_module__WEBPACK_IMPORTED_MODULE_47__["SharedModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_25__["HttpClientModule"],
+                ngx_toastr__WEBPACK_IMPORTED_MODULE_23__["ToastrModule"].forRoot(),
+                _angular_material_dialog__WEBPACK_IMPORTED_MODULE_34__["MatDialogModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_15__["FormsModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_33__["MatButtonModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_36__["MatInputModule"],
+                _angular_material_icon__WEBPACK_IMPORTED_MODULE_35__["MatIconModule"],
+                _angular_material_sort__WEBPACK_IMPORTED_MODULE_38__["MatSortModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_39__["MatTableModule"],
+                _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_40__["MatToolbarModule"],
+                _angular_material_paginator__WEBPACK_IMPORTED_MODULE_37__["MatPaginatorModule"],
+                _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_41__["MatSlideToggleModule"],
                 ng2_smart_table__WEBPACK_IMPORTED_MODULE_20__["Ng2SmartTableModule"],
+                ngx_ui_switch__WEBPACK_IMPORTED_MODULE_21__["UiSwitchModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_15__["ReactiveFormsModule"],
-                ng2_search_filter__WEBPACK_IMPORTED_MODULE_28__["Ng2SearchPipeModule"],
-                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_21__["NgbModule"].forRoot(),
-                _ngx_translate_core__WEBPACK_IMPORTED_MODULE_25__["TranslateModule"].forRoot({
+                ng2_search_filter__WEBPACK_IMPORTED_MODULE_29__["Ng2SearchPipeModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_22__["NgbModule"].forRoot(),
+                _ngx_translate_core__WEBPACK_IMPORTED_MODULE_26__["TranslateModule"].forRoot({
                     loader: {
-                        provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_25__["TranslateLoader"],
+                        provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_26__["TranslateLoader"],
                         useFactory: createTranslateLoader,
-                        deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_24__["HttpClient"]]
+                        deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_25__["HttpClient"]]
                     }
                 }),
-                _agm_core__WEBPACK_IMPORTED_MODULE_23__["AgmCoreModule"].forRoot({
+                _agm_core__WEBPACK_IMPORTED_MODULE_24__["AgmCoreModule"].forRoot({
                     apiKey: 'YOUR KEY'
                 }),
-                ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_32__["PerfectScrollbarModule"],
-                angular_archwizard__WEBPACK_IMPORTED_MODULE_30__["ArchwizardModule"],
-                ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_31__["NgMultiSelectDropDownModule"].forRoot()
+                ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_42__["PerfectScrollbarModule"],
+                angular_archwizard__WEBPACK_IMPORTED_MODULE_31__["ArchwizardModule"],
+                ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_32__["NgMultiSelectDropDownModule"].forRoot()
             ],
             providers: [
-                app_shared_auth_auth_service__WEBPACK_IMPORTED_MODULE_36__["AuthService"],
-                app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_35__["AuthGuard"],
+                app_shared_auth_auth_service__WEBPACK_IMPORTED_MODULE_46__["AuthService"],
+                app_shared_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_45__["AuthGuard"],
                 app_login_services_authentication_service___WEBPACK_IMPORTED_MODULE_17__["AuthenticationService"],
                 app_shared_services_common_services__WEBPACK_IMPORTED_MODULE_16__["CommonDataService"],
-                _superadmin_masters_customer_services_customer_services__WEBPACK_IMPORTED_MODULE_44__["CustomerService"],
+                _superadmin_masters_customer_services_customer_services__WEBPACK_IMPORTED_MODULE_54__["CustomerService"],
                 _superadmin_masters_state_services_state_services__WEBPACK_IMPORTED_MODULE_13__["StateService"],
                 _superadmin_masters_industry_services_industry_service__WEBPACK_IMPORTED_MODULE_12__["IndustryService"],
                 _superadmin_masters_country_services_country_services__WEBPACK_IMPORTED_MODULE_9__["CountryService"],
-                ng2_dragula__WEBPACK_IMPORTED_MODULE_33__["DragulaService"],
-                _superadmin_masters_branch_service_branch_service__WEBPACK_IMPORTED_MODULE_50__["BranchService"],
-                _superadmin_masters_block_beacon_map_services_beaconmap_service__WEBPACK_IMPORTED_MODULE_51__["BeaconmapService"],
-                _superadmin_masters_block_services_block_service__WEBPACK_IMPORTED_MODULE_53__["BlockService"],
-                _superadmin_masters_employee_data__WEBPACK_IMPORTED_MODULE_61__["showUpdate"],
-                app_shared_confirmation_dialog_confirmation_dialog_service__WEBPACK_IMPORTED_MODULE_46__["ConfirmationDialogService"],
+                ng2_dragula__WEBPACK_IMPORTED_MODULE_43__["DragulaService"],
+                _superadmin_masters_branch_service_branch_service__WEBPACK_IMPORTED_MODULE_60__["BranchService"],
+                _superadmin_masters_block_beacon_map_services_beaconmap_service__WEBPACK_IMPORTED_MODULE_61__["BeaconmapService"],
+                _superadmin_masters_block_services_block_service__WEBPACK_IMPORTED_MODULE_63__["BlockService"],
+                _superadmin_masters_employee_data__WEBPACK_IMPORTED_MODULE_71__["showUpdate"],
+                app_shared_confirmation_dialog_confirmation_dialog_service__WEBPACK_IMPORTED_MODULE_56__["ConfirmationDialogService"],
                 {
-                    provide: ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_32__["PERFECT_SCROLLBAR_CONFIG"],
+                    provide: ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_42__["PERFECT_SCROLLBAR_CONFIG"],
                     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
                 },
-                { provide: ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_32__["PERFECT_SCROLLBAR_CONFIG"], useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
-                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_24__["HTTP_INTERCEPTORS"], useClass: app_shared_auth_jwt_interceptor__WEBPACK_IMPORTED_MODULE_41__["JwtInterceptor"], multi: true }
+                { provide: ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_42__["PERFECT_SCROLLBAR_CONFIG"], useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_25__["HTTP_INTERCEPTORS"], useClass: app_shared_auth_jwt_interceptor__WEBPACK_IMPORTED_MODULE_51__["JwtInterceptor"], multi: true }
             ],
             entryComponents: [_shared_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_6__["ConfirmationDialogComponent"]],
-            bootstrap: [_dashboard_component__WEBPACK_IMPORTED_MODULE_34__["DashboardComponent"]]
+            bootstrap: [_dashboard_component__WEBPACK_IMPORTED_MODULE_44__["DashboardComponent"]]
         })
     ], DashboardModule);
     return DashboardModule;
@@ -1799,11 +1829,9 @@ var BlockBeaconMapComponent = /** @class */ (function () {
         this.showUpdate = false;
     }
     BlockBeaconMapComponent.prototype.ngOnInit = function () {
-        this.pagginationConfig = {
-            itemsPerPage: 2,
-            currentPage: 1,
-            totalItems: 0
-        };
+        var currUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.custId = currUser.refCustId;
+        console.log("Current user....", currUser);
         this.newBlockBeaconMap = this.formBuilder.group({
             refBlkId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             beaconCode: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -2213,6 +2241,7 @@ var BlockComponent = /** @class */ (function () {
     BlockComponent.prototype.onChangePage = function (pageOfItems) {
         // update current page of items
         this.pageOfItems = pageOfItems;
+        this.rowIndex = null;
     };
     BlockComponent.prototype.getAllBlock = function () {
         var _this = this;
@@ -2264,7 +2293,7 @@ var BlockComponent = /** @class */ (function () {
     BlockComponent.prototype.openForm = function () {
         this.showNew = true;
     };
-    //Cancel New Form
+    // Cancel New Form
     BlockComponent.prototype.cancel = function () {
         this.showNew = false;
         this.submitted = false;
@@ -2306,8 +2335,8 @@ var BlockComponent = /** @class */ (function () {
         this.cancel();
     };
     //Update Form open
-    BlockComponent.prototype.editCustomer = function (data) {
-        data.showUpdate = true;
+    BlockComponent.prototype.editCustomer = function (data, i) {
+        this.rowIndex = i;
         this.cancel();
         this.updateBlockForm.patchValue(data);
     };
@@ -2361,7 +2390,7 @@ var BlockComponent = /** @class */ (function () {
     // Cancel Data
     BlockComponent.prototype.cancelUpdate = function (data) {
         this.submitted1 = false;
-        data.showUpdate = false;
+        this.rowIndex = null;
         this.updateBlockForm.reset();
     };
     // Delete Data
@@ -2580,7 +2609,7 @@ var BranchComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.changePage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"](true);
         this.initialPage = 1;
-        this.pageSize = 5;
+        this.pageSize = 20;
         this.maxPages = 10;
         this.showForm = false;
         this.showList = true;
@@ -2588,6 +2617,8 @@ var BranchComponent = /** @class */ (function () {
         this.showView = false;
     }
     BranchComponent.prototype.ngOnInit = function () {
+        var currUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.custId = currUser.refCustId;
         this.branchForm = this.fb.group({
             brId: [],
             refCustomerId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -2607,13 +2638,41 @@ var BranchComponent = /** @class */ (function () {
             brIsBillable: [false],
             brIsActive: [true]
         });
-        this.getAllBranch();
+        if (this.custId == 0) {
+            this.getAllBranch();
+        }
+        else {
+            this.getAllBranchByCustId();
+        }
         this.getAllCountry();
         this.getCustomerAll();
     };
     BranchComponent.prototype.getAllBranch = function () {
         var _this = this;
         this.branchService.getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Branches...', res.data1);
+                _this.globalBranch = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    BranchComponent.prototype.getAllBranchByCustId = function () {
+        var _this = this;
+        this.branchService.getAllBranchByCustId(this.custId)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (res) {
             if (res.status.error) {
@@ -2758,7 +2817,12 @@ var BranchComponent = /** @class */ (function () {
                             showConfirmButton: true,
                             title: res.status.message,
                         });
-                        _this.getAllBranch();
+                        if (_this.custId == 0) {
+                            _this.getAllBranch();
+                        }
+                        else {
+                            _this.getAllBranchByCustId();
+                        }
                     }
                 }, function (error) {
                     sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
@@ -2788,7 +2852,12 @@ var BranchComponent = /** @class */ (function () {
                             showConfirmButton: true,
                             title: res.message,
                         });
-                        _this.getAllBranch();
+                        if (_this.custId == 0) {
+                            _this.getAllBranch();
+                        }
+                        else {
+                            _this.getAllBranchByCustId();
+                        }
                     }
                 }, function (error) {
                     sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
@@ -2895,7 +2964,12 @@ var BranchComponent = /** @class */ (function () {
                             type: 'success',
                             title: res.status.message
                         });
-                        _this.getAllBranch();
+                        if (_this.custId == 0) {
+                            _this.getAllBranch();
+                        }
+                        else {
+                            _this.getAllBranchByCustId();
+                        }
                     }
                 }, function (error) {
                     sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
@@ -3070,6 +3144,13 @@ var BranchService = /** @class */ (function () {
             return res;
         }));
     };
+    BranchService.prototype.getAllBranchByCustId = function (refCustomerId) {
+        var param = { 'refCustomerId': refCustomerId };
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/company/master/branch/getAllByCustId', param, httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
     BranchService.prototype.create = function (data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/company/master/branch/create', data, httpOptions)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
@@ -3118,7 +3199,7 @@ var BranchService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".my-custom-class .tooltip-inner {\n  background-color: #1abbec;\n  font-size: 75%; }\n\n.my-custom-class .arrow::before {\n  border-top-color: #1abbec; }\n\ninput {\n  width: 250px !important; }\n\nselect {\n  width: 250px !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3N1cGVyYWRtaW4vbWFzdGVycy9jb3VudHJ5L0Q6XFxMTkdcXFByb2pldGNzXFxBdHRlbmRhbmNlIFN5c3RlbVxcTE5HLkFUVEVOREFOQ0VTWVNURU1XRUIuVjEvc3JjXFxhcHBcXGRhc2hib2FyZFxcc3VwZXJhZG1pblxcbWFzdGVyc1xcY291bnRyeVxcY291bnRyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLHlCQUFpQztFQUNqQyxjQUFjLEVBQUE7O0FBRWhCO0VBQ0UseUJBQWlDLEVBQUE7O0FBR25DO0VBQ0UsdUJBQXVCLEVBQUE7O0FBR3pCO0VBQ0UsdUJBQXVCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9kYXNoYm9hcmQvc3VwZXJhZG1pbi9tYXN0ZXJzL2NvdW50cnkvY291bnRyeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4ubXktY3VzdG9tLWNsYXNzIC50b29sdGlwLWlubmVye1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyNiwxODcsMjM2KTtcclxuICBmb250LXNpemU6IDc1JTtcclxufVxyXG4ubXktY3VzdG9tLWNsYXNzIC5hcnJvdzo6YmVmb3JlICB7XHJcbiAgYm9yZGVyLXRvcC1jb2xvcjogcmdiKDI2LDE4NywyMzYpO1xyXG59XHJcblxyXG5pbnB1dCB7XHJcbiAgd2lkdGg6IDI1MHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbnNlbGVjdCB7XHJcbiAgd2lkdGg6IDI1MHB4ICFpbXBvcnRhbnQ7XHJcbn0iXX0= */"
+module.exports = ".my-custom-class .tooltip-inner {\n  background-color: #1abbec;\n  font-size: 75%; }\n\n.my-custom-class .arrow::before {\n  border-top-color: #1abbec; }\n\ninput {\n  width: 250px !important; }\n\nselect {\n  width: 250px !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3N1cGVyYWRtaW4vbWFzdGVycy9jb3VudHJ5L0Q6XFxMTkdcXFByb2pldGNzXFxBdHRlbmRhbmNlIFN5c3RlbVxcTE5HLkFUVEVOREFOQ0VTWVNURU1XRUIuVjEvc3JjXFxhcHBcXGRhc2hib2FyZFxcc3VwZXJhZG1pblxcbWFzdGVyc1xcY291bnRyeVxcY291bnRyeS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLHlCQUFpQztFQUNqQyxjQUFjLEVBQUE7O0FBRWhCO0VBQ0UseUJBQWlDLEVBQUE7O0FBR25DO0VBQ0UsdUJBQXVCLEVBQUE7O0FBR3pCO0VBQ0UsdUJBQXVCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9kYXNoYm9hcmQvc3VwZXJhZG1pbi9tYXN0ZXJzL2NvdW50cnkvY291bnRyeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4ubXktY3VzdG9tLWNsYXNzIC50b29sdGlwLWlubmVye1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyNiwxODcsMjM2KTtcclxuICBmb250LXNpemU6IDc1JTtcclxufVxyXG4ubXktY3VzdG9tLWNsYXNzIC5hcnJvdzo6YmVmb3JlICB7XHJcbiAgYm9yZGVyLXRvcC1jb2xvcjogcmdiKDI2LDE4NywyMzYpO1xyXG59XHJcblxyXG5pbnB1dCB7XHJcbiAgd2lkdGg6IDI1MHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbnNlbGVjdCB7XHJcbiAgd2lkdGg6IDI1MHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi8vIHRhYmxlLnRhYmxlLnRhYmxlLXJlc3BvbnNpdmUgdHIgdGQ6Zmlyc3QtY2hpbGQge1xyXG4vLyAgIGRpc3BsYXk6IG5vbmUgIWltcG9ydGFudDtcclxuLy8gfVxyXG5cclxuLy8gOmhvc3QgOjpuZy1kZWVwIC50YWJsZSB0ciB0ZDpmaXJzdC1jaGlsZCB7IGRpc3BsYXk6IG5vbmUgIWltcG9ydGFudDt9XHJcblxyXG4vLyA6aG9zdCA6Om5nLWRlZXAgdGgubmcyLXNtYXJ0LXRoLmNvdW50cnlJZC5uZy1zdGFyLWluc2VydGVkIHtcclxuLy8gICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XHJcbi8vIH1cclxuIl19 */"
 
 /***/ }),
 
@@ -3139,6 +3220,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var ng2_smart_table__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng2-smart-table */ "./node_modules/ng2-smart-table/index.js");
+
 
 
 
@@ -3149,10 +3232,7 @@ var CountryComponent = /** @class */ (function () {
     function CountryComponent(fb, countryService) {
         this.fb = fb;
         this.countryService = countryService;
-        this.globalCountry = [
-            { counytryId: 1, counytryName: 'India' },
-            { counytryId: 2, counytryName: 'USA' }
-        ];
+        this.showList = true;
         this.showNew = false;
         this.submitted = false;
         this.submitted1 = false;
@@ -3161,6 +3241,42 @@ var CountryComponent = /** @class */ (function () {
         this.initialPage = 1;
         this.pageSize = 5;
         this.maxPages = 10;
+        this.settings = {
+            actions: {
+                add: true,
+                editable: true,
+                position: 'right'
+            },
+            columns: {
+                countryId: {
+                    title: 'SL No',
+                    show: false,
+                },
+                countryTelCode: {
+                    title: 'Tel Code',
+                    filter: false,
+                },
+                countryName: {
+                    title: 'Country',
+                    filter: false,
+                }
+            },
+            attr: {
+                class: 'table table-responsive'
+            },
+            add: {
+                addButtonContent: '<i class="ion-ios-plus-outline">Add new</i>',
+                createButtonContent: '<i class="ft-check font-medium-3 mr-2"></i>',
+                cancelButtonContent: '<i class="ft-x font-medium-3 mr-2"></i>',
+                confirmCreate: true
+            },
+            edit: {
+                editButtonContent: '<i class="ft-edit-2 info font-medium-1 mr-2"></i>'
+            },
+            delete: {
+                deleteButtonContent: '<i class="ft-x danger font-medium-1 mr-2"></i>'
+            },
+        };
     }
     CountryComponent.prototype.ngOnInit = function () {
         this.newCountry = this.fb.group({
@@ -3185,6 +3301,27 @@ var CountryComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    // And the listener code which asks the DataSource to filter the data:
+    CountryComponent.prototype.onSearch = function (query) {
+        if (query === void 0) { query = ''; }
+        this.source.setFilter([
+            // fields we want to inclue in the search
+            {
+                field: 'countryTelCode',
+                search: query,
+            },
+            {
+                field: 'countryName',
+                search: query,
+            },
+        ], false);
+        if (query === '') {
+            this.getAllCountry();
+        }
+        // second parameter specifying whether to perform 'AND' or 'OR' search
+        // (meaning all columns should contain search query or at least one)
+        // 'AND' by default, so changing to 'OR' by setting false here
+    };
     CountryComponent.prototype.getAllCountry = function () {
         var _this = this;
         this.countryService.getAll()
@@ -3200,6 +3337,7 @@ var CountryComponent = /** @class */ (function () {
             else {
                 console.log('Countries...', res.data1);
                 _this.countries = res.data1;
+                _this.source = new ng2_smart_table__WEBPACK_IMPORTED_MODULE_6__["LocalDataSource"](res.data1);
             }
         }, function (error) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
@@ -3218,6 +3356,69 @@ var CountryComponent = /** @class */ (function () {
         this.showNew = false;
         this.submitted = false;
         this.newCountry.reset();
+    };
+    //  For confirm action On Delete
+    CountryComponent.prototype.onDeleteConfirm = function (event) {
+        if (window.confirm('Are you sure you want to delete?')) {
+            event.confirm.resolve();
+        }
+        else {
+            event.confirm.reject();
+        }
+    };
+    //  For confirm action On Save
+    CountryComponent.prototype.onSaveConfirm = function (event) {
+        console.log('save......', event.newData);
+        // if (window.confirm('Are you sure you want to save?')) {
+        //   event.newData['name'] += ' + added in code';
+        //   event.confirm.resolve(event.newData);
+        // } else {
+        //   event.confirm.reject();
+        // }
+    };
+    //  For confirm action On Create
+    CountryComponent.prototype.onCreateConfirm = function (event) {
+        var _this = this;
+        console.log('create......', event.newData);
+        this.submitted = true;
+        this.newCountry.setValue(event.newData);
+        console.log(this.newCountry);
+        if (this.newCountry.invalid) {
+            return;
+        }
+        this.showNew = false;
+        this.countryService.create(this.newCountry.value)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'success',
+                    showConfirmButton: true,
+                    title: res.status.message,
+                });
+                event.confirm.resolve(event.newData);
+                _this.getAllCountry();
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+        this.cancel();
+        // if (window.confirm('Are you sure you want to create?')) {
+        //   event.newData['name'] += ' + added in code';
+        //   event.confirm.resolve(event.newData);
+        // } else {
+        //   event.confirm.reject();
+        // }
     };
     // Save new Form
     CountryComponent.prototype.save = function () {
@@ -3979,7 +4180,7 @@ var CustomerComponent = /** @class */ (function () {
                 editButtonContent: '<i class="ft-edit-2 info font-medium-1 mr-2"></i>'
             },
             delete: {
-                deleteButtonContent: '<i class="ft-x danger font-medium-1 mr-2"></i>'
+                deleteButtonContent: '<i class="ft-trash-2 danger font-medium-1 mr-2"></i>'
             },
         };
         this.checkDateValidation = function (control) {
@@ -4446,6 +4647,14 @@ var CustomerComponent = /** @class */ (function () {
         this.getCustomerAll();
     };
     CustomerComponent.prototype.openForm = function () {
+        if (Object(app_shared_common_common__WEBPACK_IMPORTED_MODULE_13__["isSuperAdmin"])()) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'You are in customer admin mode, can\'t create, please switch back to super admin mode!',
+            });
+            return false;
+        }
         this.showList = false;
         this.showForm = true;
         this.formInfo = 'Create';
@@ -4454,6 +4663,14 @@ var CustomerComponent = /** @class */ (function () {
     };
     CustomerComponent.prototype.editCustomer = function (event) {
         var _this = this;
+        if (Object(app_shared_common_common__WEBPACK_IMPORTED_MODULE_13__["isSuperAdmin"])()) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'You are in customer admin mode, can\'t edit, please switch back to super admin mode!',
+            });
+            return false;
+        }
         console.log('edit...', event.data);
         console.log('id...', event.data.custId);
         this.showForm = true;
@@ -4475,6 +4692,14 @@ var CustomerComponent = /** @class */ (function () {
     };
     CustomerComponent.prototype.openConfirmationDialog = function (event) {
         var _this = this;
+        if (Object(app_shared_common_common__WEBPACK_IMPORTED_MODULE_13__["isSuperAdmin"])()) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_7___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'You are in customer admin mode, can\'t delete, please switch back to super admin mode!',
+            });
+            return false;
+        }
         this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to delete ... ?')
             .then(function (confirmed) {
             if (confirmed) {
@@ -6222,30 +6447,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showUpdate", function() { return showUpdate; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_employee_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/employee.service */ "./src/app/dashboard/superadmin/masters/employee/services/employee.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
 
 
 var showUpdate = /** @class */ (function () {
-    function showUpdate() {
-        this.personal = {
-            empName: String,
-            empMobile: Number,
-            empGender: String,
-            empType: String,
-            empCont: String,
-            empMgr: String,
-            empDOJ: String,
-            mgrService: Boolean
-        };
+    function showUpdate(empService) {
+        this.empService = empService;
     }
-    showUpdate.prototype.setPersonal = function (data) {
-        this.personal = data;
+    showUpdate.prototype.setPersonal = function (empId) {
+        this.empId = empId;
     };
     showUpdate.prototype.getPersonal = function () {
-        return this.personal;
+        return this.empId;
     };
+    showUpdate.prototype.getManagers = function () {
+        var _this = this;
+        this.empService.getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Employees...', res.employyeList);
+                _this.globalManagers = res.employyeList.filter(function (item) { return item.empIsSupervisor_Manager == true; });
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+        return this.globalManagers;
+    };
+    showUpdate.ctorParameters = function () { return [
+        { type: _services_employee_service__WEBPACK_IMPORTED_MODULE_2__["EmployeeService"] }
+    ]; };
     showUpdate = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_employee_service__WEBPACK_IMPORTED_MODULE_2__["EmployeeService"]])
     ], showUpdate);
     return showUpdate;
 }());
@@ -6279,14 +6529,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _branch_service_branch_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../branch/service/branch.service */ "./src/app/dashboard/superadmin/masters/branch/service/branch.service.ts");
+
+
+
 
 
 
 
 var EmpbranchComponent = /** @class */ (function () {
-    function EmpbranchComponent(fb, dis) {
+    function EmpbranchComponent(fb, dis, branchService) {
         this.fb = fb;
         this.dis = dis;
+        this.branchService = branchService;
         this.submitted1 = false;
         this.globalBranch = [
             { id: 1, name: 'Branch 1' },
@@ -6296,9 +6554,10 @@ var EmpbranchComponent = /** @class */ (function () {
     }
     EmpbranchComponent.prototype.ngOnInit = function () {
         this.branchForm = this.fb.group({
-            refBrId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            brId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             brFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
+        this.getBranchAll();
     };
     Object.defineProperty(EmpbranchComponent.prototype, "f1", {
         get: function () { return this.branchForm.controls; },
@@ -6306,6 +6565,29 @@ var EmpbranchComponent = /** @class */ (function () {
         configurable: true
     });
     ;
+    EmpbranchComponent.prototype.getBranchAll = function () {
+        var _this = this;
+        this.branchService.getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Branches...', res.data1);
+                _this.globalBranch = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
     EmpbranchComponent.prototype.submitBranch = function () {
         this.submitted1 = true;
         if (this.branchForm.invalid) {
@@ -6323,7 +6605,8 @@ var EmpbranchComponent = /** @class */ (function () {
     };
     EmpbranchComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] }
+        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] },
+        { type: _branch_service_branch_service__WEBPACK_IMPORTED_MODULE_6__["BranchService"] }
     ]; };
     EmpbranchComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6331,7 +6614,8 @@ var EmpbranchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./empbranch.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/superadmin/masters/employee/empbranch/empbranch.component.html"),
             styles: [__webpack_require__(/*! ./empbranch.component.scss */ "./src/app/dashboard/superadmin/masters/employee/empbranch/empbranch.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"],
+            _branch_service_branch_service__WEBPACK_IMPORTED_MODULE_6__["BranchService"]])
     ], EmpbranchComponent);
     return EmpbranchComponent;
 }());
@@ -6365,14 +6649,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _customer_department_services_department_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customer/department/services/department.service */ "./src/app/dashboard/superadmin/masters/customer/department/services/department.service.ts");
+
+
+
 
 
 
 
 var EmpDepartmentComponent = /** @class */ (function () {
-    function EmpDepartmentComponent(fb, dis) {
+    function EmpDepartmentComponent(fb, dis, deptService) {
         this.fb = fb;
         this.dis = dis;
+        this.deptService = deptService;
         this.submitted2 = false;
         this.globalDepartment = [
             { id: 1, name: 'Dept 1' },
@@ -6386,8 +6678,8 @@ var EmpDepartmentComponent = /** @class */ (function () {
     }
     EmpDepartmentComponent.prototype.ngOnInit = function () {
         this.deptForm = this.fb.group({
-            empDept: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            empReport: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            departmentId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            empReportingToId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             deptFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     };
@@ -6397,6 +6689,29 @@ var EmpDepartmentComponent = /** @class */ (function () {
         configurable: true
     });
     ;
+    EmpDepartmentComponent.prototype.getDeptartmentAll = function () {
+        var _this = this;
+        this.deptService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Departments...', res.data1);
+                _this.globalDepartment = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
     EmpDepartmentComponent.prototype.submitDept = function () {
         this.submitted2 = true;
         if (this.deptForm.invalid) {
@@ -6414,7 +6729,8 @@ var EmpDepartmentComponent = /** @class */ (function () {
     };
     EmpDepartmentComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] }
+        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] },
+        { type: _customer_department_services_department_service__WEBPACK_IMPORTED_MODULE_6__["DepartmentService"] }
     ]; };
     EmpDepartmentComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6422,7 +6738,8 @@ var EmpDepartmentComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./empdepartment.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/superadmin/masters/employee/empdepartment/empdepartment.component.html"),
             styles: [__webpack_require__(/*! ./empdepartment.component.scss */ "./src/app/dashboard/superadmin/masters/employee/empdepartment/empdepartment.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"],
+            _customer_department_services_department_service__WEBPACK_IMPORTED_MODULE_6__["DepartmentService"]])
     ], EmpDepartmentComponent);
     return EmpDepartmentComponent;
 }());
@@ -6456,14 +6773,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _customer_designation_services_designation_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customer/designation/services/designation.service */ "./src/app/dashboard/superadmin/masters/customer/designation/services/designation.service.ts");
+
+
+
 
 
 
 
 var EmpDesignationComponent = /** @class */ (function () {
-    function EmpDesignationComponent(fb, dis) {
+    function EmpDesignationComponent(fb, dis, desgService) {
         this.fb = fb;
         this.dis = dis;
+        this.desgService = desgService;
         this.submitted3 = false;
         this.globalDesignation = [
             { id: 1, name: 'Desg 1' },
@@ -6472,7 +6797,7 @@ var EmpDesignationComponent = /** @class */ (function () {
     }
     EmpDesignationComponent.prototype.ngOnInit = function () {
         this.desgForm = this.fb.group({
-            empDesg: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            designationId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             desgFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     };
@@ -6482,6 +6807,29 @@ var EmpDesignationComponent = /** @class */ (function () {
         configurable: true
     });
     ;
+    EmpDesignationComponent.prototype.getDesignationAll = function () {
+        var _this = this;
+        this.desgService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Designations...', res.data1);
+                _this.globalDesignation = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
     EmpDesignationComponent.prototype.submitDesg = function () {
         this.submitted3 = true;
         if (this.desgForm.invalid) {
@@ -6499,7 +6847,8 @@ var EmpDesignationComponent = /** @class */ (function () {
     };
     EmpDesignationComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] }
+        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] },
+        { type: _customer_designation_services_designation_service__WEBPACK_IMPORTED_MODULE_6__["DesignationService"] }
     ]; };
     EmpDesignationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6507,7 +6856,8 @@ var EmpDesignationComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./empdesignation.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/superadmin/masters/employee/empdesignation/empdesignation.component.html"),
             styles: [__webpack_require__(/*! ./empdesignation.component.scss */ "./src/app/dashboard/superadmin/masters/employee/empdesignation/empdesignation.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"],
+            _customer_designation_services_designation_service__WEBPACK_IMPORTED_MODULE_6__["DesignationService"]])
     ], EmpDesignationComponent);
     return EmpDesignationComponent;
 }());
@@ -6523,7 +6873,7 @@ var EmpDesignationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  margin: 0; }\n\n.required:after {\n  color: #d00;\n  content: \"*\"; }\n\n.invalid {\n  width: 100%;\n  margin-top: 0.25rem;\n  font-size: 80%;\n  color: #ff586b; }\n\n.multiselect-dropdown[_ngcontent-dcu-c3] .dropdown-btn[_ngcontent-dcu-c3] {\n  border: 1px solid #a6a9ae !important;\n  color: #75787d !important; }\n\n.searchCust {\n  padding: 4px;\n  width: 43%;\n  margin-right: 26%;\n  float: right;\n  border-radius: 21px;\n  border-bottom-color: gray;\n  border-right-color: gray;\n  border-width: 1px; }\n\n.tab-content .tab-pane {\n  padding-top: 20px; }\n\n.alert {\n  padding: 8px;\n  margin-bottom: 8px; }\n\n.text-center {\n  margin-top: 40px !important; }\n\n.swal2-modal {\n  width: 90%;\n  margin: 0;\n  font-family: 'Montserrat', sans-serif;\n  font-size: 13px;\n  font-weight: 100;\n  line-height: 1.5;\n  color: #212529;\n  text-align: left;\n  background-color: #f5f7fa; }\n\n.tab-content .tab-pane {\n  padding-top: 20px; }\n\n.alert {\n  padding: 8px;\n  margin-bottom: 8px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3N1cGVyYWRtaW4vbWFzdGVycy9lbXBsb3llZS9EOlxcTE5HXFxQcm9qZXRjc1xcQXR0ZW5kYW5jZSBTeXN0ZW1cXExORy5BVFRFTkRBTkNFU1lTVEVNV0VCLlYxL3NyY1xcYXBwXFxkYXNoYm9hcmRcXHN1cGVyYWRtaW5cXG1hc3RlcnNcXGVtcGxveWVlXFxlbXBsb3llZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7RUFFRSx3QkFBd0I7RUFDeEIscUJBQXFCO0VBQ3JCLGdCQUFnQjtFQUNoQixTQUFTLEVBQUE7O0FBR1g7RUFDRSxXQUFXO0VBQ1gsWUFBWSxFQUFBOztBQU1kO0VBQ0UsV0FBVztFQUNYLG1CQUFtQjtFQUNuQixjQUFjO0VBQ2QsY0FBYyxFQUFBOztBQUdoQjtFQUNFLG9DQUFvQztFQUNwQyx5QkFBeUIsRUFBQTs7QUFHM0I7RUFDRSxZQUFZO0VBQ1osVUFBVTtFQUNWLGlCQUFpQjtFQUNqQixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLHlCQUF5QjtFQUN6Qix3QkFBd0I7RUFDeEIsaUJBQWlCLEVBQUE7O0FBSW5CO0VBQ0UsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0UsWUFBWTtFQUNaLGtCQUFrQixFQUFBOztBQUdwQjtFQUNFLDJCQUEyQixFQUFBOztBQUk3QjtFQUNFLFVBQVU7RUFDVixTQUFTO0VBQ1QscUNBQXFDO0VBQ3JDLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBQ2hCLGNBQWM7RUFDZCxnQkFBZ0I7RUFDaEIseUJBQXlCLEVBQUE7O0FBSTNCO0VBQ0UsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0EsWUFBWTtFQUNaLGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL3N1cGVyYWRtaW4vbWFzdGVycy9lbXBsb3llZS9lbXBsb3llZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0W3R5cGU9XCJudW1iZXJcIl06Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24sXHJcbmlucHV0W3R5cGU9XCJudW1iZXJcIl06Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24ge1xyXG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcclxuICAtbW96LWFwcGVhcmFuY2U6IG5vbmU7XHJcbiAgYXBwZWFyYW5jZTogbm9uZTtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbi5yZXF1aXJlZDphZnRlciB7XHJcbiAgY29sb3I6ICNkMDA7XHJcbiAgY29udGVudDogXCIqXCI7XHJcbiAgLy8gcG9zaXRpb246IGFic29sdXRlO1xyXG4gIC8vIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gIC8vIHRvcDo3cHg7XHJcbn1cclxuXHJcbi5pbnZhbGlkIHtcclxuICB3aWR0aDogMTAwJTtcclxuICBtYXJnaW4tdG9wOiAwLjI1cmVtO1xyXG4gIGZvbnQtc2l6ZTogODAlO1xyXG4gIGNvbG9yOiAjZmY1ODZiO1xyXG59XHJcblxyXG4ubXVsdGlzZWxlY3QtZHJvcGRvd25bX25nY29udGVudC1kY3UtYzNdIC5kcm9wZG93bi1idG5bX25nY29udGVudC1kY3UtYzNdIHtcclxuICBib3JkZXI6IDFweCBzb2xpZCAjYTZhOWFlICFpbXBvcnRhbnQ7XHJcbiAgY29sb3I6ICM3NTc4N2QgIWltcG9ydGFudDtcclxufVxyXG5cclxuLnNlYXJjaEN1c3Qge1xyXG4gIHBhZGRpbmc6IDRweDtcclxuICB3aWR0aDogNDMlO1xyXG4gIG1hcmdpbi1yaWdodDogMjYlO1xyXG4gIGZsb2F0OiByaWdodDtcclxuICBib3JkZXItcmFkaXVzOiAyMXB4O1xyXG4gIGJvcmRlci1ib3R0b20tY29sb3I6IGdyYXk7XHJcbiAgYm9yZGVyLXJpZ2h0LWNvbG9yOiBncmF5O1xyXG4gIGJvcmRlci13aWR0aDogMXB4O1xyXG59XHJcblxyXG4vLyBBcmNoIFdpemFyZFxyXG4udGFiLWNvbnRlbnQgLnRhYi1wYW5lIHtcclxuICBwYWRkaW5nLXRvcDogMjBweDtcclxufVxyXG5cclxuLmFsZXJ0IHtcclxuICBwYWRkaW5nOiA4cHg7XHJcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xyXG59XHJcblxyXG4udGV4dC1jZW50ZXIge1xyXG4gIG1hcmdpbi10b3A6IDQwcHggIWltcG9ydGFudDtcclxufVxyXG5cclxuLy8gU3dlZXQgQWxlcnRcclxuLnN3YWwyLW1vZGFsIHtcclxuICB3aWR0aDogOTAlO1xyXG4gIG1hcmdpbjogMDtcclxuICBmb250LWZhbWlseTogJ01vbnRzZXJyYXQnLCBzYW5zLXNlcmlmO1xyXG4gIGZvbnQtc2l6ZTogMTNweDtcclxuICBmb250LXdlaWdodDogMTAwO1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjU7XHJcbiAgY29sb3I6ICMyMTI1Mjk7XHJcbiAgdGV4dC1hbGlnbjogbGVmdDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjVmN2ZhO1xyXG59XHJcblxyXG4vLyB1cGRhdGUgZm9ybVxyXG4udGFiLWNvbnRlbnQgLnRhYi1wYW5le1xyXG4gIHBhZGRpbmctdG9wOiAyMHB4O1xyXG59XHJcblxyXG4uYWxlcnQge1xyXG5wYWRkaW5nOiA4cHg7XHJcbm1hcmdpbi1ib3R0b206IDhweDtcclxufVxyXG5cclxuLy8gLm5nLXZhbGlkW3JlcXVpcmVkXSwgLm5nLXZhbGlkLnJlcXVpcmVkICB7XHJcbi8vIGJvcmRlci1sZWZ0OiA1cHggc29saWQgIzQyQTk0ODsgLyogZ3JlZW4gKi9cclxuLy8gfVxyXG4vLyAubmctaW52YWxpZDpub3QoZm9ybSkgIHtcclxuLy8gYm9yZGVyLWxlZnQ6IDVweCBzb2xpZCAjYTk0NDQyOyAvKiByZWQgKi9cclxuLy8gfVxyXG4iXX0= */"
+module.exports = "input[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  margin: 0; }\n\n.required:after {\n  color: #d00;\n  content: \"*\"; }\n\n.invalid {\n  width: 100%;\n  margin-top: 0.25rem;\n  font-size: 80%;\n  color: #ff586b; }\n\n.multiselect-dropdown[_ngcontent-dcu-c3] .dropdown-btn[_ngcontent-dcu-c3] {\n  border: 1px solid #a6a9ae !important;\n  color: #75787d !important; }\n\n.searchCust {\n  padding: 4px;\n  width: 43%;\n  margin-right: 26%;\n  float: right;\n  border-radius: 21px;\n  border-bottom-color: gray;\n  border-right-color: gray;\n  border-width: 1px; }\n\n.tab-content .tab-pane {\n  padding-top: 20px; }\n\n.alert {\n  padding: 8px;\n  margin-bottom: 8px; }\n\n.text-center {\n  margin-top: 40px !important; }\n\n.swal2-modal {\n  width: 90%;\n  margin: 0;\n  font-family: 'Montserrat', sans-serif;\n  font-size: 13px;\n  font-weight: 100;\n  line-height: 1.5;\n  color: #212529;\n  text-align: left;\n  background-color: #f5f7fa; }\n\n.tab-content .tab-pane {\n  padding-top: 20px; }\n\n.alert {\n  padding: 8px;\n  margin-bottom: 8px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3N1cGVyYWRtaW4vbWFzdGVycy9lbXBsb3llZS9EOlxcTE5HXFxQcm9qZXRjc1xcQXR0ZW5kYW5jZSBTeXN0ZW1cXExORy5BVFRFTkRBTkNFU1lTVEVNV0VCLlYxL3NyY1xcYXBwXFxkYXNoYm9hcmRcXHN1cGVyYWRtaW5cXG1hc3RlcnNcXGVtcGxveWVlXFxlbXBsb3llZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7RUFFRSx3QkFBd0I7RUFDeEIscUJBQXFCO0VBQ3JCLGdCQUFnQjtFQUNoQixTQUFTLEVBQUE7O0FBR1g7RUFDRSxXQUFXO0VBQ1gsWUFBWSxFQUFBOztBQU1kO0VBQ0UsV0FBVztFQUNYLG1CQUFtQjtFQUNuQixjQUFjO0VBQ2QsY0FBYyxFQUFBOztBQUdoQjtFQUNFLG9DQUFvQztFQUNwQyx5QkFBeUIsRUFBQTs7QUFHM0I7RUFDRSxZQUFZO0VBQ1osVUFBVTtFQUNWLGlCQUFpQjtFQUNqQixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLHlCQUF5QjtFQUN6Qix3QkFBd0I7RUFDeEIsaUJBQWlCLEVBQUE7O0FBSW5CO0VBQ0UsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0UsWUFBWTtFQUNaLGtCQUFrQixFQUFBOztBQUdwQjtFQUNFLDJCQUEyQixFQUFBOztBQUk3QjtFQUNFLFVBQVU7RUFDVixTQUFTO0VBQ1QscUNBQXFDO0VBQ3JDLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBQ2hCLGNBQWM7RUFDZCxnQkFBZ0I7RUFDaEIseUJBQXlCLEVBQUE7O0FBSTNCO0VBQ0UsaUJBQWlCLEVBQUE7O0FBR25CO0VBQ0EsWUFBWTtFQUNaLGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL3N1cGVyYWRtaW4vbWFzdGVycy9lbXBsb3llZS9lbXBsb3llZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0W3R5cGU9XCJudW1iZXJcIl06Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24sXHJcbmlucHV0W3R5cGU9XCJudW1iZXJcIl06Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24ge1xyXG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcclxuICAtbW96LWFwcGVhcmFuY2U6IG5vbmU7XHJcbiAgYXBwZWFyYW5jZTogbm9uZTtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbi5yZXF1aXJlZDphZnRlciB7XHJcbiAgY29sb3I6ICNkMDA7XHJcbiAgY29udGVudDogXCIqXCI7XHJcbiAgLy8gcG9zaXRpb246IGFic29sdXRlO1xyXG4gIC8vIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gIC8vIHRvcDo3cHg7XHJcbn1cclxuXHJcbi5pbnZhbGlkIHtcclxuICB3aWR0aDogMTAwJTtcclxuICBtYXJnaW4tdG9wOiAwLjI1cmVtO1xyXG4gIGZvbnQtc2l6ZTogODAlO1xyXG4gIGNvbG9yOiAjZmY1ODZiO1xyXG59XHJcblxyXG4ubXVsdGlzZWxlY3QtZHJvcGRvd25bX25nY29udGVudC1kY3UtYzNdIC5kcm9wZG93bi1idG5bX25nY29udGVudC1kY3UtYzNdIHtcclxuICBib3JkZXI6IDFweCBzb2xpZCAjYTZhOWFlICFpbXBvcnRhbnQ7XHJcbiAgY29sb3I6ICM3NTc4N2QgIWltcG9ydGFudDtcclxufVxyXG5cclxuLnNlYXJjaEN1c3Qge1xyXG4gIHBhZGRpbmc6IDRweDtcclxuICB3aWR0aDogNDMlO1xyXG4gIG1hcmdpbi1yaWdodDogMjYlO1xyXG4gIGZsb2F0OiByaWdodDtcclxuICBib3JkZXItcmFkaXVzOiAyMXB4O1xyXG4gIGJvcmRlci1ib3R0b20tY29sb3I6IGdyYXk7XHJcbiAgYm9yZGVyLXJpZ2h0LWNvbG9yOiBncmF5O1xyXG4gIGJvcmRlci13aWR0aDogMXB4O1xyXG59XHJcblxyXG4vLyBBcmNoIFdpemFyZFxyXG4udGFiLWNvbnRlbnQgLnRhYi1wYW5lIHtcclxuICBwYWRkaW5nLXRvcDogMjBweDtcclxufVxyXG5cclxuLmFsZXJ0IHtcclxuICBwYWRkaW5nOiA4cHg7XHJcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xyXG59XHJcblxyXG4udGV4dC1jZW50ZXIge1xyXG4gIG1hcmdpbi10b3A6IDQwcHggIWltcG9ydGFudDtcclxufVxyXG5cclxuLy8gU3dlZXQgQWxlcnRcclxuLnN3YWwyLW1vZGFsIHtcclxuICB3aWR0aDogOTAlO1xyXG4gIG1hcmdpbjogMDtcclxuICBmb250LWZhbWlseTogJ01vbnRzZXJyYXQnLCBzYW5zLXNlcmlmO1xyXG4gIGZvbnQtc2l6ZTogMTNweDtcclxuICBmb250LXdlaWdodDogMTAwO1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjU7XHJcbiAgY29sb3I6ICMyMTI1Mjk7XHJcbiAgdGV4dC1hbGlnbjogbGVmdDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjVmN2ZhO1xyXG59XHJcblxyXG4vLyB1cGRhdGUgZm9ybVxyXG4udGFiLWNvbnRlbnQgLnRhYi1wYW5le1xyXG4gIHBhZGRpbmctdG9wOiAyMHB4O1xyXG59XHJcblxyXG4uYWxlcnQge1xyXG5wYWRkaW5nOiA4cHg7XHJcbm1hcmdpbi1ib3R0b206IDhweDtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -6543,6 +6893,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var _services_employee_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/employee.service */ "./src/app/dashboard/superadmin/masters/employee/services/employee.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _branch_service_branch_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../branch/service/branch.service */ "./src/app/dashboard/superadmin/masters/branch/service/branch.service.ts");
+/* harmony import */ var _customer_shift_services_shift_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../customer/shift/services/shift.service */ "./src/app/dashboard/superadmin/masters/customer/shift/services/shift.service.ts");
+/* harmony import */ var _customer_department_services_department_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../customer/department/services/department.service */ "./src/app/dashboard/superadmin/masters/customer/department/services/department.service.ts");
+/* harmony import */ var _customer_designation_services_designation_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../customer/designation/services/designation.service */ "./src/app/dashboard/superadmin/masters/customer/designation/services/designation.service.ts");
+/* harmony import */ var _customer_contractor_services_contractor_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../customer/contractor/services/contractor.service */ "./src/app/dashboard/superadmin/masters/customer/contractor/services/contractor.service.ts");
+
+
+
+
+
+
+
+
 
 
 
@@ -6550,12 +6917,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var EmployeeComponent = /** @class */ (function () {
-    function EmployeeComponent(fb, calendar, router, route, dis) {
+    function EmployeeComponent(fb, calendar, router, route, dis, empService, branchService, shiftService, deptService, desgService, contractService) {
         this.fb = fb;
         this.calendar = calendar;
         this.router = router;
         this.route = route;
         this.dis = dis;
+        this.empService = empService;
+        this.branchService = branchService;
+        this.shiftService = shiftService;
+        this.deptService = deptService;
+        this.desgService = desgService;
+        this.contractService = contractService;
+        this.changePage = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"](true);
+        this.initialPage = 1;
+        this.pageSize = 5;
+        this.maxPages = 10;
         this.globalEmployees = [];
         this.showForm = false;
         this.submitted = false;
@@ -6564,34 +6941,13 @@ var EmployeeComponent = /** @class */ (function () {
         this.submitted3 = false;
         this.submitted4 = false;
         this.submitted5 = false;
-        this.globalBranch = [
-            { id: 1, name: 'Branch 1' },
-            { id: 2, name: 'Branch 2' },
-            { id: 3, name: 'Branch 3' },
-        ];
-        this.globalShift = [
-            { id: 1, name: 'Day' },
-            { id: 2, name: 'Night' },
-        ];
-        this.globalDepartment = [
-            { id: 1, name: 'Dept 1' },
-            { id: 2, name: 'Dept 2' },
-        ];
-        this.globalDesignation = [
-            { id: 1, name: 'Desg 1' },
-            { id: 2, name: 'Desg 2' },
-        ];
-        this.globalEmpType = [
-            { id: 1, name: 'Employee' },
-            { id: 2, name: 'Manager' },
-            { id: 3, name: 'Contractor' },
-        ];
+        this.globalBranch = [];
+        this.globalShift = [];
+        this.globalDepartment = [];
+        this.globalDesignation = [];
+        this.globalEmpType = [];
         this.showContractor = false;
-        this.globalReportTo = [
-            { id: 1, name: 'Manager 1' },
-            { id: 2, name: 'Manager 2' },
-            { id: 3, name: 'Manager 3' },
-        ];
+        this.globalReportTo = [];
         this.globalWeeks = [
             { id: 1, name: 'Sunday' },
             { id: 2, name: 'Monday' },
@@ -6601,97 +6957,240 @@ var EmployeeComponent = /** @class */ (function () {
             { id: 6, name: 'Friday' },
             { id: 7, name: 'Saturday' },
         ];
+        this.globalContractor = [];
         this.dropdownSettings = {
             singleSelection: false,
             idField: 'id',
             textField: 'name',
-            itemsShowLimit: 3,
+            itemsShowLimit: 2,
             allowSearchFilter: false
         };
         this.showView = false;
     }
     EmployeeComponent.prototype.ngOnInit = function () {
         this.dis.showList = true;
-        this.globalEmployees = [
-            {
-                empName: 'ABC', empType: 'Employee', empDesg: 'SE', empDOJ: '2019-10-20', refBrId: 'XYZ', empDept: 'MNP', empMgr: 'ANS',
-                empGender: 'Male', empMobile: '9874561230'
-            }
-        ];
         this.empForm = this.fb.group({
+            custId: [],
             empName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             empMobile: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[0-9]{10}')]],
             empGender: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            empType: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            empCont: [],
-            empMgr: [false],
-            empDOJ: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            mgrService: [true]
+            empTypeId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            contractorId: [],
+            empIsSupervisor_Manager: [false],
+            empJoiningDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
         });
         this.branchForm = this.fb.group({
-            refBrId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            brFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            brId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            employeeBranchFromDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
         this.deptForm = this.fb.group({
-            empDept: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            empReport: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            deptFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            departmentId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            empReportingToId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            employeeDepartmentFromDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
         this.desgForm = this.fb.group({
-            empDesg: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            desgFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            designationId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            employeeDesignationFromDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
         this.shiftForm = this.fb.group({
-            empShift: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            shiftFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            shiftId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            employeeShiftFromDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
         this.weeklyoffForm = this.fb.group({
-            weekoff: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            offFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            dayOfWeek: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            empWeeklyOffDayFromDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
+        console.log(localStorage.getItem('currentUser'));
+        this.globalReportTo = this.dis.getManagers();
         this.assignDate();
         this.getAllEmployee();
+        this.getBranchAll();
+        this.getShiftAll();
+        this.getDeptartmentAll();
+        this.getDesignationAll();
+        this.getContractorAll();
+        this.getEmpTypeAll();
     };
     EmployeeComponent.prototype.assignDate = function () {
         this.empForm.patchValue({
-            empDOJ: this.calendar.getToday()
+            empJoiningDate: this.calendar.getToday()
         });
         this.branchForm.patchValue({
-            brFrom: this.calendar.getToday()
+            employeeBranchFromDate: this.calendar.getToday()
         });
         this.deptForm.patchValue({
-            deptFrom: this.calendar.getToday()
+            employeeDepartmentFromDate: this.calendar.getToday()
         });
         this.shiftForm.patchValue({
-            shiftFrom: this.calendar.getToday()
+            employeeShiftFromDate: this.calendar.getToday()
         });
         this.weeklyoffForm.patchValue({
-            offFrom: this.calendar.getToday()
+            empWeeklyOffDayFromDate: this.calendar.getToday()
         });
         this.desgForm.patchValue({
-            desgFrom: this.calendar.getToday()
+            employeeDesignationFromDate: this.calendar.getToday()
         });
     };
     EmployeeComponent.prototype.getAllEmployee = function () {
-        // this.branchService.getAll()
-        //   .pipe(first())
-        //   .subscribe(res => {
-        //     if (res.status.error) {
-        //       Swal.fire({
-        //         type: 'error',
-        //         title: res.status.message,
-        //       });
-        //     } else {
-        //       console.log('Branches...', res.data1)
-        //       this.globalBranch = res.data1;
-        //     }
-        //   }, error => {
-        //     Swal.fire({
-        //       type: 'error',
-        //       title: 'Oops...',
-        //       text: 'Something went wrong!',
-        //     });
-        //   });
+        var _this = this;
+        this.empService.getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Employees...', res.employyeList);
+                _this.globalEmployees = res.employyeList;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    EmployeeComponent.prototype.getBranchAll = function () {
+        var _this = this;
+        this.branchService.getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Branches...', res.data1);
+                _this.globalBranch = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    EmployeeComponent.prototype.getEmpTypeAll = function () {
+        var _this = this;
+        this.empService.getEmployeeType()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Employee Type...', res.employeeTypeDtoList);
+                _this.globalEmpType = res.employeeTypeDtoList;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    EmployeeComponent.prototype.getShiftAll = function () {
+        var _this = this;
+        this.shiftService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Shifts...', res.data1);
+                _this.globalShift = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    EmployeeComponent.prototype.getDeptartmentAll = function () {
+        var _this = this;
+        this.deptService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Departments...', res.data1);
+                _this.globalDepartment = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    EmployeeComponent.prototype.getDesignationAll = function () {
+        var _this = this;
+        this.desgService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Designations...', res.data1);
+                _this.globalDesignation = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
+    EmployeeComponent.prototype.getContractorAll = function () {
+        var _this = this;
+        this.contractService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Contracts...', res.data1);
+                _this.globalContractor = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
     };
     Object.defineProperty(EmployeeComponent.prototype, "f", {
         get: function () { return this.empForm.controls; },
@@ -6729,6 +7228,10 @@ var EmployeeComponent = /** @class */ (function () {
         configurable: true
     });
     ;
+    EmployeeComponent.prototype.onChangePage = function (pageOfItems) {
+        // update current page of items
+        this.pageOfItems = pageOfItems;
+    };
     Object.defineProperty(EmployeeComponent.prototype, "isUpdate", {
         get: function () {
             return this.dis.showEdit;
@@ -6752,7 +7255,12 @@ var EmployeeComponent = /** @class */ (function () {
         if (this.empForm.invalid) {
             return;
         }
-        this.empForm.value.empDOJ = this.empForm.get('empDOJ').value.year + '-' + this.empForm.get('empDOJ').value.month + '-' + this.empForm.get('empDOJ').value.day;
+        this.empForm.value.custId = 61;
+        if (this.empForm.value.contractorId == null || this.empForm.value.contractorId == undefined)
+            this.empForm.value.contractorId = 0;
+        this.empForm.value.empJoiningDate = this.empForm.get('empJoiningDate').value.year + '-' +
+            (this.empForm.get('empJoiningDate').value.month < 10 ? '0' + this.empForm.get('empJoiningDate').value.month : this.empForm.get('empJoiningDate').value.month) + '-' +
+            (this.empForm.get('empJoiningDate').value.day < 10 ? '0' + this.empForm.get('empJoiningDate').value.day : this.empForm.get('empJoiningDate').value.day);
         console.log(this.empForm.value);
         this.submitted = false;
     };
@@ -6761,7 +7269,9 @@ var EmployeeComponent = /** @class */ (function () {
         if (this.branchForm.invalid) {
             return;
         }
-        this.branchForm.value.brFrom = this.branchForm.get('brFrom').value.year + '-' + this.branchForm.get('brFrom').value.month + '-' + this.branchForm.get('brFrom').value.day;
+        this.branchForm.value.employeeBranchFromDate = this.branchForm.get('employeeBranchFromDate').value.year + '-' +
+            (this.branchForm.get('employeeBranchFromDate').value.month < 10 ? '0' + this.branchForm.get('employeeBranchFromDate').value.month : this.branchForm.get('employeeBranchFromDate').value.month) + '-' +
+            (this.branchForm.get('employeeBranchFromDate').value.day < 10 ? '0' + this.branchForm.get('employeeBranchFromDate').value.day : this.branchForm.get('employeeBranchFromDate').value.day);
         console.log(this.branchForm.value);
         this.submitted1 = false;
     };
@@ -6770,7 +7280,9 @@ var EmployeeComponent = /** @class */ (function () {
         if (this.deptForm.invalid) {
             return;
         }
-        this.deptForm.value.deptFrom = this.deptForm.get('deptFrom').value.year + '-' + this.deptForm.get('deptFrom').value.month + '-' + this.deptForm.get('deptFrom').value.day;
+        this.deptForm.value.employeeDepartmentFromDate = this.deptForm.get('employeeDepartmentFromDate').value.year + '-' +
+            (this.deptForm.get('employeeDepartmentFromDate').value.month < 10 ? '0' + this.deptForm.get('employeeDepartmentFromDate').value.month : this.deptForm.get('employeeDepartmentFromDate').value.month) + '-' +
+            (this.deptForm.get('employeeDepartmentFromDate').value.day < 10 ? '0' + this.deptForm.get('employeeDepartmentFromDate').value.day : this.deptForm.get('employeeDepartmentFromDate').value.day);
         console.log(this.deptForm.value);
         this.submitted2 = false;
     };
@@ -6779,7 +7291,9 @@ var EmployeeComponent = /** @class */ (function () {
         if (this.desgForm.invalid) {
             return;
         }
-        this.desgForm.value.desgFrom = this.desgForm.get('desgFrom').value.year + '-' + this.desgForm.get('desgFrom').value.month + '-' + this.desgForm.get('desgFrom').value.day;
+        this.desgForm.value.employeeDesignationFromDate = this.desgForm.get('employeeDesignationFromDate').value.year + '-' +
+            (this.desgForm.get('employeeDesignationFromDate').value.month < 10 ? '0' + this.desgForm.get('employeeDesignationFromDate').value.month : this.desgForm.get('employeeDesignationFromDate').value.month) + '-' +
+            (this.desgForm.get('employeeDesignationFromDate').value.day < 10 ? '0' + this.desgForm.get('employeeDesignationFromDate').value.day : this.desgForm.get('employeeDesignationFromDate').value.day);
         console.log(this.desgForm.value);
         this.submitted3 = false;
     };
@@ -6788,31 +7302,75 @@ var EmployeeComponent = /** @class */ (function () {
         if (this.shiftForm.invalid) {
             return;
         }
-        this.shiftForm.value.shiftFrom = this.shiftForm.get('shiftFrom').value.year + '-' + this.shiftForm.get('shiftFrom').value.month + '-' + this.shiftForm.get('shiftFrom').value.day;
+        this.shiftForm.value.employeeShiftFromDate = this.shiftForm.get('employeeShiftFromDate').value.year + '-' +
+            (this.shiftForm.get('employeeShiftFromDate').value.month < 10 ? '0' + this.shiftForm.get('employeeShiftFromDate').value.month : this.shiftForm.get('employeeShiftFromDate').value.month) + '-' +
+            (this.shiftForm.get('employeeShiftFromDate').value.day < 10 ? '0' + this.shiftForm.get('employeeShiftFromDate').value.day : this.shiftForm.get('employeeShiftFromDate').value.day);
         console.log(this.shiftForm.value);
         this.submitted4 = false;
     };
     EmployeeComponent.prototype.submitWeeklyOff = function () {
+        var _this = this;
         this.submitted5 = true;
         if (this.weeklyoffForm.invalid) {
-            console.log(this.f5.weekoff.errors.required);
+            console.log(this.f5.dayOfWeek.errors.required);
             return;
         }
-        this.weeklyoffForm.value.offFrom = this.weeklyoffForm.get('offFrom').value.year + '-' + this.weeklyoffForm.get('offFrom').value.month + '-' + this.weeklyoffForm.get('offFrom').value.day;
+        this.weeklyoffForm.value.empWeeklyOffDayFromDate = this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.year + '-' +
+            (this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.month < 10 ? '0' + this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.month : this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.month) + '-' +
+            (this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.day < 10 ? '0' + this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.day : this.weeklyoffForm.get('empWeeklyOffDayFromDate').value.day);
+        var weekDays = '';
+        //Combining all the selected weeks
+        this.weeklyoffForm.value.dayOfWeek.forEach(function (element, index) {
+            console.log("index: ", index);
+            if (index == 0) {
+                weekDays = element.name;
+            }
+            else {
+                weekDays = weekDays + ',' + element.name;
+            }
+        });
+        this.weeklyoffForm.value.dayOfWeek = weekDays;
+        console.log("Selected weeks :", weekDays);
         console.log(this.weeklyoffForm.value);
-        this.submitted5 = false;
-        this.showForm = false;
-        this.dis.showList = true;
-        this.showContractor = false;
-        this.empForm.reset();
-        this.branchForm.reset();
-        this.deptForm.reset();
-        this.desgForm.reset();
-        this.shiftForm.reset();
-        this.weeklyoffForm.reset();
-        this.assignDate();
+        // Combining all the form values
+        var resultEmployee = Object.assign(this.empForm.value, this.branchForm.value, this.desgForm.value, this.deptForm.value, this.shiftForm.value, this.weeklyoffForm.value);
+        console.log("\n\nFinal Result: ", resultEmployee);
+        this.empService.create(resultEmployee)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+            .subscribe(function (res) {
+            console.log('response ', res);
+            if (res.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+                _this.closeWizard();
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                    type: 'success',
+                    showConfirmButton: true,
+                    title: res.status.message,
+                });
+                _this.getAllEmployee();
+                _this.closeWizard();
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+            _this.closeWizard();
+        });
     };
     EmployeeComponent.prototype.closeWizard = function () {
+        this.submitted = false;
+        this.submitted1 = false;
+        this.submitted2 = false;
+        this.submitted3 = false;
+        this.submitted4 = false;
+        this.submitted5 = false;
         this.showForm = false;
         this.dis.showList = true;
         this.submitted = false;
@@ -6826,13 +7384,14 @@ var EmployeeComponent = /** @class */ (function () {
         this.assignDate();
     };
     EmployeeComponent.prototype.selectedEmpType = function (val) {
-        if (val == 'Contractor') {
+        console.log(val);
+        var selected = this.globalEmpType.filter(function (item) { return item.empTypeId == val; });
+        if (selected[0].empType == 'Contractor') {
             this.showContractor = true;
-            // this.empForm.get('empCont').reset();
         }
         else {
             this.showContractor = false;
-            this.empForm.get('empCont').reset();
+            this.empForm.get('contractorId').reset();
         }
     };
     // Update
@@ -6840,7 +7399,7 @@ var EmployeeComponent = /** @class */ (function () {
         console.log('Edit');
         this.dis.showList = false;
         this.dis.showEdit = true;
-        this.dis.setPersonal(this.globalEmployees[0]);
+        this.dis.setPersonal(id);
     };
     // View
     EmployeeComponent.prototype.viewEmployee = function (id) {
@@ -6851,24 +7410,90 @@ var EmployeeComponent = /** @class */ (function () {
         this.showView = false;
     };
     // Delete
-    EmployeeComponent.prototype.deleteEmployee = function (id, name) {
-        console.log('Delete');
+    EmployeeComponent.prototype.deleteEmployee = function (id) {
+        var _this = this;
+        sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function (result) {
+            if (result.value) {
+                _this.empService.delete(id)
+                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])())
+                    .subscribe(function (res) {
+                    if (res.status.error) {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                            type: 'error',
+                            title: res.status.message,
+                        });
+                    }
+                    else {
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                            type: 'success',
+                            title: res.status.message
+                        });
+                        _this.getAllEmployee();
+                    }
+                }, function (error) {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                });
+            }
+        });
     };
     EmployeeComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
         { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCalendar"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
-        { type: _data__WEBPACK_IMPORTED_MODULE_5__["showUpdate"] }
+        { type: _data__WEBPACK_IMPORTED_MODULE_5__["showUpdate"] },
+        { type: _services_employee_service__WEBPACK_IMPORTED_MODULE_6__["EmployeeService"] },
+        { type: _branch_service_branch_service__WEBPACK_IMPORTED_MODULE_9__["BranchService"] },
+        { type: _customer_shift_services_shift_service__WEBPACK_IMPORTED_MODULE_10__["ShiftService"] },
+        { type: _customer_department_services_department_service__WEBPACK_IMPORTED_MODULE_11__["DepartmentService"] },
+        { type: _customer_designation_services_designation_service__WEBPACK_IMPORTED_MODULE_12__["DesignationService"] },
+        { type: _customer_contractor_services_contractor_service__WEBPACK_IMPORTED_MODULE_13__["ContractorService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], EmployeeComponent.prototype, "changePage", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], EmployeeComponent.prototype, "initialPage", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], EmployeeComponent.prototype, "pageSize", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], EmployeeComponent.prototype, "maxPages", void 0);
     EmployeeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-employee',
             template: __webpack_require__(/*! raw-loader!./employee.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/superadmin/masters/employee/employee.component.html"),
             styles: [__webpack_require__(/*! ./employee.component.scss */ "./src/app/dashboard/superadmin/masters/employee/employee.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCalendar"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
-            _data__WEBPACK_IMPORTED_MODULE_5__["showUpdate"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCalendar"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+            _data__WEBPACK_IMPORTED_MODULE_5__["showUpdate"],
+            _services_employee_service__WEBPACK_IMPORTED_MODULE_6__["EmployeeService"],
+            _branch_service_branch_service__WEBPACK_IMPORTED_MODULE_9__["BranchService"],
+            _customer_shift_services_shift_service__WEBPACK_IMPORTED_MODULE_10__["ShiftService"],
+            _customer_department_services_department_service__WEBPACK_IMPORTED_MODULE_11__["DepartmentService"],
+            _customer_designation_services_designation_service__WEBPACK_IMPORTED_MODULE_12__["DesignationService"],
+            _customer_contractor_services_contractor_service__WEBPACK_IMPORTED_MODULE_13__["ContractorService"]])
     ], EmployeeComponent);
     return EmployeeComponent;
 }());
@@ -6902,14 +7527,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _customer_shift_services_shift_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customer/shift/services/shift.service */ "./src/app/dashboard/superadmin/masters/customer/shift/services/shift.service.ts");
+
+
+
 
 
 
 
 var EmpShiftComponent = /** @class */ (function () {
-    function EmpShiftComponent(fb, dis) {
+    function EmpShiftComponent(fb, dis, shiftService) {
         this.fb = fb;
         this.dis = dis;
+        this.shiftService = shiftService;
         this.submitted4 = false;
         this.globalShift = [
             { id: 1, name: 'Day' },
@@ -6918,7 +7551,7 @@ var EmpShiftComponent = /** @class */ (function () {
     }
     EmpShiftComponent.prototype.ngOnInit = function () {
         this.shiftForm = this.fb.group({
-            empShift: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            shiftId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             shiftFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     };
@@ -6928,6 +7561,29 @@ var EmpShiftComponent = /** @class */ (function () {
         configurable: true
     });
     ;
+    EmpShiftComponent.prototype.getShiftAll = function () {
+        var _this = this;
+        this.shiftService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Shifts...', res.data1);
+                _this.globalShift = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
     EmpShiftComponent.prototype.submitShift = function () {
         this.submitted4 = true;
         if (this.shiftForm.invalid) {
@@ -6945,7 +7601,8 @@ var EmpShiftComponent = /** @class */ (function () {
     };
     EmpShiftComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] }
+        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] },
+        { type: _customer_shift_services_shift_service__WEBPACK_IMPORTED_MODULE_6__["ShiftService"] }
     ]; };
     EmpShiftComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6953,7 +7610,8 @@ var EmpShiftComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./empshift.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/superadmin/masters/employee/empshift/empshift.component.html"),
             styles: [__webpack_require__(/*! ./empshift.component.scss */ "./src/app/dashboard/superadmin/masters/employee/empshift/empshift.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"],
+            _customer_shift_services_shift_service__WEBPACK_IMPORTED_MODULE_6__["ShiftService"]])
     ], EmpShiftComponent);
     return EmpShiftComponent;
 }());
@@ -7058,41 +7716,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data */ "./src/app/dashboard/superadmin/masters/employee/data.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _customer_contractor_services_contractor_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customer/contractor/services/contractor.service */ "./src/app/dashboard/superadmin/masters/customer/contractor/services/contractor.service.ts");
+/* harmony import */ var _services_employee_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/employee.service */ "./src/app/dashboard/superadmin/masters/employee/services/employee.service.ts");
+
+
+
+
 
 
 
 
 var PersonalComponent = /** @class */ (function () {
-    function PersonalComponent(fb, dis) {
+    function PersonalComponent(fb, dis, contractService, empService) {
         this.fb = fb;
         this.dis = dis;
+        this.contractService = contractService;
+        this.empService = empService;
         this.submitted = false;
         this.globalEmpType = [
             { id: 1, name: 'Employee' },
             { id: 2, name: 'Manager' },
             { id: 3, name: 'Contractor' },
         ];
+        this.globalContractor = [
+            { id: 1, name: 'Contractor 1' },
+            { id: 2, name: 'Contractor 2' },
+            { id: 3, name: 'Contractor 3' },
+            { id: 4, name: 'Contractor 4' },
+        ];
         this.showContractor = false;
     }
     PersonalComponent.prototype.ngOnInit = function () {
         this.empForm = this.fb.group({
+            empId: [],
             empName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             empMobile: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[0-9]{10}')]],
             empGender: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            empType: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            empCont: [],
+            empTypeId: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            contractorId: [],
             empMgr: [false],
-            empDOJ: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            empJoiningDate: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             mgrService: [true]
         });
+        this.getContractorAll();
         this.setValues();
     };
     PersonalComponent.prototype.setValues = function () {
-        var val = this.dis.getPersonal();
-        var date = val.empDOJ.toString();
-        this.empForm.patchValue(val);
-        this.empForm.patchValue({
-            empDOJ: { year: +date.slice(0, 4), month: +date.slice(5, 7), day: +date.slice(8, 10) }
+        var _this = this;
+        this.empService.getEmployeeById(this.dis.empId)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('patching data...', res.data);
+                res.data.empJoiningDate = {
+                    year: +res.data.empJoiningDate.slice(0, 4), month: +res.data.empJoiningDate.slice(5, 7), day: +res.data.empJoiningDate.slice(8, 10)
+                };
+                _this.empForm.patchValue(res.data);
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
         });
     };
     Object.defineProperty(PersonalComponent.prototype, "f", {
@@ -7101,14 +7796,38 @@ var PersonalComponent = /** @class */ (function () {
         configurable: true
     });
     ;
+    PersonalComponent.prototype.getContractorAll = function () {
+        var _this = this;
+        this.contractService.get()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (res) {
+            if (res.status.error) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                    type: 'error',
+                    title: res.status.message,
+                });
+            }
+            else {
+                console.log('Contracts...', res.data1);
+                _this.globalContractor = res.data1;
+            }
+        }, function (error) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        });
+    };
     PersonalComponent.prototype.onSubmit = function () {
         this.submitted = true;
         if (this.empForm.invalid) {
             return;
         }
-        console.log(this.empForm.value.empDOJ);
-        this.empForm.value.empDOJ = this.empForm.get('empDOJ').value.year + '-' + this.empForm.get('empDOJ').value.month + '-' + this.empForm.get('empDOJ').value.day;
-        // console.log(this.empForm.value)
+        this.empForm.value.empJoiningDate = this.empForm.get('empJoiningDate').value.year + '-' +
+            (this.empForm.get('empJoiningDate').value.month < 10 ? '0' + this.empForm.get('empJoiningDate').value.month : this.empForm.get('empJoiningDate').value.month) + '-' +
+            (this.empForm.get('empJoiningDate').value.day < 10 ? '0' + this.empForm.get('empJoiningDate').value.day : this.empForm.get('empJoiningDate').value.day);
+        console.log(this.empForm.value);
         this.submitted = false;
     };
     PersonalComponent.prototype.close = function () {
@@ -7119,18 +7838,21 @@ var PersonalComponent = /** @class */ (function () {
         this.dis.showList = true;
     };
     PersonalComponent.prototype.selectedEmpType = function (val) {
-        if (val == 'Contractor') {
+        console.log(val);
+        var selected = this.globalEmpType.filter(function (item) { return item.id == val; });
+        if (selected[0].name == 'Contractor') {
             this.showContractor = true;
-            // this.empForm.get('empCont').reset();
         }
         else {
             this.showContractor = false;
-            this.empForm.get('empCont').reset();
+            this.empForm.get('contractorId').reset();
         }
     };
     PersonalComponent.ctorParameters = function () { return [
         { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] }
+        { type: _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"] },
+        { type: _customer_contractor_services_contractor_service__WEBPACK_IMPORTED_MODULE_6__["ContractorService"] },
+        { type: _services_employee_service__WEBPACK_IMPORTED_MODULE_7__["EmployeeService"] }
     ]; };
     PersonalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -7138,9 +7860,96 @@ var PersonalComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./personal.component.html */ "./node_modules/raw-loader/index.js!./src/app/dashboard/superadmin/masters/employee/personal/personal.component.html"),
             styles: [__webpack_require__(/*! ./personal.component.scss */ "./src/app/dashboard/superadmin/masters/employee/personal/personal.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _data__WEBPACK_IMPORTED_MODULE_3__["showUpdate"],
+            _customer_contractor_services_contractor_service__WEBPACK_IMPORTED_MODULE_6__["ContractorService"],
+            _services_employee_service__WEBPACK_IMPORTED_MODULE_7__["EmployeeService"]])
     ], PersonalComponent);
     return PersonalComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard/superadmin/masters/employee/services/employee.service.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/dashboard/superadmin/masters/employee/services/employee.service.ts ***!
+  \************************************************************************************/
+/*! exports provided: EmployeeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeService", function() { return EmployeeService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
+        'Content-Type': 'application/json'
+    })
+};
+var EmployeeService = /** @class */ (function () {
+    function EmployeeService(http) {
+        this.http = http;
+    }
+    EmployeeService.prototype.getAll = function () {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/customer/master/employee/findAll', httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
+    EmployeeService.prototype.create = function (data) {
+        console.log(JSON.stringify(data));
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/customer/master/employee/create', data, httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
+    EmployeeService.prototype.getEmployeeById = function (empId) {
+        var param = { 'empId': empId };
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/customer/master/employee/findByEmployeeId', param, httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
+    EmployeeService.prototype.update = function (data) {
+        console.log("update", data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/customer/master/employee/updateEmployee', data, httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
+    EmployeeService.prototype.delete = function (empId) {
+        var param = { 'empId': empId };
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/customer/master/employee/deleteEmployee', param, httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
+    EmployeeService.prototype.getEmployeeType = function () {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].baseUrl + '/api/company/master/employee/type/findAll', httpOptions)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (res) {
+            return res;
+        }));
+    };
+    EmployeeService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+    ]; };
+    EmployeeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], EmployeeService);
+    return EmployeeService;
 }());
 
 
@@ -7200,7 +8009,7 @@ var WeeklyoffComponent = /** @class */ (function () {
     }
     WeeklyoffComponent.prototype.ngOnInit = function () {
         this.weeklyoffForm = this.fb.group({
-            weekoff: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            dayOfWeek: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             offFrom: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     };
@@ -7213,7 +8022,7 @@ var WeeklyoffComponent = /** @class */ (function () {
     WeeklyoffComponent.prototype.submitWeeklyOff = function () {
         this.submitted5 = true;
         if (this.weeklyoffForm.invalid) {
-            console.log(this.f5.weekoff.errors.required);
+            console.log(this.f5.dayOfWeek.errors.required);
             return;
         }
         this.weeklyoffForm.value.offFrom = this.weeklyoffForm.get('offFrom').value.year + '-' + this.weeklyoffForm.get('offFrom').value.month + '-' + this.weeklyoffForm.get('offFrom').value.day;
@@ -8876,6 +9685,7 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage and set current user to null
+        localStorage.clear();
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
         if (localStorage.getItem('superLogin') === 'true') {
@@ -8975,6 +9785,7 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage and set current user to null
+        localStorage.clear();
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
         if (localStorage.getItem('superLogin') === 'true') {
@@ -9190,13 +10001,14 @@ var JwtInterceptor = /** @class */ (function () {
 /*!*****************************************!*\
   !*** ./src/app/shared/common/common.ts ***!
   \*****************************************/
-/*! exports provided: validateCompanyName, validatePersonName */
+/*! exports provided: validateCompanyName, validatePersonName, isSuperAdmin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateCompanyName", function() { return validateCompanyName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validatePersonName", function() { return validatePersonName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSuperAdmin", function() { return isSuperAdmin; });
 function validateCompanyName(name) {
     var pattern = /[a-zA-Z0-9\\. ]+[a-zA-Z0-9 ]$/; // can change regex with your requirement
     // if validation fails, return error name & value of true
@@ -9212,6 +10024,14 @@ function validatePersonName(name) {
         return false;
     }
     return true;
+}
+function isSuperAdmin() {
+    if (localStorage.getItem('custAdminName')) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 
@@ -10431,7 +11251,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5zY3NzIn0= */"
+module.exports = ":host ::ng-deep .switch.switch-medium {\n  height: 35px !important; }\n\n:host ::ng-deep .switch.checked .switch-pane {\n  top: 3px !important; }\n\n:host ::ng-deep .switch.switch-medium small {\n  height: 35px !important; }\n\n:host ::ng-deep .switch.switch-medium > .switch-pane > span {\n  margin-top: 2px !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL25hdmJhci9EOlxcTE5HXFxQcm9qZXRjc1xcQXR0ZW5kYW5jZSBTeXN0ZW1cXExORy5BVFRFTkRBTkNFU1lTVEVNV0VCLlYxL3NyY1xcYXBwXFxzaGFyZWRcXG5hdmJhclxcbmF2YmFyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlBO0VBQ0ksdUJBQXVCLEVBQUE7O0FBRzNCO0VBQ0ksbUJBQW1CLEVBQUE7O0FBR3ZCO0VBQ0ksdUJBQXVCLEVBQUE7O0FBRzNCO0VBQ0ksMEJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9zaGFyZWQvbmF2YmFyL25hdmJhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uYXZiYXIge1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbjpob3N0IDo6bmctZGVlcCAuc3dpdGNoLnN3aXRjaC1tZWRpdW0geyBcclxuICAgIGhlaWdodDogMzVweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46aG9zdCA6Om5nLWRlZXAgLnN3aXRjaC5jaGVja2VkIC5zd2l0Y2gtcGFuZSB7XHJcbiAgICB0b3A6IDNweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46aG9zdCA6Om5nLWRlZXAgLnN3aXRjaC5zd2l0Y2gtbWVkaXVtIHNtYWxsIHtcclxuICAgIGhlaWdodDogMzVweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46aG9zdCA6Om5nLWRlZXAgLnN3aXRjaC5zd2l0Y2gtbWVkaXVtID4gLnN3aXRjaC1wYW5lID4gc3BhbiB7XHJcbiAgICBtYXJnaW4tdG9wOiAycHggIWltcG9ydGFudDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -10505,6 +11325,7 @@ var NavbarComponent = /** @class */ (function () {
         this.getCustomerAll();
         if (localStorage.getItem('custAdminName')) {
             this.custAdminName = 'You have switched as ' + localStorage.getItem('custAdminName') + ' admin';
+            this.enable = false;
         }
     };
     NavbarComponent.prototype.getCustomerAll = function () {
@@ -10529,6 +11350,27 @@ var NavbarComponent = /** @class */ (function () {
             });
         });
     };
+    NavbarComponent.prototype.switchToAdmin = function () {
+        var _this = this;
+        console.log('enable...', this.enable);
+        if (!this.enable) {
+            this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to switch back to super admin ... ?')
+                .then(function (confirmed) {
+                if (confirmed) {
+                    var currUser = JSON.parse(localStorage.getItem('currentUser'));
+                    currUser.refCustId = 0;
+                    _this.custId = 0;
+                    localStorage.setItem('currentUser', JSON.stringify(currUser));
+                    localStorage.removeItem('custAdminName');
+                    window.location.reload();
+                }
+                else {
+                    _this.enable = false;
+                }
+            })
+                .catch(function () { return console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'); });
+        }
+    };
     NavbarComponent.prototype.changeCustAdminMode = function (event) {
         var _this = this;
         // console.log('change cust admin to', event.target.options[event.target.options.selectedIndex].text);
@@ -10546,20 +11388,7 @@ var NavbarComponent = /** @class */ (function () {
                 else {
                     var currUser = JSON.parse(localStorage.getItem('currentUser'));
                     _this.custId = currUser.refCustId;
-                }
-            })
-                .catch(function () { return console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'); });
-        }
-        else {
-            this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to switch back to super admin ... ?')
-                .then(function (confirmed) {
-                if (confirmed) {
-                    var currUser = JSON.parse(localStorage.getItem('currentUser'));
-                    currUser.refCustId = event.target.value;
-                    _this.custId = event.target.value;
-                    localStorage.setItem('currentUser', JSON.stringify(currUser));
-                    localStorage.removeItem('custAdminName');
-                    window.location.reload();
+                    _this.enable = true;
                 }
             })
                 .catch(function () { return console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'); });
@@ -11057,6 +11886,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _directives_sidebaranchortoggle_directive__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./directives/sidebaranchortoggle.directive */ "./src/app/shared/directives/sidebaranchortoggle.directive.ts");
 /* harmony import */ var _directives_sidebartoggle_directive__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./directives/sidebartoggle.directive */ "./src/app/shared/directives/sidebartoggle.directive.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var ngx_ui_switch__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ngx-ui-switch */ "./node_modules/ngx-ui-switch/ui-switch.es5.js");
 
 
 
@@ -11071,6 +11901,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // DIRECTIVES
+
 
 
 
@@ -11101,7 +11932,8 @@ var SharedModule = /** @class */ (function () {
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModule"],
                 _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__["TranslateModule"],
                 ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_6__["PerfectScrollbarModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
+                ngx_ui_switch__WEBPACK_IMPORTED_MODULE_19__["UiSwitchModule"],
             ],
             declarations: [
                 _footer_footer_component__WEBPACK_IMPORTED_MODULE_7__["FooterComponent"],
@@ -11146,6 +11978,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _common_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../common/common */ "./src/app/shared/common/common.ts");
+
 
 
 
@@ -11268,12 +12102,16 @@ var SidebarComponent = /** @class */ (function () {
         else {
             if (localStorage.getItem('currentUser')) {
                 var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                if (currentUser.refCustId === 0) {
+                console.log('UUUUUUUUU ', currentUser);
+                if (Object(_common_common__WEBPACK_IMPORTED_MODULE_10__["isSuperAdmin"])() === true) {
                     this.showDefaultLogo = true;
                     this.logoUrl = 'assets/img/logos/lng_logo.png';
                 }
                 else {
                     this.showDefaultLogo = false;
+                    if (currentUser.custLogo) {
+                        localStorage.setItem('custLogo', currentUser.custLogo);
+                    }
                     this.custLogoFile = currentUser.custLogo;
                 }
             }

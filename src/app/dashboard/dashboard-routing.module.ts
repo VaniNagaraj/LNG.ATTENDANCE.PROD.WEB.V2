@@ -31,7 +31,6 @@ import { EmpDepartmentComponent } from './superadmin/masters/employee/empdepartm
 import { EmpDesignationComponent } from './superadmin/masters/employee/empdesignation/empdesignation.component';
 import { EmpShiftComponent } from './superadmin/masters/employee/empshift/empshift.component';
 import { WeeklyoffComponent } from './superadmin/masters/employee/weeklyoff/weeklyoff.component';
-import { data } from 'app/shared/data/smart-data-table';
 
 const routes: Routes = [
   {
@@ -74,7 +73,7 @@ const routes: Routes = [
       { path: 'holiday/calendar', component: HolidayCalendarComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'notification', component: NotificationComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'manual', component: CustManualAttendanceComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'customer', component: CustLeaveTypeComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'customer/type', component: CustLeaveTypeComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
     ]
   },
   { path: '', component: FullLayoutComponent, data: { title: 'full Views' }, children: Full_ROUTES, canActivate: [AuthGuard] },

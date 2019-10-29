@@ -18,7 +18,7 @@ export class BlockComponent implements OnInit {
   @Input() maxPages = 10;
 
   blockForm: FormGroup;
-  showNew: boolean = false;
+  showNew = false;
   submitted = false;
   submitted1 = false;
   updateBlockForm: FormGroup;
@@ -110,7 +110,7 @@ export class BlockComponent implements OnInit {
     this.showNew = true;
   }
 
-  //Cancel New Form
+  // Cancel New Form
   cancel() {
     this.showNew = false;
     this.submitted = false;

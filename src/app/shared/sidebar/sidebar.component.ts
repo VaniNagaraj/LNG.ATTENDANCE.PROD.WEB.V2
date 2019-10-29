@@ -12,6 +12,8 @@ import { LayoutService } from '../services/layout.service';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { ThrowStmt } from '@angular/compiler';
+import { isSuperAdmin } from '../common/common';
 
 
 
@@ -34,7 +36,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   activeTitles: string[] = [];
   expanded: boolean;
   nav_collapsed_open = false;
-  logoUrl = 'assets/img/logo.png';
+  logoUrl = 'assets/img/logos/lng_logo.png';
   public config: any = {};
   layoutSub: Subscription;
 
@@ -142,11 +144,15 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       if (localStorage.getItem('currentUser')) {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser.refCustId === 0) {
+        console.log(isSuperAdmin());
+        if (localStorage.getItem('superAdmin') === 'true') {
           this.showDefaultLogo = true;
           this.logoUrl = 'assets/img/logos/lng_logo.png';
         } else {
           this.showDefaultLogo = false;
+          if (currentUser.custLogo) {
+            localStorage.setItem('custLogo', currentUser.custLogo);
+          }
           this.custLogoFile = currentUser.custLogo;
         }
       } else {

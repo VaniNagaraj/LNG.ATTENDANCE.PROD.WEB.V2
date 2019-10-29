@@ -25,6 +25,14 @@ export class BranchService {
         }));
     }
 
+    getAllBranchByCustId(refCustomerId: number) {
+        const param = { 'refCustomerId': refCustomerId };
+        return this.http.post<any>(environment.baseUrl + '/api/company/master/branch/getAllByCustId', param, httpOptions)
+        .pipe(map(res => {
+            return res;
+        }));
+    }
+
     create(data: any) {
         return this.http.post<any>(environment.baseUrl + '/api/company/master/branch/create', data, httpOptions)
         .pipe(map(res => {

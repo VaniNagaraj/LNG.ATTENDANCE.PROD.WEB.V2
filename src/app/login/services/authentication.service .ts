@@ -1,3 +1,4 @@
+import { data } from 'app/shared/data/smart-data-table';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -62,6 +63,7 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage and set current user to null
+        localStorage.clear();
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
         if (localStorage.getItem('superLogin') === 'true') {

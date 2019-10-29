@@ -21,22 +21,21 @@
                     </div>
                 </div>
             </form> -->
-            <div class="position-relative has-icon-right" *ngIf="superAdmin === 'true'" >
-                <div class="form-group">
-                    <label class="col-md-12 label-control">Switch to customer admin</label>
+            
+            <div class="position-relative has-icon-right" *ngIf="superAdmin === 'true'" style="display: inline-flex;">
+                <ui-switch [(ngModel)]="enable" checkedLabel='Admin' uncheckedLabel='Customer' (change)="switchToAdmin()"></ui-switch>
+                <div class="form-group" *ngIf="!enable" >
                     <div class="col-md-12">
-                        <select class="form-control" (change)="changeCustAdminMode($event)" [(ngModel)]="custId">
-                            <option value="0">Super admin</option>
+                        <select class="form-control col-md-12" (change)="changeCustAdminMode($event)" [(ngModel)]="custId">
+                            <option value="0">Switch to customer</option>
                             <option *ngFor="let item of customers"  value="{{item.custId}}">{{item.custName}}</option>
                         </select>
                     </div>
                 </div>
-            </div>
-                <!-- <input type="text" class="form-control round" placeholder="Search">
-                <div class="form-control-position">
-                    <i class="ft-search"></i>
+                <div class="form-group">
+                    <div style="width: 100%; position: absolute;"><strong>{{custAdminName}}</strong></div>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="navbar-container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
@@ -113,7 +112,7 @@
                     </li> -->
                     <li class="nav-item" ngbDropdown [placement]="placement">
                         <a class="nav-link position-relative" id="dropdownBasic3" ngbDropdownToggle>
-                             Welcome {{loginName}}, {{custAdminName}}
+                             Welcome {{loginName}}
                             <i class="ft-user font-medium-3 blue-grey darken-4"></i>
                             <p class="d-none">User Settings</p>
                         </a>

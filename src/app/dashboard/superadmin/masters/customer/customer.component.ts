@@ -14,7 +14,7 @@ import { State } from '../state/model/state.model';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ConfirmationDialogService } from 'app/shared/confirmation-dialog/confirmation-dialog.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { validateCompanyName } from 'app/shared/common/common';
+import { validateCompanyName, isSuperAdmin } from 'app/shared/common/common';
 
 
 export class NgbdModalContent {
@@ -119,7 +119,7 @@ export class CustomerComponent implements OnInit {
       editButtonContent: '<i class="ft-edit-2 info font-medium-1 mr-2"></i>'
     },
     delete: {
-      deleteButtonContent: '<i class="ft-x danger font-medium-1 mr-2"></i>'
+      deleteButtonContent: '<i class="ft-trash-2 danger font-medium-1 mr-2"></i>'
     },
   };
 
@@ -608,6 +608,14 @@ export class CustomerComponent implements OnInit {
   }
 
   openForm() {
+    if (isSuperAdmin()) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You are in customer admin mode, can\'t create, please switch back to super admin mode!',
+      });
+      return false;
+    }
     this.showList = false;
     this.showForm = true;
     this.formInfo = 'Create';
@@ -616,6 +624,14 @@ export class CustomerComponent implements OnInit {
   }
 
   editCustomer(event) {
+    if (isSuperAdmin()) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You are in customer admin mode, can\'t edit, please switch back to super admin mode!',
+      });
+      return false;
+    }
     console.log('edit...', event.data);
     console.log('id...', event.data.custId);
     this.showForm = true;
@@ -637,6 +653,14 @@ export class CustomerComponent implements OnInit {
   }
 
   public openConfirmationDialog(event) {
+    if (isSuperAdmin()) {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You are in customer admin mode, can\'t delete, please switch back to super admin mode!',
+      });
+      return false;
+    }
     this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to delete ... ?')
       .then((confirmed) => {
         if (confirmed) {

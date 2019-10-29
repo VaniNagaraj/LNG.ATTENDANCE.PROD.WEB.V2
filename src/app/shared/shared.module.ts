@@ -21,6 +21,7 @@ import { SidebarListDirective } from './directives/sidebarlist.directive';
 import { SidebarAnchorToggleDirective } from './directives/sidebaranchortoggle.directive';
 import { SidebarToggleDirective } from './directives/sidebartoggle.directive';
 import { FormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 @NgModule({
     exports: [
@@ -41,7 +42,9 @@ import { FormsModule } from '@angular/forms';
         NgbModule,
         TranslateModule,
         PerfectScrollbarModule,
-        FormsModule
+        FormsModule,
+        UiSwitchModule,
+
     ],
     declarations: [
         FooterComponent,

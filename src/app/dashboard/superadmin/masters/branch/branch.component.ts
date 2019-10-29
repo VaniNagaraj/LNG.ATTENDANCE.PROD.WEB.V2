@@ -31,6 +31,7 @@ export class BranchComponent implements OnInit {
   globalCustomer: any;
   submitted = false;
   showView = false;
+  custId: number;
 
   globalBranch: any;
   pageOfItems: Array<any>;
@@ -49,6 +50,8 @@ export class BranchComponent implements OnInit {
     private modalService: NgbModal, ) { }
 
   ngOnInit() {
+    const currUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.custId = currUser.refCustId;
     this.branchForm = this.fb.group({
       brId: [],
       refCustomerId: [null, Validators.required],
@@ -68,14 +71,39 @@ export class BranchComponent implements OnInit {
       brIsBillable: [false],
       brIsActive: [true]
     })
-
-    this.getAllBranch();
+    if (this.custId == 0) {
+      this.getAllBranch();
+    } else {
+      this.getAllBranchByCustId();
+    }
     this.getAllCountry();
     this.getCustomerAll();
   }
 
   getAllBranch() {
     this.branchService.getAll()
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('Branches...', res.data1)
+          this.globalBranch = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
+  }
+
+  getAllBranchByCustId() {
+    this.branchService.getAllBranchByCustId(this.custId)
       .pipe(first())
       .subscribe(res => {
         if (res.status.error) {
@@ -191,8 +219,7 @@ export class BranchComponent implements OnInit {
     this.submitted = true;
     if (this.branchForm.invalid) {
       return;
-    }
-    else {
+    } else {
       // Create form
       this.branchForm.value.brValidityStart = this.branchForm.get('brValidityStart').value.year + '-' +
         (this.branchForm.get('brValidityStart').value.month < 10 ? '0' + this.branchForm.get('brValidityStart').value.month : this.branchForm.get('brValidityStart').value.month) + '-' +
@@ -216,7 +243,11 @@ export class BranchComponent implements OnInit {
                 showConfirmButton: true,
                 title: res.status.message,
               });
-              this.getAllBranch();
+              if (this.custId == 0) {
+                this.getAllBranch();
+              } else {
+                this.getAllBranchByCustId();
+              }
             }
           }, error => {
             Swal.fire({
@@ -245,7 +276,11 @@ export class BranchComponent implements OnInit {
                 showConfirmButton: true,
                 title: res.message,
               });
-              this.getAllBranch();
+              if (this.custId == 0) {
+                this.getAllBranch();
+              } else {
+                this.getAllBranchByCustId();
+              }
             }
           }, error => {
             Swal.fire({
@@ -352,7 +387,11 @@ export class BranchComponent implements OnInit {
                 type: 'success',
                 title: res.status.message
               })
-              this.getAllBranch();
+              if (this.custId == 0) {
+                this.getAllBranch();
+              } else {
+                this.getAllBranchByCustId();
+              }
             }
           }, error => {
             Swal.fire({
