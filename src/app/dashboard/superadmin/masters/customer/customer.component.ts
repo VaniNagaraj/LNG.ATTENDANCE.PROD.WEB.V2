@@ -14,6 +14,7 @@ import { State } from '../state/model/state.model';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ConfirmationDialogService } from 'app/shared/confirmation-dialog/confirmation-dialog.service';
 import { LocalDataSource } from 'ng2-smart-table';
+import { validateCompanyName } from 'app/shared/common/common';
 
 
 export class NgbdModalContent {
@@ -186,28 +187,36 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
     this.customerForm = this.formBuilder.group({
       custId: [null],
-      custName: ['', [Validators.required, Validators.minLength(1)]],
+      custName: ['', [Validators.required, Validators.pattern('[a-zA-Z\\. ]+[a-zA-Z ]$')]],
       // tslint:disable-next-line: max-line-length
-      custCode: ['', [Validators.required, Validators.pattern("^([A-Za-z]{3})+?([0-9]{3})?"), Validators.minLength(3), Validators.maxLength(6)]],
+      custCode: ['', [Validators.required, Validators.pattern('^([A-Za-z]{3})+?([0-9]{3})?'), Validators.minLength(3), Validators.maxLength(6)]],
       // tslint:disable-next-line: max-line-length
       custAddress: ['', [Validators.required]],
       custCity: ['', [Validators.required, Validators.minLength(1)]],
       refCountryId: [null, [Validators.required, Validators.minLength(1)]],
       refStateId: [null, [Validators.required, Validators.minLength(1)]],
-      custPincode: ['', [Validators.required, Validators.pattern("[0-9]{6}"), Validators.minLength(1)]],
-      custGSTIN: ['', [Validators.required, Validators.pattern("[0-9A-Z]{20}")]],
-      custMobile: ['', [Validators.required, Validators.pattern("[0-9]{10}"), Validators.minLength(1)]],
+      custPincode: ['', [Validators.required, Validators.pattern('[0-9]{6}'), Validators.minLength(1)]],
+      custGSTIN: ['', [Validators.required, Validators.pattern('[0-9A-Z]{15,20}'), Validators.minLength(15)]],
+      custMobile: ['', [Validators.required, Validators.pattern('[0-9]{10}'), Validators.minLength(1)]],
       custLandline: [null],
       custEmail: ['', [Validators.required, Validators.email, Validators.minLength(1)]],
       refIndustryTypeId: [null, [Validators.required, Validators.minLength(1)]],
       custValidityStart: ['', [Validators.required, Validators.minLength(1)]],
       custValidityEnd: ['', [Validators.required, Validators.minLength(1)]],
-      custNoOfBranch: ['1', [Validators.required, Validators.pattern("[0-9]{1,2}"), Validators.minLength(1)]],
+      custNoOfBranch: ['1', [Validators.required, Validators.pattern('[0-9]{1,2}'), Validators.minLength(1)]],
       custLogoFile: [null]
     }, {validators: this.checkDateValidation});
     this.getAllCountry();
     this.getCustomerAll();
     this.getAllIndustry();
+  }
+
+  checkName() {
+     if (validateCompanyName(this.customers.custName)) {
+       this.submitted = true;
+     } else {
+       this.submitted = false;
+     }
   }
 
   checkDateValidation: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
@@ -482,6 +491,7 @@ export class CustomerComponent implements OnInit {
     if (this.customerForm.invalid) {
       return;
     }
+
     this.spinnerService.show();
     this.customerService.saveCustomer(this.submitCustFormData.value)
       .pipe(first())

@@ -117,11 +117,12 @@
 
                   <label class="col-md-2 label-control required" for="projectinput1">Name</label>
                   <div class="col-md-3">
-                    <input type="text" id="projectinput1" class="form-control" [(ngModel)]="customers.custName"
+                    <input type="text" id="projectinput1" class="form-control" [(ngModel)]="customers.custName" (blur)="checkName()"
                       formControlName="custName" placeholder="Name" name="name" required autocomplete="off"
                       maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.custName.errors }">
                     <div *ngIf="submitted && f.custName.errors" class="invalid-feedback">
                       <div *ngIf="f.custName.errors.required">Please provide Customer Name</div>
+                      <div *ngIf="f.custName.errors.pattern">Special characters not allowed</div>
                     </div>
                   </div>
 
@@ -133,8 +134,7 @@
                       [ngClass]="{ 'is-invalid': submitted && f.custCode.errors }">
                     <div *ngIf="submitted && f.custCode.errors" class="invalid-feedback">
                       <div *ngIf="f.custCode.errors.required">Please provide Customer Code</div>
-                      <div *ngIf="f.custCode.errors.pattern">Customer Code should in AAA123 Format
-                      </div>
+                      <div *ngIf="f.custCode.errors.pattern">Customer Code should in AAA123 Format</div>
                     </div>
                   </div>
                 </div>
@@ -209,12 +209,12 @@
 
                   <label class="col-md-2 label-control required" for="projectinput9">GSTIN</label>
                   <div class="col-md-3">
-                    <input type="text" id="projectinput9" maxlength="20" [(ngModel)]="customers.custGSTIN"
+                    <input type="text" id="projectinput9" minlength="15" maxlength="20" [(ngModel)]="customers.custGSTIN"
                       formControlName="custGSTIN" class="form-control" placeholder="GSTIN" name="custGSTIN"
                       autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.custGSTIN.errors }" required>
                     <div *ngIf="submitted && f.custGSTIN.errors" class="invalid-feedback">
                       <div *ngIf="f.custGSTIN.errors.required">Please provide GSTIN</div>
-                      <div *ngIf="f.custGSTIN.errors.pattern">GSTIN should contain 20 characters</div>
+                      <div *ngIf="f.custGSTIN.errors.pattern">GSTIN should contain min 15 or max 20 characters</div>
                     </div>
                   </div>
                 </div>

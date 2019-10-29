@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ContractorService } from './services/contractor.service';
+import { validatePersonName } from 'app/shared/common/common';
 
 @Component({
   selector: 'app-contractor',
@@ -34,17 +35,26 @@ export class ContractorComponent implements OnInit {
     this.newContractor = this.fb.group({
       contractorId: [''],
       refCustId: [''],
-      contractorName: ['', [Validators.required, Validators.maxLength(20)]]
+      contractorName: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z\\. ]+[a-zA-Z ]$')]]
     });
 
     this.updateContractor = this.fb.group({
       contractorId: [''],
       refCustId: [''],
-      contractorName: ['', [Validators.required, Validators.maxLength(20)]]
+      contractorName: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z\\. ]+[a-zA-Z ]$')]]
     });
 
     this.getAllContractor();
   }
+
+  checkName() {
+    console.log(this.newContractor.value['contractorName']);
+    if (validatePersonName(this.newContractor.value['contractorName'])) {
+      this.submitted = true;
+    } else {
+      this.submitted = false;
+    }
+ }
 
   get f() { return this.newContractor.controls }
   get f1() { return this.updateContractor.controls }
@@ -108,7 +118,7 @@ export class ContractorComponent implements OnInit {
           title: res.status.message,
         });
         this.getAllContractor();
-        // this.reset();
+        this.reset();
       }
     }, error => {
       Swal.fire({
@@ -153,7 +163,7 @@ export class ContractorComponent implements OnInit {
           title: res.message,
         });
         this.getAllContractor();
-        // this.reset();
+        this.reset();
       }
     }, error => {
       Swal.fire({
@@ -168,6 +178,13 @@ export class ContractorComponent implements OnInit {
   cancelUpdate(data) {
     this.submitted1 = false;
     data.showUpdate = false;
+  }
+
+  reset() {
+    this.submitted = false;
+    this.newContractor.reset();
+    this.updateContractor.reset();
+    this.getAllContractor();
   }
 
   // Delete Data

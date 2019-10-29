@@ -124,7 +124,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
           type: 'error',
           title: 'Oops...',
           text: 'Something went wrong!',
+        }).then(() => {
+          this.moduleService.logout();
         });
+        // this.router.navigate(['/login']);
       });
     // this.ROUTES = [
     //   {

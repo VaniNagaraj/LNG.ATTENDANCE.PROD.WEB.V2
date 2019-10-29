@@ -108,7 +108,7 @@ export class DepartmentComponent implements OnInit {
           title: res.status.message,
         });
         this.getAllDepartment();
-        // this.reset();
+        this.reset();
       }
     }, error => {
       Swal.fire({
@@ -117,6 +117,13 @@ export class DepartmentComponent implements OnInit {
         text: 'Something went wrong!',
       });
     });
+  }
+
+  reset() {
+    this.submitted = false;
+    this.newDepartment.reset();
+    this.updateDepartment.reset();
+    this.getAllDepartment();
   }
 
   // Update Form open
@@ -154,7 +161,7 @@ export class DepartmentComponent implements OnInit {
           title: res.message,
         });
         this.getAllDepartment();
-        // this.reset();
+        this.reset();
       }
     }, error => {
       Swal.fire({

@@ -35,10 +35,11 @@
                   </td>
                   <td>
                     <input type="text" id="projectinput1" class="form-control" formControlName="contractorName"
-                      placeholder="Contractor name" name="contractorName" required autocomplete="off" maxlength="20"
+                      placeholder="Contractor name" name="contractorName" (blur)="checkName()" required autocomplete="off" maxlength="50"
                       [ngClass]="{ 'is-invalid': submitted && f.contractorName.errors }">
                     <div *ngIf="submitted && f.contractorName.errors" class="invalid-feedback">
                       <div *ngIf="f.contractorName.errors.required">Please enter contactor type</div>
+                      <div *ngIf="f.contractorName.errors.pattern">Special characters not allowed</div>
                     </div>
                   </td>
                   <td>
@@ -69,10 +70,11 @@
                     </span>
                     <span [hidden]="!data.showUpdate">
                       <input type="text" id="projectinput1" class="form-control" [(ngModel)]="contractors.contractorName" formControlName="contractorName"
-                         name="contractorName" required autocomplete="off" maxlength="20"
+                         name="contractorName" required autocomplete="off" (blur)="checkName()" maxlength="50"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.contractorName.errors }">
                       <div *ngIf="submitted1 && f1.contractorName.errors" class="invalid-feedback">
                         <div *ngIf="f1.contractorName.errors.required">Please enter contractor type</div>
+                        <div *ngIf="f1.contractorName.errors.pattern">Special characters not allowed</div>
                       </div>
                     </span>
                   </td>
