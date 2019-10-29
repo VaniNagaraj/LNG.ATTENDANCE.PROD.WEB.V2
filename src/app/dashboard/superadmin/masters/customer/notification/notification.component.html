@@ -1,0 +1,111 @@
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+
+    <div class="row text-left justify-content-md-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title" id="striped-row-layout-card-center">Notification</h4>
+            <!-- <p class="mb-0">Add <code>.striped-rows</code> to form tag to add striped rows. In this example centered card
+              is used to show the striped rows functionality.</p> -->
+          </div>
+          <div class="card-content">
+            <div class="px-3">
+              <form class="form form-horizontal form-bordered" [formGroup]="NotificationForm" (ngSubmit)="onSubmit()">
+                <div class="form-body">
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control" for="eventRegInput1">Branch Name</label>
+                    <div class="col-md-9">
+                      <select  id="brId" formControlName="brId" name="brId"
+                        class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.brId.errors }">
+                        <option selected value="null">Select Branch</option>
+                        <option *ngFor="let br of Branch" [ngValue]="br.brId">
+                          {{br.brCode}}-{{br.brName}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.brId.errors" class="invalid-feedback">
+                        <div *ngIf="f.brId.errors.required"> Select Branch</div>
+                        <div *ngIf="f.brId.errors.pattern"> Select Branch</div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-group row last">
+                    <label class="col-md-3 label-control">Notification Type</label>
+                    <div class="col-md-9">
+                      <div class="input-group col-md-9">
+                        <div class="custom-control custom-radio d-inline-block">
+                          <input type="radio" id="customRadioInline1" value="PUSH"
+                            class="custom-control-input" formControlName="notificationType">
+                          <label class="custom-control-label" for="customRadioInline1">PUSH</label>
+                        </div>
+                        <div class="custom-control custom-radio d-inline-block">
+                          <input type="radio" id="customRadioInline2" value="SMS"
+                           class="custom-control-input" formControlName="notificationType">
+                          <label class="custom-control-label ml-2" for="customRadioInline2">SMS</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-group row">
+                    <label class="col-md-3">Branch Name</label>
+                    <div class="col-md-9">
+                      <div class="custom-control  input-group">
+                        <label class="container">Banglaore <input type="checkbox" id="branchName" (change)="getValues($event.target.checked, $event.target.value)" value="Banglaore"  >
+                          <span class="checkmark"></span> </label>
+                        <label class="container">Delhi <input type="checkbox"id="branchName" (change)="getValues($event.target.checked, $event.target.value)" value="Delhi" >
+                          <span class="checkmark"></span> </label>
+                        <label class="container">Kerala <input type="checkbox"id="branchName" (change)="getValues($event.target.checked, $event.target.value)" value="Kerala" >
+                          <span class="checkmark"></span> </label>
+                        <label class="container">Tamil Nadu <input type="checkbox" id="branchName" (change)="getValues($event.target.checked, $event.target.value)" value="Tamil Nadu">
+                          <span class="checkmark"></span></label>
+                      </div>
+  
+                    </div>
+                  </div>
+  
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control" for="eventRegInput4">Notification Header</label>
+                    <div class="col-md-9">
+                      <input type="text" id="notificationHeader" class="form-control" placeholder="Notification Header"
+                       formControlName="notificationHeader" required name="notificationHeader" maxlength="15"
+                        [ngClass]="{ 'is-invalid': submitted && f.notificationHeader.errors }">
+                        <div *ngIf="submitted && f.notificationHeader.errors" class="invalid-feedback">
+                          <div *ngIf="f.notificationHeader.errors.required"> Enter Notification Header</div>
+                          <div *ngIf="f.notificationHeader.errors.pattern"> Enter Notification Header Properly</div>
+                        </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control" for="eventRegInput5">Message</label>
+                    <div class="col-md-9">
+                      <textarea class="form-control" rows="3" placeholder="Message" id="notificationMessage"
+                       formControlName="notificationMessage" name="notificationMessage" required maxlength="60"
+                       [ngClass]="{ 'is-invalid': submitted && f.notificationMessage.errors }"></textarea>
+                       <div *ngIf="submitted && f.notificationMessage.errors" class="invalid-feedback">
+                        <div *ngIf="f.notificationMessage.errors.required"> Enter Notification Message</div>
+                        <div *ngIf="f.notificationMessage.errors.pattern"> Message length</div>
+                      </div>
+                    </div>
+  
+                  </div>
+  
+                </div>
+  
+                <div class="form-actions center">
+                  <button type="reset" (click)="reset()"  class="btn btn-raised btn-warning mr-1">
+                    <i class="ft-x"></i> Cancel
+                  </button>
+                  <button type="submit" class="btn btn-raised btn-primary">
+                    <i class="fa fa-check-square-o"></i> Send
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- // Striped row layout section end -->

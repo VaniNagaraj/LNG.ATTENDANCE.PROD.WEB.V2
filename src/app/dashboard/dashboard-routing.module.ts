@@ -1,3 +1,7 @@
+import { CustLeaveTypeComponent } from './superadmin/Leave/custLeaveType/custLeaveType.component';
+import { NotificationComponent } from './superadmin/masters/customer/notification/notification.component';
+import { HolidayCalendarComponent } from './superadmin/masters/customer/holidayCalendar/holidayCalendar.component';
+import { CustManualAttendanceComponent } from './superadmin/Attendance/custManualAttendance/custManualAttendance.component';
 import { ShiftComponent } from './superadmin/masters/customer/shift/shift.component';
 import { ContractorComponent } from './superadmin/masters/customer/contractor/contractor.component';
 import { CountryComponent } from './superadmin/masters/country/country.component';
@@ -67,6 +71,10 @@ const routes: Routes = [
           { path: 'weeklyoff', component: WeeklyoffComponent, canActivate: [AuthGuard], data: { title: 'Weeklyoff'} },
         ]
        },
+      { path: 'holiday/calendar', component: HolidayCalendarComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'notification', component: NotificationComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'manual', component: CustManualAttendanceComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'customer', component: CustLeaveTypeComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
     ]
   },
   { path: '', component: FullLayoutComponent, data: { title: 'full Views' }, children: Full_ROUTES, canActivate: [AuthGuard] },

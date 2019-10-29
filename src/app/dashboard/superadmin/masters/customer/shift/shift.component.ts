@@ -60,7 +60,7 @@ export class ShiftComponent implements OnInit {
       shiftEnd: ['', [Validators.required]]
     });
 
-    if (this.custId === 0) {
+    if (this.custId == 0) {
       this.getAllBranch();
       this.getAllShift();
     } else {
@@ -202,8 +202,13 @@ export class ShiftComponent implements OnInit {
             showConfirmButton: true,
             title: res.status.message,
           });
-          this.getAllShift();
-          this.getAllBranch();
+          if (this.custId == 0) {
+            this.getAllBranch();
+            this.getAllShift();
+          } else {
+            this.getAllBranchByCustId();
+            this.getAllShiftByCustId();
+          }
           this.cancel();
         }
       }, error => {
@@ -242,7 +247,13 @@ export class ShiftComponent implements OnInit {
             showConfirmButton: true,
             title: res.message,
           });
-          this.getAllShift();
+          if (this.custId == 0) {
+            this.getAllBranch();
+            this.getAllShift();
+          } else {
+            this.getAllBranchByCustId();
+            this.getAllShiftByCustId();
+          }
           this.cancelUpdate(data);
         }
       }, error => {
@@ -286,7 +297,13 @@ export class ShiftComponent implements OnInit {
                 type: 'success',
                 title: res.status.message
               })
-              this.getAllShift();
+              if (this.custId == 0) {
+                this.getAllBranch();
+                this.getAllShift();
+              } else {
+                this.getAllBranchByCustId();
+                this.getAllShiftByCustId();
+              }
             }
           }, error => {
             console.log(error)

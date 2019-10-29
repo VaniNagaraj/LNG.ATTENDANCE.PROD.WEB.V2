@@ -43,7 +43,7 @@ export class DesignationComponent implements OnInit {
       designationName: ['', [Validators.required, Validators.maxLength(20)]]
     });
 
-    if (this.custId === 0) {
+    if (this.custId == 0) {
       this.getAllDesignation();
     } else {
       this.getAllDesignationByCustId();
@@ -134,7 +134,11 @@ export class DesignationComponent implements OnInit {
           showConfirmButton: true,
           title: res.status.message,
         });
-        this.getAllDesignation();
+        if (this.custId == 0) {
+          this.getAllDesignation();
+        } else {
+          this.getAllDesignationByCustId();
+        }
         // this.reset();
       }
     }, error => {
@@ -180,7 +184,11 @@ export class DesignationComponent implements OnInit {
           showConfirmButton: true,
           title: res.message,
         });
-        this.getAllDesignation();
+        if (this.custId == 0) {
+          this.getAllDesignation();
+        } else {
+          this.getAllDesignationByCustId();
+        }
         // this.reset();
       }
     }, error => {
@@ -218,7 +226,11 @@ export class DesignationComponent implements OnInit {
           title: res.status.message,
         });
         // this.reset();
-        this.getAllDesignation();
+        if (this.custId == 0) {
+          this.getAllDesignation();
+        } else {
+          this.getAllDesignationByCustId();
+        }
       }
     }, error => {
       Swal.fire({

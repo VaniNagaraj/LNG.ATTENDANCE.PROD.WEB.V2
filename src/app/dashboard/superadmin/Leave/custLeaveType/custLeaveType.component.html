@@ -1,0 +1,108 @@
+<!--Confirm Action Starts-->
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4 class="card-title">Customer Leave Type</h4>
+            <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
+              <button _ngcontent-hci-c8="" class="btn btn-raised btn-primary" type="button" (click)="openForm()"
+                placement="bottom" ngbTooltip="New Customer Leave Type" tooltipClass="my-custom-class">
+                <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Leave Type Name</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="showNew" [formGroup]="newLeaveType">
+                  <td></td>
+                  <td>
+                    <select id="projectinput1" formControlName="custLeaveName" name="custLeaveName" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.custLeaveName.errors }">
+                      <option disabled selected value="null">Select Leave Type Name</option>
+                      <option *ngFor="let leave of leaveType" [value]="leave.custLeaveName">{{leave.custLeaveName}}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && f.custLeaveName.errors" class="invalid-feedback">
+                      <div *ngIf="f.custLeaveName.errors.required">Please Select Leave Type Name</div>
+                    </div>
+                  </td>
+
+                  <td>
+                    <a class="success p-0" (click)="save()" title="" placement="bottom"
+                      ngbTooltip="New Customer Leave Type" tooltipClass="my-custom-class">
+                      <i class="ft-check font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" (click)="cancel()" placement="bottom" ngbTooltip="Cancel"
+                      tooltipClass="my-custom-class" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngFor="let data of pageOfItems ; let i = index;" [formGroup]="updateCustLeaveType">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.custLeaveName}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <select id="projectinput2" formControlName="custLeaveName" name="custLeaveName"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f1.custLeaveName.errors }">
+                        <option disabled selected value="null">Select Leave Type Name</option>
+                        <option *ngFor="let leave of leaveType" [value]="leave.custLeaveName">{{leave.custLeaveName}}
+                        </option>
+                      </select>
+                      <div *ngIf="submitted && f1.custLeaveName.errors" class="invalid-feedback">
+                        <div *ngIf="f1.custLeaveName.errors.required">Please Select Leave Type Name</div>
+                      </div>
+                    </span>
+                  </td>
+                  <td width="160">
+                    <span [hidden]="data.showUpdate">
+                      <a class="success p-0" (click)="editCustLeaveType(data)" title=""
+                      placement="bottom" ngbTooltip="Edit" tooltipClass="my-custom-class">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" (click)="deleteCustLeaveType(data)" title=""
+                      placement="bottom" ngbTooltip="Delete" tooltipClass="my-custom-class">
+                        <i class="ft-trash-2"></i>
+                      </a>
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <a class="success p-0" (click)="saveUpdate(data)" title=""
+                      placement="bottom" ngbTooltip="Update" tooltipClass="my-custom-class">
+                        <i class="ft-check font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" (click)="cancelUpdate(data)" title=""
+                      placement="bottom" ngbTooltip="Cancel" tooltipClass="my-custom-class">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-footer pb-0 pt-3">
+              <jw-pagination [items]='leaveType' (changePage)="onChangePage($event)"></jw-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

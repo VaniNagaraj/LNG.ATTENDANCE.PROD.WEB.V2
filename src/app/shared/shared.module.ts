@@ -20,6 +20,7 @@ import { SidebarLinkDirective } from './directives/sidebarlink.directive';
 import { SidebarListDirective } from './directives/sidebarlist.directive';
 import { SidebarAnchorToggleDirective } from './directives/sidebaranchortoggle.directive';
 import { SidebarToggleDirective } from './directives/sidebartoggle.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     exports: [
@@ -39,7 +40,8 @@ import { SidebarToggleDirective } from './directives/sidebartoggle.directive';
         CommonModule,
         NgbModule,
         TranslateModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        FormsModule
     ],
     declarations: [
         FooterComponent,

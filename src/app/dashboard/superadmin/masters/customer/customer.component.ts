@@ -454,7 +454,6 @@ export class CustomerComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submittttttt', this.submitType);
     if (this.submitType === 'save') {
       this.save();
     } else {
@@ -485,7 +484,7 @@ export class CustomerComponent implements OnInit {
       custLogoFile: [this.sellersPermitFile]
     });
 
-    console.log('customer data', this.submitCustFormData.value);
+    // console.log('customer data', this.submitCustFormData.value);
     //   // console.log(this.f.custMobile.errors);
     //   // stop here if form is invalid
     if (this.customerForm.invalid) {
@@ -539,7 +538,7 @@ export class CustomerComponent implements OnInit {
   }
 
   updateCustomer() {
-    console.log('Update customer...');
+    // console.log('Update customer...');
     this.submitted = true;
     this.files = this.f.custLogoFile.value;
 
@@ -563,7 +562,7 @@ export class CustomerComponent implements OnInit {
       custLogoFile: [this.sellersPermitFile]
     });
 
-    console.log('update data', this.submitCustFormData.value);
+    // console.log('update data', this.submitCustFormData.value);
 
     if (this.customerForm.invalid) {
       return;

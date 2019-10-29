@@ -43,7 +43,8 @@ export class DepartmentComponent implements OnInit {
       deptName: ['', [Validators.required, Validators.maxLength(20)]]
     });
 
-    if (this.custId === 0) {
+    // tslint:disable-next-line: triple-equals
+    if (this.custId == 0) {
       this.getAllDepartment();
     } else {
       this.getAllDepartmentByCustId();
@@ -134,7 +135,11 @@ export class DepartmentComponent implements OnInit {
           showConfirmButton: true,
           title: res.status.message,
         });
-        this.getAllDepartment();
+        if (this.custId == 0) {
+          this.getAllDepartment();
+        } else {
+          this.getAllDepartmentByCustId();
+        }
         this.reset();
       }
     }, error => {
@@ -150,7 +155,11 @@ export class DepartmentComponent implements OnInit {
     this.submitted = false;
     this.newDepartment.reset();
     this.updateDepartment.reset();
-    this.getAllDepartment();
+    if (this.custId == 0) {
+      this.getAllDepartment();
+    } else {
+      this.getAllDepartmentByCustId();
+    }
   }
 
   // Update Form open
@@ -187,7 +196,11 @@ export class DepartmentComponent implements OnInit {
           showConfirmButton: true,
           title: res.message,
         });
-        this.getAllDepartment();
+        if (this.custId == 0) {
+          this.getAllDepartment();
+        } else {
+          this.getAllDepartmentByCustId();
+        }
         this.reset();
       }
     }, error => {
@@ -225,7 +238,11 @@ export class DepartmentComponent implements OnInit {
           title: res.status.message,
         });
         // this.reset();
-        this.getAllDepartment();
+        if (this.custId == 0) {
+          this.getAllDepartment();
+        } else {
+          this.getAllDepartmentByCustId();
+        }
       }
     }, error => {
       Swal.fire({

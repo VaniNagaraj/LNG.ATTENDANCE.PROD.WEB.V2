@@ -1,0 +1,165 @@
+<!--Confirm Action Starts-->
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="col-sm-6">
+              <h4 class="card-title">Holiday Calendar</h4>
+            </div>
+            <div class="col-sm-12">
+              <table class="table table-responsive-md">
+                <tr [formGroup]="HolidayCalenderForm" *ngIf="SelectForm">
+                  <td style="width:30%;">
+                    <select id="selectCompanyBranch" formControlName="selectCompanyBranch" name="selectCompanyBranch"
+                      class="form-control" [ngClass]="{ 'is-invalid': submitted && f.selectCompanyBranch.errors }">
+                      <option selected value="null">Select Company or Branch </option>
+                      <option [ngValue]="">Company</option>
+                      <option [ngValue]="">Branch</option>
+                    </select>
+                    <div *ngIf="submitted && f.selectCompanyBranch.errors" class="invalid-feedback">
+                      <div *ngIf="f.selectCompanyBranch.errors.required">Select Company or Branch </div>
+                      <div *ngIf="f.selectCompanyBranch.errors.pattern"> Select Company or Branch </div>
+                    </div>
+                  </td>
+                  <td style="width:30%;">
+                    <select id="brId" formControlName="brId" name="brId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.brId.errors }">
+                      <option selected value="null">Select Branch</option>
+                      <option *ngFor="let br of Branch" [ngValue]="br.brId">
+                        {{br.brCode}}-{{br.brName}}</option>
+                    </select>
+                  </td>
+                  <div _ngcontent-hci-c8="" class="form-actions top" style="float:right;">
+                    <button _ngcontent-hci-c8="" placement="bottom" ngbTooltip="New Holiday"
+                      tooltipClass="my-custom-class" class="btn btn-raised btn-primary" type="button"
+                      (click)="openForm()">
+                      <i _ngcontent-hci-c8="" class="fa fa-check-square-o"></i> New
+                    </button>
+                  </div>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Holiday Calendar Year</th>
+                  <th>Holiday Date</th>
+                  <th>Holiday Name</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="showNew" [formGroup]="newHoliday">
+                  <td></td>
+                  <td>
+                    <input type="date" id="projectinput1" class="form-control" formControlName="holidayCalendarYear"
+                      placeholder="Please Enter Holiday Calendar year" name="holidayCalendarYear" required
+                      autocomplete="off" 
+                      [ngClass]="{ 'is-invalid': submitted && f.holidayCalendarYear.errors }">
+                    <div *ngIf="submitted && f.holidayCalendarYear.errors" class="invalid-feedback">
+                      <div *ngIf="f.holidayCalendarYear.errors.required">Please Enter Holiday Calendar Year</div>
+                    </div>
+                  </td>
+                  <td style="width:30%;">
+                    <input type="date" id="projectinput1" class="form-control" formControlName="holidayDate"
+                      placeholder="Please Enter State" name="holidayDate" required autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.holidayDate.errors }"
+                      onkeydown="javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false">
+                    <div *ngIf="submitted && f.holidayDate.errors" class="invalid-feedback">
+                      <div *ngIf="f.holidayDate.errors.required">Please Enter Holiday Calendar Date</div>
+                    </div>
+                  </td>
+                  <td style="width:30%;">
+                    <input type="text" id="projectinput1" class="form-control" formControlName="holidayName"
+                      placeholder="Please Enter Holiday Name" name="holidayName" required autocomplete="off"
+                      maxlength="25" [ngClass]="{ 'is-invalid': submitted && f.holidayName.errors }"
+                      onkeydown="javascript:return (event.keyCode >= 8   && event.keyCode<=46) || (event.keyCode >= 65 && event.keyCode<=90) ||  event.keyCode==32  ? true : false">
+                    <div *ngIf="submitted && f.holidayName.errors" class="invalid-feedback">
+                      <div *ngIf="f.holidayName.errors.required">Please Enter Holiday Name</div>
+                    </div>
+                  </td>
+                  <td>
+                    <a class="success p-0" placement="bottom" ngbTooltip="Save" tooltipClass="my-custom-class"
+                      (click)="save()" title=""> <i class="ft-check font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" placement="bottom" ngbTooltip="Cancel" tooltipClass="my-custom-class"
+                      (click)="cancel()" title=""><i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr *ngFor="let data of pageOfItems ; let i = index;" [formGroup]="updateHoliday">
+                  <td>
+                    {{i+1}}
+                  </td>
+
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.holidayCalendarYear}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="number" id="holidayCalendarYear" formControlName="holidayCalendarYear"
+                        name="holidayCalendarYear" class="form-control" maxlength="4"
+                        [ngClass]="{ 'is-invalid': submitted && f1.holidayCalendarYear.errors }">
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.holidayDate}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="date" id="holidayDate" formControlName="holidayDate" name="holidayDate"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f1.holidayDate.errors }">
+                    </span>
+
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.holidayName}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="holidayName" formControlName="holidayName" name="holidayName"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f1.holidayName.errors }">
+                    </span>
+                  </td>
+                  <td width="160">
+                    <span [hidden]="data.showUpdate">
+                      <a class="success p-0" (click)="editHoliday(data)" placement="bottom" ngbTooltip="Edit"
+                        tooltipClass="my-custom-class" title="">
+                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" (click)="deleteHoliday(data)" placement="bottom" ngbTooltip="Delete"
+                        tooltipClass="my-custom-class" title="">
+                        <i class="ft-trash-2"></i>
+                      </a>
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <a class="success p-0" (click)="saveUpdate(data)" placement="bottom" ngbTooltip="Update"
+                        tooltipClass="my-custom-class" title="">
+                        <i class="ft-check font-medium-3 mr-2"></i>
+                      </a>
+                      <a class="danger p-0" (click)="cancelUpdate(data)" placement="bottom" ngbTooltip="Cancel"
+                        tooltipClass="my-custom-class" title="">
+                        <i class="ft-x font-medium-3 mr-2"></i>
+                      </a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-footer pb-0 pt-3">
+              <jw-pagination [items]='Holiday' (changePage)="onChangePage($event)"></jw-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

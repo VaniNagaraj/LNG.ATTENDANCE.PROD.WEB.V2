@@ -44,7 +44,7 @@ export class ContractorComponent implements OnInit {
       contractorName: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z\\. ]+[a-zA-Z ]$')]]
     });
 
-    if (this.custId === 0) {
+    if (this.custId == 0) {
       this.getAllContractor();
     } else {
       this.getAllCustContractor();
@@ -144,7 +144,11 @@ export class ContractorComponent implements OnInit {
           showConfirmButton: true,
           title: res.status.message,
         });
-        this.getAllContractor();
+        if (this.custId == 0) {
+          this.getAllContractor();
+        } else {
+          this.getAllCustContractor();
+        }
         this.reset();
       }
     }, error => {
@@ -189,7 +193,11 @@ export class ContractorComponent implements OnInit {
           showConfirmButton: true,
           title: res.message,
         });
-        this.getAllContractor();
+        if (this.custId == 0) {
+          this.getAllContractor();
+        } else {
+          this.getAllCustContractor();
+        }
         this.reset();
       }
     }, error => {
@@ -211,7 +219,11 @@ export class ContractorComponent implements OnInit {
     this.submitted = false;
     this.newContractor.reset();
     this.updateContractor.reset();
-    this.getAllContractor();
+    if (this.custId == 0) {
+      this.getAllContractor();
+    } else {
+      this.getAllCustContractor();
+    }
   }
 
   // Delete Data
@@ -234,7 +246,11 @@ export class ContractorComponent implements OnInit {
           title: res.status.message,
         });
         // this.reset();
-        this.getAllContractor();
+        if (this.custId == 0) {
+          this.getAllContractor();
+        } else {
+          this.getAllCustContractor();
+        }
       }
     }, error => {
       Swal.fire({

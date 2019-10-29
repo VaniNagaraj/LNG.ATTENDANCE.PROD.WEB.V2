@@ -34,6 +34,11 @@ export class AuthenticationService {
                 if (!user.status.error) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user.data));
+                    if (user.data.refCustId === 0) {
+                        localStorage.setItem('superAdmin', 'true');
+                    } else  {
+                        localStorage.setItem('superAdmin', 'false');
+                    }
                 }
                 return user;
             }));

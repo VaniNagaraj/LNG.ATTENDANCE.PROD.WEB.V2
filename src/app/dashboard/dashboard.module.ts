@@ -1,3 +1,7 @@
+import { CustLeaveTypeComponent } from './superadmin/Leave/custLeaveType/custLeaveType.component';
+import { NotificationComponent } from './superadmin/masters/customer/notification/notification.component';
+import { HolidayCalendarComponent } from './superadmin/masters/customer/holidayCalendar/holidayCalendar.component';
+import { CustManualAttendanceComponent } from './superadmin/Attendance/custManualAttendance/custManualAttendance.component';
 import { ShiftComponent } from './superadmin/masters/customer/shift/shift.component';
 import { ConfirmationDialogComponent } from './../shared/confirmation-dialog/confirmation-dialog.component';
 import { DesignationComponent } from './superadmin/masters/customer/designation/designation.component';
@@ -27,6 +31,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { ArchwizardModule } from 'angular-archwizard';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 import {
   PerfectScrollbarModule,
@@ -104,7 +109,11 @@ export function createTranslateLoader(http: HttpClient) {
     WeeklyoffComponent,
     EmpDesignationComponent,
     EmpShiftComponent,
-    EmpDepartmentComponent
+    EmpDepartmentComponent,
+    CustManualAttendanceComponent,
+    HolidayCalendarComponent,
+    NotificationComponent,
+    CustLeaveTypeComponent
   ],
   imports: [
     StoreModule.forRoot({}),

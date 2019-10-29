@@ -1,0 +1,95 @@
+<!--Confirm Action Starts-->
+<section id="action">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div [formGroup]="custAttendanceForm" class="card-header">
+          <div class="card-title">
+            <div class="col-sm-6">
+              <div style="width:41%;float:left;margin-top:10px;font-size: 105%;">Customer Manual Attendance </div>
+            </div>
+            <div class="col-sm-12">
+              <table class="table table-responsive-md">
+                <tr *ngIf="SelectForm">
+                  <td>Company Id:</td>
+                  <td style="width:30%;">
+                    <select id="deptId" formControlName="deptId" name="deptId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.deptId.errors }">
+                      <option selected value="null">Select Department </option>
+                      <option *ngFor="let dept of Department" [value]="dept.deptId">{{dept.deptName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.deptId.errors" class="invalid-feedback">
+                      <div *ngIf="f.deptId.errors.required">Select Department</div>
+                      <div *ngIf="f.deptId.errors.pattern">Please Select Department</div>
+                    </div>
+                  </td>
+                  <td style="width:30%;">
+                    <input type="date" id="projectinput4" class="form-control" formControlName="dateOfAttendance"
+                      name="dateOfAttendance" autocomplete="off"
+                      [ngClass]="{ 'is-invalid': submitted && f.dateOfAttendance.errors }">
+                  </td>
+                  <td>
+                    <button _ngcontent-hci-c8="" placement="bottom" ngbTooltip="Fetch Attendance List"
+                      tooltipClass="my-custom-class" class="btn btn-raised btn-primary" type="button"
+                      (click)="openForm()" [disabled]="isDisabled">Fetch
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+
+              <button style="margin-left:88%;" type="reset" class="btn btn-raised btn-primary" (click)="cancel()">Reset
+              </button>
+              <button style="float:right;" type="submit" class="btn btn-raised btn-primary" (click)="save()">Save
+              </button>
+
+              <table class="table table-responsive-md">
+                <tr>
+                  <th>Sl No</th>
+                  <th>Employee Name</th>
+                  <th>Shift Start</th>
+                  <th>Attendance Status</th>
+                  <th>Mark Attendance</th>
+                </tr>
+
+                <tr *ngFor="let data of pageOfItems ; let i = index;">
+                  <td>{{i+1}}</td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.empName}}
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.shiftStart}}
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.attnedanceStatus}}
+                    </span>
+                  </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      <input type="checkbox" style="width:15px;" id="projectinput13" class="form-control"
+                        formControlName="attnedanceStatus" name="attnedanceStatus" autocomplete="off">
+                    </span>
+                  </td>
+                </tr>
+              </table>
+
+
+              <div class="text-right">
+                <jw-pagination [items]='custAttendance' (changePage)="onChangePage($event)"></jw-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Confirm Action Ends-->

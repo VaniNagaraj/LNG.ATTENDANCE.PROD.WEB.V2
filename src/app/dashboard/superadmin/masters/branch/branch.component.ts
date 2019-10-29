@@ -29,8 +29,8 @@ export class BranchComponent implements OnInit {
   showForm = false;
   showList = true;
   globalCustomer: any;
-  submitted: boolean = false;
-  showView: boolean = false;
+  submitted = false;
+  showView = false;
 
   globalBranch: any;
   pageOfItems: Array<any>;
@@ -134,7 +134,7 @@ export class BranchComponent implements OnInit {
           }
         },
         error => {
-          console.log('RESPONSE ERROR::====> ');
+          console.log('RESPONSE ERROR::===> ');
           Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -381,9 +381,9 @@ export class BranchComponent implements OnInit {
 
   // This function is used in open
   private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
+    if (reason == ModalDismissReasons.ESC) {
       return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    } else if (reason == ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
