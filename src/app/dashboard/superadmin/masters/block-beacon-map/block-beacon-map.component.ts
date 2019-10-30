@@ -82,7 +82,7 @@ export class BlockBeaconMapComponent implements OnInit {
     this.beaconMapServeice.getAll()
       .pipe(first())
       .subscribe(res => {
-        if (res.status.error) {
+        if (res.error) {
           Swal.fire({
             type: 'error',
             title: res.status.message,
