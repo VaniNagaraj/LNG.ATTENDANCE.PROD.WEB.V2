@@ -1,9 +1,15 @@
-label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
+input {
+  width: 190px !important;
+}
+select {
+  width: 200px !important;
 }
 
-input,
-label {
-    margin: .4rem 0;
+// tooltip
+.my-custom-class .tooltip-inner {
+  background-color: rgb(26, 187, 236);
+  font-size: 75%;
+}
+.my-custom-class .arrow::before {
+  background-color: rgb(26, 187, 236);
 }

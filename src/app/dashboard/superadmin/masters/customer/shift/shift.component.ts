@@ -1,7 +1,7 @@
 import { Shift } from './model/shift.model';
 import { Branch } from './model/branch.model';
 import { ShiftService } from './services/shift.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -12,35 +12,18 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-shift',
   templateUrl: './shift.component.html',
-  styleUrls: ['./shift.component.scss']
-})
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './shift.component.html',
-  styleUrls: ['./shift.component.scss']
+  styleUrls: ['./shift.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class ShiftComponent implements OnInit {
 
-  shift = [
-    { slno: 1, brName: 'LNG Technologies', shiftName: 'General', shiftStart: '09:00', shiftEnd: '06:00' },
-    { slno: 2, brName: 'IBM Blore', shiftName: 'Dayshift', shiftStart: '09:00', shiftEnd: '06:00' },
-    { slno: 3, brName: 'HCL Chennai', shiftName: 'Nighshift', shiftStart: '02:00PM', shiftEnd: '11:00PM' },
-    { slno: 4, brName: 'HP Pune', shiftName: 'Nighshift', shiftStart: '02:00PM', shiftEnd: '11:00PM' }
-  ];
+  @Output() changePage = new EventEmitter<any>(true);
+  @Input() initialPage = 1;
+  @Input() pageSize = 5;
+  @Input() maxPages = 10;
 
   shifts: any;
-
-  shiftModel: Shift;
-
-  globalShift = [
-    { brId: 1, branchName: 'LNG Technologies' },
-    { brId: 2, branchName: 'IBM Blore' },
-    { brId: 3, branchName: 'HCL Chennai' },
-    { brId: 4, branchName: 'HP Pune' }
-  ];
-
   branches: Branch[];
   showNew = false;
   newShift: FormGroup;
@@ -48,27 +31,26 @@ export class ShiftComponent implements OnInit {
   submitted1 = false;
   showUpdate = false;
   updateShift: FormGroup;
-  branchName: string;
-
-  p: Number = 1;
-  count: Number = 2;
 
   public watermark = 'Select a time';
   // sets the format property to display the time value in 24 hours format.
   public formatString = 'HH:mm';
   public interval = 60;
+  pageOfItems: any[];
+
   constructor(private fb: FormBuilder, private shiftService: ShiftService) { }
 
   ngOnInit() {
     this.newShift = this.fb.group({
-      refBrId: ['', Validators.required],
+      refBrId: [null, Validators.required],
       shiftName: ['', [Validators.required]],
       shiftStart: ['', [Validators.required]],
       shiftEnd: ['', [Validators.required]]
     });
 
     this.updateShift = this.fb.group({
-      refBrId: ['', Validators.required],
+      shiftId: [],
+      refBrId: [null, Validators.required],
       shiftName: ['', [Validators.required]],
       shiftStart: ['', [Validators.required]],
       shiftEnd: ['', [Validators.required]]
@@ -80,46 +62,55 @@ export class ShiftComponent implements OnInit {
   get f() { return this.newShift.controls }
   get f1() { return this.updateShift.controls }
 
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+  }
+
   getAllShift() {
     this.shiftService.get()
-        .pipe(first())
-        .subscribe(res => {
-          if (res.status.error) {
-            this.submitted = false;
-            Swal.fire({
-              type: 'error',
-              title: res.status.message,
-            });
-          } else {
-            console.log('All Shift...', res)
-            this.shifts = res.data1;
-          }
-        }, error => {
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          this.submitted = false;
           Swal.fire({
             type: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
+            title: res.status.message,
           });
+        } else {
+          console.log('All Shift...', res)
+          this.shifts = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
         });
+      });
   }
 
   getAllBranch() {
     this.shiftService.getAllBranch()
-    .pipe(first())
-    .subscribe(res => {
-      if (res.status.error) {
-        this.submitted = false;
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          this.submitted = false;
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('Branches...', res)
+          this.branches = res.data1;
+        }
+      }, error => {
         Swal.fire({
           type: 'error',
-          title: res.status.message,
+          title: 'Oops...',
+          text: 'Something went wrong!',
         });
-      } else {
-        console.log('Branches...', res)
-        this.branches = res.data1;
-      }
-    }, error => {
-
-    });
+      });
   }
 
   openForm() {
@@ -130,6 +121,7 @@ export class ShiftComponent implements OnInit {
   cancel() {
     this.showNew = false;
     this.submitted = false;
+    this.newShift.reset()
   }
 
   // Save new Form
@@ -140,46 +132,37 @@ export class ShiftComponent implements OnInit {
       return;
     }
     console.log('Shift Details Inserted Successfully!');
-    this.showNew = false;
     this.shiftService.create(this.newShift.value)
-    .pipe(first())
-    .subscribe(res => {
-      if (res.status.error) {
-        this.submitted = false;
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          Swal.fire({
+            type: 'success',
+            showConfirmButton: true,
+            title: res.status.message,
+          });
+          this.getAllShift();
+          this.getAllBranch();
+          this.cancel();
+        }
+      }, error => {
         Swal.fire({
           type: 'error',
-          title: res.status.message,
+          title: 'Oops...',
+          text: 'Something went wrong!',
         });
-      } else {
-        Swal.fire({
-          type: 'success',
-          showConfirmButton: true,
-          title: res.status.message,
-        });
-        this.getAllShift();
-        this.getAllBranch();
-        // this.reset();
-      }
-    }, error => {
-      Swal.fire({
-        type: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
       });
-    });
   }
 
   // Update Form open
   editShift(data) {
     data.showUpdate = true;
     this.updateShift.patchValue(data);
-  }
-
-  // Select Change Event
-  selectchange(args) {
-    this.branchName = args.target.value;
-    this.branchName = args.target.options[args.target.selectedIndex].text;
-    // console.log("Branch Name" )
   }
 
   // Update Data
@@ -189,18 +172,77 @@ export class ShiftComponent implements OnInit {
     if (this.updateShift.invalid) {
       return;
     }
-    data.showUpdate = false;
+    this.shiftService.update(this.updateShift.value)
+      .pipe(first())
+      .subscribe(res => {
+        if (res.error) {
+          Swal.fire({
+            type: 'error',
+            title: res.message,
+          });
+        } else {
+          Swal.fire({
+            type: 'success',
+            showConfirmButton: true,
+            title: res.message,
+          });
+          this.getAllShift();
+          this.cancelUpdate(data);
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
   }
 
   // Cancel Data
   cancelUpdate(data) {
     this.submitted1 = false;
     data.showUpdate = false;
+    this.updateShift.reset();
   }
 
   // Delete Data
   deleteShift(data) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.shiftService.delete(data.shiftId)
+          .pipe(first())
+          .subscribe((res) => {
+            if (res.status.error) {
+              Swal.fire({
+                type: 'error',
+                title: res.status.message,
+              });
+            } else {
+              Swal.fire({
+                type: 'success',
+                title: res.status.message
+              })
+              this.getAllShift();
+            }
+          }, error => {
+            console.log(error)
+            Swal.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            });
+          })
 
+      }
+    })
   }
 
 }

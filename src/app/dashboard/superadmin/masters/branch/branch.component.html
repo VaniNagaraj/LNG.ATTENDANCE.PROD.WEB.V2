@@ -1,6 +1,6 @@
 <!-- List Section starts-->
 <section id="extended" *ngIf="showList">
-  <div class="row text-left">
+  <div class="rowtext-left">
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
@@ -62,7 +62,7 @@
 
 <!-- Basic form layout section start -->
 <section id="basic-form-layouts" *ngIf="showForm">
-  <div class="row text-left">
+  <div class="rowtext-left">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header pb-2">
@@ -98,12 +98,12 @@
                   </div>
                 </div>
 
-                <div class="form-group row ">
+                <div class="form-group row">
                   <label class="col-md-2 label-control required" for="brCode">Branch Code</label>
                   <div class="col-md-4">
                     <input type="text" id="brCode" maxlength="8" formControlName="brCode" class="form-control"
                       placeholder="Please Enter Branch Code" name="brCode" autocomplete="off"
-                      [ngClass]="{ 'is-invalid': submitted && f.brCode.errors }">
+                      [ngClass]="{ 'is-invalid': submitted && f.brCode.errors }" readonly>
                     <div *ngIf="submitted && f.brCode.errors" class="invalid-feedback">
                       <div *ngIf="f.brCode.errors.required">Please provide Branch Code</div>
                       <div *ngIf="f.brCode.errors.pattern">Branch Code Must Be ABC12345 Format</div>
@@ -149,7 +149,7 @@
                   </div>
                 </div>
 
-                <div class="form-group row ">
+                <div class="form-group row">
                   <label class="col-md-2 label-control required" for="brCity">City</label>
                   <div class="col-md-4">
                     <input type="text" id="brCity" formControlName="brCity" class="form-control"
@@ -199,7 +199,7 @@
                   </div>
                 </div>
 
-                <div class="form-group row ">
+                <div class="form-group row">
                   <label class="col-md-2 label-control required" for="brEmail">Branch Email</label>
                   <div class="col-md-4">
                     <input type="text" id="brEmail" class="form-control" formControlName="brEmail"
@@ -249,7 +249,7 @@
                     <div class="input-group">
                       <div class="custom-control custom-checkbox d-inline-block">
                         <input type="checkbox" id="brIsBillable" formControlName="brIsBillable"
-                          class="custom-control-input">
+                          class="custom-control-input" (click)="false">
                         <label class="custom-control-label" for="brIsBillable">Billable</label>
                       </div>
                     </div>
@@ -260,7 +260,7 @@
                     <div class="input-group">
                       <div class="custom-control custom-checkbox d-inline-block">
                         <input type="checkbox" id="brIsActive" checked formControlName="brIsActive"
-                          class="custom-control-input">
+                          class="custom-control-input" (click)="false">
                         <label class="custom-control-label" for="brIsActive">Active</label>
                       </div>
                     </div>
@@ -285,7 +285,7 @@
 
 <!-- Modal Alert Starts-->
 <section id="modals">
-  <div class="row text-left" matchHeight="card">
+  <div class="rowtext-left" matchHeight="card">
     <!--Modal with Default options starts-->
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="card">
@@ -314,7 +314,7 @@
                       <li class="mb-2">
                         <span class="text-bold-500 primary"><a><i class="icon-direction font-small-3"></i> Branch
                             Address:</a></span>
-                        <span class="d-block overflow-hidden">+91 {{branchView.brAddress}}</span>
+                        <span class="d-block overflow-hidden" style="word-wrap:break-word;">{{branchView.brAddress}}</span>
                       </li>
                     </ul>
                   </div>
@@ -357,10 +357,15 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-4">
                     <ul class="no-list-style">
-                      <li class="mb-2">
+                      <!-- <li class="mb-2">
                         <span class="text-bold-500 primary"><a><i class="icon-envelope font-small-3"></i>
                             Email:</a></span>
-                        <a class="d-block overflow-hidden">{{branchView.brEmail}}</a>
+                        <span class="d-block overflow-hidden">{{branchView.brEmail}}</span>
+                      </li> -->
+                      <li class="mb-2">
+                        <span class="text-bold-500 primary"><a><i class="icon-envelope font-small-3"></i> Branch
+                            Email:</a></span>
+                        <span class="d-block overflow-hidden" style="word-wrap:break-word;">{{branchView.brEmail}}</span>
                       </li>
                       <li class="mb-2">
                         <span class="text-bold-500 primary"><a><i class="icon-calendar font-small-3"></i> Validity

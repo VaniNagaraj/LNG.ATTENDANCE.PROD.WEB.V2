@@ -149,7 +149,7 @@ export class BranchComponent implements OnInit {
       .pipe(first())
       .subscribe(res => {
         console.log('response ', res);
-        if (res.status.error) {
+        if (res.error) {
           Swal.fire({
             type: 'error',
             title: res.status.message,

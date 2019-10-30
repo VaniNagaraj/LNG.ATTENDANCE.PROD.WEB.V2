@@ -18,37 +18,45 @@ export class ShiftService {
 
     getAllBranch() {
         return this.http.get<any>(environment.baseUrl + '/api/company/master/branch/getAll', httpOptions)
-        .pipe(map(res => {
-            return res;
-        }));
+            .pipe(map(res => {
+                return res;
+            }));
     }
 
     get() {
         return this.http.get<any>(environment.baseUrl + '/api/customer/master/shift/getAll', httpOptions)
-        .pipe(map(res => {
-            return res;
-        }));
+            .pipe(map(res => {
+                return res;
+            }));
     }
 
     create(data: any) {
         return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/create', data, httpOptions)
-        .pipe(map(res => {
-            return res;
-        }));
+            .pipe(map(res => {
+                return res;
+            }));
     }
 
     update(data: any) {
-        return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/updateByDepartmentId', data, httpOptions)
-        .pipe(map(res => {
-            return res;
-        }));
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/updateByShiftId', data, httpOptions)
+            .pipe(map(res => {
+                return res;
+            }));
     }
 
     delete(data: any) {
-        return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/deleteByDepartmentId', data, httpOptions)
-        .pipe(map(res => {
-            return res;
-        }));
+        const param = { "shiftId": data}
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/deleteByShiftId', param, httpOptions)
+            .pipe(map(res => {
+                return res;
+            }));
+    }
+
+    detailsByBranchId(data: any) {
+        return this.http.post<any>(environment.baseUrl + '/api/customer/master/shift/getShiftDetailsByBranchId', data, httpOptions)
+            .pipe(map(res => {
+                return res;
+            }));
     }
 
 }
