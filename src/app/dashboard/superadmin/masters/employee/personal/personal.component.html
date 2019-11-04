@@ -1,0 +1,120 @@
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+  <!-- <h4 class="head text-center">Please fill below details.</h4> -->
+  <br />
+  <div class='row'>
+    <input type="checkbox" formControlName="mgrService" id="mgrService" hidden>
+    <div class='col-12'>
+      <div class="row">
+
+        <div class='col-sm-4'>
+          <div class="form-group">
+            <label class="form-control-label required" for="empName">Employee Name</label>
+            <input type="text" id="empName" class="form-control" formControlName="empName"
+              placeholder="Enter Employee Name" name="empName" required autocomplete="off" maxlength="50"
+              [ngClass]="{ 'is-invalid': submitted && f.empName.errors }">
+            <div *ngIf="submitted && f.empName.errors" class="invalid-feedback">
+              <div *ngIf="f.empName.errors.required">Please provide Employee Name</div>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-sm-4'>
+          <div class="form-group">
+            <label class="form-control-label required" for="empMobile">Mobile Number</label>
+            <input type="tel" formControlName="empMobile" maxlength="10" id="empMobile" class="form-control"
+              placeholder="Enter Mobile Number" name="number" autocomplete="off"
+              onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 107 || event.keyCode == 187? true : false"
+              [ngClass]="{ 'is-invalid': submitted && f.empMobile.errors }">
+            <div *ngIf="submitted && f.empMobile.errors" class="invalid-feedback">
+              <div *ngIf="f.empMobile.errors.required">Please provide Mobile Number</div>
+              <div *ngIf="f.empMobile.errors.pattern">Mobile Number should be 10 numbers</div>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-sm-4'>
+          <div class="form-group">
+            <label class="form-control-label required" for="empType">Employee Type</label>
+            <select id="empType" name="empType" formControlName="empType"
+              (change)="selectedEmpType($event.target.value)" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.empType.errors }">
+              <option selected disabled value="null">Select Employee Type</option>
+              <option *ngFor="let ct of globalEmpType" [value]="ct.name">{{ct.name}}</option>
+            </select>
+            <div *ngIf="submitted && f.empType.errors" class="invalid-feedback">
+              <div *ngIf="f.empType.errors.required">Please Select Employee Type</div>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-sm-4' *ngIf="showContractor">
+          <div class="form-group">
+            <label class="form-control-label" for="empCont">Contractor Name</label>
+            <input type="tel" formControlName="empCont" maxlength="50" id="empCont" class="form-control"
+              placeholder="Enter Contractor Name" name="empCont" autocomplete="off">
+          </div>
+        </div>
+
+        <div class='col-sm-4'>
+          <div class="form-group">
+            <label class="form-control-label required" for="empDOJ">Date of Joining</label>
+            <input type="text" id="empDOJ" class="form-control" formControlName="empDOJ" placeholder="YYYY-MM-DD"
+              name="empDOJ" required autocomplete="off" ngbDatepicker #d1="ngbDatepicker"
+              [ngClass]="{ 'is-invalid': submitted && f.empDOJ.errors }" (click)="d1.toggle()">
+            <div *ngIf="submitted && f.empDOJ.errors" class="invalid-feedback">
+              <div *ngIf="f.empDOJ.errors.required">Please Select Date of Joining</div>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-sm-4'>
+          <div class="form-group">
+            <label class="d-block required">Gender</label>
+            <div class="input-group">
+              <div class="custom-control custom-radio d-inline-block float-left">
+                <input type="radio" id="empGender1" formControlName="empGender" class="custom-control-input"
+                  [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }" value="Male">
+                <label class="custom-control-label mr-4" for="empGender1">Male</label>
+                <div *ngIf="submitted && f.empGender.errors" class="invalid-feedback">
+                  <div *ngIf="f.empGender.errors.required">Please Select Gender</div>
+                </div>
+              </div>
+              <div class="custom-control custom-radio d-inline-block ml-2">
+                <input type="radio" id="empGender2" formControlName="empGender" class="custom-control-input"
+                  value="Female" [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }">
+                <label class="custom-control-label" for="empGender2">Female</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-sm-4'>
+          <div class="form-group">
+            <label class="d-block">Is Manager/Supervisor?</label>
+            <div class="input-group">
+              <div class="custom-control custom-checkbox d-inline-block">
+                <input type="checkbox" id="empMgr" formControlName="empMgr" class="custom-control-input">
+                <label class="custom-control-label" for="empMgr">Manager/Supervisor</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group text-center">
+        <button type="reset" (click)="close()" class="btn btn-danger btn-raised mr-1">
+          Close
+          <span style="margin-left:2px;">
+            <i class="ft-x"></i>
+          </span>
+        </button>
+        <button type="submit" uiSref="work" class="btn btn-info btn-raised">
+          Update
+          <span style="margin-left:2px;">
+            <i class="ft-check"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

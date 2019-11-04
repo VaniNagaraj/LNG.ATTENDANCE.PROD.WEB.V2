@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BranchService } from './service/branch.service';
 import { first } from 'rxjs/operators';
@@ -16,8 +16,7 @@ export class NgbdModalContent {
 @Component({
   selector: 'app-branch',
   templateUrl: './branch.component.html',
-  styleUrls: ['./branch.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./branch.component.scss']
 })
 export class BranchComponent implements OnInit {
 
@@ -30,8 +29,8 @@ export class BranchComponent implements OnInit {
   showForm = false;
   showList = true;
   globalCustomer: any;
-  submitted = false;
-  showView = false;
+  submitted: boolean = false;
+  showView: boolean = false;
 
   globalBranch: any;
   pageOfItems: Array<any>;
@@ -41,8 +40,6 @@ export class BranchComponent implements OnInit {
   closeResult: string;
   branchView: any;
   endDate: { year: any; month: any; day: any; };
-  custId: number;
-
 
   constructor(private fb: FormBuilder,
     private branchService: BranchService,
@@ -52,8 +49,6 @@ export class BranchComponent implements OnInit {
     private modalService: NgbModal, ) { }
 
   ngOnInit() {
-    const currUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.custId = currUser.refCustId;
     this.branchForm = this.fb.group({
       brId: [],
       refCustomerId: [null, Validators.required],
@@ -63,7 +58,7 @@ export class BranchComponent implements OnInit {
       brName: ['', Validators.required],
       brAddress: ['', Validators.required],
       brPincode: ['', [Validators.required, Validators.pattern('[0-9]{6}')]],
-      brCode: ['', [Validators.required, Validators.pattern('[A-Z]{3}[0-9]{5}')]],
+      brCode: [''],
       brMobile: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
       brLandline: ['', [Validators.pattern('[0-9]{10}')]],
       brEmail: ['', [Validators.required, Validators.email]],
@@ -74,39 +69,13 @@ export class BranchComponent implements OnInit {
       brIsActive: [true]
     })
 
-    this.getCustomerAll();
+    this.getAllBranch();
     this.getAllCountry();
-    if (this.custId === 0) {
-      this.getAllBranch();
-    } else {
-      this.getAllBranchByCustId();
-    }
+    this.getCustomerAll();
   }
 
   getAllBranch() {
     this.branchService.getAll()
-      .pipe(first())
-      .subscribe(res => {
-        if (res.status.error) {
-          Swal.fire({
-            type: 'error',
-            title: res.status.message,
-          });
-        } else {
-          console.log('Branches...', res.data1)
-          this.globalBranch = res.data1;
-        }
-      }, error => {
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        });
-      });
-  }
-
-  getAllBranchByCustId() {
-    this.branchService.getByCustId(this.custId)
       .pipe(first())
       .subscribe(res => {
         if (res.status.error) {
@@ -248,7 +217,6 @@ export class BranchComponent implements OnInit {
                 title: res.status.message,
               });
               this.getAllBranch();
-              this.reset();
             }
           }, error => {
             Swal.fire({
@@ -278,7 +246,6 @@ export class BranchComponent implements OnInit {
                 title: res.message,
               });
               this.getAllBranch();
-              this.reset();
             }
           }, error => {
             Swal.fire({
@@ -289,6 +256,7 @@ export class BranchComponent implements OnInit {
           });
       }
     }
+    this.reset();
   }
 
   reset() {
@@ -435,6 +403,7 @@ export class BranchComponent implements OnInit {
 
   disableDate(date) {
     console.log("before", date);
+    this.branchForm.get('brValidityEnd').reset();
     if (date != undefined || date != null) {
       this.endDate = {
         year: this.checkYear(date.year, date.month, date.day),

@@ -25,8 +25,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StoreModule } from '@ngrx/store';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { JwPaginationComponent } from 'jw-angular-pagination';
-
-
+import { ArchwizardModule } from 'angular-archwizard';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import {
   PerfectScrollbarModule,
@@ -56,6 +56,15 @@ import { BranchService } from './superadmin/masters/branch/service/branch.servic
 import { BeaconmapService } from './superadmin/masters/block-beacon-map/services/beaconmap.service';
 import { BlockComponent } from './superadmin/masters/block/block.component';
 import { BlockService } from './superadmin/masters/block/services/block.service';
+import { EmployeeComponent } from './superadmin/masters/employee/employee.component';
+import { PersonalComponent } from './superadmin/masters/employee/personal/personal.component';
+import { EmpbranchComponent } from './superadmin/masters/employee/empbranch/empbranch.component';
+import { NavigationBarComponent } from './superadmin/masters/employee/navigation-bar/navigation-bar.component';
+import { WeeklyoffComponent } from './superadmin/masters/employee/weeklyoff/weeklyoff.component';
+import { EmpDesignationComponent } from './superadmin/masters/employee/empdesignation/empdesignation.component';
+import { EmpShiftComponent } from './superadmin/masters/employee/empshift/empshift.component';
+import { showUpdate } from './superadmin/masters/employee/data';
+import { EmpDepartmentComponent } from './superadmin/masters/employee/empdepartment/empdepartment.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -86,7 +95,16 @@ export function createTranslateLoader(http: HttpClient) {
     ShiftComponent,
     BranchComponent,
     BlockBeaconMapComponent,
-    BlockComponent
+    BlockComponent,
+    EmployeeComponent,
+    PersonalComponent,
+    EmpbranchComponent,
+    DepartmentComponent,
+    NavigationBarComponent,
+    WeeklyoffComponent,
+    EmpDesignationComponent,
+    EmpShiftComponent,
+    EmpDepartmentComponent
   ],
   imports: [
     StoreModule.forRoot({}),
@@ -109,7 +127,9 @@ export function createTranslateLoader(http: HttpClient) {
     AgmCoreModule.forRoot({
       apiKey: 'YOUR KEY'
     }),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    ArchwizardModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     AuthService,
@@ -124,6 +144,7 @@ export function createTranslateLoader(http: HttpClient) {
     BranchService,
     BeaconmapService,
     BlockService,
+    showUpdate,
     ConfirmationDialogService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

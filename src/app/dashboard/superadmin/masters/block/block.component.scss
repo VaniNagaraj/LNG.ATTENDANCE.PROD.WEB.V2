@@ -8,12 +8,3 @@ select {
 select {
     width: 190px !important;
 }
-
-// tooltip
-.my-custom-class .tooltip-inner {
-  background-color: rgb(26, 187, 236);
-  font-size: 75%;
-}
-.my-custom-class .arrow::before {
-  background-color: rgb(26, 187, 236);
-}

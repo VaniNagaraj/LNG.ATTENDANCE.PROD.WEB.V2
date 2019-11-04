@@ -1,0 +1,46 @@
+<form [formGroup]="weeklyoffForm" (ngSubmit)="submitWeeklyOff()">
+  <!-- <h4 class="head text-center">Where do you live?</h4> -->
+  <br />
+  <div class="row">
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="weekoff">Weekly Off</label>
+        <ng-multiselect-dropdown name="weekoff" [placeholder]="'Select City'" [data]="globalWeeks"
+          formControlName="weekoff" [settings]="dropdownSettings"
+          [ngClass]="{ 'is-invalid': submitted5 && f5.weekoff.errors }">
+        </ng-multiselect-dropdown>
+        <div *ngIf="submitted5 && f5.weekoff.errors" class="invalid">
+          <div *ngIf="f5.weekoff.errors?.required">Please Select Weeks</div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="offFrom">From Date</label>
+        <input type="text" id="offFrom" class="form-control" formControlName="offFrom" placeholder="YYYY-MM-DD"
+          name="brFrom" required autocomplete="off" ngbDatepicker #d6="ngbDatepicker"
+          [ngClass]="{ 'is-invalid': submitted5 && f5.offFrom.errors }" (click)="d6.toggle()">
+        <div *ngIf="submitted5 && f5.offFrom.errors" class="invalid-feedback">
+          <div *ngIf="f5.offFrom.errors.required">Please Select From Date</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group text-center">
+    <button type="reset" (click)="close()" class="btn btn-danger btn-raised mr-1">
+      Close
+      <span style="margin-left:2px;">
+        <i class="ft-x"></i>
+      </span>
+    </button>
+    <button type="submit" uiSref="work" class="btn btn-info btn-raised">
+      Update
+      <span style="margin-left:2px;">
+        <i class="ft-check"></i>
+      </span>
+    </button>
+  </div>
+</form>

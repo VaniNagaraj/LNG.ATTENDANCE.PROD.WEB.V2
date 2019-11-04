@@ -1,0 +1,47 @@
+<form [formGroup]="desgForm" (ngSubmit)="submitDesg()">
+  <!-- <h4 class="head text-center">Please fill below details.</h4> -->
+  <br />
+  <div class="row">
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="empDesg">Designation</label>
+        <select id="empDesg" name="empDesg" formControlName="empDesg" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted3 && f3.empDesg.errors }">
+          <option selected disabled value="null">Select Designation</option>
+          <option *ngFor="let ct of globalDesignation" [value]="ct.id">{{ct.name}}</option>
+        </select>
+        <div *ngIf="submitted3 && f3.empDesg.errors" class="invalid-feedback">
+          <div *ngIf="f3.empDesg.errors.required">Please Select Designation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="desgFrom">From Date</label>
+        <input type="text" id="desgFrom" class="form-control" formControlName="desgFrom" placeholder="YYYY-MM-DD"
+          name="brFrom" required autocomplete="off" ngbDatepicker #d4="ngbDatepicker"
+          [ngClass]="{ 'is-invalid': submitted3 && f3.desgFrom.errors }" (click)="d4.toggle()">
+        <div *ngIf="submitted3 && f3.desgFrom.errors" class="invalid-feedback">
+          <div *ngIf="f3.desgFrom.errors.required">Please Select From Date</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group text-center space-20">
+    <button type="reset" (click)="close()" class="btn btn-danger btn-raised mr-1">
+      Close
+      <span style="margin-left:2px;">
+        <i class="ft-x"></i>
+      </span>
+    </button>
+    <button type="submit" uiSref="work" class="btn btn-info btn-raised">
+      Update
+      <span style="margin-left:2px;">
+        <i class="ft-check"></i>
+      </span>
+    </button>
+  </div>
+</form>

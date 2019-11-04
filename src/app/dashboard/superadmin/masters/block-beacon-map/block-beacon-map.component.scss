@@ -1,15 +1,6 @@
 input {
-  width: 300px;
+  width: 250px !important;
 }
 select {
-  width: 300px;
-}
-
-// tooltip
-.my-custom-class .tooltip-inner {
-  background-color: rgb(26, 187, 236);
-  font-size: 75%;
-}
-.my-custom-class .arrow::before {
-  background-color: rgb(26, 187, 236);
+  width: 250px !important;
 }

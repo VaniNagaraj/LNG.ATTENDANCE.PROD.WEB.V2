@@ -20,6 +20,14 @@ import { BeaconComponent } from './superadmin/masters/beacon/beacon.component';
 import { BranchComponent } from './superadmin/masters/branch/branch.component';
 import { BlockBeaconMapComponent } from './superadmin/masters/block-beacon-map/block-beacon-map.component';
 import { BlockComponent } from './superadmin/masters/block/block.component';
+import { EmployeeComponent } from './superadmin/masters/employee/employee.component';
+import { PersonalComponent } from './superadmin/masters/employee/personal/personal.component';
+import { EmpbranchComponent } from './superadmin/masters/employee/empbranch/empbranch.component';
+import { EmpDepartmentComponent } from './superadmin/masters/employee/empdepartment/empdepartment.component';
+import { EmpDesignationComponent } from './superadmin/masters/employee/empdesignation/empdesignation.component';
+import { EmpShiftComponent } from './superadmin/masters/employee/empshift/empshift.component';
+import { WeeklyoffComponent } from './superadmin/masters/employee/weeklyoff/weeklyoff.component';
+import { data } from 'app/shared/data/smart-data-table';
 
 const routes: Routes = [
   {
@@ -45,10 +53,12 @@ const routes: Routes = [
       { path: 'contractor', component: ContractorComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'department', component: DepartmentComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'designation', component: DesignationComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'customer/shift', component: ShiftComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'shift', component: ShiftComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'branch', component: BranchComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'beaconmap', component: BlockBeaconMapComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'block', component: BlockComponent, children: Full_ROUTES, canActivate: [AuthGuard] }
+      { path: 'block', component: BlockComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'employee', component: EmployeeComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
+      { path: 'personal', component: PersonalComponent, canActivate: [AuthGuard] },
     ]
   },
   { path: '', component: FullLayoutComponent, data: { title: 'full Views' }, children: Full_ROUTES, canActivate: [AuthGuard] },

@@ -1,6 +1,6 @@
 import { State } from './model/state.model';
 import { StateService } from './services/state.services';
-import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -13,8 +13,7 @@ import { Country } from '../country/model/country.model';
 @Component({
   selector: 'app-state',
   templateUrl: './state.component.html',
-  styleUrls: ['./state.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./state.component.scss']
 })
 export class StateComponent implements OnInit {
 
@@ -136,7 +135,6 @@ export class StateComponent implements OnInit {
             title: res.status.message,
           });
           this.getAllState();
-          this.cancel();
         }
       }, error => {
         Swal.fire({
@@ -145,6 +143,7 @@ export class StateComponent implements OnInit {
           text: 'Something went wrong!',
         });
       });
+    this.cancel();
   }
 
   // Update Form open
@@ -201,6 +200,7 @@ export class StateComponent implements OnInit {
                   type: 'error',
                   title: res.message,
                 });
+                this.cancelUpdate(data);
               } else {
                 Swal.fire({
                   type: 'success',
@@ -216,11 +216,12 @@ export class StateComponent implements OnInit {
                 title: 'Oops...',
                 text: 'Something went wrong!',
               });
+              this.cancelUpdate(data);
             });
         }
       })
     }
-
+    this.cancelUpdate(data);
   }
 
   // Cancel Data

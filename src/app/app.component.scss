@@ -1,0 +1,9 @@
+// tooltip
+::ng-deep .my-custom-class .tooltip-inner {
+  background-color: rgb(37, 145, 216);
+  font-size: 75%;
+}
+
+::ng-deep .my-custom-class .arrow::before {
+  background-color: rgb(37, 145, 216);
+}

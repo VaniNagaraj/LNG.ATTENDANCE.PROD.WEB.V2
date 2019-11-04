@@ -1,0 +1,46 @@
+<form [formGroup]="branchForm" (ngSubmit)="submitBranch()">
+  <!-- <h4 class="head text-center">Please fill below details.</h4> -->
+  <br />
+  <div class="row">
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="refBrId">Branch</label>
+        <select id="refBrId" name="refBrId" formControlName="refBrId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted1 && f1.refBrId.errors }">
+          <option selected disabled value="null">Select Branch</option>
+          <option *ngFor="let ct of globalBranch" [value]="ct.id">{{ct.name}}</option>
+        </select>
+        <div *ngIf="submitted1 && f1.refBrId.errors" class="invalid-feedback">
+          <div *ngIf="f1.refBrId.errors.required">Please Select Branch</div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="brFrom">From Date</label>
+        <input type="text" id="brFrom" class="form-control" formControlName="brFrom" placeholder="YYYY-MM-DD"
+          name="brFrom" required autocomplete="off" ngbDatepicker #d2="ngbDatepicker"
+          [ngClass]="{ 'is-invalid': submitted1 && f1.brFrom.errors }" (click)="d2.toggle()">
+        <div *ngIf="submitted1 && f1.brFrom.errors" class="invalid-feedback">
+          <div *ngIf="f1.brFrom.errors.required">Please Select From Date</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group text-center space-20">
+    <button type="reset" (click)="close()" class="btn btn-danger btn-raised mr-1">
+      Close
+      <span style="margin-left:2px;">
+        <i class="ft-x"></i>
+      </span>
+    </button>
+    <button uiSref="address" type="submit" class="btn btn-raised btn-info">
+      Update
+      <span style="margin-left: 2px;">
+        <i class="ft-check"></i>
+      </span>
+    </button>
+  </div>
+</form>

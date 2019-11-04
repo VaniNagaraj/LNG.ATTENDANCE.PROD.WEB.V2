@@ -1,0 +1,61 @@
+<form [formGroup]="deptForm" (ngSubmit)="submitDept()">
+  <!-- <h4 class="head text-center">Please fill below details.</h4> -->
+  <br />
+  <div class="row">
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="empDept">Department</label>
+        <select id="empDept" name="empDept" formControlName="empDept" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted2 && f2.empDept.errors }">
+          <option selected disabled value="null">Select Department</option>
+          <option *ngFor="let ct of globalDepartment" [value]="ct.id">{{ct.name}}</option>
+        </select>
+        <div *ngIf="submitted2 && f2.empDept.errors" class="invalid-feedback">
+          <div *ngIf="f2.empDept.errors.required">Please Select Department</div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="empReport">Reporting To</label>
+        <select id="empReport" name="empReport" formControlName="empReport" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted2 && f2.empReport.errors }">
+          <option selected disabled value="null">Select Reporting To</option>
+          <option *ngFor="let ct of globalReportTo" [value]="ct.name">{{ct.name}}</option>
+        </select>
+        <div *ngIf="submitted2 && f2.empReport.errors" class="invalid-feedback">
+          <div *ngIf="f2.empReport.errors.required">Please Select Reporting To</div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="deptFrom">From Date</label>
+        <input type="text" id="deptFrom" class="form-control" formControlName="deptFrom" placeholder="YYYY-MM-DD"
+          name="brFrom" required autocomplete="off" ngbDatepicker #d3="ngbDatepicker"
+          [ngClass]="{ 'is-invalid': submitted2 && f2.deptFrom.errors }" (click)="d3.toggle()">
+        <div *ngIf="submitted2 && f2.deptFrom.errors" class="invalid-feedback">
+          <div *ngIf="f2.deptFrom.errors.required">Please Select From Date</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group text-center space-20">
+    <button type="reset" (click)="close()" class="btn btn-danger btn-raised mr-1">
+      Close
+      <span style="margin-left:2px;">
+        <i class="ft-x"></i>
+      </span>
+    </button>
+    <button uiSref="address" type="submit" class="btn btn-raised btn-info">
+      Update
+      <span style="margin-left:2px;">
+        <i class="ft-check"></i>
+      </span>
+    </button>
+  </div>
+</form>

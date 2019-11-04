@@ -1,6 +1,6 @@
 import { CountryService } from './services/country.services';
 import { Country } from './model/country.model';
-import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -11,8 +11,7 @@ import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
-  styleUrls: ['./country.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./country.component.scss']
 })
 
 export class CountryComponent implements OnInit {
@@ -118,7 +117,6 @@ export class CountryComponent implements OnInit {
 
           });
           this.getAllCountry();
-          this.cancel();
         }
       }, error => {
         Swal.fire({
@@ -127,6 +125,7 @@ export class CountryComponent implements OnInit {
           text: 'Something went wrong!',
         });
       });
+    this.cancel();
   }
 
   // Update Form open
@@ -161,6 +160,7 @@ export class CountryComponent implements OnInit {
                   type: 'error',
                   title: res.message,
                 });
+                this.cancelUpdate(data);
               } else {
                 Swal.fire({
                   type: 'success',
@@ -176,6 +176,7 @@ export class CountryComponent implements OnInit {
                 title: 'Oops...',
                 text: 'Something went wrong!',
               });
+              this.cancelUpdate(data);
             });
         }
       })

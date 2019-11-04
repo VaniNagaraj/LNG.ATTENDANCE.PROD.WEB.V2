@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Number } from 'core-js';
 import { BeaconmapService } from './services/beaconmap.service';
@@ -10,8 +10,7 @@ import { BlockService } from '../block/services/block.service';
 @Component({
   selector: 'app-block-beacon-map',
   templateUrl: './block-beacon-map.component.html',
-  styleUrls: ['./block-beacon-map.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./block-beacon-map.component.scss']
 })
 export class BlockBeaconMapComponent implements OnInit {
 
@@ -40,7 +39,7 @@ export class BlockBeaconMapComponent implements OnInit {
   pageOfItems: any[];
 
   constructor(private formBuilder: FormBuilder,
-    private beaconMapServeice: BeaconmapService,
+    private beaconMapService: BeaconmapService,
     private blockService: BlockService) { }
 
   ngOnInit() {
@@ -79,7 +78,7 @@ export class BlockBeaconMapComponent implements OnInit {
   }
 
   getBeaconMapAll() {
-    this.beaconMapServeice.getAll()
+    this.beaconMapService.getAll()
       .pipe(first())
       .subscribe(res => {
         if (res.error) {
@@ -142,7 +141,7 @@ export class BlockBeaconMapComponent implements OnInit {
       return;
     }
     console.log(this.newBlockBeaconMap.value)
-    this.beaconMapServeice.create(this.newBlockBeaconMap.value)
+    this.beaconMapService.create(this.newBlockBeaconMap.value)
       .pipe(first())
       .subscribe(res => {
         console.log('response ', res);
@@ -158,7 +157,6 @@ export class BlockBeaconMapComponent implements OnInit {
             title: res.message,
           });
           this.getBeaconMapAll();
-          this.cancel();
         }
       }, error => {
         Swal.fire({
@@ -167,7 +165,7 @@ export class BlockBeaconMapComponent implements OnInit {
           text: 'Something went wrong!',
         });
       });
-
+    this.cancel();
   }
 
 
@@ -176,9 +174,7 @@ export class BlockBeaconMapComponent implements OnInit {
   editBlockBeaconMap(data) {
     this.showNew = false;
     data.showUpdate = true;
-    console.log(data);
     this.updateBlockBeaconMap.patchValue(data);
-
   }
 
   // Update Data
@@ -187,43 +183,46 @@ export class BlockBeaconMapComponent implements OnInit {
     if (this.updateBlockBeaconMap.invalid) {
       return;
     }
-    Swal.fire({
-      title: 'Are you sure?',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Update it!'
-    }).then((result) => {
-      if (result.value) {
-        this.beaconMapServeice.update(this.updateBlockBeaconMap.value)
-          .pipe(first())
-          .subscribe(res => {
-            if (res.error) {
-              this.submitted = false;
+    else {
+      Swal.fire({
+        title: 'Are you sure?',
+        // text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Update!'
+      }).then((result) => {
+        if (result.value) {
+          this.beaconMapService.update(this.updateBlockBeaconMap.value)
+            .pipe(first())
+            .subscribe(res => {
+              if (res.error) {
+                this.cancelUpdate(data);
+                Swal.fire({
+                  type: 'error',
+                  title: res.message,
+                });
+              } else {
+                Swal.fire({
+                  type: 'success',
+                  showConfirmButton: true,
+                  title: res.message,
+                });
+                this.getBeaconMapAll();
+                this.cancelUpdate(data);
+              }
+            }, error => {
               Swal.fire({
                 type: 'error',
-                title: res.message,
+                title: 'Oops...',
+                text: 'Something went wrong!',
               });
-            } else {
-              Swal.fire({
-                type: 'success',
-                showConfirmButton: true,
-                title: res.message,
-              });
-              this.getBeaconMapAll();
               this.cancelUpdate(data);
-            }
-          }, error => {
-            Swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
             });
-          });
-      }
-    })
-
+        }
+      })
+    }  
   }
 
   // Cancel Data
@@ -245,7 +244,7 @@ export class BlockBeaconMapComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this.beaconMapServeice.delete(data)
+        this.beaconMapService.delete(data)
           .pipe(first())
           .subscribe(res => {
             console.log('delete response', res);

@@ -19,12 +19,3 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 700px !important;
   max-width: 1000px;
 }
-
-// tooltip
-.my-custom-class .tooltip-inner {
-  background-color: rgb(26, 187, 236);
-  font-size: 75%;
-}
-.my-custom-class .arrow::before {
-  background-color: rgb(26, 187, 236);
-}

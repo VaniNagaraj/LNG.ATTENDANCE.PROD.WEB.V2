@@ -1,0 +1,47 @@
+<form [formGroup]="shiftForm" (ngSubmit)="submitShift()">
+  <!-- <h4 class="head text-center">Please fill below details.</h4> -->
+  <br />
+  <div class="row">
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="empShift">Shift</label>
+        <select id="empShift" name="empShift" formControlName="empShift" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted4 && f4.empShift.errors }">
+          <option selected disabled value="null">Select Shift</option>
+          <option *ngFor="let ct of globalShift" [value]="ct.name">{{ct.name}}</option>
+        </select>
+        <div *ngIf="submitted4 && f4.empShift.errors" class="invalid-feedback">
+          <div *ngIf="f4.empShift.errors.required">Please Select Shift</div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-4'>
+      <div class="form-group">
+        <label class="form-control-label required" for="shiftFrom">From Date</label>
+        <input type="text" id="shiftFrom" class="form-control" formControlName="shiftFrom" placeholder="YYYY-MM-DD"
+          name="brFrom" required autocomplete="off" ngbDatepicker #d5="ngbDatepicker"
+          [ngClass]="{ 'is-invalid': submitted4 && f4.shiftFrom.errors }" (click)="d5.toggle()">
+        <div *ngIf="submitted4 && f4.shiftFrom.errors" class="invalid-feedback">
+          <div *ngIf="f4.shiftFrom.errors.required">Please Select From Date</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group text-center space-20">
+    <button type="reset" (click)="close()" class="btn btn-danger btn-raised mr-1">
+      Close
+      <span style="margin-left:2px;">
+        <i class="ft-x"></i>
+      </span>
+    </button>
+    <button type="submit" uiSref="work" class="btn btn-info btn-raised">
+      Update
+      <span style="margin-left:2px;">
+        <i class="ft-check"></i>
+      </span>
+    </button>
+  </div>
+</form>

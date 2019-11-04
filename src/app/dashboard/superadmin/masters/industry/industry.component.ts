@@ -1,5 +1,5 @@
 import { Industry } from './model/industry.model';
-import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -11,8 +11,7 @@ import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-industry',
   templateUrl: './industry.component.html',
-  styleUrls: ['./industry.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./industry.component.scss']
 })
 export class IndustryComponent implements OnInit {
 
@@ -118,7 +117,6 @@ export class IndustryComponent implements OnInit {
           
         });
         this.getAllIndustry();
-        this.cancel();
       }
     }, error => {
       Swal.fire({
@@ -127,6 +125,7 @@ export class IndustryComponent implements OnInit {
         text: 'Something went wrong!',
       });
     });
+    this.cancel();
   }
 
   // Update Form open
@@ -162,6 +161,7 @@ export class IndustryComponent implements OnInit {
                 type: 'error',
                 title: res.message,
               });
+              this.cancelUpdate(data);
             } else {
               Swal.fire({
                 type: 'success',
@@ -177,6 +177,7 @@ export class IndustryComponent implements OnInit {
               title: 'Oops...',
               text: 'Something went wrong!',
             });
+            this.cancelUpdate(data);
           });
         }
       })

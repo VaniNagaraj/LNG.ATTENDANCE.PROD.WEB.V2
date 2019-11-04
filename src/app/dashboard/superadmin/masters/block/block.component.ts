@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlockService } from './services/block.service';
 import { first } from 'rxjs/operators';
@@ -8,8 +8,7 @@ import { BranchService } from '../branch/service/branch.service';
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
-  styleUrls: ['./block.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./block.component.scss']
 })
 export class BlockComponent implements OnInit {
 
@@ -122,7 +121,7 @@ export class BlockComponent implements OnInit {
     if (this.blockForm.invalid) {
       return;
     }
-    console.log("Block....",this.blockForm.value)
+    console.log("Block....", this.blockForm.value)
     this.blockService.create(this.blockForm.value)
       .pipe(first())
       .subscribe(res => {
@@ -139,7 +138,6 @@ export class BlockComponent implements OnInit {
             title: res.status.message,
           });
           this.getAllBlock();
-          this.cancel();
         }
       }, error => {
         Swal.fire({
@@ -148,6 +146,7 @@ export class BlockComponent implements OnInit {
           text: 'Something went wrong!',
         });
       });
+    this.cancel();
   }
 
   //Update Form open
@@ -177,11 +176,11 @@ export class BlockComponent implements OnInit {
           .pipe(first())
           .subscribe(res => {
             if (res.error) {
-              this.submitted = false;
               Swal.fire({
                 type: 'error',
                 title: res.message,
               });
+              this.cancelUpdate(data);
             } else {
               Swal.fire({
                 type: 'success',
@@ -197,6 +196,7 @@ export class BlockComponent implements OnInit {
               title: 'Oops...',
               text: 'Something went wrong!',
             });
+            this.cancelUpdate(data);
           });
       }
     })

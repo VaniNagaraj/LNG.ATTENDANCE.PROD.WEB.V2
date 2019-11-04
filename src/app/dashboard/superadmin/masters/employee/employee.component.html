@@ -1,0 +1,568 @@
+<!-- List Section starts-->
+<section id="extended" *ngIf="isList">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h4 style="width: 41%;float: left;margin-top: 10px;" class="card-title"> Employee List </h4>
+
+          </div>
+          <div style="width: 40%;float: right;">
+            <button (click)="openForm()" class="btn btn-raised btn-info">
+              Add <i class="ft-plus"></i>
+            </button>
+            <input type='text' class="searchCust" placeholder='Type to Search Customer'
+              (keyup)='updateFilter($event)' />
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <table class="table table-responsive-md text-center">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Employee Name</th>
+                  <th>Designation</th>
+                  <th>Employee Type</th>
+                  <th>Date of Joining</th>
+                  <th>Branch</th>
+                  <th>Department</th>
+                  <th>Manager</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let emp of globalEmployees; let i =index;">
+                  <td>{{i + 1}}</td>
+                  <td>{{emp.empName}}</td>
+                  <td>{{emp.empDesg}}</td>
+                  <td>{{emp.empType}}</td>
+                  <td>{{emp.empDOJ}}</td>
+                  <td>{{emp.refBrId}}</td>
+                  <td>{{emp.empDept}}</td>
+                  <td>{{emp.empMgr}}</td>
+                  <td width="160">
+                    <a class="warning p-0" data-original-title="" (click)="viewEmployee(emp.empId)" title="">
+                      <i class="ft-eye font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="success p-0" data-original-title="" (click)="editEmployee(emp.empId)" title="">
+                      <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                    </a>
+                    <a class="danger p-0" data-original-title="" (click)="deleteEmployee(emp.empId, emp.Name)" title="">
+                      <i class="ft-x font-medium-3 mr-2"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- List section Ends -->
+
+<!-- Basic form layout section start -->
+<section id="ngx" *ngIf="showForm">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-body">
+        <aw-wizard #wizard navBarLayout="large-empty-symbols">
+          <aw-wizard-step [stepTitle]="'Employee Details'"
+            [navigationSymbol]="{ symbol: '&#xf007;', fontFamily: 'FontAwesome' }">
+            <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+              <h4 class="head text-center">Please fill below details.</h4>
+              <br />
+              <div class='row'>
+                <input type="checkbox" formControlName="mgrService" id="mgrService" hidden>
+                <div class='col-12'>
+                  <div class="row">
+
+                    <div class='col-sm-4'>
+                      <div class="form-group">
+                        <label class="form-control-label required" for="empName">Employee Name</label>
+                        <input type="text" id="empName" class="form-control" formControlName="empName"
+                          placeholder="Enter Employee Name" name="empName" required autocomplete="off" maxlength="50"
+                          [ngClass]="{ 'is-invalid': submitted && f.empName.errors }">
+                        <div *ngIf="submitted && f.empName.errors" class="invalid-feedback">
+                          <div *ngIf="f.empName.errors.required">Please provide Employee Name</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='col-sm-4'>
+                      <div class="form-group">
+                        <label class="form-control-label required" for="empMobile">Mobile Number</label>
+                        <input type="tel" formControlName="empMobile" maxlength="10" id="empMobile" class="form-control"
+                          placeholder="Enter Mobile Number" name="number" autocomplete="off"
+                          onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 107 || event.keyCode == 187? true : false"
+                          [ngClass]="{ 'is-invalid': submitted && f.empMobile.errors }">
+                        <div *ngIf="submitted && f.empMobile.errors" class="invalid-feedback">
+                          <div *ngIf="f.empMobile.errors.required">Please provide Mobile Number</div>
+                          <div *ngIf="f.empMobile.errors.pattern">Mobile Number should be 10 numbers</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='col-sm-4'>
+                      <div class="form-group">
+                        <label class="form-control-label required" for="empType">Employee Type</label>
+                        <select id="empType" name="empType" formControlName="empType"
+                          (change)="selectedEmpType($event.target.value)" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.empType.errors }">
+                          <option selected disabled value="null">Select Employee Type</option>
+                          <option *ngFor="let ct of globalEmpType" [value]="ct.name">{{ct.name}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.empType.errors" class="invalid-feedback">
+                          <div *ngIf="f.empType.errors.required">Please Select Employee Type</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='col-sm-4' *ngIf="showContractor">
+                      <div class="form-group">
+                        <label class="form-control-label" for="empCont">Contractor Name</label>
+                        <input type="tel" formControlName="empCont" maxlength="50" id="empCont" class="form-control"
+                          placeholder="Enter Contractor Name" name="empCont" autocomplete="off">
+                      </div>
+                    </div>
+
+                    <div class='col-sm-4'>
+                      <div class="form-group">
+                        <label class="form-control-label required" for="empDOJ">Date of Joining</label>
+                        <input type="text" id="empDOJ" class="form-control" formControlName="empDOJ"
+                          placeholder="YYYY-MM-DD" name="empDOJ" required autocomplete="off" ngbDatepicker
+                          #d1="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && f.empDOJ.errors }"
+                          (click)="d1.toggle()">
+                        <div *ngIf="submitted && f.empDOJ.errors" class="invalid-feedback">
+                          <div *ngIf="f.empDOJ.errors.required">Please Select Date of Joining</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='col-sm-4'>
+                      <div class="form-group">
+                        <label class="d-block required">Gender</label>
+                        <div class="input-group">
+                          <div class="custom-control custom-radio d-inline-block float-left">
+                            <input type="radio" id="empGender1" formControlName="empGender" class="custom-control-input"
+                              [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }" value="Male">
+                            <label class="custom-control-label mr-4" for="empGender1">Male</label>
+                            <div *ngIf="submitted && f.empGender.errors" class="invalid-feedback">
+                              <div *ngIf="f.empGender.errors.required">Please Select Gender</div>
+                            </div>
+                          </div>
+                          <div class="custom-control custom-radio d-inline-block ml-2">
+                            <input type="radio" id="empGender2" formControlName="empGender" class="custom-control-input"
+                              value="Female" [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }">
+                            <label class="custom-control-label" for="empGender2">Female</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='col-sm-4'>
+                      <div class="form-group">
+                        <label class="d-block">Is Manager/Supervisor?</label>
+                        <div class="input-group">
+                          <div class="custom-control custom-checkbox d-inline-block">
+                            <input type="checkbox" id="empMgr" formControlName="empMgr" class="custom-control-input">
+                            <label class="custom-control-label" for="empMgr">Manager/Supervisor</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-group text-center">
+                    <button type="reset" (click)="closeWizard()" class="btn btn-danger btn-raised mr-1">
+                      Close
+                      <span style="margin-left:10px;">
+                        <i class="ft-x"></i>
+                      </span>
+                    </button>
+                    <button type="submit" uiSref="work" class="btn btn-info btn-raised" awNextStep>
+                      Next
+                      <span style="margin-left:10px;">
+                        <i class="ft-chevron-right"></i>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step [stepTitle]="'Branch Details'" [canEnter]="empForm.valid"
+            [navigationSymbol]="{ symbol: '&#xf126;', fontFamily: 'FontAwesome' }">
+            <form [formGroup]="branchForm" (ngSubmit)="submitBranch()">
+              <h4 class="head text-center">Please fill below details.</h4>
+              <br />
+              <div class="row">
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="refBrId">Branch</label>
+                    <select id="refBrId" name="refBrId" formControlName="refBrId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted1 && f1.refBrId.errors }">
+                      <option selected disabled value="null">Select Branch</option>
+                      <option *ngFor="let ct of globalBranch" [value]="ct.id">{{ct.name}}</option>
+                    </select>
+                    <div *ngIf="submitted1 && f1.refBrId.errors" class="invalid-feedback">
+                      <div *ngIf="f1.refBrId.errors.required">Please Select Branch</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="brFrom">From Date</label>
+                    <input type="text" id="brFrom" class="form-control" formControlName="brFrom"
+                      placeholder="YYYY-MM-DD" name="brFrom" required autocomplete="off" ngbDatepicker
+                      #d2="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted1 && f1.brFrom.errors }"
+                      (click)="d2.toggle()">
+                    <div *ngIf="submitted1 && f1.brFrom.errors" class="invalid-feedback">
+                      <div *ngIf="f1.brFrom.errors.required">Please Select From Date</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group text-center space-20">
+                <button uiSref="personal" type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                  <span style="margin-right:10px;">
+                    <i class="ft-chevron-left"></i>
+                  </span> Previous</button>
+                <button uiSref="address" type="submit" class="btn btn-raised btn-info" awNextStep>
+                  Next
+                  <span style="margin-left:10px;">
+                    <i class="ft-chevron-right"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step [stepTitle]="'Department Details'" [canEnter]="branchForm.valid"
+            [navigationSymbol]="{ symbol: '&#xf1ad;', fontFamily: 'FontAwesome' }">
+            <form [formGroup]="deptForm" (ngSubmit)="submitDept()">
+              <h4 class="head text-center">Please fill below details.</h4>
+              <br />
+              <div class="row">
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="empDept">Department</label>
+                    <select id="empDept" name="empDept" formControlName="empDept" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted2 && f2.empDept.errors }">
+                      <option selected disabled value="null">Select Department</option>
+                      <option *ngFor="let ct of globalDepartment" [value]="ct.id">{{ct.name}}</option>
+                    </select>
+                    <div *ngIf="submitted2 && f2.empDept.errors" class="invalid-feedback">
+                      <div *ngIf="f2.empDept.errors.required">Please Select Department</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="empReport">Reporting To</label>
+                    <select id="empReport" name="empReport" formControlName="empReport" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted2 && f2.empReport.errors }">
+                      <option selected disabled value="null">Select Reporting To</option>
+                      <option *ngFor="let ct of globalReportTo" [value]="ct.name">{{ct.name}}</option>
+                    </select>
+                    <div *ngIf="submitted2 && f2.empReport.errors" class="invalid-feedback">
+                      <div *ngIf="f2.empReport.errors.required">Please Select Reporting To</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="deptFrom">From Date</label>
+                    <input type="text" id="deptFrom" class="form-control" formControlName="deptFrom"
+                      placeholder="YYYY-MM-DD" name="brFrom" required autocomplete="off" ngbDatepicker
+                      #d3="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted2 && f2.deptFrom.errors }"
+                      (click)="d3.toggle()">
+                    <div *ngIf="submitted2 && f2.deptFrom.errors" class="invalid-feedback">
+                      <div *ngIf="f2.deptFrom.errors.required">Please Select From Date</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group text-center space-20">
+                <button uiSref="personal" type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                  <span style="margin-right:10px;">
+                    <i class="ft-chevron-left"></i>
+                  </span> Previous</button>
+                <button uiSref="address" type="submit" class="btn btn-raised btn-info" awNextStep>
+                  Next
+                  <span style="margin-left:10px;">
+                    <i class="ft-chevron-right"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step [stepTitle]="'Designation Details'" [canEnter]="deptForm.valid"
+            [navigationSymbol]="{ symbol: '&#xe9d3;', fontFamily: 'Feather' }">
+            <form [formGroup]="desgForm" (ngSubmit)="submitDesg()">
+              <h4 class="head text-center">Please fill below details.</h4>
+              <br />
+              <div class="row">
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="empDesg">Designation</label>
+                    <select id="empDesg" name="empDesg" formControlName="empDesg" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted3 && f3.empDesg.errors }">
+                      <option selected disabled value="null">Select Designation</option>
+                      <option *ngFor="let ct of globalDesignation" [value]="ct.id">{{ct.name}}</option>
+                    </select>
+                    <div *ngIf="submitted3 && f3.empDesg.errors" class="invalid-feedback">
+                      <div *ngIf="f3.empDesg.errors.required">Please Select Designation</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="desgFrom">From Date</label>
+                    <input type="text" id="desgFrom" class="form-control" formControlName="desgFrom"
+                      placeholder="YYYY-MM-DD" name="brFrom" required autocomplete="off" ngbDatepicker
+                      #d4="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted3 && f3.desgFrom.errors }"
+                      (click)="d4.toggle()">
+                    <div *ngIf="submitted3 && f3.desgFrom.errors" class="invalid-feedback">
+                      <div *ngIf="f3.desgFrom.errors.required">Please Select From Date</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group text-center space-20">
+                <button uiSref="personal" type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                  <span style="margin-right:10px;">
+                    <i class="ft-chevron-left"></i>
+                  </span> Previous</button>
+                <button uiSref="address" type="submit" class="btn btn-raised btn-info" awNextStep>
+                  Next
+                  <span style="margin-left:10px;">
+                    <i class="ft-chevron-right"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step [stepTitle]="'Shift Details'" [canEnter]="desgForm.valid"
+            [navigationSymbol]="{ symbol: '&#xe9d3;', fontFamily: 'Feather' }">
+            <form [formGroup]="shiftForm" (ngSubmit)="submitShift()">
+              <h4 class="head text-center">Please fill below details.</h4>
+              <br />
+              <div class="row">
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="empShift">Shift</label>
+                    <select id="empShift" name="empShift" formControlName="empShift" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted4 && f4.empShift.errors }">
+                      <option selected disabled value="null">Select Shift</option>
+                      <option *ngFor="let ct of globalShift" [value]="ct.name">{{ct.name}}</option>
+                    </select>
+                    <div *ngIf="submitted4 && f4.empShift.errors" class="invalid-feedback">
+                      <div *ngIf="f4.empShift.errors.required">Please Select Shift</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="shiftFrom">From Date</label>
+                    <input type="text" id="shiftFrom" class="form-control" formControlName="shiftFrom"
+                      placeholder="YYYY-MM-DD" name="brFrom" required autocomplete="off" ngbDatepicker
+                      #d5="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted4 && f4.shiftFrom.errors }"
+                      (click)="d5.toggle()">
+                    <div *ngIf="submitted4 && f4.shiftFrom.errors" class="invalid-feedback">
+                      <div *ngIf="f4.shiftFrom.errors.required">Please Select From Date</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group text-center space-20">
+                <button uiSref="personal" type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                  <span style="margin-right:10px;">
+                    <i class="ft-chevron-left"></i>
+                  </span> Previous</button>
+                <button uiSref="address" type="submit" class="btn btn-raised btn-info" awNextStep>
+                  Next
+                  <span style="margin-left:10px;">
+                    <i class="ft-chevron-right"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </aw-wizard-step>
+
+          <aw-wizard-step [stepTitle]="'Weekly Off'" [canEnter]="shiftForm.valid"
+            [navigationSymbol]="{ symbol: '&#xf0ac;', fontFamily: 'FontAwesome' }">
+            <form [formGroup]="weeklyoffForm" (ngSubmit)="submitWeeklyOff()">
+              <h4 class="head text-center">Where do you live?</h4>
+              <br />
+              <div class="row">
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="weekoff">Weekly Off</label>
+                    <ng-multiselect-dropdown name="weekoff" [placeholder]="'Select City'" [data]="globalWeeks"
+                      formControlName="weekoff" [settings]="dropdownSettings"
+                      [ngClass]="{ 'is-invalid': submitted5 && f5.weekoff.errors }">
+                    </ng-multiselect-dropdown>
+                    <div *ngIf="submitted5 && f5.weekoff.errors" class="invalid">
+                      <div *ngIf="f5.weekoff.errors?.required">Please Select Weeks</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                    <label class="form-control-label required" for="offFrom">From Date</label>
+                    <input type="text" id="offFrom" class="form-control" formControlName="offFrom"
+                      placeholder="YYYY-MM-DD" name="brFrom" required autocomplete="off" ngbDatepicker
+                      #d6="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted5 && f5.offFrom.errors }"
+                      (click)="d6.toggle()">
+                    <div *ngIf="submitted5 && f5.offFrom.errors" class="invalid-feedback">
+                      <div *ngIf="f5.offFrom.errors.required">Please Select From Date</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group text-center">
+                <button type="button" class="btn btn-raised btn-secondary mr-1" awPreviousStep>
+                  <span style="margin-right:10px;">
+                    <i class="ft-chevron-left"></i>
+                  </span> Previous</button>
+                <button type="submit" class="btn btn-raised btn-success">
+                  Finish
+                  <span style="margin-left:10px;">
+                    <i class="ft-check"></i>
+                  </span>
+                </button>
+              </div>
+            </form>
+
+          </aw-wizard-step>
+        </aw-wizard>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Basic form layout section end -->
+
+
+<!-- Update Form Layout Starts -->
+<section id="ngx" *ngIf="isUpdate">
+  <div class="card text-left">
+    <div class="card-content">
+      <div class="card-body">
+        <div class="board">
+          <!-- Navigation Area (Circular Tabs) -->
+          <msw-navbar></msw-navbar>
+          <!-- End Navigation Area (Circular Tabs) -->
+
+          <!-- Content Area -->
+          <div class="tab-content">
+            <!-- Nested view  -->
+            <router-outlet> </router-outlet>
+          </div>
+          <!-- End Content Area -->
+        </div>
+        <!-- For Debugging: show our valid formData -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Update Form Layout Ends -->
+
+
+<!-- Sweet Alert Starts-->
+<div class="swal2-container swal2-center swal2-fade swal2-shown" style="overflow-y: auto;" *ngIf="showView">
+  <div aria-labelledby="swal2-title" aria-describedby="swal2-content" class="swal2-popup swal2-modal swal2-show"
+    tabindex="-1" role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+    <div class="swal2-header">
+      <ul class="swal2-progress-steps" style="display: none;"></ul>
+      <div class="swal2-icon swal2-error" style="display: none;"><span class="swal2-x-mark"><span
+            class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>
+      <div class="swal2-icon swal2-question" style="display: none;"></div>
+      <div class="swal2-icon swal2-warning" style="display: none;"></div>
+      <div class="swal2-icon swal2-info" style="display: none;"></div>
+      <div class="swal2-icon swal2-success" style="display: none;">
+        <div class="swal2-success-circular-line-left"></div><span class="swal2-success-line-tip"></span> <span
+          class="swal2-success-line-long"></span>
+        <div class="swal2-success-ring"></div>
+        <div class="swal2-success-fix"></div>
+        <div class="swal2-success-circular-line-right"></div>
+      </div><img class="swal2-image" style="display: none;">
+      <h2 class="swal2-title" id="swal2-title" style="display: flex;">Branch Details</h2><button type="button"
+        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+    </div>
+    <pre></pre>
+    <pre></pre>
+    <div class="swal2-content">
+      <table class="table table-responsive-md table-borderless" style="table-layout: fixed;">
+        <tbody>
+          <tr>
+            <th>Employee Name</th>
+            <td>XYZ</td>
+            <th>Mobile Number</th>
+            <td>9874561230</td>
+            <th>Employee Type</th>
+            <td>Manager</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Gender</th>
+            <td>Male</td>
+            <th>Is Manager?</th>
+            <td>Yes</td>
+            <th>Date of Joining</th>
+            <td>20-10-2019</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Branch</th>
+            <td>Lng Tech</td>
+            <th>Department</th>
+            <td>Dept 1</td>
+            <th>Reporting To</th>
+            <td>ABC</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Designation</th>
+            <td>Desg 1</td>
+            <th>Shift</th>
+            <td>Day</td>
+            <th>Weekly Off</th>
+            <td>Sunday</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swal2-actions" style="display: flex;"><button type="button" class="swal2-confirm swal2-styled"
+        aria-label="" (click)="closeView()"
+        style="display: inline-block; border-left-color: rgb(12, 194, 126); border-right-color: rgb(12, 194, 126);">OK</button><button
+        type="button" class="swal2-cancel swal2-styled" aria-label="" style="display: none;">Cancel</button></div>
+    <div class="swal2-footer" style="display: none;"></div>
+  </div>
+</div>
+<!-- Sweet Alert Ends-->

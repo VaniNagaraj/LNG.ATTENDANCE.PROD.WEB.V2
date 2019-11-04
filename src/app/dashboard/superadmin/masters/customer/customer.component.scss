@@ -2,9 +2,9 @@ table.table.table-responsive tr td:first-child {
   display: none !important;
 }
 
-:host /deep/ .table tr td:first-child { display: none;}
+.table tr td:first-child { display: none;}
 
-:host /deep/ th.ng2-smart-th.custId.ng-star-inserted {
+th.ng2-smart-th.custId.ng-star-inserted {
   display: none;
 }
 

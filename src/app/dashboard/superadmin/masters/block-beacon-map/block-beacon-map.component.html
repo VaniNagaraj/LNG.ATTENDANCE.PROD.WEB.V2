@@ -53,8 +53,8 @@
                     <select id="projectinput1" formControlName="beaconType" name="beaconType" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && f.beaconType.errors }">
                       <option selected disabled value="null">Please Select Beacon Type</option>
-                      <option value="1">Entry and Photo</option>
-                      <option value="2">Mark Attendence</option>
+                      <option [value]="1">Entry and Photo</option>
+                      <option [value]="2">Mark Attendence</option>
                     </select>
                     <div *ngIf="submitted && f.beaconType.errors" class="invalid-feedback">
                       <div *ngIf="f.beaconType.errors.required">Please Select Beacon Type</div>
