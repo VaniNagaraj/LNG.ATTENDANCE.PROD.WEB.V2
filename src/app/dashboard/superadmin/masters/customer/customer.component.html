@@ -116,7 +116,7 @@
                 <div class="form-group row ">
 
                   <label class="col-md-2 label-control required" for="projectinput1">Name</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput1" class="form-control" [(ngModel)]="customers.custName" (blur)="checkName()"
                       formControlName="custName" placeholder="Name" name="name" required autocomplete="off"
                       maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.custName.errors }">
@@ -127,7 +127,7 @@
                   </div>
 
                   <label class="col-md-2 label-control required" for="projectinput2">Customer Code</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput200" formControlName="custCode" [(ngModel)]="customers.custCode"
                       class="form-control" placeholder="Customer Code" [readOnly]="custCodeDisabled" name="custCode"
                       maxlength="6" required autocomplete="off"
@@ -141,7 +141,7 @@
 
                 <div class="form-group row ">
                   <label class="col-md-2 label-control required" for="projectinput3">Address</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <textarea type="text" rows="1" id="projectinput3" required [(ngModel)]="customers.custAddress"
                       formControlName="custAddress" class="form-control" placeholder="Address" name="custAddress"
                       autocomplete="off" minlength="1" maxlength="100"
@@ -155,7 +155,7 @@
                   </div>
 
                   <label class="col-md-2 label-control required" for="projectinput4">City</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput4" formControlName="custCity" [(ngModel)]="customers.custCity"
                       class="form-control" placeholder="Customer City" name="custCity" required autocomplete="off"
                       [ngClass]="{ 'is-invalid': submitted && f.custCity.errors }">
@@ -167,7 +167,7 @@
 
                 <div class="form-group row">
                   <label class="col-md-2 label-control required" for="projectinput7">Country</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <select id="refCountryId" name="refCountryId" [(ngModel)]="customers.refCountryId"
                       (change)="showState($event)" formControlName="refCountryId" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && f.refCountryId.errors }" [value]='0'>
@@ -180,7 +180,7 @@
                   </div>
 
                   <label class="col-md-2 label-control required" for="projectinput6">State</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <select id="projectinput6" formControlName="refStateId" [(ngModel)]="customers.refStateId"
                       name="refStateId" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && f.refStateId.errors }" [value]='0'>
@@ -196,7 +196,7 @@
 
                 <div class="form-group row ">
                   <label class="col-md-2 label-control required" for="projectinput8">Pincode</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput18" maxlength="6" [(ngModel)]="customers.custPincode"
                       formControlName="custPincode" class="form-control" placeholder="Pincode" name="custPincode"
                       autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.custPincode.errors }"
@@ -208,7 +208,7 @@
                   </div>
 
                   <label class="col-md-2 label-control required" for="projectinput9">GSTIN</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput9" minlength="15" maxlength="20" [(ngModel)]="customers.custGSTIN"
                       formControlName="custGSTIN" class="form-control" placeholder="GSTIN" name="custGSTIN"
                       autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.custGSTIN.errors }" required>
@@ -221,7 +221,7 @@
 
                 <div class="form-group row">
                   <label class="col-md-2 label-control required" for="projectinput10">Mobile</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="tel" formControlName="custMobile" [(ngModel)]="customers.custMobile" maxlength="10"
                       id="projectinput10" class="form-control" placeholder="Mobile Number" name="number"
                       autocomplete="off"
@@ -234,7 +234,7 @@
                   </div>
 
                   <label class="col-md-2 label-control" for="projectinput11">Landline</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" maxlength="10" id="projectinput11" [(ngModel)]="customers.custLandline"
                       formControlName="custLandline" class="form-control" placeholder="Landline Number"
                       name="custLandline" autocomplete="off"
@@ -249,7 +249,7 @@
 
                 <div class="form-group row ">
                   <label class="col-md-2 label-control required" for="projectinput12">Email</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput12" class="form-control" [(ngModel)]="customers.custEmail"
                       formControlName="custEmail" placeholder="Email" name="email" maxlength="50" autocomplete="off"
                       [ngClass]="{ 'is-invalid': submitted && f.custEmail.errors }">
@@ -260,7 +260,7 @@
                   </div>
 
                   <label class="col-md-2 label-control required" for="projectinput13">Industry Type</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <select id="projectinput13" formControlName="refIndustryTypeId"
                       [(ngModel)]="customers.refIndustryTypeId" name="refIndustryTypeId" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && f.refIndustryTypeId.errors }" [value]='0'>
@@ -276,7 +276,7 @@
 
                 <div class="form-group row ">
                   <label class="col-md-2 label-control required" for="projectinput14">Validity Start</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="date" id="projectinput14" class="form-control"
                       [(ngModel)]="customers.custValidityStart" name="dateopened" formControlName="custValidityStart"
                       data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Date Opened"
@@ -287,7 +287,7 @@
                   </div>
 
                   <label class="col-md-2 label-control required" for="projectinput15">Validity End</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="date" id="projectinput15" class="form-control" [(ngModel)]="customers.custValidityEnd"
                       name="dateopened" formControlName="custValidityEnd" data-toggle="tooltip" data-trigger="hover"
                       data-placement="top" data-title="Date Fixed"
@@ -304,7 +304,7 @@
 
                 <div class="form-group row ">
                   <label class="col-md-2 label-control required" for="projectinput16">No of Branches</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <input type="text" id="projectinput16" class="form-control" formControlName="custNoOfBranch"
                       placeholder="Number of Branches" name="custNoOfBranch" [(ngModel)]="customers.custNoOfBranch"
                       maxlength="2" autocomplete="off"
@@ -317,13 +317,13 @@
                   </div>
 
                   <label class="col-md-2 label-control">Customer Logo</label>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <label id="projectinput8" class="file mx-auto">
                       <input type="file" id="file" accept="image/x-png,image/jpeg" formControlName="custLogoFile"
                         name="logo" (change)="onSelectFile($event)" />
 
                       <span class="file-custom"></span>
-                    </label>
+                    </label><br>
                     <span style="color: red; font-size: 12px;">Note: Image Should be in PNG & JPEG format only.</span>
                     <div *ngIf="customers.custLogoFile">
                       <label>uploaded Logo </label>&nbsp;

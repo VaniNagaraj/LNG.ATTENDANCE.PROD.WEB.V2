@@ -15,6 +15,10 @@ export const Full_ROUTES: Routes = [
     path: 'masters/customer',
     loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
   },
+  {
+    path: 'masters/employee',
+    loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
   // {
   //   path: 'superadmin',
   //   loadChildren: () => import('../../dashboard/superadmin/sadmin.module').then(m => m.SuperAdminModule)

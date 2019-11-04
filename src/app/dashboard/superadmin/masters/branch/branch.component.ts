@@ -65,7 +65,7 @@ export class BranchComponent implements OnInit {
       brLatLong: [],
       brValidityStart: [null, Validators.required],
       brValidityEnd: [null, Validators.required],
-      brIsBillable: [true],
+      brIsBillable: [false],
       brIsActive: [true]
     })
 

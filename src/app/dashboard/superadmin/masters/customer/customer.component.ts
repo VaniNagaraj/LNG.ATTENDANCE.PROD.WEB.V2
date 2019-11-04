@@ -203,7 +203,7 @@ export class CustomerComponent implements OnInit {
       refIndustryTypeId: [null, [Validators.required, Validators.minLength(1)]],
       custValidityStart: ['', [Validators.required, Validators.minLength(1)]],
       custValidityEnd: ['', [Validators.required, Validators.minLength(1)]],
-      custNoOfBranch: ['1', [Validators.required, Validators.pattern('[0-9]{1,2}'), Validators.minLength(1)]],
+      custNoOfBranch: ['', [Validators.required, Validators.pattern('[0-9]{1,2}'), Validators.minLength(1)]],
       custLogoFile: [null]
     }, {validators: this.checkDateValidation});
     this.getAllCountry();

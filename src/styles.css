@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 .custom-spinner-template {
-    height: 50% !important;
-    width: 50% !important;
-    top: 26% !important;
-    left: 24% !important;
+  height: 50% !important;
+  width: 50% !important;
+  top: 26% !important;
+  left: 24% !important;
+}
+
+:host ::ng-deep .my-custom-class .tooltip-inner {
+  background-color: rgb(37, 145, 216) !important;
+  font-size: 75% !important;
+}
+
+:host ::ng-deep .my-custom-class .arrow::before {
+  background-color: rgb(37, 145, 216) !important;
 }

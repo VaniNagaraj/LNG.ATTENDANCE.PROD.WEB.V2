@@ -57,8 +57,16 @@ const routes: Routes = [
       { path: 'branch', component: BranchComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'beaconmap', component: BlockBeaconMapComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
       { path: 'block', component: BlockComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'employee', component: EmployeeComponent, children: Full_ROUTES, canActivate: [AuthGuard] },
-      { path: 'personal', component: PersonalComponent, canActivate: [AuthGuard] },
+      { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard],
+        children: [
+          { path: 'personal', component: PersonalComponent, canActivate: [AuthGuard], data: { title: 'Personal'}},
+          { path: 'branch', component: EmpbranchComponent, canActivate: [AuthGuard], data: { title: 'Branch'} },
+          { path: 'department', component: EmpDepartmentComponent, canActivate: [AuthGuard], data: { title: 'Department'} },
+          { path: 'designation', component: EmpDesignationComponent, canActivate: [AuthGuard], data: { title: 'Designation'} },
+          { path: 'shift', component: EmpShiftComponent, canActivate: [AuthGuard], data: { title: 'Shift'} },
+          { path: 'weeklyoff', component: WeeklyoffComponent, canActivate: [AuthGuard], data: { title: 'Weeklyoff'} },
+        ]
+       },
     ]
   },
   { path: '', component: FullLayoutComponent, data: { title: 'full Views' }, children: Full_ROUTES, canActivate: [AuthGuard] },

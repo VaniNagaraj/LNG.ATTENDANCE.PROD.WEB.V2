@@ -28,7 +28,7 @@
                   <th>Date of Joining</th>
                   <th>Branch</th>
                   <th>Department</th>
-                  <th>Manager</th>
+                  <!-- <th>Manager</th> -->
                   <th colspan="2">Action</th>
                 </tr>
               </thead>
@@ -36,12 +36,12 @@
                 <tr *ngFor="let emp of globalEmployees; let i =index;">
                   <td>{{i + 1}}</td>
                   <td>{{emp.empName}}</td>
-                  <td>{{emp.empDesg}}</td>
+                  <td>{{emp.designationName}}</td>
                   <td>{{emp.empType}}</td>
-                  <td>{{emp.empDOJ}}</td>
-                  <td>{{emp.refBrId}}</td>
-                  <td>{{emp.empDept}}</td>
-                  <td>{{emp.empMgr}}</td>
+                  <td>{{emp.empJoiningDate | date: 'dd-MM-yyyy'}}</td>
+                  <td>{{emp.brName}}</td>
+                  <td>{{emp.deptName}}</td>
+                  <!-- <td>{{emp.empMgr}}</td> -->
                   <td width="160">
                     <a class="warning p-0" data-original-title="" (click)="viewEmployee(emp.empId)" title="">
                       <i class="ft-eye font-medium-3 mr-2"></i>

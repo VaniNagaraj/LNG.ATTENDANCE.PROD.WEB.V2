@@ -87,8 +87,10 @@ export class EmployeeComponent implements OnInit {
 
     this.dis.showList = true;
     this.globalEmployees = [
-      { empName: 'ABC', empType: 'Employee', empDesg: 'SE', empDOJ: '2019-10-20', refBrId: 'XYZ', empDept: 'MNP', empMgr: 'ANS',
-        empGender: 'Male', empMobile: '9874561230' }
+      {
+        empName: 'ABC', empType: 'Employee', empDesg: 'SE', empDOJ: '2019-10-20', refBrId: 'XYZ', empDept: 'MNP', empMgr: 'ANS',
+        empGender: 'Male', empMobile: '9874561230'
+      }
     ]
 
     this.empForm = this.fb.group({
@@ -129,7 +131,7 @@ export class EmployeeComponent implements OnInit {
     });
 
     this.assignDate();
-
+    this.getAllEmployee();
   }
 
   assignDate() {
@@ -157,6 +159,28 @@ export class EmployeeComponent implements OnInit {
       desgFrom: this.calendar.getToday()
     });
 
+  }
+
+  getAllEmployee() {
+    // this.branchService.getAll()
+    //   .pipe(first())
+    //   .subscribe(res => {
+    //     if (res.status.error) {
+    //       Swal.fire({
+    //         type: 'error',
+    //         title: res.status.message,
+    //       });
+    //     } else {
+    //       console.log('Branches...', res.data1)
+    //       this.globalBranch = res.data1;
+    //     }
+    //   }, error => {
+    //     Swal.fire({
+    //       type: 'error',
+    //       title: 'Oops...',
+    //       text: 'Something went wrong!',
+    //     });
+    //   });
   }
 
   get f() { return this.empForm.controls };

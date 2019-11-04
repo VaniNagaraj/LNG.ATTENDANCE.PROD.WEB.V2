@@ -18,8 +18,8 @@
               <thead>
                 <tr>
                   <th>Sl No</th>
-                  <th>Block Name</th>
                   <th>Branch</th>
+                  <th>Block Name</th>
                   <th>Block GPS Radius</th>
                   <th>Block Latitude and Longitude</th>
                   <th style='padding: 8px;' colspan="6">Action</th>
@@ -31,15 +31,6 @@
 
                   </td>
                   <td>
-                    <input type="text" id="blkLogicalName" formControlName="blkLogicalName" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.blkLogicalName.errors }"
-                      placeholder="Please Enter Block Name" maxlength="20"
-                      onkeydown="javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true">
-                    <div *ngIf="submitted && f.blkLogicalName.errors" class="invalid-feedback">
-                      <div *ngIf="f.blkLogicalName.errors.required">Please Provide Block Name</div>
-                    </div>
-                  </td>
-                  <td>
                     <select id="projectinput6" formControlName="refBranchId" name="refBranchId" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && f.refBranchId.errors }">
                       <option value="none" selected disabled value="null">Select Branch</option>
@@ -49,6 +40,16 @@
                       <div *ngIf="f.refBranchId.errors.required">Please Select Branch</div>
                     </div>
                   </td>
+                  <td>
+                    <input type="text" id="blkLogicalName" formControlName="blkLogicalName" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.blkLogicalName.errors }"
+                      placeholder="Please Enter Block Name" maxlength="20"
+                      onkeydown="javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true">
+                    <div *ngIf="submitted && f.blkLogicalName.errors" class="invalid-feedback">
+                      <div *ngIf="f.blkLogicalName.errors.required">Please Provide Block Name</div>
+                    </div>
+                  </td>
+                  
                   <td>
                     <input type="text" id="blkGPSRadius" formControlName="blkGPSRadius" class="form-control"
                       [ngClass]="{ 'is-invalid': submitted && f.blkGPSRadius.errors }" maxlength="5"
@@ -85,20 +86,6 @@
                   </td>
                   <td>
                     <span [hidden]="data.showUpdate">
-                      {{data.blkLogicalName}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
-                      <input type="text" id="blkLogicalName" formControlName="blkLogicalName" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted1 && f1.blkLogicalName.errors }"
-                        placeholder="Please Enter Block Name" maxlength="20"
-                        onkeydown="javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true">
-                      <div *ngIf="submitted1 && f1.blkLogicalName.errors" class="invalid-feedback">
-                        <div *ngIf="f1.blkLogicalName.errors.required">Please Provide BLock Name</div>
-                      </div>
-                    </span>
-                  </td>
-                  <td>
-                    <span [hidden]="data.showUpdate">
                       {{data.brName}}
                     </span>
                     <span [hidden]="!data.showUpdate">
@@ -112,6 +99,21 @@
                       </div>
                     </span>
                   </td>
+                  <td>
+                    <span [hidden]="data.showUpdate">
+                      {{data.blkLogicalName}}
+                    </span>
+                    <span [hidden]="!data.showUpdate">
+                      <input type="text" id="blkLogicalName" formControlName="blkLogicalName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted1 && f1.blkLogicalName.errors }"
+                        placeholder="Please Enter Block Name" maxlength="20"
+                        onkeydown="javascript: return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 222)? false : true">
+                      <div *ngIf="submitted1 && f1.blkLogicalName.errors" class="invalid-feedback">
+                        <div *ngIf="f1.blkLogicalName.errors.required">Please Provide BLock Name</div>
+                      </div>
+                    </span>
+                  </td>
+                  
                   <td>
                     <span [hidden]="data.showUpdate">
                       {{data.blkGPSRadius}}

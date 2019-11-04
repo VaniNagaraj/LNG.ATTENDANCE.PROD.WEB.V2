@@ -2,10 +2,10 @@ table.table.table-responsive tr td:first-child {
   display: none !important;
 }
 
-.table tr td:first-child { display: none;}
+:host ::ng-deep .table tr td:first-child { display: none !important;}
 
-th.ng2-smart-th.custId.ng-star-inserted {
-  display: none;
+:host ::ng-deep th.ng2-smart-th.custId.ng-star-inserted {
+  display: none !important;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
