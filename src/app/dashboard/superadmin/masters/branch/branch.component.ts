@@ -22,7 +22,7 @@ export class BranchComponent implements OnInit {
 
   @Output() changePage = new EventEmitter<any>(true);
   @Input() initialPage = 1;
-  @Input() pageSize = 5;
+  @Input() pageSize = 20;
   @Input() maxPages = 10;
 
   branchForm: FormGroup;

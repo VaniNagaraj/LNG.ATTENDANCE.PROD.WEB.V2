@@ -28,7 +28,6 @@ export class BlockBeaconMapComponent implements OnInit {
     { blockId: 4, blockName: 'Block 4' }
   ]
 
-  pagginationConfig: any;
   showNew: boolean = false;
   newBlockBeaconMap: FormGroup;
   submitted = false;
@@ -37,19 +36,16 @@ export class BlockBeaconMapComponent implements OnInit {
   // currectTableIndex = -1;
   updateBlockBeaconMap: FormGroup;
   pageOfItems: any[];
+  custId: any;
 
   constructor(private formBuilder: FormBuilder,
     private beaconMapService: BeaconmapService,
     private blockService: BlockService) { }
 
   ngOnInit() {
-
-    this.pagginationConfig = {
-      itemsPerPage: 2,
-      currentPage: 1,
-      totalItems: 0
-    }
-
+    const currUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.custId = currUser.refCustId;
+    console.log("Current user....",currUser)
 
     this.newBlockBeaconMap = this.formBuilder.group({
       refBlkId: [null, Validators.required],

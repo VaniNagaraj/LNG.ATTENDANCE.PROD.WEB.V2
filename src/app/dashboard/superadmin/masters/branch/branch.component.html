@@ -27,7 +27,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let branch of pageOfItems; let i = index;">
-                  <td>{{i + 1}}</td>
+                  <td>{{globalBranch.indexOf(branch) + 1}}</td>
                   <td>{{branch.brName}}</td>
                   <td>{{branch.brCode}}</td>
                   <td>{{branch.brCity}}</td>

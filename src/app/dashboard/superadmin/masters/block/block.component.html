@@ -79,31 +79,31 @@
                     </a>
                   </td>
                 </tr>
-                <tr *ngFor="let data of pageOfItems; let i = index" [formGroup]="updateBlockForm">
+                <tr *ngFor="let data of pageOfItems" [formGroup]="updateBlockForm">
                   <td>
-                    {{i+1}}
+                    {{globalBlock.indexOf(data)+1}}
                     <input type="text" formControlName="blkId" id="blkId" hidden>
                   </td>
                   <td>
-                    <span [hidden]="data.showUpdate">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.brName}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
+                    </ng-container>
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <select id="projectinput6" formControlName="refBranchId" name="refBranchId" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted1 && f1.refBranchId.errors }">
+                        [ngClass]="{ 'is-invalid': submitted1 && f1.refBranchId.errors }" disabled>
                         <option value="none" selected disabled value="null">Select Branch</option>
                         <option *ngFor="let st of globalBranch" [value]="st.brId">{{st.brName}}</option>
                       </select>
                       <div *ngIf="submitted1 && f1.refBranchId.errors" class="invalid-feedback">
                         <div *ngIf="f1.refBranchId.errors.required">Please Select Branch</div>
                       </div>
-                    </span>
+                    </ng-container>
                   </td>
                   <td>
-                    <span [hidden]="data.showUpdate">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.blkLogicalName}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
+                    </ng-container>
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <input type="text" id="blkLogicalName" formControlName="blkLogicalName" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.blkLogicalName.errors }"
                         placeholder="Please Enter Block Name" maxlength="20"
@@ -111,14 +111,14 @@
                       <div *ngIf="submitted1 && f1.blkLogicalName.errors" class="invalid-feedback">
                         <div *ngIf="f1.blkLogicalName.errors.required">Please Provide BLock Name</div>
                       </div>
-                    </span>
+                    </ng-container>
                   </td>
                   
                   <td>
-                    <span [hidden]="data.showUpdate">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.blkGPSRadius}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
+                    </ng-container>
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <input type="text" id="blkGPSRadius" formControlName="blkGPSRadius" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.blkGPSRadius.errors }" maxlength="5"
                         onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false"
@@ -126,13 +126,13 @@
                       <div *ngIf="submitted1 && f1.blkGPSRadius.errors" class="invalid-feedback">
                         <div *ngIf="f1.blkGPSRadius.errors.required">Please Provide GPS Radius</div>
                       </div>
-                    </span>
+                    </ng-container>
                   </td>
                   <td>
-                    <span [hidden]="data.showUpdate">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.blkLatLong}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
+                    </ng-container>
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <input type="text" id="blkLatLong" formControlName="blkLatLong" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.blkLatLong.errors }"
                         onkeydown="javascript: return (event.keyCode >= 65 && event.keyCode <= 90)? false : true"
@@ -140,11 +140,11 @@
                       <div *ngIf="submitted1 && f1.blkLatLong.errors" class="invalid-feedback">
                         <div *ngIf="f1.blkLatLong.errors.required">Please Provide Latitude and Longitude</div>
                       </div>
-                    </span>
+                    </ng-container>
                   </td>
                   <td width="160">
-                    <span [hidden]="data.showUpdate">
-                      <a class="success p-0" (click)="editCustomer(data)" placement="bottom" ngbTooltip="Edit"
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
+                      <a class="success p-0" (click)="editCustomer(data, globalBlock.indexOf(data))" placement="bottom" ngbTooltip="Edit"
                         tooltipClass="my-custom-class">
                         <i class="ft-edit-2 font-medium-3 mr-2"></i>
                       </a>
@@ -152,8 +152,8 @@
                         tooltipClass="my-custom-class">
                         <i class="ft-trash-2 font-medium-3 mr-2"></i>
                       </a>
-                    </span>
-                    <span [hidden]="!data.showUpdate">
+                    </ng-container>
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <a class="success p-0" (click)="saveUpdate(data)" placement="bottom" ngbTooltip="Update"
                         tooltipClass="my-custom-class">
                         <i class="ft-check font-medium-3 mr-2"></i>
@@ -162,7 +162,7 @@
                         tooltipClass="my-custom-class">
                         <i class="ft-x font-medium-3 mr-2"></i>
                       </a>
-                    </span>
+                    </ng-container>
                   </td>
                 </tr>
               </tbody>

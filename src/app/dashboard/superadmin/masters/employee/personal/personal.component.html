@@ -5,7 +5,7 @@
     <input type="checkbox" formControlName="mgrService" id="mgrService" hidden>
     <div class='col-12'>
       <div class="row">
-
+        <input type="text" formControlName="empId" id="empId" hidden>
         <div class='col-sm-4'>
           <div class="form-group">
             <label class="form-control-label required" for="empName">Employee Name</label>
@@ -34,35 +34,37 @@
 
         <div class='col-sm-4'>
           <div class="form-group">
-            <label class="form-control-label required" for="empType">Employee Type</label>
-            <select id="empType" name="empType" formControlName="empType"
+            <label class="form-control-label required" for="empTypeId">Employee Type</label>
+            <select id="empTypeId" name="empTypeId" formControlName="empTypeId"
               (change)="selectedEmpType($event.target.value)" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.empType.errors }">
+              [ngClass]="{ 'is-invalid': submitted && f.empTypeId.errors }">
               <option selected disabled value="null">Select Employee Type</option>
-              <option *ngFor="let ct of globalEmpType" [value]="ct.name">{{ct.name}}</option>
+              <option *ngFor="let ct of globalEmpType" [value]="ct.id">{{ct.name}}</option>
             </select>
-            <div *ngIf="submitted && f.empType.errors" class="invalid-feedback">
-              <div *ngIf="f.empType.errors.required">Please Select Employee Type</div>
+            <div *ngIf="submitted && f.empTypeId.errors" class="invalid-feedback">
+              <div *ngIf="f.empTypeId.errors.required">Please Select Employee Type</div>
             </div>
           </div>
         </div>
 
         <div class='col-sm-4' *ngIf="showContractor">
           <div class="form-group">
-            <label class="form-control-label" for="empCont">Contractor Name</label>
-            <input type="tel" formControlName="empCont" maxlength="50" id="empCont" class="form-control"
-              placeholder="Enter Contractor Name" name="empCont" autocomplete="off">
+            <label class="form-control-label" for="contractorId">Contractor Name</label>
+            <select id="contractorId" name="contractorId" formControlName="contractorId" class="form-control">
+              <option selected disabled value="null">Select Contractor</option>
+              <option *ngFor="let ct of globalContractor" [value]="ct.contractorId">{{ct.contractorName}}</option>
+            </select>
           </div>
         </div>
 
         <div class='col-sm-4'>
           <div class="form-group">
-            <label class="form-control-label required" for="empDOJ">Date of Joining</label>
-            <input type="text" id="empDOJ" class="form-control" formControlName="empDOJ" placeholder="YYYY-MM-DD"
-              name="empDOJ" required autocomplete="off" ngbDatepicker #d1="ngbDatepicker"
-              [ngClass]="{ 'is-invalid': submitted && f.empDOJ.errors }" (click)="d1.toggle()">
-            <div *ngIf="submitted && f.empDOJ.errors" class="invalid-feedback">
-              <div *ngIf="f.empDOJ.errors.required">Please Select Date of Joining</div>
+            <label class="form-control-label required" for="empJoiningDate">Date of Joining</label>
+            <input type="text" id="empJoiningDate" class="form-control" formControlName="empJoiningDate" placeholder="YYYY-MM-DD"
+              name="empJoiningDate" required autocomplete="off" ngbDatepicker #d1="ngbDatepicker"
+              [ngClass]="{ 'is-invalid': submitted && f.empJoiningDate.errors }" (click)="d1.toggle()">
+            <div *ngIf="submitted && f.empJoiningDate.errors" class="invalid-feedback">
+              <div *ngIf="f.empJoiningDate.errors.required">Please Select Date of Joining</div>
             </div>
           </div>
         </div>
@@ -70,25 +72,32 @@
         <div class='col-sm-4'>
           <div class="form-group">
             <label class="d-block required">Gender</label>
-            <div class="input-group">
-              <div class="custom-control custom-radio d-inline-block float-left">
+            <div class="input-group float-left">
+              <div class="custom-control custom-radio d-inline-block">
                 <input type="radio" id="empGender1" formControlName="empGender" class="custom-control-input"
-                  [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }" value="Male">
+                  [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }" value="m">
                 <label class="custom-control-label mr-4" for="empGender1">Male</label>
+
+              </div>
+              <div class="custom-control custom-radio d-inline-block mr-3">
+                <input type="radio" id="empGender2" formControlName="empGender" class="custom-control-input"
+                  value="f" [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }">
+                <label class="custom-control-label" for="empGender2">Female</label>
+
+              </div>
+              <div class="custom-control custom-radio d-inline-block">
+                <input type="radio" id="empGender3" formControlName="empGender" class="custom-control-input"
+                  value="o" [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }">
+                <label class="custom-control-label" for="empGender3">Other</label>
                 <div *ngIf="submitted && f.empGender.errors" class="invalid-feedback">
                   <div *ngIf="f.empGender.errors.required">Please Select Gender</div>
                 </div>
-              </div>
-              <div class="custom-control custom-radio d-inline-block ml-2">
-                <input type="radio" id="empGender2" formControlName="empGender" class="custom-control-input"
-                  value="Female" [ngClass]="{ 'is-invalid': submitted && f.empGender.errors }">
-                <label class="custom-control-label" for="empGender2">Female</label>
               </div>
             </div>
           </div>
         </div>
 
-        <div class='col-sm-4'>
+        <!-- <div class='col-sm-4'>
           <div class="form-group">
             <label class="d-block">Is Manager/Supervisor?</label>
             <div class="input-group">
@@ -98,7 +107,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="form-group text-center">

@@ -5,14 +5,14 @@
 
     <div class='col-sm-4'>
       <div class="form-group">
-        <label class="form-control-label required" for="empDesg">Designation</label>
-        <select id="empDesg" name="empDesg" formControlName="empDesg" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted3 && f3.empDesg.errors }">
+        <label class="form-control-label required" for="designationId">Designation</label>
+        <select id="designationId" name="designationId" formControlName="designationId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted3 && f3.designationId.errors }">
           <option selected disabled value="null">Select Designation</option>
-          <option *ngFor="let ct of globalDesignation" [value]="ct.id">{{ct.name}}</option>
+          <option *ngFor="let ct of globalDesignation" [value]="ct.designationId">{{ct.designationName}}
         </select>
-        <div *ngIf="submitted3 && f3.empDesg.errors" class="invalid-feedback">
-          <div *ngIf="f3.empDesg.errors.required">Please Select Designation</div>
+        <div *ngIf="submitted3 && f3.designationId.errors" class="invalid-feedback">
+          <div *ngIf="f3.designationId.errors.required">Please Select Designation</div>
         </div>
       </div>
     </div>

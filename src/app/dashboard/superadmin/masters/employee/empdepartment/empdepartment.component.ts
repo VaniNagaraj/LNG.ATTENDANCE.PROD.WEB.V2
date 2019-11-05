@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { showUpdate } from '../data';
+import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import { DepartmentService } from '../../customer/department/services/department.service';
 
 @Component({
   selector: 'app-empdepartment',
@@ -21,17 +24,40 @@ export class EmpDepartmentComponent implements OnInit {
     { id: 3, name: 'Manager 3' },
   ];
 
-  constructor(private fb: FormBuilder, private dis: showUpdate) { }
+  constructor(private fb: FormBuilder, private dis: showUpdate,
+    private deptService: DepartmentService) { }
 
   ngOnInit() {
     this.deptForm = this.fb.group({
-      empDept: [null, Validators.required],
-      empReport: [null, Validators.required],
+      departmentId: [null, Validators.required],
+      empReportingToId: [null, Validators.required],
       deptFrom: ['', Validators.required]
     });
   }
 
   get f2() { return this.deptForm.controls };
+
+  getDeptartmentAll() {
+    this.deptService.get()
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('Departments...', res.data1)
+          this.globalDepartment = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
+  }
 
   submitDept() {
     this.submitted2 = true;

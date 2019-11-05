@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { showUpdate } from '../data';
+import { first } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import { ShiftService } from '../../customer/shift/services/shift.service';
 
 @Component({
   selector: 'app-empshift',
@@ -16,16 +19,39 @@ export class EmpShiftComponent implements OnInit {
     { id: 2, name: 'Night' },
   ]
 
-  constructor(private fb: FormBuilder, private dis: showUpdate) { }
+  constructor(private fb: FormBuilder, private dis: showUpdate,
+    private shiftService: ShiftService) { }
 
   ngOnInit() {
     this.shiftForm = this.fb.group({
-      empShift: [null, Validators.required],
+      shiftId: [null, Validators.required],
       shiftFrom: ['', Validators.required]
     });
   }
 
   get f4() { return this.shiftForm.controls };
+
+  getShiftAll() {
+    this.shiftService.get()
+      .pipe(first())
+      .subscribe(res => {
+        if (res.status.error) {
+          Swal.fire({
+            type: 'error',
+            title: res.status.message,
+          });
+        } else {
+          console.log('Shifts...', res.data1)
+          this.globalShift = res.data1;
+        }
+      }, error => {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
+  }
 
   submitShift() {
     this.submitted4 = true;

@@ -5,14 +5,14 @@
 
     <div class='col-sm-4'>
       <div class="form-group">
-        <label class="form-control-label required" for="empShift">Shift</label>
-        <select id="empShift" name="empShift" formControlName="empShift" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted4 && f4.empShift.errors }">
+        <label class="form-control-label required" for="shiftId">Shift</label>
+        <select id="shiftId" name="shiftId" formControlName="shiftId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted4 && f4.shiftId.errors }">
           <option selected disabled value="null">Select Shift</option>
-          <option *ngFor="let ct of globalShift" [value]="ct.name">{{ct.name}}</option>
+          <option *ngFor="let ct of globalShift" [value]="ct.shiftId">{{ct.shiftName}}</option>
         </select>
-        <div *ngIf="submitted4 && f4.empShift.errors" class="invalid-feedback">
-          <div *ngIf="f4.empShift.errors.required">Please Select Shift</div>
+        <div *ngIf="submitted4 && f4.shiftId.errors" class="invalid-feedback">
+          <div *ngIf="f4.shiftId.errors.required">Please Select Shift</div>
         </div>
       </div>
     </div>

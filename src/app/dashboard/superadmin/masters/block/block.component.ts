@@ -26,6 +26,7 @@ export class BlockComponent implements OnInit {
 
   globalBranch: any = [];
   pageOfItems: any[];
+  rowIndex: any;
 
   constructor(private fb: FormBuilder,
     private blockService: BlockService,
@@ -57,6 +58,7 @@ export class BlockComponent implements OnInit {
   onChangePage(pageOfItems: Array<any>) {
     // update current page of items
     this.pageOfItems = pageOfItems;
+    this.rowIndex = null;
   }
 
   getAllBlock() {
@@ -150,8 +152,8 @@ export class BlockComponent implements OnInit {
   }
 
   //Update Form open
-  editCustomer(data) {
-    data.showUpdate = true;
+  editCustomer(data, i) {
+    this.rowIndex = i;
     this.cancel();
     this.updateBlockForm.patchValue(data);
   }
@@ -205,7 +207,7 @@ export class BlockComponent implements OnInit {
   // Cancel Data
   cancelUpdate(data) {
     this.submitted1 = false;
-    data.showUpdate = false;
+    this.rowIndex = null;
     this.updateBlockForm.reset();
   }
 
@@ -248,5 +250,4 @@ export class BlockComponent implements OnInit {
       }
     })
   }
-
 }

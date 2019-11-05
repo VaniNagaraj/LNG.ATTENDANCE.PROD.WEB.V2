@@ -4,14 +4,14 @@
   <div class="row">
     <div class='col-sm-4'>
       <div class="form-group">
-        <label class="form-control-label required" for="refBrId">Branch</label>
-        <select id="refBrId" name="refBrId" formControlName="refBrId" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted1 && f1.refBrId.errors }">
+        <label class="form-control-label required" for="brId">Branch</label>
+        <select id="brId" name="brId" formControlName="brId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted1 && f1.brId.errors }">
           <option selected disabled value="null">Select Branch</option>
-          <option *ngFor="let ct of globalBranch" [value]="ct.id">{{ct.name}}</option>
+          <option *ngFor="let ct of globalBranch" [value]="ct.brId">{{ct.brName}}</option>
         </select>
-        <div *ngIf="submitted1 && f1.refBrId.errors" class="invalid-feedback">
-          <div *ngIf="f1.refBrId.errors.required">Please Select Branch</div>
+        <div *ngIf="submitted1 && f1.brId.errors" class="invalid-feedback">
+          <div *ngIf="f1.brId.errors.required">Please Select Branch</div>
         </div>
       </div>
     </div>

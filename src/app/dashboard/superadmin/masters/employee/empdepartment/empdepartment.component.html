@@ -5,28 +5,28 @@
 
     <div class='col-sm-4'>
       <div class="form-group">
-        <label class="form-control-label required" for="empDept">Department</label>
-        <select id="empDept" name="empDept" formControlName="empDept" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted2 && f2.empDept.errors }">
+        <label class="form-control-label required" for="departmentId">Department</label>
+        <select id="departmentId" name="departmentId" formControlName="departmentId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted2 && f2.departmentId.errors }">
           <option selected disabled value="null">Select Department</option>
-          <option *ngFor="let ct of globalDepartment" [value]="ct.id">{{ct.name}}</option>
+          <option *ngFor="let ct of globalDepartment" [value]="ct.deptId">{{ct.deptName}}</option>
         </select>
-        <div *ngIf="submitted2 && f2.empDept.errors" class="invalid-feedback">
-          <div *ngIf="f2.empDept.errors.required">Please Select Department</div>
+        <div *ngIf="submitted2 && f2.departmentId.errors" class="invalid-feedback">
+          <div *ngIf="f2.departmentId.errors.required">Please Select Department</div>
         </div>
       </div>
     </div>
 
     <div class='col-sm-4'>
       <div class="form-group">
-        <label class="form-control-label required" for="empReport">Reporting To</label>
-        <select id="empReport" name="empReport" formControlName="empReport" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted2 && f2.empReport.errors }">
+        <label class="form-control-label required" for="empReportingToId">Reporting To</label>
+        <select id="empReportingToId" name="empReportingToId" formControlName="empReportingToId" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted2 && f2.empReportingToId.errors }">
           <option selected disabled value="null">Select Reporting To</option>
-          <option *ngFor="let ct of globalReportTo" [value]="ct.name">{{ct.name}}</option>
+          <option *ngFor="let ct of globalReportTo" [value]="ct.id">{{ct.name}}</option>
         </select>
-        <div *ngIf="submitted2 && f2.empReport.errors" class="invalid-feedback">
-          <div *ngIf="f2.empReport.errors.required">Please Select Reporting To</div>
+        <div *ngIf="submitted2 && f2.empReportingToId.errors" class="invalid-feedback">
+          <div *ngIf="f2.empReportingToId.errors.required">Please Select Reporting To</div>
         </div>
       </div>
     </div>

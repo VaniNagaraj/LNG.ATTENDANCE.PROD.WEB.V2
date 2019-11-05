@@ -33,7 +33,7 @@ export class WeeklyoffComponent implements OnInit {
 
   ngOnInit() {
     this.weeklyoffForm = this.fb.group({
-      weekoff: ['', Validators.required],
+      dayOfWeek: ['', Validators.required],
       offFrom: ['', Validators.required]
     });
   }
@@ -43,7 +43,7 @@ export class WeeklyoffComponent implements OnInit {
   submitWeeklyOff() {
     this.submitted5 = true;
     if (this.weeklyoffForm.invalid) {
-      console.log(this.f5.weekoff.errors.required)
+      console.log(this.f5.dayOfWeek.errors.required)
       return;
     }
     this.weeklyoffForm.value.offFrom = this.weeklyoffForm.get('offFrom').value.year + '-' + this.weeklyoffForm.get('offFrom').value.month + '-' + this.weeklyoffForm.get('offFrom').value.day;

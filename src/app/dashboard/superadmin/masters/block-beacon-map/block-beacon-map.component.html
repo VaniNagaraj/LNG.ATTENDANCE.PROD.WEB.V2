@@ -76,7 +76,7 @@
                 <!-- Update Desgination -->
                 <tr *ngFor="let data of pageOfItems; let i = index;" [formGroup]="updateBlockBeaconMap">
                   <td>
-                    {{ i + 1}}
+                    {{ blockbeaconMap.indexOf(data) + 1}}
                     <input type="text" formControlName="blkBeaconMapId" id="blkBeaconMapId" hidden>
                   </td>
                   <td>
