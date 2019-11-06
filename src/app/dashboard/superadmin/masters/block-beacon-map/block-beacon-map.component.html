@@ -1,5 +1,5 @@
 <!--Confirm Action Starts-->
-<section id="action">
+<section id="action" *ngIf="showList">
   <div class="row text-left">
     <div class="col-sm-12">
       <div class="card">
@@ -25,129 +25,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngIf="showNew" [formGroup]="newBlockBeaconMap">
-                  <td></td>
-                  <td>
-                    <select id="projectinput1" formControlName="refBlkId" name="refBlkId" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.refBlkId.errors }">
-                      <option value="none" selected disabled value="null">Please Select Block</option>
-                      <option *ngFor="let block of globalBlock" [value]="block.blkId">{{block.blkLogicalName}}</option>
-                    </select>
-                    <div *ngIf="submitted && f.refBlkId.errors" class="invalid-feedback">
-                      <div *ngIf="f.refBlkId.errors.required">Please Select Block</div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <input type="text" id="beaconCode" formControlName="beaconCode" name="beaconCode"
-                      class="form-control" placeholder="Please Enter Beacon Code" maxlength="25"
-                      [ngClass]="{ 'is-invalid': submitted && f.beaconCode.errors }">
-                    <div *ngIf="submitted && f.beaconCode.errors" class="invalid-feedback">
-                      <div *ngIf="f.beaconCode.errors.required">Please Provide Beacon Code</div>
-                      <div *ngIf="f.beaconCode.errors.pattern">Beacon Code Should contain only Alphabets and Numbers
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <select id="projectinput1" formControlName="beaconType" name="beaconType" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.beaconType.errors }">
-                      <option selected disabled value="null">Please Select Beacon Type</option>
-                      <option [value]="1">Entry and Photo</option>
-                      <option [value]="2">Mark Attendence</option>
-                    </select>
-                    <div *ngIf="submitted && f.beaconType.errors" class="invalid-feedback">
-                      <div *ngIf="f.beaconType.errors.required">Please Select Beacon Type</div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <a class="success p-0" (click)="save()" placement="bottom" ngbTooltip="Save"
-                      tooltipClass="my-custom-class">
-                      <i class="ft-check font-medium-3 mr-2"></i>
-                    </a>
-                    <a class="danger p-0" (click)="cancel()" placement="bottom" ngbTooltip="Cancel"
-                      tooltipClass="my-custom-class">
-                      <i class="ft-trash-2 font-medium-3 mr-2"></i>
-                    </a>
-                  </td>
-                </tr>
-
-                <!-- Update Desgination -->
-                <tr *ngFor="let data of pageOfItems; let i = index;" [formGroup]="updateBlockBeaconMap">
-                  <td>
-                    {{ blockbeaconMap.indexOf(data) + 1}}
-                    <input type="text" formControlName="blkBeaconMapId" id="blkBeaconMapId" hidden>
-                  </td>
-                  <td>
-                    <span [hidden]="data.showUpdate">
-                      {{data.blkLogicalName}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
-                      <select id="projectinput4" formControlName="refBlkId" name="refBlkId" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted1 && f1.refBlkId.errors }">
-                        <option value="none" selected disabled value="null">Please Select Block</option>
-                        <option *ngFor="let block of globalBlock" [value]="block.blkId">{{block.blkLogicalName}}
-                        </option>
-                      </select>
-                      <div *ngIf="submitted1 && f1.refBlkId.errors" class="invalid-feedback">
-                        <div *ngIf="f1.refBlkId.errors.required">Please Select Block</div>
-                      </div>
-                    </span>
-                  </td>
-                  <td>
-                    <span [hidden]="data.showUpdate">
-                      {{data.beaconCode}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
-                      <input type="text" id="beaconCode" formControlName="beaconCode" name="beaconCode"
-                        class="form-control" placeholder="Please Enter Beacon Code" maxlength="25"
-                        [ngClass]="{ 'is-invalid': submitted1 && f1.beaconCode.errors }">
-                      <div *ngIf="submitted1 && f1.beaconCode.errors" class="invalid-feedback">
-                        <div *ngIf="f1.beaconCode.errors.required">Please Provide Beacon Code</div>
-                        <div *ngIf="f1.beaconCode.errors.pattern">Beacon Code Should contain only Alphabets and Numbers
-                        </div>
-                      </div>
-                    </span>
-                  </td>
-
-                  <td>
-                    <span [hidden]="data.showUpdate">
-                      {{data.beaconType}}
-                    </span>
-                    <span [hidden]="!data.showUpdate">
-                      <select id="projectinput1" formControlName="beaconType" name="beaconType" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted1 && f1.beaconType.errors }">
-                        <option selected disabled value="null">Please Select Beacon Type</option>
-                        <option value="1">Entry and Photo</option>
-                        <option value="2">Mark Attendence</option>
-                      </select>
-                      <div *ngIf="submitted1 && f1.beaconType.errors" class="invalid-feedback">
-                        <div *ngIf="f1.beaconType.errors.required">Please Select Beacon Type</div>
-                      </div>
-                    </span>
-                  </td>
-
+                <tr *ngFor="let data of pageOfItems">
+                  <td>{{ blockbeaconMap.indexOf(data) + 1}}</td>
+                  <td>{{data.blkLogicalName}}</td>
+                  <td>{{data.beaconCode}}</td>
+                  <td>{{data.beaconType}}</td>
                   <td width="160">
-                    <span [hidden]="data.showUpdate">
-                      <a class="success p-0" (click)="editBlockBeaconMap(data)" placement="bottom" ngbTooltip="Edit"
-                        tooltipClass="my-custom-class">
-                        <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                      </a>
-                      <!-- <a class="danger p-0" (click)="deleteBlockBeaconMap(data)" placement="bottom" ngbTooltip="Delete" tooltipClass="my-custom-class">
+                    <a class="success p-0" (click)="editBlockBeaconMap(data)" placement="bottom" ngbTooltip="Edit"
+                      tooltipClass="my-custom-class">
+                      <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                    </a>
+                    <!-- <a class="danger p-0" (click)="deleteBlockBeaconMap(data)" placement="bottom" ngbTooltip="Delete" tooltipClass="my-custom-class">
                         <i class="ft-trash-2 font-medium-3 mr-2"></i>
                       </a> -->
-                    </span>
-                    <span [hidden]="!data.showUpdate">
-                      <a class="success p-0" (click)="saveUpdate(data)" placement="bottom" ngbTooltip="Update"
-                        tooltipClass="my-custom-class">
-                        <i class="ft-check font-medium-3 mr-2"></i>
-                      </a>
-                      <a class="danger p-0" (click)="cancelUpdate(data)" placement="bottom" ngbTooltip="Cancel"
-                        tooltipClass="my-custom-class">
-                        <i class="ft-trash-2 font-medium-3 mr-2"></i>
-                      </a>
-                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -157,9 +47,159 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 <!--Confirm Action Ends-->
+
+<!-- Basic form layout section start -->
+<section id="basic-form-layouts" *ngIf="showForm">
+  <div class="rowtext-left">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header pb-2">
+          <h4 class="card-title" id="bordered-layout-basic-form"></h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <form [formGroup]="newBlockBeaconMap" (ngSubmit)="onSubmit()">
+              <div class="form-body">
+                <h4 class="form-section"><i class="ft-user"></i>{{formInfo}} Block Beacon Map</h4>
+                <input type="text" name="blkBeaconMapId" formControlName="blkBeaconMapId" hidden>
+
+                <h4 *ngIf="custId != 0">
+                  <span class="mr-3">Customer Name:</span><span
+                    style="font-weight: bold; color: #343A40;">{{custName}}</span>
+                </h4>
+                <pre></pre>
+
+                <div class="form-group row" *ngIf="custId == 0">
+                  <label class="col-md-2 label-control required" for="refCustId">Customers</label>
+                  <div class="col-md-4">
+                    <select id="refCustId" name="refCustId" (change)="onChangeCustomer($event.target.value)"
+                      formControlName="refCustId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refCustId.errors }">
+                      <option selected disabled value="null">Select Customer</option>
+                      <option *ngFor="let ct of globalCustomers" [value]="ct.custId">{{ct.custName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refCustId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refCustId.errors.required">Please Select Customer</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-2 label-control required" for="refBranchId">Branch</label>
+                  <div class="col-md-4">
+                    <select id="refBranchId" name="refBranchId" (change)="onChangeBranch($event.target.value)"
+                      formControlName="refBranchId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refBranchId.errors }">
+                      <option selected disabled [value]="null">Select Branch</option>
+                      <option *ngFor="let ct of globalBranch" [value]="ct.brId">{{ct.brName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refBranchId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refBranchId.errors.required">Please Select Branch</div>
+                    </div>
+                  </div>
+
+                  <label class="col-md-2 label-control required" for="refBlkId">Block</label>
+                  <div class="col-md-4">
+                    <select id="refBlkId" formControlName="refBlkId" name="refBlkId" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.refBlkId.errors }">
+                      <option selected disabled value="null">Select Block</option>
+                      <option *ngFor="let st of globalBlock" [value]="st.blkId">{{st.blkLogicalName}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.refBlkId.errors" class="invalid-feedback">
+                      <div *ngIf="f.refBlkId.errors.required">Please Select Block</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Beacons selection -->
+                <div class="row">
+                  <div class="col-sm-1">
+
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="card">
+                      <div class="card-header">
+                        <h6 class="card-title">Unused Beacons</h6>
+                      </div>
+                      <div class="card-content">
+                        <div class="card-body">
+                          <div *ngFor="let field of fieldlist">
+                            <div class="card-body list-group-item list-group-item-action"
+                              style="border:none;cursor: pointer;"
+                              [class.highlighted]="leftFieldName.indexOf(field) !== -1"
+                              (click)="multiSelectLeft(field)">
+                              <h6>{{field.name}}</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+
+                  </div>
+                  <div class="col-sm-2 ml-5">
+                    <button class="btn btn-raised btn-primary" style="margin-top: 60px" (click)="pushAll()"
+                      [disabled]="fieldlist.length == 0" title="Select All Fields">
+                      <i class="ft-chevrons-right"></i>
+                    </button><br>
+                    <button class="btn btn-raised btn-primary mt-3" (click)="pushOne()"
+                      [disabled]="leftFieldName.length == 0" title="Select Particular Fields">
+                      <i class="ft-chevron-right"></i>
+                    </button><br>
+                    <button class="btn btn-raised btn-primary mt-3" (click)="popOne()"
+                      [disabled]="rightFieldName.length == 0" title="Remove Particular Fields">
+                      <i class="ft-chevron-left"></i>
+                    </button><br>
+                    <button class="btn btn-raised btn-primary mt-3" (click)="popAll()" [disabled]="fields.length == 0"
+                      title="Remove All Fields">
+                      <i class="ft-chevrons-left"></i>
+                    </button>
+                  </div>
+                  <div class="col-sm-1">
+
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="card">
+                      <div class="card-header">
+                        <h6 class="card-title">Used Beacons</h6>
+                      </div>
+                      <div class="card-content">
+                        <div class="card-body">
+                          <div *ngFor="let fd of fields">
+                            <div class="card-body list-group-item list-group-item-action"
+                              style="border:none;cursor: pointer;"
+                              [class.highlighted]="rightFieldName.indexOf(fd) !== -1" (click)="multiSelectRight(fd)">
+                              <h6>{{fd.name}}</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+
+                  </div>
+                </div>
+                <!-- Beacon Selection ends -->
+
+              </div>
+              <div class="form-actions">
+                <button type="reset" (click)="cancel()" class="btn btn-raised btn-warning mr-1"><i class="ft-x"></i>
+                  Close</button>
+                <button type="submit" class="btn btn-raised btn-info mr-1"><i
+                    class="ft-check"></i>&nbsp;{{btnName}}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- // Basic form layout section end -->

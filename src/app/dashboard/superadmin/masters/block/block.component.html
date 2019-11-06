@@ -75,7 +75,7 @@
                     </a>
                     <a class="danger p-0" (click)="cancel()" placement="bottom" ngbTooltip="Cancel"
                       tooltipClass="my-custom-class">
-                      <i class="ft-trash-2 font-medium-3 mr-2"></i>
+                      <i class="ft-x font-medium-3 mr-2"></i>
                     </a>
                   </td>
                 </tr>
@@ -85,10 +85,10 @@
                     <input type="text" formControlName="blkId" id="blkId" hidden>
                   </td>
                   <td>
-                    <ng-container *ngIf="rowIndex != i">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.brName}}
                     </ng-container>
-                    <ng-container *ngIf="rowIndex == i">
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <select id="projectinput6" formControlName="refBranchId" name="refBranchId" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.refBranchId.errors }" disabled>
                         <option value="none" selected disabled value="null">Select Branch</option>
@@ -100,10 +100,10 @@
                     </ng-container>
                   </td>
                   <td>
-                    <ng-container *ngIf="rowIndex != i">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.blkLogicalName}}
                     </ng-container>
-                    <ng-container *ngIf="rowIndex == i">
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <input type="text" id="blkLogicalName" formControlName="blkLogicalName" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.blkLogicalName.errors }"
                         placeholder="Please Enter Block Name" maxlength="20"
@@ -115,10 +115,10 @@
                   </td>
                   
                   <td>
-                    <ng-container *ngIf="rowIndex != i">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.blkGPSRadius}}
                     </ng-container>
-                    <ng-container *ngIf="rowIndex == i">
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <input type="text" id="blkGPSRadius" formControlName="blkGPSRadius" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.blkGPSRadius.errors }" maxlength="5"
                         onkeydown="javascript: return (event.keyCode >= 8 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)? true : false"
@@ -129,10 +129,10 @@
                     </ng-container>
                   </td>
                   <td>
-                    <ng-container *ngIf="rowIndex != i">
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
                       {{data.blkLatLong}}
                     </ng-container>
-                    <ng-container *ngIf="rowIndex == i">
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <input type="text" id="blkLatLong" formControlName="blkLatLong" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted1 && f1.blkLatLong.errors }"
                         onkeydown="javascript: return (event.keyCode >= 65 && event.keyCode <= 90)? false : true"
@@ -143,8 +143,8 @@
                     </ng-container>
                   </td>
                   <td width="160">
-                    <ng-container *ngIf="rowIndex != i">
-                      <a class="success p-0" (click)="editCustomer(data, i)" placement="bottom" ngbTooltip="Edit"
+                    <ng-container *ngIf="rowIndex != globalBlock.indexOf(data)">
+                      <a class="success p-0" (click)="editCustomer(data, globalBlock.indexOf(data))" placement="bottom" ngbTooltip="Edit"
                         tooltipClass="my-custom-class">
                         <i class="ft-edit-2 font-medium-3 mr-2"></i>
                       </a>
@@ -153,14 +153,14 @@
                         <i class="ft-trash-2 font-medium-3 mr-2"></i>
                       </a>
                     </ng-container>
-                    <ng-container *ngIf="rowIndex == i">
+                    <ng-container *ngIf="rowIndex == globalBlock.indexOf(data)">
                       <a class="success p-0" (click)="saveUpdate(data)" placement="bottom" ngbTooltip="Update"
                         tooltipClass="my-custom-class">
                         <i class="ft-check font-medium-3 mr-2"></i>
                       </a>
                       <a class="danger p-0" (click)="cancelUpdate(data)" placement="bottom" ngbTooltip="Cancel"
                         tooltipClass="my-custom-class">
-                        <i class="ft-trash-2 font-medium-3 mr-2"></i>
+                        <i class="ft-x font-medium-3 mr-2"></i>
                       </a>
                     </ng-container>
                   </td>
